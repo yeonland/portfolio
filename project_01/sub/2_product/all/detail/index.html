@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>만년 업무 플래너</title>
+    <link rel="stylesheet" href="../../../../css/header.css">
+    <link rel="stylesheet" href="../../../../css/footer.css">
+    <link rel="stylesheet" href="../../../../css/detail.css">
+    <link rel="stylesheet" href="../../../../css/how_use_chat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- font-awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Gowun+Dodum&display=swap" rel="stylesheet">
+    <!-- font Gowun+Dodum -->
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <!-- font Jua -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.3/jquery.scrollTo.min.js"></script>
+    <script src="../../../../js/header.js"></script>
+</head>
+<body>
+    <input type="checkbox" id="how_use" checked>
+    <div>
+        <a href="https://teamnelna.notion.site/acbcaca078d6439b87397a9370e5b0d8">
+            <section class="how_use_box">
+                <label for="how_use"><i class="fa-solid fa-xmark"></i></label>
+                <p class="how_use_top">사용법</p>
+                <p>알아보기</p>
+            </section>
+        </a>
+    </div>
+    <!-- 사용법 알아보기 -->
+
+    <div class="btn_top"><i class="fa-solid fa-angle-up"></i></div>   <!-- TOP 버튼 -->
+
+    <input type="checkbox" id="chat_chk">
+    <section class="chat">
+        <label for="chat_chk" class="open"><div><img src="./img/icon_chat.png" alt="chat_icon"></i></div></label>
+        <label for="chat_chk" class="close"><div><i class="fa-solid fa-xmark"></i></div></label>
+        <div class="chat_box">
+            <div class="brand">
+                <div class="logo_box"><img src="./img/chat_logo.png" alt="logo"></div>
+                <div class="brand_intro">
+                    <p class="brand_tit">소하</p>
+                    <p>소소한 하루, 소하</p>
+                </div>
+            </div>
+            <div class="chat_first">무엇을 도와드릴까요?</div>
+            <div class="chat_txt_box">
+                <input type="text" name="chat_txt" class="chat_txt">
+            </div>
+        </div>
+    </section>
+    <!-- 실시간 채팅상담 -->
+
+    <header class="header_outer" id="header">
+        <header class="header">
+            <div class="logo">
+                <a href="../../../../index.html"><img src="./img/logo.png" alt="soha_logo"></a>
+            </div>           <!-- logo -->
+            <nav class="gnb">
+                <span><a href="../../../1_brand/index.html">소하는요</a></span>
+                <span class="product">
+                    <a href="../../all/index.html">디지털 문구</a>
+                    <div class="product_menu">
+                        <div><a href="../../diary/index.html">다이어리</a></div>
+                        <div><a href="../../planner/index.html">플래너</a></div>
+                        <div><a href="../../journal/index.html">저널</a></div>
+                        <div><a href="../../sticker/index.html">스티커</a></div>
+                        <div><a href="../../free/index.html">무료</a></div>
+                    </div>
+                </span>
+                <span><a href="../../../3_review/index.html">솔직후기</a></span>
+                <span><a href="../../../4_faq/index.html">궁금해요</a></span>
+                <span><a href="../../../5_notice/index.html">알립니다</a></span>
+            </nav>                    <!-- gnb -->
+            <input type="checkbox" id="search_chk">
+            <section class="gnb_icon">
+                <label for="search_chk" class="search_open">
+                    <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                </label>
+                <label for="search_chk" class="search_close">
+                    <span><i class="fa-solid fa-xmark"></i></span>
+                </label>
+                <div class="search_box">
+                    <input type="search" name="search_txt" class="search_txt">
+                    <span><a href="../../../search_result/index.html" ><i class="fa-solid fa-magnifying-glass"></i></a></span>
+                </div>                      <!-- search_box -->
+                <span class="btn_cart"><i class="fa-solid fa-cart-shopping"></i></span>
+                <div class="cart_box box">
+                    <p class="tit">장바구니</p>
+                    <div class="product_box">
+                        <a href="#!">
+                            <div class="popup_img">
+                                <img src="./img/cart01.jpg" alt="cart01">
+                            </div>
+                            <div class="popup_txt">
+                                <p>불렛저널</p>
+                                <p>7,900원</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_box second">
+                        <a href="#!">
+                            <div class="popup_img">
+                                <img src="./img/cart02.jpg" alt="cart02">
+                            </div>
+                            <div class="popup_txt">
+                                <p>만년 업무 플래너</p>
+                                <p>8,900원</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_box">
+                        <a href="#!">
+                            <div class="popup_img">
+                                <img src="./img/cart03.jpg" alt="cart03">
+                            </div>
+                            <div class="popup_txt">
+                                <p>프로젝트 트래커</p>
+                                <p>12,900원</p>
+                            </div>
+                        </a>
+                    </div>
+                    <button>결제하기</button>
+                </div>                  <!-- cart_box -->
+                <span class="btn_recent"><i class="fa-solid fa-clock"></i></span>
+                <div class="recent_box box">
+                    <p class="tit">최근 본 상품</p>
+                    <div class="product_box">
+                        <a href="#!">
+                            <div class="popup_img">
+                                <img src="./img/recent01.jpg" alt="cart01">
+                            </div>
+                            <div class="popup_txt">
+                                <p>만년형 심플 다이어리</p>
+                                <p>8,000원</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_box second">
+                        <a href="#!">
+                            <div class="popup_img">
+                                <img src="./img/recent02.jpg" alt="cart02">
+                            </div>
+                            <div class="popup_txt">
+                                <p>국내여행 플래너</p>
+                                <p>6,000원</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_box">
+                        <a href="#!">
+                            <div class="popup_img">
+                                <img src="./img/recent03.jpg" alt="cart03">
+                            </div>
+                            <div class="popup_txt">
+                                <p>소하 만년형 일주일 플래너</p>
+                                <p>무료</p>
+                            </div>
+                        </a>
+                    </div>
+                    <button>결제하기</button>
+                </div>                <!-- recent box -->
+                <span><a href="../../../login/index.html"><i class="fa-solid fa-user"></i></a></span>
+                
+            </section>  <!-- gnb_icon -->
+        </header>
+    </header>           <!-- header -->
+
+    <div class="wrap">
+        <nav class="nav">
+            <span><a href="../../../../index.html"><i class="fa-solid fa-house"></i></a></span>
+            <span>></span>
+            <span><a href="../../all/index.html">디지털 문구</a></span>
+            <span>></span>
+            <span><a href="../../planner/index.html">플래너</a></span>
+        </nav>
+
+        <section class="detail_box">
+            <div class="detail_img">
+                <img src="./img/work_planner.jpg" alt="work_planner">
+            </div>
+            <div class="detail_txt">
+                <p class="detail_name">만년 업무 플래너</p>
+                <span class="detail_star">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </span>
+                <span>55개의 구매평</span>
+                <p class="detail_price">8,900원</p>
+                <hr>
+                <p class="detail_sub">칼퇴를 부르는 만년 업무 플래너,</p>
+                <p class="detail_sub">월간 오피스 플래너 입니다.</p>
+                <div><span class="total_product">총 상품금액(1개)</span><span class="total_price">8,900원</span></div>
+                <div><a href="#!"><div class="btn">결제하기</div></a></div>
+            </div>
+        </section>        <!-- detail box -->
+
+        <span class="anchor" id="info"></span>
+
+        <section class="product_info">
+            <div class="info_box info_chk"><a href="#info"><div>상세정보</div></a></div>
+            <div class="info_box"><a href="#review"><div>후기</div></a></div>
+            <div class="info_box"><a href="#qna"><div>Q&A</div></a></div>
+        </section>
+        <section class="detail_detail_img">
+            <div><img src="./img/detail01.png" alt="detail_detail01"></div>
+            <div><img src="./img/detail02.png" alt="detail_detail02"></div>
+            <div><img src="./img/detail03.png" alt="detail_detail03"></div>
+            <div><img src="./img/detail04.png" alt="detail_detail04"></div>
+        </section>        <!-- detail -->
+
+        <span class="anchor" id="review"></span>
+
+        <section class="product_info">
+            <div class="info_box"><a href="#info"><div>상세정보</div></a></div>
+            <div class="info_box info_chk"><a href="#review"><div>후기</div></a></div>
+            <div class="info_box"><a href="#qna"><div>Q&A</div></a></div>
+        </section>
+
+        <section class="review">
+            <p class="sub_tit">후기(55)</p>
+            <div class="review_star_box">
+                <div class="review_star_left_box">
+                    <p class="review_stars"><span><i class="fa-solid fa-star"></i></span>  4.8</p><br>
+                    <p>96%의 구매자가 이 상품을 좋아합니다.</p> <br>
+                    <span class="write"><a href="#!">상품후기 작성하기</a></span>
+                </div>
+                <div class="review_star_right_box">
+                    <p>
+                        <span>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </span>
+                        <div class="outer">
+                            <div class="inner">iiii</div>
+                        </div>
+                        <span>53</span>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </span>
+                        <div class="outer">
+                            <div class="inner_01"></div>
+                        </div>
+                        <span>1</span>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </span>
+                        <div class="outer">
+                            <div class="inner_01"></div>
+                        </div>
+                        <span>1</span>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </span>
+                        <div class="outer">
+                        </div>
+                        <span>0</span>
+                    </p>
+                    <p>
+                        <span>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </span>
+                        <div class="outer">
+                        </div>
+                        <span>0</span>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="review_box">
+                <span class="star">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </span>
+                <span class="date">2024.03.08</span>
+                <span class="thumb"><a href="#!"><i class="fa-solid fa-thumbs-up"></i></a> | 2 &nbsp;<a href="#!"><i class="fa-solid fa-thumbs-down"></i></a> | 0</span>
+                
+                <p class="txt">다이어리 가지고 다니기가 너무 귀찮고 잘 안 쓰게 되어 이걸로 바꿨습니다 ㅎㅎㅎㅎㅎㅎㅎ 이젠 안 잊어버리고 잘 쓸 것 같아요 !!! 이렇게 편리한 걸 이제야 쓰다니 ㅜㅜ 진작 쓸 걸 그랬어용 .. 왜 늦게 썼을까 ..</p>
+                <div class="review_img">
+                    <img src="./img/review01_01.jpg" alt="review01">
+                </div>
+                
+            </div>
+            <div class="review_box">
+                <span class="star">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </span>
+                <span class="review_date">2024.02.26</span>
+                <span class="thumb"><a href="#!"><i class="fa-solid fa-thumbs-up"></i></a> | 5 &nbsp; <a href="#!"><i class="fa-solid fa-thumbs-down"></i></a> | 0</span>
+                <p class="review_txt">
+                    업무할 때 아무 메모장에 작성하다가 업무 플래너를 사용하니까 주간 업무와 일일 업무를 나눠서 한눈에 파악하기 좋아요
+                    아주 유용하게 사용하고 있어요!
+                </p>
+                <div class="review_img">
+                    <img src="./img/review01_02.jpg" alt="review02">
+                </div>
+            </div>
+            <div class="review_box">
+                <span class="star">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </span>
+                <span class="review_date">2024.02.04</span>
+                <span class="thumb"><a href="#!"><i class="fa-solid fa-thumbs-up"></i></a> | 7 &nbsp; <a href="#!"><i class="fa-solid fa-thumbs-down"></i></a> | 0</span>
+                <p class="review_txt">
+                    아이패드 처음 사고나서 다이어리 입문했던 게 소하였는데 소하 한번 쓰고나니까 필요한게 있으면 계속 소하에서만 찾게되네요ㅎㅎ <br>
+                    연도별 다이어리는 저랑 잘 안맞는 것 같아서 만년 업무 플래너 써봤는데
+                    체크리스트 기반으로 할일 관리하는 걸 좋아하다보니 이게 정말 딱인 것 같아요! <br>
+                    개인적인 바램으로는 아이패드 옆쪽까지 넓게 쓸 수 있도록 해주신 거 만년업무플래너에도 적용해주셨음 하는 바램이 있어요 ㅎㅎ <br>
+                    하지만 지금도 충분히 좋구요~ 특히 하이퍼링크 부드러운거 넘 좋아요! 저는 이 플래너로 일상까지 관리하며 매우 만족하고 있답니다 :D
+                </p>
+                <div class="review_img">
+                    <img src="" alt="">
+                </div>
+            </div>
+            <div class="review_box">
+                <span class="star">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </span>
+                <span class="review_date">2024.01.11</span>
+                <span class="thumb"><a href="#!"><i class="fa-solid fa-thumbs-up"></i></a> | 7 &nbsp; <a href="#!"><i class="fa-solid fa-thumbs-down"></i></a> | 0</span>
+                <p class="review_txt">
+                    월급 루팡인줄 알았는데 월급 더 받아야할 만큼 할 일이 많았네요. <br>
+                    산만한 성격이라 일의 순서 없이 처리하고 있었는데 일부러 시간 내서라도 정리하려하니까 일할때 집중도 잘 되는 것 같아요!
+                </p>
+            </div>
+            <div class="page">
+                <ul class="page_nation">
+                    <li class="txt"><a href="#!">처음으로</a></li>
+                    <li class="arrow"><a href="#!"><i class="fa-solid fa-chevron-left"></i></a></li>
+                    <li class="num num01"><a href="#!">1</a></li>
+                    <li class="num"><a href="#!">2</a></li>
+                    <li class="num"><a href="#!">3</a></li>
+                    <li class="num"><a href="#!">4</a></li>
+                    <li class="ect"><i class="fa-solid fa-ellipsis"></i></li>
+                    <li class="num"><a href="#!">6</a></li>
+                    <li class="arrow"><a href="#!"><i class="fa-solid fa-chevron-right"></i></a></li>
+                    <li class="txt"><a href="#!">끝으로</a></li>
+                </ul>
+            </div>
+        </section>
+        
+        <span class="anchor" id="qna"></span>
+        
+        <section class="product_info">
+            <div class="info_box"><a href="#info"><div>상세정보</div></a></div>
+            <div class="info_box"><a href="#review"><div>후기</div></a></div>
+            <div class="info_box info_chk"><a href="#qna"><div>Q&A</div></a></div>
+        </section>
+
+        <p class="sub_tit">Q&A</p>
+        <section class="qna">
+            <div class="qna_box border">
+                <div class="case">답변상태</div>
+                <div class="title">제목</div>
+                <div class="writer">작성자</div>
+                <div class="date">등록일</div>
+            </div>
+            <div class="qna_box">
+                <div class="case">답변완료</div>
+                <div class="title left">혹시 세로형은 없나요?</div>
+                <div class="writer">ange*****</div>
+                <div class="date">2024.08.06</div>
+            </div>
+            <div class="qna_box">
+                <div class="case">답변완료</div>
+                <div class="title left lock">비밀글입니다.<i class="fa-solid fa-lock"></i></div>
+                <div class="writer">iioi***</div>
+                <div class="date">2024.07.26</div>
+            </div>
+            <div class="qna_box border">
+                <div class="case">답변완료</div>
+                <div class="title left lock">비밀글입니다.<i class="fa-solid fa-lock"></i></div>
+                <div class="writer">ysi3***</div>
+                <div class="date">2024.07.18</div>
+            </div>
+            <div class="qna_box">
+                <div class="case">답변완료</div>
+                <div class="title left">주문 취소하려고 합니다.</div>
+                <div class="writer">oswo**</div>
+                <div class="date">2024.07.01</div>
+            </div>
+            <div class="qna_box">
+                <div class="case">답변완료</div>
+                <div class="title left">다양한 색조합으로 제작해주셨으면 좋겠습니다.</div>
+                <div class="writer">wkdi*****</div>
+                <div class="date">2024.06.27</div>
+            </div>
+            <div class="qna_box">
+                <div class="case">답변완료</div>
+                <div class="title left lock">비밀글입니다.<i class="fa-solid fa-lock"></i></div>
+                <div class="writer">giec****</div>
+                <div class="date">2024.06.14</div>
+            </div>
+            <div class="qna_box">
+                <div class="case">답변완료</div>
+                <div class="title left lock">비밀글입니다.<i class="fa-solid fa-lock"></i></div>
+                <div class="writer">dicl****</div>
+                <div class="date">2024.06.06</div>
+            </div>
+            <div class="qna_box">
+                <div class="case">답변완료</div>
+                <div class="title left">주문 했는데 발송이 안됐어요.</div>
+                <div class="writer">vios****</div>
+                <div class="date">2024.06.06</div>
+            </div>
+            <div class="qna_box">
+                <div class="case">답변완료</div>
+                <div class="title left lock">비밀글입니다.<i class="fa-solid fa-lock"></i></div>
+                <div class="writer">viol****</div>
+                <div class="date">2024.06.04</div>
+            </div>
+            <div class="qna_box">
+                <div class="case">답변완료</div>
+                <div class="title left lock">비밀글입니다.<i class="fa-solid fa-lock"></i></div>
+                <div class="writer">biog****</div>
+                <div class="date">2024.06.01</div>
+            </div>
+            
+        </section>
+        <div class="page">
+            <ul class="page_nation">
+                <li class="txt"><a href="#!">처음으로</a></li>
+                <li class="arrow"><a href="#!"><i class="fa-solid fa-chevron-left"></i></a></li>
+                <li class="num num01"><a href="#!">1</a></li>
+                <li class="num"><a href="#!">2</a></li>
+                <li class="num"><a href="#!">3</a></li>
+                <li class="num"><a href="#!">4</a></li>
+                <li class="ect"><i class="fa-solid fa-ellipsis"></i></li>
+                <li class="num"><a href="#!">10</a></li>
+                <li class="arrow"><a href="#!"><i class="fa-solid fa-chevron-right"></i></a></li>
+                <li class="txt"><a href="#!">끝으로</a></li>
+            </ul>
+        </div>
+        
+    </div>
+
+    <footer class="footer_outer">
+        <footer class="footer">
+            <section class="footer_logo mr">
+                <span class="personal"><a href="#!">이용약관</a></span>
+                <span class="personal info"><a href="#!">개인정보처리방침</a></span>
+                <span class="personal"><a href="#!">이용안내</a></span>
+                <div class="logo mr">
+                    <img src="./img/footer_logo.png" alt="footer_logo">
+                </div>
+                <div class="brand mr">
+                    <p class="sub">소소한 하루,</p>
+                    <p class="tit">소하</p>
+                </div>
+            </section>     <!-- 이용약관, 개인정보처리방침, 이용안내 + 로고 -->
+            <section class="footer_section mr">
+                <span>무통장입금</span>
+                <p>하나 833-910295-68307</p>
+                <p>부산 112-2006-5656-09</p>
+                <p>우리 1002-182-524815</p>
+                <p>신한 110-516303-268</p>
+            </section>
+            <section class="footer_brand mr">
+                <span>소하</span>
+                <p>대표 : 정연주</p>
+                <p>사업자등록번호 : 283-87-07389</p>
+                <p>통신판매업 신고번호 :
+                    <a href="https://www.ftc.go.kr/">2024-부산동래구-7408호</a>
+                </p>
+                <p>FAX : 070-8417-2862</p>
+                <p>이메일 : so_ha@gmail.com</p>
+                <p>(우 : 47832)</p>
+                <p>주소 : 부산광역시 동래구 중앙대로 1285번길 11 402호</p>
+            </section>     <!-- 브랜드 -->
+            <section class="footer_section">
+                <span>고객센터</span>
+                <p class="call">1899-3816</p>
+                <p>영업시간</p>
+                <p>월~금 09:00~18:00 </p>
+                <p>점심시간 12:00~13:00</p>
+                <p>주말/공휴일 휴무</p>
+            </section>     <!-- 고객센터 -->
+            <p class="copy">COPYRIGHT © soha. ALL RIGHTS RESERVED.</p>
+        </footer>
+    </footer>  <!-- footer -->
+</body>
+</html>

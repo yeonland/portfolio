@@ -1,0 +1,39 @@
+* {margin: 0; padding: 0;}
+
+.member {
+    width: 630px; height: 500px;
+    margin: 100px auto;
+    background-color: #feffed;
+    border: 1px solid #9c7055; border-radius: 15px;
+}
+.member caption {
+    padding-top: 30px;
+    font-family: "Gowun Dodum", sans-serif; font-size: 24px;
+    line-height: 50px; color: #9c7055;
+}
+.member>input {width: 200px;}
+.member table tr td {font-family: "Gowun Dodum", sans-serif; height: 50px;}
+.member table tr td:first-child {width: 120px; padding-left: 10px;}
+.member table tr td select {
+    background-color: #feffed;
+    font-family: "Gowun Dodum", sans-serif;
+    border: 1px solid #9c7055; color: #9c7055;
+}
+.member table tr td input {
+    font-family: "Gowun Dodum", sans-serif; border: 1px solid #9c7055;
+}
+.member>select {
+    background-color: #feffed; font-family: "Gowun Dodum", sans-serif;
+}
+.pw {font-size: 14px;}
+.pw span {color: red;}
+.btn {
+    padding: 0 8px; margin-left: 10px;
+    background-color: #feffed; color: #9c7055;
+    border: 1px solid #9c7055; border-radius: 15px;
+    font-family: "Gowun Dodum", sans-serif; cursor: pointer;
+}
+.btn01 {
+    margin-top: 30px; margin-left: 210px; margin-bottom: 30px;
+}
+.email {width: 100px;}

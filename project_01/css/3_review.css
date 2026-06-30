@@ -1,0 +1,46 @@
+* {margin: 0; padding: 0;}
+.sub_title {
+    font-family: "Jua", sans-serif; font-size: 36px; color: #9c7055;
+    height: 40px; margin-top: 60px; margin-bottom: 60px;
+    text-align: center;
+    line-height: 40px;
+}
+
+.header_outer .header .gnb span:nth-child(3) a {
+    border-bottom: 1px solid #9c7055; box-sizing: border-box;
+}
+
+.info {font-family: "Gowun Dodum", sans-serif; line-height: 30px; color: #575757; text-align: center; }
+
+/*************************** 이달의 솔직 후기 **************************/
+.mr {margin-right: 15px;}
+.review {width: 1245px; height: 890px; margin: 0 auto;}
+.review .review_box {width: 300px; float: left;}
+.review .review_box .review_img {
+    height: 300px;
+    border: 1px solid #bbb; box-sizing: border-box;
+}
+.review .review_box .review_img img{width: 298px;}
+.review .review_box .review_txt {
+    height: 40px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    font-family: "Gowun Dodum", sans-serif; line-height: 40px; padding-left: 5px;
+    border: 1px solid #bbb; box-sizing: border-box;
+    border-top: none; border-bottom: none;
+    
+}
+.review .review_box .review_txt a {color: #575757;}
+.review .review_box .review_page {
+    height: 80px;
+    border: 1px solid #bbb; box-sizing: border-box;
+}
+.review .review_box .review_page div {
+    margin: 15px; float: left;
+}
+.review .review_box .review_page div {font-family: "Gowun Dodum", sans-serif;}
+.review .review_box .review_page .review_tit {
+    padding-top: 8px;
+    font-family: "Gowun Dodum", sans-serif; font-size: 24px; color: #575757;
+}
+.review .review_box .review_page .review_sub {
+    font-family: "Gowun Dodum", sans-serif; color: #575757;
+}

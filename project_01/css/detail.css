@@ -1,0 +1,144 @@
+* {margin: 0; padding: 0; font-family: "Gowun Dodum", sans-serif;}
+li {list-style: none;}
+img {display: block;}
+.header_outer .header .gnb .bar {
+    border-bottom: 1px solid #9c7055; box-sizing: border-box;
+}
+.wrap {width: 1245px; margin: 0 auto;}
+.nav {margin: 20px auto; height: 40px;}
+.nav span {
+    margin: 0 5px;
+    color: #9c7055; font-size: 24px;
+}
+.nav span a {color: #9c7055;}
+.nav span a:hover {color: #ffc1cc;}
+.detail_box {width: 1245px; height: 615px; margin: 30px 0;}
+.detail_box .detail_img {
+    width: 615px;
+    float: left; margin-right: 120px;
+}
+.detail_box .detail_txt {
+    width: 510px; 
+    height: 615px;
+    padding: 60px; 
+    color: #575757;
+    box-sizing: border-box; float: left;
+    line-height: 50px;
+    z-index: 1;
+}
+.detail_box .detail_txt .detail_name {font-size: 36px;}
+.detail_box .detail_txt .detail_star {color: #9c7055;}
+.detail_box .detail_txt .detail_price {color: #9c7055; font-size: 24px;}
+.detail_box .detail_txt hr {color: #bbb; margin: 30px 0;}
+.detail_box .detail_txt .detail_sub {line-height: 30px;}
+.detail_box .detail_txt div {width: 400px; height: 50px; }
+.detail_box .detail_txt .total_product {float: left;}
+.detail_box .detail_txt .total_price {float: right; font-size: 24px; color: #9c7055;}
+.detail_box .detail_txt .btn {width: 120px; height: 40px; border: 1px solid #9c7055; color: #9c7055; border-radius: 20px; line-height: 40px; text-align: center; font-size: 24px; margin: 0 auto; margin-top: 50px;}
+.detail_detail_img {margin: 20px 0;}
+.detail_detail_img img {
+    width: 100%;
+}
+.detail_box .detail_txt .btn:hover {color: #feffed; background-color: #9c7055;}
+
+.anchor{
+    display: block;
+    height: 120px;
+    margin-top: -120px;
+    visibility: hidden;
+}
+.product_info {
+    width: 1245px; height: 90px;
+}
+.product_info .info_box {
+    width: 415px; height: 50px; float: left;
+    text-align: center;
+    line-height: 50px; font-size: 24px;
+    border: 1px solid #bbb; box-sizing: border-box;
+    background-color: white;
+    
+}
+.product_info div:nth-child(2) {border-right: none; border-left: none;}
+.product_info div a {color: #575757;}
+
+.product_info .info_chk {background-color: #feffed;}
+
+/*************************** review star box ***************************/
+.review_star_box {width: 1200px; height: 600px; margin: 0 auto; border-top: 2px solid #575757; overflow: hidden; height: 300px;}
+/*************************** review star box left ***************************/
+.review_star_box .review_star_left_box {
+    width: 420px; height: 300px;
+    box-sizing: border-box; border-right: 1px solid #bbb;
+    float: left; margin: 50px; padding: 30px 0;
+}
+.review .review_star_box .review_star_left_box .review_stars {font-size: 36px; text-align: center; padding-top: 20px;}
+.review .review_star_box .review_star_left_box .review_stars span {color: #9c7055;}
+.review .review_star_box .review_star_left_box p {text-align: center;}
+.review .review_star_box .review_star_left_box .write {background-color: #9c7055; padding: 10px 10px; margin: 130px; border-radius: 30px;}
+.review .review_star_box .review_star_left_box .write:hover {background-color: white; border: 1px solid #9c7055;}
+.review .review_star_box .review_star_left_box .write a {color: #feffed;}
+.review .review_star_box .review_star_left_box .write a:hover {color: #9c7055;}
+
+/*************************** review star box right ***************************/
+.review .review_star_box .review_star_right_box {
+    float: left; width: 520px; height: 300px; margin: 50px; padding: 45px 0;
+    text-align: center; color: #9c7055;
+}
+.review_star_box .review_star_right_box p {text-align: center;}
+.review_star_box .review_star_right_box span {float: left; padding: 4px 20px;}
+.review_star_box .review_star_right_box .outer {
+    width: 300px; height: 18px;
+    border-radius: 8px; background-color: #bbb; float: left;
+    margin: 6px 6px;
+}
+.review_star_box .review_star_right_box .outer .inner {
+    width: 280px; height: 18px; border-radius: 8px;
+    background-color: #9c7055; float: left;
+}
+.review_star_box .review_star_right_box .outer .inner_01 {width: 20px; height: 18px; border-radius: 8px;
+    background-color: #9c7055; float: left;}
+.review .review_star_box .review_star_right_box span .num {width: 200px; height: 16px; background-color: #9c7055;}
+
+/*************************** sub title ***************************/
+.sub_tit {font-size: 36px; padding: 50px;}
+
+/*************************** review box ***************************/
+.review .review_box {height: 150px; padding: 10px; margin: 20px 0;}
+.review .review_box .star {color: #9c7055;}
+/* .review .review_box .review_date {padding-left: 800px;} */
+.review .review_box .thumb {color: #bbb; padding-left: 920px;}
+.review .review_box .thumb a {color: #bbb;}
+/* .review .review_box .review_txt {} */
+.review .review_box .review_img {width: 100px; height: 100px;}
+.review .review_box .review_img img {width: 100%;}
+
+/*************************** Q&A ***************************/
+
+.qna {height: 550px; margin: 50px 0;}
+.qna .border {border-top: 2px solid #bbb;}
+.qna .qna_box {height: 50px; border-top: 1px solid #bbb; border-bottom: 1px solid #bbb;}
+.qna .qna_box div {float: left; text-align: center; line-height: 50px;}
+.qna .qna_box .case, .qna .qna_box .writer, .qna .qna_box .date {width: 105px;}
+.qna .qna_box .title {width: 930px; cursor: pointer;}
+.qna .qna_box .left {text-align: left;}
+.qna .qna_box .lock {color: #bbb;}
+
+/*************************** pagenation ***************************/
+.page {
+    width: 405px;
+    margin: 70px auto;
+}
+.page .page_nation {margin: 0 auto;}
+.page .page_nation li {display: inline-block; color: #9c7055; font-family: "Gowun Dodum", sans-serif; height: 30px; line-height: 30px;}
+.page .page_nation li a:hover {color: #575757;}
+.page .page_nation .txt,
+.page .page_nation .arrow {margin: 0 4px;}
+.page .page_nation li a {color: #9c7055;}
+.page .page_nation .num {
+    width: 30px; 
+    border: 1px solid #9c7055; box-sizing: border-box;
+    border-radius: 15px;
+    text-align: center; margin: 0 4px;
+}
+.page .page_nation .ect {padding: 0; margin: 0;}
+.page .page_nation .num01 {background-color: #feffed}

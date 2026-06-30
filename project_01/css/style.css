@@ -1,0 +1,420 @@
+* {margin: 0; padding: 0;}
+li {list-style: none;}
+a {text-decoration: none; color: black;}
+img {display: block;}
+
+.mr {margin-right: 15px;}
+.mb {margin-bottom: 15px;}
+
+.sub_title {
+    font-family: "Jua", sans-serif; font-size: 36px; color: #9c7055;
+    width: 1245px; height: 40px; margin: 0 auto; margin-top: 120px; margin-bottom: 60px;
+    text-align: center;
+    line-height: 40px;
+}
+.sub_title a {color: #9c7055;}
+.sub_title .more {font-size: 16px; font-family: "Gowun Dodum", sans-serif; position: absolute; right: 0;}
+.sub_title .more a {color: #575757;}
+
+/************************** visual main **************************/
+.swiper {
+    width: 1245px; height: 500px; margin: 0 auto;
+    position: relative;
+}
+
+.swiper-slide {
+    text-align: center; font-size: 18px;
+    background: #fff;
+    display: flex; justify-content: center; align-items: center;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    color: #555; background-color: #feffed; opacity: 0.5;
+    padding: 15px 5px; border-radius: 20px;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+font-size: 24px; font-weight: bold;
+}
+.swiper-pagination-bullet {
+    width: 90px; height: 10px; display: inline-block;
+    background-color: #eee; border-radius: 5px;
+}
+
+/************************** send banner **************************/
+.small_banner {width: 1245px; height: 100px; margin: 0 auto; margin-top: 60px;}
+
+/************************** product **************************/
+.product {width: 1245px; height: 390px; margin: 0 auto; overflow: hidden;}
+.product .product_box {width: 300px; float: left;}
+.product .product_box a .img {
+    width: 300px; height: 300px;
+    border: 1px solid #bbb; box-sizing: border-box;
+}
+
+/************************** 신상품 상품이미지 **************************/
+.product .product_box .product_img_01 {background-image: url(../img/04_new01.jpg);}
+.product .product_box .product_img_01:hover {background-image: url(../img/04_new01hover.jpg);}
+
+.product .product_box .product_img_02 {background-image: url(../img/04_new02.jpg);}
+.product .product_box .product_img_02:hover {background-image: url(../img/04_new02hover.jpg);}
+
+.product .product_box .product_img_03 {background-image: url(../img/04_new03.jpg);}
+.product .product_box .product_img_03:hover {background-image: url(../img/04_new03hover.jpg);}
+
+.product .product_box .product_img_04 {background-image: url(../img/04_new04.jpg);}
+.product .product_box .product_img_04:hover {background-image: url(../img/04_new04hover.jpg);}
+
+/************************** best 상품이미지 **************************/
+.product .product_box .product_img_05 {background-image: url(../img/05_best01.jpg);}
+.product .product_box .product_img_05:hover {background-image: url(../img/05_best01hover.jpg);}
+        
+.product .product_box .product_img_06 {background-image: url(../img/05_best02.jpg);}
+.product .product_box .product_img_06:hover {background-image: url(../img/05_best02hover.jpg);}
+        
+.product .product_box .product_img_07 {background-image: url(../img/05_best03.jpg);}
+.product .product_box .product_img_07:hover {background-image: url(../img/05_best03hover.jpg);}
+        
+.product .product_box .product_img_08 {background-image: url(../img/05_best04.jpg);}
+.product .product_box .product_img_08:hover {background-image: url(../img/05_best04hover.jpg);}
+
+.product .product_box .product_txt {
+    height: 90px; padding-top: 5px;
+    border: 1px solid #bbb; box-sizing: border-box; border-top: none;
+    font-family: "Gowun Dodum", sans-serif;
+}
+.product .product_box .product_txt .icon {text-align: center;}
+.product .product_box .product_txt .icon .sale {
+    border-radius: 16px; padding: 0 5px; margin-right: 5px;
+    background-color: #ffc1cc; color: #9c7055;
+}
+.product .product_box .product_txt .icon .new {
+    border-radius: 16px; padding: 0 6px;
+    background-color: #9c7055; color: #feffed;
+}
+.product .product_box .product_txt .icon .best {
+    border-radius: 16px; padding: 0 5px;
+    background-color: #feffed; color: #9c7055; border: 1px solid #9c7055;
+}
+.product .product_box .product_txt .product_name {
+    text-align: center; font-size: 24px; color: #575757;
+}
+.product .product_box .product_txt .product_price {
+    color: #9c7055; text-align: center;
+}
+.product .product_box .product_txt .product_price span {
+    color: #bbb; text-decoration: line-through; margin-right: 5px;
+}
+
+/************************** 무료 **************************/
+.free_outer {height: 510px; background-color: #feffed; margin: 120px 0;}
+.free_outer .free {width: 1245px; height: 390px; margin: 0 auto; padding-top: 60px;}
+
+/************************** 무료 상품 box **************************/
+.free_outer .free .product_box {width: 300px; float: left;}
+.free_outer .free .product_box .product_img_box {
+    width: 300px; height: 300px;
+    border: 1px solid #bbb; box-sizing: border-box;
+    overflow: hidden;
+}
+.free_outer .free .product_box .product_img_box .product_img {
+    box-sizing: border-box; transition: all 0.4s;
+}
+.free_outer .free .product_box .product_img:hover {
+    background-color: #feffed; opacity: 0.7;
+}
+.free_outer .free .product_box .product_txt {
+    width: 300px; height: 90px; padding-top: 15px;
+    border: 1px solid #bbb; box-sizing: border-box; border-top: none;
+    font-family: "Gowun Dodum", sans-serif; 
+}
+.free_outer .free .product_box .product_txt .product_name {
+    text-align: center; font-size: 24px; color: #575757;
+}
+.free_outer .free .product_box .product_txt .product_price {
+    color: #9c7055; text-align: center;
+}
+
+/************************** 무료 txt **************************/
+.free_outer .free .free_txt {width: 300px; height: 390px;
+    float: left;
+}
+.free_outer .free .free_txt p {
+    font-family: "Jua", sans-serif; font-size: 36px; color: #9c7055;
+    margin: 20px 0;
+}
+.free_outer .free .free_txt div {
+    font-family: "Gowun Dodum", sans-serif; color: #9c7055; margin-bottom: 40px;
+}
+.free_outer .free .free_txt a span {
+    padding: 5px 20px;
+    color: #9c7055; font-family: "Jua", sans-serif;
+    border: 1px solid #9c7055; border-radius: 15px;
+}
+.free_outer .free .free_txt a span:hover {color: #feffed; background-color: #9c7055;}
+
+/************************** metapo **************************/
+#metapo01, #metapo02, #metapo03, #metapo04 {display: none;}
+
+#metapo01:checked ~ .metapo_wrap .metapo_product div:nth-child(1) {display: block;}
+#metapo01:checked ~ .metapo_wrap .metapo .metapo_icon01 {background-color: #9c7055;}
+
+#metapo02:checked ~ .metapo_wrap .metapo_product div:nth-child(2) {display: block;}
+#metapo02:checked ~ .metapo_wrap .metapo .metapo_icon02 {background-color: #9c7055;}
+
+#metapo03:checked ~ .metapo_wrap .metapo_product div:nth-child(3) {display: block;}
+#metapo03:checked ~ .metapo_wrap .metapo .metapo_icon03 {background-color: #9c7055;}
+
+#metapo04:checked ~ .metapo_wrap .metapo_product div:nth-child(4) {display: block;}
+#metapo04:checked ~ .metapo_wrap .metapo .metapo_icon04 {background-color: #9c7055;}
+
+.metapo_wrap {
+    width: 1245px; height: 515px; margin: 0 auto;
+}
+.metapo_wrap .metapo {
+    width: 405px; height: 120px; margin-left: 420px;
+}
+.metapo_wrap .metapo label div {
+    width: 90px; height: 90px;
+    border: 1px solid #9c7055; box-sizing: border-box; border-radius: 15px;
+    float: left; cursor: pointer;
+}
+.metapo_wrap .metapo .metapo_menu {
+    width: 405px;
+    height: 30px;
+    margin-right: 420px;
+}
+.metapo_wrap .metapo .metapo_menu div {
+    width: 90px;
+    font-size: 24px; font-family: "Gowun Dodum", sans-serif; text-align: center;
+    color: #9c7055; float: left;
+}
+.metapo_wrap .more {
+    float: right;
+    font-family: "Gowun Dodum", sans-serif; font-size: 24px;
+}
+
+.metapo_wrap .metapo_product .metapo_product_sheet .metapo_product {
+    width: 1245px; height: 390px; margin: 0 auto; float: left;
+}
+.metapo_wrap .metapo_product .metapo_product_sheet {
+    width: 1245px; height: 390px; display: none;
+}
+.metapo_wrap .metapo_product .metapo_product_sheet .more {width: 100%; text-align: right;}
+.metapo_wrap .metapo_product .metapo_product_sheet .more a {color: #575757;}
+.metapo_wrap .metapo_product .metapo_product_sheet .more:hover a {color: #ffc1cc;}
+.metapo_wrap .metapo_product .metapo_product_sheet .product_box {width: 300px; float: left;}
+.metapo_wrap .metapo_product .metapo_product_sheet .product_box .product_img_box {
+    width: 300px; height: 300px;
+    border: 1px solid #bbb; box-sizing: border-box;
+    overflow: hidden;
+}
+.metapo_wrap .metapo_product .product_box .product_img_box .product_img {
+    box-sizing: border-box; transition: all 0.4s;
+}
+.metapo_wrap .metapo_product .product_box .product_img_box .product_img img {width: 298px;}
+.metapo_wrap .metapo_product .product_box .product_img:hover {
+    transform: scale(1.2);
+}
+
+.metapo_wrap .metapo_product .product_box .product_txt {
+    width: 300px; height: 90px; padding-top: 5px;
+    border: 1px solid #bbb; box-sizing: border-box; border-top: none;
+    font-family: "Gowun Dodum", sans-serif; 
+}
+
+.metapo_wrap .metapo_product .product_box .product_txt .icon {text-align: center;}
+.metapo_wrap .metapo_product .product_box .product_txt .sale {
+    border-radius: 16px; padding: 0 5px;
+    margin-right: 5px;
+    background-color: #ffc1cc; color: #9c7055;
+}
+.metapo_wrap .metapo_product .product_box .product_txt .icon .new {
+    border-radius: 16px;
+    padding: 0 6px;
+    background-color: #9c7055; color: #feffed;
+}
+.metapo_wrap .metapo_product .product_box .product_txt .icon .best {
+    border-radius: 16px; padding: 0 5px;
+    background-color: #feffed; color: #9c7055; border: 1px solid #9c7055;
+}
+.metapo_wrap .metapo_product .product_box .product_txt .mt {margin-top: 10px;}
+.metapo_wrap .metapo_product .product_box .product_txt .product_name {
+    text-align: center; font-size: 24px; color: #575757;
+}
+.metapo_wrap .metapo_product .product_box .product_txt .product_price {
+    color: #9c7055; text-align: center;
+}
+.metapo_wrap .metapo_product .product_box .product_txt .product_price del {
+    color: #bbb; padding-right: 5px;
+}
+
+/************************** 키워드 추천 **************************/
+#keyword01, #keyword02, #keyword03, #keyword04,
+#keyword05, #keyword06, #keyword07, #keyword08 {display: none;}
+
+#keyword01:checked ~ .suggest_box .suggest_img_wrap div:nth-child(1) {display: block;}
+#keyword01:checked ~ .suggest_box .suggest_word .keyword_01 {
+    background-color: #9c7055; color: #feffed; box-shadow: 2px 1px 6px #9c7055;
+}
+
+#keyword02:checked ~ .suggest_box .suggest_img_wrap div:nth-child(2) {display: block;}
+#keyword02:checked ~ .suggest_box .suggest_word .keyword_02 {
+    background-color: #9c7055; color: #feffed; box-shadow: 2px 1px 6px #9c7055;
+}        
+
+#keyword03:checked ~ .suggest_box .suggest_img_wrap div:nth-child(3) {display: block;}
+#keyword03:checked ~ .suggest_box .suggest_word .keyword_03 {
+    background-color: #9c7055; color: #feffed; box-shadow: 2px 1px 6px #9c7055;
+}
+
+#keyword04:checked ~ .suggest_box .suggest_img_wrap div:nth-child(4) {display: block;}
+#keyword04:checked ~ .suggest_box .suggest_word .keyword_04 {
+    background-color: #9c7055; color: #feffed; box-shadow: 2px 1px 6px #9c7055;
+}
+
+#keyword05:checked ~ .suggest_box .suggest_img_wrap div:nth-child(5) {display: block;}
+#keyword05:checked ~ .suggest_box .suggest_word .keyword_05 {
+    background-color: #9c7055; color: #feffed; box-shadow: 2px 1px 6px #9c7055;
+}
+
+#keyword06:checked ~ .suggest_box .suggest_img_wrap div:nth-child(6) {display: block;}
+#keyword06:checked ~ .suggest_box .suggest_word .keyword_06 {
+    background-color: #9c7055; color: #feffed; box-shadow: 2px 1px 6px #9c7055;
+}
+
+#keyword07:checked ~ .suggest_box .suggest_img_wrap div:nth-child(7) {display: block;}
+#keyword07:checked ~ .suggest_box .suggest_word .keyword_07 {
+    background-color: #9c7055; color: #feffed; box-shadow: 2px 1px 6px #9c7055;
+}
+
+#keyword08:checked ~ .suggest_box .suggest_img_wrap div:nth-child(8) {display: block;}
+#keyword08:checked ~ .suggest_box .suggest_word .keyword_08 {
+    background-color: #9c7055; color: #feffed; box-shadow: 2px 1px 6px #9c7055;
+}
+
+
+.suggest_box {width: 1245px; height: 615px; margin: 0 auto;}
+.suggest_box .suggest_img_wrap {width: 615px; float: left;}
+.suggest_box .suggest_img_wrap .suggest_img_sheet {
+    display: none;
+    width: 615px; height: 615px;
+}
+
+.suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_img_box {
+    width: 300px; height: 300px;
+    position: relative; float: left; overflow: hidden;
+}
+.suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_img {
+    width: 300px; height: 300px;
+    position: absolute; top: 0; left: 0;
+}
+.suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_txt {
+    width: 300px; height: 300px;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute; top: 300px; left: 0;
+    transition: all 0.5s;
+}
+.suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_txt p {
+    font-family: "Gowun Dodum", sans-serif; text-align: center; color: #feffed;
+}
+.suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_txt p:first-child {
+    font-size: 24px; padding-top: 120px;
+}
+.suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_txt p:last-child {
+    padding-bottom: 120px;
+}
+.suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_img_box:hover .suggest_txt {
+    top: 0;
+}
+
+.suggest_box .suggest_word {
+    width: 405px; height: 195px; float: left;
+    margin-top: 210px; margin-left: 120px;
+}
+.suggest_box .suggest_word label {cursor: pointer;}
+.suggest_box .suggest_word label {
+    width: 90px; height: 90px;
+    border-radius: 45px;
+    font-family: "Gowun Dodum", sans-serif; font-size: 24px;
+    line-height: 90px; text-align: center;
+    float: left;
+}
+.suggest_box .suggest_word .keyword_01,
+.suggest_box .suggest_word .keyword_02,
+.suggest_box .suggest_word .keyword_03,
+.suggest_box .suggest_word .keyword_04 {margin-bottom: 15px;}
+
+.suggest_box .suggest_word .keyword_01,
+.suggest_box .suggest_word .keyword_03,
+.suggest_box .suggest_word .keyword_06,
+.suggest_box .suggest_word .keyword_08 {
+    background-color: #ffc1cc; color: #575757;
+}
+.suggest_box .suggest_word .keyword_02,
+.suggest_box .suggest_word .keyword_04,
+.suggest_box .suggest_word .keyword_05,
+.suggest_box .suggest_word .keyword_07 {
+    background-color: #575757; color: #ffc1cc;
+}
+
+/*************************** 이달의 솔직 후기 **************************/
+.review {width: 1245px; height: 430px; margin: 0 auto;}
+.review .review_box {width: 300px; float: left;}
+.review .review_box .review_img {
+    height: 300px;
+    border: 1px solid #bbb; box-sizing: border-box;
+}
+.review .review_box .review_img img{width: 298px;}
+.review .review_box .review_txt {
+    height: 40px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    font-family: "Gowun Dodum", sans-serif; line-height: 40px;
+    padding-left: 5px;
+    border: 1px solid #bbb; box-sizing: border-box;
+    border-top: none; border-bottom: none;
+    
+}
+.review .review_box .review_txt a {color: #575757;}
+.review .review_box .review_page {
+    height: 80px;
+    border: 1px solid #bbb; box-sizing: border-box; font-family: "Gowun Dodum", sans-serif;
+}
+
+.review .review_box .review_page div {margin: 15px; float: left;}
+.review .review_box .review_page p {color: #575757;}
+.review .review_box .review_page .review_tit {
+    padding-top: 8px;
+    font-size: 24px; 
+}
+
+/************************** 브랜드 소개 배너 **************************/
+.big_banner_outer {
+    width: 100%; height: 300px; background-color: #feffed;
+    background-image: url(../img/10_banner_bgimg.png);
+    background-size: 100% 100%;
+    margin-top: 120px;
+}
+.big_banner_outer .big_banner {width: 1245px; margin: 0 auto; }
+.big_banner_outer .big_banner p {
+    font-size: 36px; font-family: "Jua", sans-serif;
+    color: #9c7055; padding: 40px 0;
+}
+.big_banner_outer .big_banner span {
+    font-size: 24px; font-family: "Gowun Dodum", sans-serif;
+    color: #9c7055;
+}
+.big_banner_outer .big_banner div {
+    font-family: "Gowun Dodum", sans-serif;
+    color: #9c7055; padding-top: 20px;
+}
+
+/************************** 인스타그램 **************************/
+.insta {width: 825px; height: 195px; margin: 0 auto; padding-bottom: 120px;}
+.insta div {width: 195px; height: 195px; float: left; border-radius: 15px;}
+.insta .insta01 {background-image: url(../img/11_insta01.jpg);}
+.insta .insta02 {background-image: url(../img/11_insta02.jpg);}
+.insta .insta03 {background-image: url(../img/11_insta03.jpg);}
+.insta .insta04 {background-image: url(../img/11_insta04.jpg);}

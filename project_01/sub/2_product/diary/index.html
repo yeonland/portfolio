@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다이어리</title>
+    
+    <link rel="stylesheet" href="../../../css/header.css">
+    <link rel="stylesheet" href="../../../css/footer.css">
+    <link rel="stylesheet" href="../../../css/2_product.css">
+    <link rel="stylesheet" href="../../../css/how_use_chat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- font-awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Gowun+Dodum&display=swap" rel="stylesheet">
+    <!-- font Gowun+Dodum -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.3/jquery.scrollTo.min.js"></script>
+    <script src="../../../js/header.js"></script>
+    <style>
+        .sub_menu div:nth-child(2) {background-color: #9c7055; color: #feffed;}
+        .sub_menu div:nth-child(2) a {color: #feffed;}
+    </style>
+</head>
+<body>
+    <input type="checkbox" id="how_use" checked>
+    <div>
+        <a href="https://teamnelna.notion.site/acbcaca078d6439b87397a9370e5b0d8">
+            <section class="how_use_box">
+                <label for="how_use"><i class="fa-solid fa-xmark"></i></label>
+                <p class="how_use_top">사용법</p>
+                <p>알아보기</p>
+            </section>
+        </a>
+    </div>
+    <!-- 사용법 알아보기 -->
+
+    <div class="btn_top"><i class="fa-solid fa-angle-up"></i></div>   <!-- TOP 버튼 -->
+
+    <input type="checkbox" id="chat_chk">
+    <section class="chat">
+        <label for="chat_chk" class="open"><div><img src="./img/icon_chat.png" alt="chat_icon"></i></div></label>
+        <label for="chat_chk" class="close"><div><i class="fa-solid fa-xmark"></i></div></label>
+        <div class="chat_box">
+            <div class="brand">
+                <div class="logo_box"><img src="./img/chat_logo.png" alt="logo"></div>
+                <div class="brand_intro">
+                    <p class="brand_tit">소하</p>
+                    <p>소소한 하루, 소하</p>
+                </div>
+            </div>
+            <div class="chat_first">무엇을 도와드릴까요?</div>
+            <div class="chat_txt_box">
+                <input type="text" name="chat_txt" class="chat_txt">
+            </div>
+        </div>
+    </section>
+    <!-- 실시간 채팅상담 -->
+    
+    <header class="header_outer" id="header">
+        <header class="header">
+            <div class="logo">
+                <a href="../../../index.html"><img src="./img/logo.png" alt="soha_logo"></a>
+            </div>           <!-- logo -->
+            <nav class="gnb">
+                <span><a href="../../1_brand/index.html">소하는요</a></span>
+                <span><a href="../all/index.html">디지털 문구</a></span>
+                <span><a href="../../3_review/index.html">솔직후기</a></span>
+                <span><a href="../../4_faq/index.html">궁금해요</a></span>
+                <span><a href="../../5_notice/index.html">알립니다</a></span>
+            </nav>                    <!-- gnb -->
+            <input type="checkbox" id="search_chk">
+            <section class="gnb_icon">
+                <label for="search_chk" class="search_open">
+                    <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                </label>
+                <label for="search_chk" class="search_close">
+                    <span><i class="fa-solid fa-xmark"></i></span>
+                </label>
+                <div class="search_box">
+                    <input type="search" name="search_txt" class="search_txt">
+                    <span><a href="../../search_result/index.html" ><i class="fa-solid fa-magnifying-glass"></i></a></span>
+                </div>                      <!-- search_box -->
+                <span class="btn_cart"><i class="fa-solid fa-cart-shopping"></i></span>
+                <div class="cart_box box">
+                    <p class="tit">장바구니</p>
+                    <div class="product_box">
+                        <a href="../2_product/all/detail/index.html">
+                            <div class="popup_img">
+                                <img src="./img/cart01.jpg" alt="cart01">
+                            </div>
+                            <div class="popup_txt">
+                                <p>불렛저널</p>
+                                <p>7,900원</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_box second">
+                        <a href="../2_product/all/detail/index.html">
+                            <div class="popup_img">
+                                <img src="./img/cart02.jpg" alt="cart02">
+                            </div>
+                            <div class="popup_txt">
+                                <p>만년 업무 플래너</p>
+                                <p>8,900원</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_box">
+                        <a href="../2_product/all/detail/index.html">
+                            <div class="popup_img">
+                                <img src="./img/cart03.jpg" alt="cart03">
+                            </div>
+                            <div class="popup_txt">
+                                <p>프로젝트 트래커</p>
+                                <p>12,900원</p>
+                            </div>
+                        </a>
+                    </div>
+                    <button>결제하기</button>
+                </div>                  <!-- cart_box -->
+                <span class="btn_recent"><i class="fa-solid fa-clock"></i></span>
+                <div class="recent_box box">
+                    <p class="tit">최근 본 상품</p>
+                    <div class="product_box">
+                        <a href="../2_product/all/detail/index.html">
+                            <div class="popup_img">
+                                <img src="./img/recent01.jpg" alt="recent01">
+                            </div>
+                            <div class="popup_txt">
+                                <p>만년형 심플 다이어리</p>
+                                <p>8,000원</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_box second">
+                        <a href="../2_product/all/detail/index.html">
+                            <div class="popup_img">
+                                <img src="./img/recent02.jpg" alt="recent02">
+                            </div>
+                            <div class="popup_txt">
+                                <p>국내여행 플래너</p>
+                                <p>6,000원</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_box">
+                        <a href="../2_product/all/detail/index.html">
+                            <div class="popup_img">
+                                <img src="./img/recent03.jpg" alt="recent03">
+                            </div>
+                            <div class="popup_txt">
+                                <p>소하 만년형 일주일 플래너</p>
+                                <p>무료</p>
+                            </div>
+                        </a>
+                    </div>
+                    <button>결제하기</button>
+                </div>                <!-- recent box -->
+                <span><a href="../../login/index.html"><i class="fa-solid fa-user"></i></a></span>
+            </section>  <!-- gnb_icon -->
+        </header>
+    </header>           <!-- header -->
+
+
+    <div class="wrap">
+        <div class="sort">
+            <p>다이어리</p>
+            <p>오늘 하루 되돌아 보기</p>
+        </div>
+        
+        <section class="sub_menu">
+            <div><a href="../all/index.html">전체</a></div>
+            <div><a href="../diary/index.html">다이어리</a></div>
+            <div><a href="../planner/index.html">플래너</a></div>
+            <div><a href="../journal/index.html">저널</a></div>
+            <div><a href="../sticker/index.html">스티커</a></div>
+            <div><a href="../free/index.html">무료</a></div>
+        </section>
+        
+        <div class="nav">
+            <div>
+                <span><a href="../../../index.html"><i class="fa-solid fa-house"></i></a></span>
+                <span>></span>
+                <span><a href="../all/index.html">디지털 문구</a></span>
+                <span>></span>
+                <span>다이어리</span>
+            </div>
+            <div class="align">
+                <div><a href="#!" class="align_chk">인기제품순</a></div>
+                <div><a href="#!">추천제품순</a></div>
+                <div><a href="#!">높은가격순</a></div>
+                <div><a href="#!">낮은가격순</a></div>
+            </div>
+        </div>
+
+        <section class="product">
+            <div class="product_box">
+                <div class="product_img_box">
+                    <a href="../all/detail/index.html">
+                        <div class="product_img">
+                            <img src="./img/product01.jpg" alt="diary01">
+                        </div>
+                    </a>
+                </div>
+                <div class="product_txt">
+                    <p class="product_name mt">2024 다이어리</p>
+                    <p class="product_price">9,900원</p>
+                </div>
+            </div> <!-- product 01 -->
+            <div class="product_box">
+                <div class="product_img_box">
+                    <a href="../all/detail/index.html">
+                        <div class="product_img">
+                            <img src="./img/product02.jpg" alt="diary02">
+                        </div>
+                    </a>
+                </div>
+                <div class="product_txt">
+                    <p class="icon"><span class="sale">sale</span><span class="new">new</span></p>
+                    <p class="product_name">만년형 데일리 다이어리</p>
+                    <p class="product_price"><del>9,900원</del>8,100원</p>
+                </div>
+            </div> <!-- product 02 -->
+            <div class="product_box">
+                <div class="product_img_box">
+                    <a href="../all/detail/index.html">
+                        <div class="product_img">
+                            <img src="./img/product03.jpg" alt="diary03">
+                        </div>
+                    </a>
+                </div>
+                <div class="product_txt">
+                    <p class="icon"><span class="best">best</span></p>
+                    <p class="product_name">2024 위클리 다이어리</p>
+                    <p class="product_price">8,000원</p>
+                </div>
+            </div> <!-- product 03 -->
+            <div class="product_box">
+                <div class="product_img_box">
+                    <a href="../all/detail/index.html">
+                        <div class="product_img">
+                            <img src="./img/product04.jpg" alt="diary04">
+                        </div>
+                    </a>
+                </div>
+                <div class="product_txt">
+                    <p class="icon"><span class="new">new</span></p>
+                    <p class="product_name">만년형 심플 다이어리</p>
+                    <p class="product_price">6,000원</p>
+                </div>
+            </div> <!-- product 04 -->
+            <div class="product_box">
+                <div class="product_img_box">
+                    <a href="../all/detail/index.html">
+                        <div class="product_img">
+                            <img src="./img/product05.jpg" alt="diary05">
+                        </div>
+                    </a>
+                </div>
+                <div class="product_txt">
+                    <p class="product_name mt">오늘을 나답게 일기장</p>
+                    <p class="product_price">3,000원</p>
+                </div>
+            </div> <!-- product 05 -->
+            <div class="product_box">
+                <div class="product_img_box">
+                    <a href="../all/detail/index.html">
+                        <div class="product_img">
+                            <img src="./img/product01.jpg" alt="diary06">
+                        </div>
+                    </a>
+                </div>
+                <div class="product_txt">
+                    <p class="product_name mt">2024 다이어리</p>
+                    <p class="product_price">9,900원</p>
+                </div>
+            </div> <!-- product 06 -->
+            <div class="product_box">
+                <div class="product_img_box">
+                    <a href="../all/detail/index.html">
+                        <div class="product_img">
+                            <img src="./img/product02.jpg" alt="diary07">
+                        </div>
+                    </a>
+                </div>
+                <div class="product_txt">
+                    <p class="icon"><span class="sale">sale</span><span class="new">new</span></p>
+                    <p class="product_name">만년형 데일리 다이어리</p>
+                    <p class="product_price"><del>9,900원</del>8,100원</p>
+                </div>
+            </div> <!-- product 07 -->
+            <div class="product_box">
+                <div class="product_img_box">
+                    <a href="../all/detail/index.html">
+                        <div class="product_img">
+                            <img src="./img/product03.jpg" alt="diary08">
+                        </div>
+                    </a>
+                </div>
+                <div class="product_txt">
+                    <p class="icon"><span class="best">best</span></p>
+                    <p class="product_name">2024 위클리 다이어리</p>
+                    <p class="product_price">8,000원</p>
+                </div>
+            </div> <!-- product 08 -->
+            <div class="product_box">
+                <div class="product_img_box">
+                    <a href="../all/detail/index.html">
+                        <div class="product_img">
+                            <img src="./img/product04.jpg" alt="diary09">
+                        </div>
+                    </a>
+                </div>
+                <div class="product_txt">
+                    <p class="icon"><span class="new">new</span></p>
+                    <p class="product_name">만년형 심플 다이어리</p>
+                    <p class="product_price">6,000원</p>
+                </div>
+            </div> <!-- product 09 -->
+            <div class="product_box">
+                <div class="product_img_box">
+                    <a href="../all/detail/index.html">
+                        <div class="product_img">
+                            <img src="./img/product05.jpg" alt="diary10">
+                        </div>
+                    </a>
+                </div>
+                <div class="product_txt">
+                    <p class="product_name mt">오늘을 나답게 일기장</p>
+                    <p class="product_price">3,000원</p>
+                </div>
+            </div> <!-- product 10 -->
+            <div class="product_box">
+                <div class="product_img_box">
+                    <a href="../all/detail/index.html">
+                        <div class="product_img">
+                            <img src="./img/product01.jpg" alt="diary11">
+                        </div>
+                    </a>
+                </div>
+                <div class="product_txt">
+                    <p class="product_name mt">2024 다이어리</p>
+                    <p class="product_price">9,900원</p>
+                </div>
+            </div> <!-- product 11 -->
+            <div class="product_box">
+                <div class="product_img_box">
+                    <a href="../all/detail/index.html">
+                        <div class="product_img">
+                            <img src="./img/product02.jpg" alt="diary12">
+                        </div>
+                    </a>
+                </div>
+                <div class="product_txt">
+                    <p class="icon"><span class="sale">sale</span><span class="new">new</span></p>
+                    <p class="product_name">만년형 데일리 다이어리</p>
+                    <p class="product_price"><del>9,900원</del>8,100원</p>
+                </div>
+            </div> <!-- product 12 -->
+            <div class="product_box">
+                <div class="product_img_box">
+                    <a href="../all/detail/index.html">
+                        <div class="product_img">
+                            <img src="./img/product03.jpg" alt="diary13">
+                        </div>
+                    </a>
+                </div>
+                <div class="product_txt">
+                    <p class="icon"><span class="best">best</span></p>
+                    <p class="product_name">2024 위클리 다이어리</p>
+                    <p class="product_price">8,000원</p>
+                </div>
+            </div> <!-- product 13 -->
+            <div class="product_box">
+                <div class="product_img_box">
+                    <a href="../all/detail/index.html">
+                        <div class="product_img">
+                            <img src="./img/product04.jpg" alt="diary14">
+                        </div>
+                    </a>
+                </div>
+                <div class="product_txt">
+                    <p class="icon"><span class="new">new</span></p>
+                    <p class="product_name">만년형 심플 다이어리</p>
+                    <p class="product_price">6,000원</p>
+                </div>
+            </div> <!-- product 14 -->
+            <div class="product_box">
+                <div class="product_img_box">
+                    <a href="../all/detail/index.html">
+                        <div class="product_img">
+                            <img src="./img/product05.jpg" alt="diary15">
+                        </div>
+                    </a>
+                </div>
+                <div class="product_txt">
+                    <p class="product_name mt">오늘을 나답게 일기장</p>
+                    <p class="product_price">3,000원</p>
+                </div>
+            </div> <!-- product 15 -->
+            <div class="product_box">
+                <div class="product_img_box">
+                    <a href="../all/detail/index.html">
+                        <div class="product_img">
+                            <img src="./img/product01.jpg" alt="diary16">
+                        </div>
+                    </a>
+                </div>
+                <div class="product_txt">
+                    <p class="product_name mt">2024 다이어리</p>
+                    <p class="product_price">9,900원</p>
+                </div>
+            </div> <!-- product 16 -->
+        </section> <!-- product -->
+    </div>
+
+    <div class="page">
+        <ul class="page_nation">
+            <li class="txt"><a href="#!">처음으로</a></li>
+            <li class="arrow"><a href="#!"><i class="fa-solid fa-chevron-left"></i></a></li>
+            <li class="num num01"><a href="#!">1</a></li>
+            <li class="num"><a href="#!">2</a></li>
+            <li class="num"><a href="#!">3</a></li>
+            <li class="num"><a href="#!">4</a></li>
+            <li class="ect"><i class="fa-solid fa-ellipsis"></i></li>
+            <li class="num"><a href="#!">10</a></li>
+            <li class="arrow"><a href="#!"><i class="fa-solid fa-chevron-right"></i></a></li>
+            <li class="txt"><a href="#!">끝으로</a></li>
+        </ul>
+    </div>
+
+    <footer class="footer_outer">
+        <footer class="footer">
+            <section class="footer_logo mr">
+                <span class="personal"><a href="#!">이용약관</a></span>
+                <span class="personal info"><a href="#!">개인정보처리방침</a></span>
+                <span class="personal"><a href="#!">이용안내</a></span>
+                <div class="logo mr">
+                    <img src="./img/footer_logo.png" alt="footer_logo">
+                </div>
+                <div class="brand mr">
+                    <p class="sub">소소한 하루,</p>
+                    <p class="tit">소하</p>
+                </div>
+            </section>     <!-- 이용약관, 개인정보처리방침, 이용안내 + 로고 -->
+            <section class="footer_section mr">
+                <span>무통장입금</span>
+                <p>하나 833-910295-68307</p>
+                <p>부산 112-2006-5656-09</p>
+                <p>우리 1002-182-524815</p>
+                <p>신한 110-516303-268</p>
+            </section>
+            <section class="footer_brand mr">
+                <span>소하</span>
+                <p>대표 : 정연주</p>
+                <p>사업자등록번호 : 283-87-07389</p>
+                <p>통신판매업 신고번호 :
+                    <a href="https://www.ftc.go.kr/">2024-부산동래구-7408호</a>
+                </p>
+                <p>FAX : 070-8417-2862</p>
+                <p>이메일 : so_ha@gmail.com</p>
+                <p>(우 : 47832)</p>
+                <p>주소 : 부산광역시 동래구 중앙대로 1285번길 11 402호</p>
+            </section>     <!-- 브랜드 -->
+            <section class="footer_section">
+                <span>고객센터</span>
+                <p class="call">1899-3816</p>
+                <p>영업시간</p>
+                <p>월~금 09:00~18:00 </p>
+                <p>점심시간 12:00~13:00</p>
+                <p>주말/공휴일 휴무</p>
+            </section>     <!-- 고객센터 -->
+            <p class="copy">COPYRIGHT © soha. ALL RIGHTS RESERVED.</p>
+        </footer>
+    </footer>  <!-- footer -->
+</body>
+</html>

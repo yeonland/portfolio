@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소소한 하루, 소하</title>
+    <!-- ================= CSS ================= -->
+    <!-- 외부 라이브러리 스타일 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Gowun+Dodum&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+
+    <!-- 내부 스타일 -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/how_use_chat.css">
+
+    <!-- ================= JS ================= -->
+    <!-- 라이브러리 스크립트 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.3/jquery.scrollTo.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- 내부 스크립트 -->
+    <script src="./js/header.js"></script>
+<body>
+
+    <input type="checkbox" id="pop" checked>
+    <div class="pop_box">
+        <label for="pop"><i class="fa-solid fa-xmark"></i></label>
+        <p>
+            해당 사이트는 <br> 포트폴리오 용도로 <br> 제작되었으며, <br> 어떠한 상업적 이익도 <br> 창출하지 않습니다.
+        </p>
+    </div>    <!-- pop box -->
+
+    <input type="checkbox" id="how_use" checked>
+    <div>
+        <a href="https://teamnelna.notion.site/acbcaca078d6439b87397a9370e5b0d8" target="_blank">
+            <div class="how_use_box">
+                <label for="how_use"><i class="fa-solid fa-xmark"></i></label>
+                <p class="how_use_top">사용법</p>
+                <p>알아보기</p>
+            </div>
+        </a>
+    </div>
+    <!-- 사용법 알아보기 -->
+    
+    <div class="btn_top"><i class="fa-solid fa-angle-up"></i></div>   <!-- TOP 버튼 -->
+
+    <input type="checkbox" id="chat_chk">
+    <div class="chat">
+        <label for="chat_chk" class="open"><div><img src="./img/00_icon_chat.png" alt="chat_icon"></i></div></label>
+        <label for="chat_chk" class="close"><div><i class="fa-solid fa-xmark"></i></div></label>
+        <div class="chat_box">
+            <div class="brand">
+                <div class="logo_box"><img src="./img/00_chat_logo.png" alt="logo"></div>
+                <div class="brand_intro">
+                    <p class="brand_tit">소하</p>
+                    <p>소소한 하루, 소하</p>
+                </div>
+            </div>
+            <div class="chat_first">무엇을 도와드릴까요?</div>
+            <div class="chat_txt_box">
+                <input type="text" name="chat_txt" class="chat_txt">
+            </div>
+        </div>
+    </div>      <!-- 실시간 채팅상담 -->
+
+    <header class="header_outer" id="header">
+        <header class="header">
+            <div class="logo">
+                <img src="./img/00_logo.png" alt="soha_logo">
+            </div>           <!-- logo -->
+            <nav class="gnb">
+                <span><a href="./sub/1_brand/index.html">소하는요</a></span>
+                <span class="product">
+                    <a href="./sub/2_product/all/index.html">디지털 문구</a>
+                    <div class="product_menu">
+                        <div><a href="./sub/2_product/diary/index.html">다이어리</a></div>
+                        <div><a href="./sub/2_product/planner/index.html">플래너</a></div>
+                        <div><a href="./sub/2_product/journal/index.html">저널</a></div>
+                        <div><a href="./sub/2_product/sticker/index.html">스티커</a></div>
+                        <div><a href="./sub/2_product/free/index.html">무료</a></div>
+                    </div>
+                </span>
+                <span><a href="./sub/3_review/index.html">솔직후기</a></span>
+                <span><a href="./sub/4_faq/index.html">궁금해요</a></span>
+                <span><a href="./sub/5_notice/index.html">알립니다</a></span>
+            </nav>                    <!-- gnb -->
+            <input type="checkbox" id="search_chk">
+            <section class="gnb_icon">
+                <label for="search_chk" class="search_open">
+                    <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                </label>
+                <label for="search_chk" class="search_close">
+                    <span><i class="fa-solid fa-xmark"></i></span>
+                </label>
+                <div class="search_box">
+                    <input type="search" name="search_txt" class="search_txt">
+                    <span><a href="./sub/search_result/index.html" ><i class="fa-solid fa-magnifying-glass"></i></a></span>
+                </div>                      <!-- search_box -->
+                <span class="btn_cart"><i class="fa-solid fa-cart-shopping"></i></span>
+                <div class="cart_box box">
+                    <p class="tit">장바구니</p>
+                    <div class="product_box">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <div class="popup_img">
+                                <img src="./img/cart01.jpg" alt="cart01">
+                            </div>
+                            <div class="popup_txt">
+                                <p>불렛저널</p>
+                                <p>7,900원</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_box second">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <div class="popup_img">
+                                <img src="./img/cart02.jpg" alt="cart02">
+                            </div>
+                            <div class="popup_txt">
+                                <p>만년 업무 플래너</p>
+                                <p>8,900원</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_box">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <div class="popup_img">
+                                <img src="./img/cart03.jpg" alt="cart03">
+                            </div>
+                            <div class="popup_txt">
+                                <p>프로젝트 트래커</p>
+                                <p>12,900원</p>
+                            </div>
+                        </a>
+                    </div>
+                    <button>결제하기</button>
+                </div>     
+                             <!-- cart_box -->
+                <span class="btn_recent"><i class="fa-solid fa-clock"></i></span>
+                <div class="recent_box box">
+                    <p class="tit">최근 본 상품</p>
+                    <div class="product_box">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <div class="popup_img">
+                                <img src="./img/recent01.jpg" alt="recent01">
+                            </div>
+                            <div class="popup_txt">
+                                <p>만년형 심플 다이어리</p>
+                                <p>8,000원</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_box second">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <div class="popup_img">
+                                <img src="./img/recent02.jpg" alt="recent02">
+                            </div>
+                            <div class="popup_txt">
+                                <p>국내여행 플래너</p>
+                                <p>6,000원</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_box">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <div class="popup_img">
+                                <img src="./img/recent03.jpg" alt="recent03">
+                            </div>
+                            <div class="popup_txt">
+                                <p>소하 만년형 일주일 플래너</p>
+                                <p>무료</p>
+                            </div>
+                        </a>
+                    </div>
+                    <button>결제하기</button>
+                </div>                <!-- recent box -->
+                <span><a href="./sub/login/index.html"><i class="fa-solid fa-user"></i></a></span>
+            </section>  <!-- gnb_icon -->
+        </header>
+    </header>           <!-- header -->
+
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><a href="./sub/1_brand/index.html"><div><img src="./img/02_main_visual01.jpg" alt="main_visual01"></div></a></div>
+          <div class="swiper-slide"><a href="./sub/5_notice/index.html"><div><img src="./img/02_main_visual02.jpg" alt="main_visual02"></div></a></div>
+          <div class="swiper-slide"><a href="./sub/2_product/all/detail/index.html"><div><img src="./img/02_main_visual03.jpg" alt="main_visual03"></div></a></div>
+          <div class="swiper-slide"><a href="./sub/2_product/all/detail/index.html"><div><img src="./img/02_main_visual04.jpg" alt="main_visual04"></div></a></div>
+          <div class="swiper-slide"><a href="./sub/2_product/all/detail/index.html"><div><img src="./img/02_main_visual05.jpg" alt="main_visual05"></div></a></div>
+          <div class="swiper-slide"><a href="./sub/2_product/all/detail/index.html"><div><img src="./img/02_main_visual06.jpg" alt="main_visual06"></div></a></div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+    <script>
+        let swiper = new Swiper(".mySwiper", {
+            spaceBetween: 0,
+            centeredSlides: true,
+            autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+            loop: true
+            }, pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+            }, navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+            }
+        })
+    </script>        <!-- visual main -->
+
+    <div class="small_banner">
+        <a href="./sub/5_notice.html">
+            <img src="./img/03_banner.png" alt="banner">
+        </a>
+    </div>  <!-- 발송 관련 배너 -->
+
+    <div class="sub_title">신상품</div>
+
+    <section class="product">
+        <div class="product_box mr">
+            <div class="product_img_box">
+                <a href="./sub/2_product/all/detail/index.html">
+                    <div class="product_img_01 img"></div>
+                </a>
+            </div>
+            <div class="product_txt">
+                <p class="icon"><span class="sale">sale</span><span class="new">new</span></p>
+                <p class="product_name">만년형 데일리 다이어리</p>
+                <p class="product_price"><span>9,900원</span>8,100원</p>
+            </div>
+        </div>        <!-- 신상품 01 -->
+        
+        <div class="product_box mr">
+            <div class="product_img_box">
+                <a href="./sub/2_product/all/detail/index.html">
+                    <div class="product_img_02 img"></div>
+                </a>
+            </div>
+            <div class="product_txt">
+                <p class="icon"><span class="new">new</span></p>
+                <p class="product_name">만년형 심플 다이어리</p>
+                <p class="product_price">8,000원</p>
+            </div>
+        </div>  <!-- 신상품 02 -->
+        <div class="product_box mr">
+            <a href="./sub/2_product/all/detail/index.html">
+                <div class="product_img_03 img"></div>
+            </a>
+            <div class="product_txt">
+                <p class="icon"><span class="new">new</span></p>
+                <p class="product_name">북쉘프</p>
+                <p class="product_price">8,500원</p>
+            </div>
+        </div> <!-- 신상품 03 -->
+        <div class="product_box">
+            <a href="./sub/2_product/all/detail/index.html">
+                <div class="product_img_04 img"></div>
+            </a>
+            <div class="product_txt">
+                <p class="icon"><span class="new">new</span></p>
+                <p class="product_name">국내 여행 플래너</p>
+                <p class="product_price">6,000원</p>
+            </div>
+        </div>  <!-- 신상품 04 -->
+    </section>  <!-- 신상품 -->
+
+    <div class="sub_title">BEST</div>
+
+    <section class="product">
+        <div class="product_box mr">
+            <a href="./sub/2_product/all/detail/index.html">
+                <div class="product_img_05 img"></div>
+            </a>
+            <div class="product_txt">
+                <p class="icon"><span class="best">best</span></p>
+                <p class="product_name">불렛저널</p>
+                <p class="product_price">7,900원</p>
+            </div>
+        </div>  <!-- best 01 -->
+
+        <div class="product_box mr">
+            <a href="./sub/2_product/all/detail/index.html">
+                <div class="product_img_06 img"></div>
+            </a>
+            <div class="product_txt">
+                <p class="icon"><span class="best">best</span></p>
+                <p class="product_name">만년 업무 플래너</p>
+                <p class="product_price">8,900원</p>
+            </div>
+        </div>  <!-- best 02 -->
+
+        <div class="product_box mr">
+            <a href="./sub/2_product/all/detail/index.html">
+                <div class="product_img_07 img"></div>
+            </a>
+            <div class="product_txt">
+                <p></p>
+                <p class="icon"><span class="best">best</span></p>
+                <p class="product_name">프로젝트 트래커</p>
+                <p class="product_price">12,900원</p>
+            </div>
+        </div>  <!-- best 03 -->
+
+        <div class="product_box">
+            <a href="./sub/2_product/all/detail/index.html">
+                <div class="product_img_08 img"></div>
+            </a>
+            <div class="product_txt">
+                <p></p>
+                <p class="icon"><span class="best">best</span></p>
+                <p class="product_name">2024 위클리 다이어리</p>
+                <p class="product_price">12,900원</p>
+            </div>
+        </div>  <!-- best 04 -->
+
+    </section>  <!-- best -->
+    <div class="free_outer">
+        <div class="free">
+            <div class="free_txt mr">
+                <p>무료</p>
+                <div>소하에서 제공하는 무료서식! <br> 가장 많이 쓰이는 제품으로 <br> 구성해 보았습니다.</div>
+                <a href="./sub/2_product_free.html"><span>더보기</span></a>
+            </div>
+            <div class="product_box mr">
+                <div class="product_img_box">
+                    <a href="./sub/2_product/all/detail/index.html">
+                        <div class="product_img">
+                            <img src="./img/06_free01.jpg" alt="free_01">
+                        </div>
+                    </a>
+                </div>
+                <div class="product_txt">
+                    <p class="product_name">소하 노트패드</p>
+                    <p class="product_price">무료</p>
+                </div>
+            </div> <!-- 무료 01 -->
+
+            <div class="product_box mr">
+                <div class="product_img_box">
+                    <a href="./sub/2_product/all/detail/index.html">
+                        <div class="product_img">
+                            <img src="./img/06_free02.jpg" alt="free_02">
+                        </div>
+                    </a>
+                </div>
+                <div class="product_txt">
+                    <p class="product_name">소하 만년형 일주일 플래너</p>
+                    <p class="product_price">무료</p>
+                </div>
+            </div> <!-- 무료 02 -->
+
+            <div class="product_box">
+                <div class="product_img_box">
+                    <a href="./sub/2_product/all/detail/index.html">
+                        <div class="product_img">
+                            <img src="./img/06_free03.jpg" alt="free_03">
+                        </div>
+                    </a>
+                </div>
+                <div class="product_txt">
+                    <p class="product_name">소하 날짜스티커</p>
+                    <p class="product_price">무료</p>
+                </div>
+            </div> <!-- 무료 03 --> 
+        </div>
+    </div>
+    
+    <input type="radio" name="metapo" id="metapo01" checked>
+    <input type="radio" name="metapo" id="metapo02">
+    <input type="radio" name="metapo" id="metapo03">
+    <input type="radio" name="metapo" id="metapo04">
+    <div class="metapo_wrap">
+        <section class="metapo">
+            <label for="metapo01"><div class="metapo_icon01 mr"><img src="./img/07_0_icon01_diary.png" alt="metapo_icon"></div></label>
+            <label for="metapo02"><div class="metapo_icon02 mr"><img src="./img/07_0_icon02_planner.png" alt="metapo_icon"></div></label>
+            <label for="metapo03"><div class="metapo_icon03 mr"><img src="./img/07_0_icon03_journal.png" alt="metapo_icon"></div></label>
+            <label for="metapo04"><div class="metapo_icon04"><img src="./img/07_0_icon04_sticker.png" alt="metapo_icon"></div></label>
+            <div class="metapo_menu">
+                <div class="mr">다이어리</div>
+                <div class="mr">플래너</div>
+                <div class="mr">저널</div>
+                <div>스티커</div>
+            </div>
+        </section>
+        
+        <div class="metapo_product">
+            <div class="metapo_product_sheet">
+                <span class="more"><a href="./sub/2_product_diary.html">더보기</a></span>
+                <div class="product_box mr">
+                    <div class="product_img_box">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <div class="product_img">
+                                <img src="./img/07_1_1 metapo.jpg" alt="metapo_01_01">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_txt">
+                        <p class="product_name mt">2024 다이어리</p>
+                        <p class="product_price">9,900원</p>
+                    </div>
+                </div> <!-- metapo diary 01-01 -->
+                <div class="product_box mr">
+                    <div class="product_img_box">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <div class="product_img">
+                                <img src="./img/07_1_2 metapo.jpg" alt="metapo_01_02">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_txt">
+                        <p class="icon"><span class="sale">sale</span><span class="new">new</span></p>
+                        <p class="product_name">만년형 데일리 다이어리</p>
+                        <p class="product_price"><del>9,900원</del>8,100원</p>
+                    </div>
+                </div> <!-- metapo diary 01-02 -->
+                <div class="product_box mr">
+                    <div class="product_img_box">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <div class="product_img">
+                                <img src="./img/07_1_3 metapo.jpg" alt="metapo_01_03">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_txt">
+                        <p class="icon"><span class="best">best</span></p>
+                        <p class="product_name">2024 위클리 다이어리</p>
+                        <p class="product_price">8,000원</p>
+                    </div>
+                </div> <!-- metapo diary 01-03 -->
+                <div class="product_box">
+                    <div class="product_img_box">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <div class="product_img">
+                                <img src="./img/07_1_4 metapo.jpg" alt="metapo_01_04">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_txt">
+                        <p class="icon"><span class="new">new</span></p>
+                        <p class="product_name">만년형 심플 다이어리</p>
+                        <p class="product_price">6,000원</p>
+                    </div>
+                </div> <!-- metapo diary 01-04 -->
+            </div> <!-- metapo diary -->
+            <div class="metapo_product_sheet">
+                <span class="more"><a href="./sub/2_product_planner.html">더보기</a></span>
+                <div class="product_box mr">
+                    <div class="product_img_box">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <div class="product_img">
+                                <img src="./img/07_2_1 metapo.jpg" alt="metapo_02_01">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_txt">
+                        <p class="icon"><span class="best">best</span></p>
+                        <p class="product_name">만년 업무 플래너</p>
+                        <p class="product_price">8,900원</p>
+                    </div>
+                </div> <!-- metapo planner 02-01 -->
+                <div class="product_box mr">
+                    <div class="product_img_box">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <div class="product_img">
+                                <img src="./img/07_2_2 metapo.jpg" alt="metapo_02_02">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_txt">
+                        <p class="icon"><span class="best">best</span></p>
+                        <p class="product_name">프로젝트 트래커</p>
+                        <p class="product_price">12,900원</p>
+                    </div>
+                </div> <!-- metapo planner 02-02 -->
+                <div class="product_box mr">
+                    <div class="product_img_box">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <div class="product_img">
+                                <img src="./img/07_2_3 metapo.jpg" alt="metapo_02_03">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_txt">
+                        <p class="icon"><span class="new">new</span></p>
+                        <p class="product_name">국내 여행 플래너</p>
+                        <p class="product_price">6,000원</p>
+                    </div>
+                </div> <!-- metapo planner 02-03 -->
+                <div class="product_box">
+                    <div class="product_img_box">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <div class="product_img">
+                                <img src="./img/07_2_4 metapo.jpg" alt="metapo_02_04">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_txt">
+                        <p class="product_name mt">회사생활 업무일지</p>
+                        <p class="product_price">5,000원</p>
+                    </div>
+                </div> <!-- metapo planner 02-04 -->
+            </div> <!-- metapo planner -->
+            <div class="metapo_product_sheet">
+                <span class="more"><a href="./sub/2_product_journal.html">  더보기</a></span>
+                <div class="product_box mr">
+                    <div class="product_img_box">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <div class="product_img">
+                                <img src="./img/07_3_1 metapo.jpg" alt="metapo_03_01">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_txt">
+                        <p class="icon"><span class="new">new</span></p>
+                        <p class="product_name">북쉘프</p>
+                        <p class="product_price">8,500원</p>
+                    </div>
+                </div> <!-- metapo journal 03-01 -->
+                <div class="product_box mr">
+                    <div class="product_img_box">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <div class="product_img">
+                                <img src="./img/07_3_2 metapo.jpg" alt="metapo_03_02">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_txt">
+                        <p class="icon"><span class="best">best</span></p>
+                        <p class="product_name">불렛저널</p>
+                        <p class="product_price">7,900원</p>
+                    </div>
+                </div> <!-- metapo journal 03-02 -->
+                <div class="product_box mr">
+                    <div class="product_img_box">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <div class="product_img">
+                                <img src="./img/07_3_3 metapo.jpg" alt="metapo_03_03">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_txt">
+                        <p class="product_name mt">무비저널</p>
+                        <p class="product_price">3,500원</p>
+                    </div>
+                </div> <!-- metapo journal 03-03 -->
+                <div class="product_box">
+                    <div class="product_img_box">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <div class="product_img">
+                                <img src="./img/07_3_4 metapo.jpg" alt="metapo_03_04">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_txt">
+                        <p class="product_name mt">드라마 리뷰</p>
+                        <p class="product_price">4,500원</p>
+                    </div>
+                </div> <!-- metapo journal 03-04 -->
+            </div> <!-- metapo journal -->
+            <div class="metapo_product_sheet">
+                <span class="more"><a href="./sub/2_product_sticker.html">더보기</a></span>
+                <div class="product_box mr">
+                    <div class="product_img_box">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <div class="product_img">
+                                <img src="./img/07_4_1 metapo.jpg" alt="metapo_04_01">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_txt">
+                        <p class="product_name mt">유화 스티커</p>
+                        <p class="product_price">1,500원</p>
+                    </div>
+                </div> <!-- metapo sticker 04-01 -->
+                <div class="product_box mr">
+                    <div class="product_img_box">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <div class="product_img">
+                                <img src="./img/07_4_2 metapo.jpg" alt="metapo_04_02">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_txt">
+                        <p class="product_name mt">빈티지 스티커</p>
+                        <p class="product_price">1,500원</p>
+                    </div>
+                </div> <!-- metapo sticker 04-02 -->
+                <div class="product_box mr">
+                    <div class="product_img_box">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <div class="product_img">
+                                <img src="./img/07_4_3 metapo.jpg" alt="metapo_04_03">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_txt">
+                        <p class="product_name mt">주접 스티커</p>
+                        <p class="product_price">1,500원</p>
+                    </div>
+                </div> <!-- metapo sticker 04-03 -->
+                <div class="product_box">
+                    <div class="product_img_box">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <div class="product_img">
+                                <img src="./img/07_4_4 metapo.jpg" alt="metapo_04_04">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_txt">
+                        <p class="product_name mt">공부 떡메모지 세트</p>
+                        <p class="product_price">1,500원</p>
+                    </div>
+                </div>  <!-- metapo sticker 04-04 -->
+            </div> <!-- metapo journal -->
+        </div>
+    </div> <!-- metapo -->
+
+    <div class="sub_title">키워드로 보는 추천상품</div>
+
+    <input type="radio" name="keyword" id="keyword01" checked>
+    <input type="radio" name="keyword" id="keyword02">
+    <input type="radio" name="keyword" id="keyword03">
+    <input type="radio" name="keyword" id="keyword04">
+    <input type="radio" name="keyword" id="keyword05">
+    <input type="radio" name="keyword" id="keyword06">
+    <input type="radio" name="keyword" id="keyword07">
+    <input type="radio" name="keyword" id="keyword08">
+    <div class="suggest_box">
+        <div class="suggest_img_wrap">
+            <div class="suggest_img_sheet">
+                <div class="suggest_img_box mr mb">
+                    <div class="suggest_img">
+                        <img src="./img/08_1_1_suggest.jpg" alt="suggest_01_01">
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>노션 커리어 템플릿</p>
+                            <p>8,000원</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- 키워드 추천제품 01_계획 1 -->
+                <div class="suggest_img_box mb">
+                    <div class="suggest_img">
+                        <img src="./img/08_1_2_suggest.jpg" alt="suggest_01_02">
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>국내 여행 플래너</p>
+                            <p>6,000원</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- 키워드 추천제품 01_계획 2 -->
+                <div class="suggest_img_box mr">
+                    <div class="suggest_img">
+                        <img src="./img/08_1_3_suggest.jpg" alt="suggest_01_03">
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>소하 만년형 일주일 플래너</p>
+                            <p>무료</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- 키워드 추천제품 01_계획 3 -->
+                <div class="suggest_img_box">
+                    <div class="suggest_img">
+                        <img src="./img/08_1_4_suggest.jpg" alt="suggest_01_04">
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>2024 위클리 다이어리</p>
+                            <p>8,000원</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- 키워드 추천제품 01_계획 4 -->
+            </div>
+            <!-- 키워드 추천제품 01_계획 -->
+            <div class="suggest_img_sheet">
+                <div class="suggest_img_box mr mb">
+                    <div class="suggest_img">
+                        <img src="./img/08_2_1_suggest.jpg" alt="suggest_02_01">
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>오늘도 나답게 만년 일기장</p>
+                            <p>3,000원</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- 키워드 추천제품 02_기록 1 -->
+                <div class="suggest_img_box mb">
+                    <div class="suggest_img">
+                        <img src="./img/08_2_2_suggest.jpg" alt="suggest_02_02">
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>불렛저널</p>
+                            <p>7,900원</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- 키워드 추천제품 02_기록 2 -->
+                <div class="suggest_img_box mr">
+                    <div class="suggest_img">
+                        <img src="./img/08_2_3_suggest.jpg" alt="suggest_02_03">
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>북쉘프</p>
+                            <p>8,500원</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- 키워드 추천제품 02_기록 3 -->
+                <div class="suggest_img_box">
+                    <div class="suggest_img">
+                        <img src="./img/08_2_4_suggest.jpg" alt="suggest_02_04">
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>만년형 데일리 다이어리</p>
+                            <p>8,100원</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- 키워드 추천제품 02_기록 4 -->
+            </div>
+            <!-- 키워드 추천제품 02_기록 -->
+            <div class="suggest_img_sheet">
+                <div class="suggest_img_box mr mb">
+                    <div class="suggest_img">
+                        <img src="./img/08_3_1_suggest.jpg" alt="suggest_03_01">
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>직장인 스티커</p>
+                            <p>1,000원</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- 키워드 추천제품 03_업무 1 -->
+                <div class="suggest_img_box mb">
+                    <div class="suggest_img">
+                        <img src="./img/08_3_2_suggest.jpg" alt="suggest_03_02">
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>만년 업무 플래너</p>
+                            <p>8,900원</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- 키워드 추천제품 03_업무 2 -->
+                <div class="suggest_img_box mr">
+                    <div class="suggest_img">
+                        <img src="./img/08_3_3_suggest.jpg" alt="suggest_03_03">
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>회사생활 업무일지</p>
+                            <p>5,000원</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- 키워드 추천제품 03_업무 3 -->
+                <div class="suggest_img_box">
+                    <div class="suggest_img">
+                        <img src="./img/08_3_4_suggest.jpg" alt="suggest_03_04">
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>프로젝트 트래커</p>
+                            <p>12,900원</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- 키워드 추천제품 03_업무 4 -->
+            </div>
+            <!-- 키워드 추천제품 03_업무 -->
+            <div class="suggest_img_sheet">
+                <div class="suggest_img_box mr mb">
+                    <div class="suggest_img">
+                        <img src="./img/08_4_1_suggest.jpg" alt="suggest_04_01">
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>유화 스티커</p>
+                            <p>1,500원</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- 키워드 추천제품 04_다꾸 1 -->
+                <div class="suggest_img_box mb">
+                    <div class="suggest_img">
+                        <img src="./img/08_4_2_suggest.jpg" alt="suggest_04_02">
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>빈티지 스티커</p>
+                            <p>1,500원</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- 키워드 추천제품 04_다꾸 2 -->
+                <div class="suggest_img_box mr">
+                    <div class="suggest_img">
+                        <img src="./img/08_4_3_suggest.jpg" alt="suggest_04_03">
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>주접 스티커</p>
+                            <p>1,500원</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- 키워드 추천제품 04_다꾸 3 -->
+                <div class="suggest_img_box">
+                    <div class="suggest_img">
+                        <img src="./img/08_4_4_suggest.jpg" alt="suggest_04_04">
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>인생네컷 포토앨범</p>
+                            <p>4,500원</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- 키워드 추천제품 04_다꾸 4 -->
+            </div>
+            <!-- 키워드 추천제품 04_다꾸 -->
+            <div class="suggest_img_sheet">
+                <div class="suggest_img_box mr mb">
+                    <div class="suggest_img">
+                        <img src="./img/08_5_1_suggest.jpg" alt="suggest_05_01">\
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>10분 스터디 플래너</p>
+                            <p>7,500원</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- 키워드 추천제품 05_공부 1 -->
+                <div class="suggest_img_box mb">
+                    <div class="suggest_img">
+                        <img src="./img/08_5_2_suggest.jpg" alt="suggest_05_02">
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>시간 스티커</p>
+                            <p>1,000원</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- 키워드 추천제품 05_공부 2 -->
+                <div class="suggest_img_box mr">
+                    <div class="suggest_img">
+                        <img src="./img/08_5_3_suggest.jpg" alt="suggest_05_03">
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>공부 스티커</p>
+                            <p>1,000원</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- 키워드 추천제품 05_공부 3 -->
+                <div class="suggest_img_box">
+                    <div class="suggest_img">\
+                        <img src="./img/08_5_4_suggest.jpg" alt="suggest_05_04">
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>공부 떡메모지 세트</p>
+                            <p>1,500원</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- 키워드 추천제품 05_공부 4 -->
+            </div>
+            <!-- 키워드 추천제품 05_공부 -->
+
+            <div class="suggest_img_sheet">
+                <div class="suggest_img_box mr mb">
+                    <div class="suggest_img">
+                        <img src="./img/08_6_1_suggest.jpg" alt="suggest_06_01">
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>다이어트 플래너</p>
+                            <p>7,500원</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- 키워드 추천제품 06_운동 1 -->
+                <div class="suggest_img_box mb">
+                    <div class="suggest_img">
+                        <img src="./img/08_6_2_suggest.jpg" alt="suggest_06_02">
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>오운완 스티커</p>
+                            <p>1,500원</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- 키워드 추천제품 06_운동 2 -->
+                <div class="suggest_img_box mr">
+                    <div class="suggest_img">
+                        <img src="./img/08_6_3_suggest.jpg" alt="suggest_06_03">
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>식단 플래너</p>
+                            <p>1,500원</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- 키워드 추천제품 06_운동 3 -->
+                <div class="suggest_img_box">
+                    <div class="suggest_img">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <img src="./img/08_6_4_suggest.jpg" alt="suggest_06_04">
+                        </a>
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>운동 스티커</p>
+                            <p>2,000원</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- 키워드 추천제품 06_운동 4 -->
+            </div>
+            <!-- 키워드 추천제품 06_운동 -->
+            <div class="suggest_img_sheet">
+                <div class="suggest_img_box mr mb">
+                    <div class="suggest_img">
+                        <img src="./img/08_7_1_suggest.jpg" alt="suggest_07_01">
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>야구 일기</p>
+                            <p>2,000원</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- 키워드 추천제품 07_취미 1 -->
+                <div class="suggest_img_box mb">
+                    <div class="suggest_img">
+                        <img src="./img/08_7_2_suggest.jpg" alt="suggest_07_02">
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>뜨개 일기장</p>
+                            <p>2,000원</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- 키워드 추천제품 07_취미 2 -->
+                <div class="suggest_img_box mr">
+                    <div class="suggest_img">
+                        <img src="./img/08_7_3_suggest.jpg" alt="suggest_07_03">
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>드라마 리뷰</p>
+                            <p>4,500원</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- 키워드 추천제품 07_취미 3 -->
+                <div class="suggest_img_box">
+                    <div class="suggest_img">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <img src="./img/08_7_4_suggest.jpg" alt="suggest_07_04">
+                        </a>
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>무비저널</p>
+                            <p>3,500원</p>
+                        </a>
+                    </div>
+                </div>  <!-- 키워드 추천제품 07_취미 4 -->
+            </div> <!-- 키워드 추천제품 07_취미 -->
+
+            <div class="suggest_img_sheet">
+                <div class="suggest_img_box mr mb">
+                    <div class="suggest_img">
+                        <img src="./img/08_8_1_suggest.jpg" alt="suggest_08_01">
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>야구 일기</p>
+                            <p>2,000원</p>
+                        </a>
+                    </div>
+                </div>  <!-- 키워드 추천제품 08_습관 1 -->
+                <div class="suggest_img_box mb">
+                    <div class="suggest_img">
+                        <img src="./img/08_8_2_suggest.jpg" alt="suggest_08_02">
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>뜨개 일기장</p>
+                            <p>2,000원</p>
+                        </a>
+                    </div>
+                </div>  <!-- 키워드 추천제품 08_습관 2 -->
+                <div class="suggest_img_box mr">
+                    <div class="suggest_img">
+                        <img src="./img/08_8_3_suggest.jpg" alt="suggest_08_03">
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>질문 스티커</p>
+                            <p>4,000원</p>
+                        </a>
+                    </div>
+                </div>  <!-- 키워드 추천제품 08_습관 3 -->
+                <div class="suggest_img_box">
+                    <div class="suggest_img">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <img src="./img/08_8_4_suggest.jpg" alt="suggest_08_04">
+                        </a>
+                    </div>
+                    <div class="suggest_txt">
+                        <a href="./sub/2_product/all/detail/index.html">
+                            <p>오늘 감정 일기</p>
+                            <p>9,500원</p>
+                        </a>
+                    </div>
+                </div>  <!-- 키워드 추천제품 08_습관 4 -->
+            </div>  <!-- 키워드 추천제품 08_습관 -->
+        </div>
+        <div class="suggest_word">
+            <label for="keyword01" class="keyword_01 mr">#계획</label>
+            <label for="keyword02" class="keyword_02 mr">#기록</label>
+            <label for="keyword03" class="keyword_03 mr">#업무</label>
+            <label for="keyword04" class="keyword_04">#다꾸</label>
+            <label for="keyword05" class="keyword_05 mr">#공부</label>
+            <label for="keyword06" class="keyword_06 mr">#운동</label>
+            <label for="keyword07" class="keyword_07 mr">#취미</label>
+            <label for="keyword08" class="keyword_08">#습관</label>
+        </div>
+    </div>
+
+    <div class="sub_title"><a href="./sub/3_review.html">이달의 솔직후기</a></div>
+    
+    <section class="review">
+        <div class="review_box mr">
+            <div class="review_img"><img src="./img/09_review01.jpg" alt="review01"></div>
+            <div class="review_txt">
+                <a href="./sub/3_review/index.html">심플하고 실용적이에요! 진짜 너무 마음에 들어요!</a>
+            </div>
+            <div class="review_page">
+                <a href="./sub/2_product/all/detail/index.html">
+                    <div><img src="./img/09_review_01.jpg" alt="review_product01"></div>
+                    <p class="review_tit">2024 위클리 다이어리</p>
+                    <p>리뷰 15, 평점 4.8</p>
+                </a>
+            </div>
+        </div>        <!-- review01 -->
+        <div class="review_box mr">
+            <div class="review_img">
+                <img src="./img/09_review02.jpg" alt="review02">
+            </div>
+            <div class="review_txt">
+                <a href="./sub/3_review/index.html">한 눈에 진행 상황을 볼 수 있어서 애용하는 템플릿입니다!</a>
+            </div>
+            <div class="review_page">
+                <a href="./sub/2_product/all/detail/index.html">
+                    <div><img src="./img/09_review_02.jpg" alt="review_product02"></div>
+                    <p class="review_tit">프로젝트 트래커</p>
+                    <p>리뷰 54, 평점 4.6</p>
+                </a>
+            </div>
+        </div>        <!-- review 02 -->
+        <div class="review_box mr">
+            <div class="review_img"><img src="./img/09_review03.jpg" alt="review03"></div>
+            <div class="review_txt">
+                <a href="./sub/3_review/index.html">다른 템플릿 구매했다가 안쓰는 게 많은데 이 템플릿은 자주 쓰는 것 같아요!</a>
+            </div>
+            <div class="review_page">
+                <a href="./sub/2_product/all/detail/index.html">
+                    <div><img src="./img/09_review_03.jpg" alt="review_product03"></div>
+                    <p class="review_tit">불렛저널</p>
+                    <p>리뷰 24, 평점 4.8</p>
+                </a>
+            </div>
+        </div>        <!-- review 03 -->
+        <div class="review_box">
+            <div class="review_img"><img src="./img/09_review04.jpg" alt="review04"></div>
+            <div class="review_txt">
+                <a href="./sub/3_review/index.html">아날로그 다이어리에 이미 일기를 적고 있지만 태블릿으로도 다이어리 쓰고 싶어서 구매했습니다!</a>
+            </div>
+            <div class="review_page">
+                <a href="./sub/2_product/all/detail/index.html">
+                    <div><img src="./img/09_review_04.jpg" alt="review_product04"></div>
+                    <p class="review_tit">오늘도 나답게 일기장 </p>
+                    <p>리뷰 13, 평점 4.7</p>
+                </a>
+            </div>
+        </div>        <!-- review 04 -->
+    </section>     <!-- review -->
+    
+    <div class="big_banner_outer">
+        <a href="./sub/1_brand/index.html">
+            <div class="big_banner">
+                <p class="title">소하</p>
+                <span>당신의 하루가 더욱 소중해집니다.</span>
+                <div>여러분의 소소한 하루하루가 모여 일상이 되고, <br>
+                    그 일상이 기록되는 과정을 함께 하고 싶은 <br>
+                    디지털 문구점 소소한 하루, 소하입니다.</div>
+            </div>
+        </a>
+    </div>
+    
+    <div class="sub_title"><a href="https://www.instagram.com/soso_so_ha?igsh=cWN2dDk2Z2tndDZw">instagram @soso_so_ha</a></div>
+    <section class="insta">
+        <a href="https://www.instagram.com/soso_so_ha?igsh=cWN2dDk2Z2tndDZw">
+            <div class="insta01 mr"></div>
+        </a>
+        <a href="https://www.instagram.com/soso_so_ha?igsh=cWN2dDk2Z2tndDZw">
+            <div class="insta02 mr"></div>
+        </a>
+        <a href="https://www.instagram.com/soso_so_ha?igsh=cWN2dDk2Z2tndDZw">
+            <div class="insta03 mr"></div>
+        </a>
+        <a href="https://www.instagram.com/soso_so_ha?igsh=cWN2dDk2Z2tndDZw">
+            <div class="insta04"></div>
+        </a>
+    </section>  <!-- insta -->
+
+    <footer class="footer_outer">
+        <footer class="footer">
+            <section class="footer_logo mr">
+                <span class="personal"><a href="#!">이용약관</a></span>
+                <span class="personal info"><a href="#!">개인정보처리방침</a></span>
+                <span class="personal"><a href="#!">이용안내</a></span>
+                <div class="logo mr">
+                    <img src="./img/00_footer_logo.png" alt="footer_logo">
+                </div>
+                <div class="brand mr">
+                    <p class="sub">소소한 하루,</p>
+                    <p class="tit">소하</p>
+                </div>
+            </section>
+            <!-- 이용약관, 개인정보처리방침, 이용안내 + 로고 + 인스타 -->
+            <section class="footer_section mr">
+                <span>무통장입금</span>
+                <p>하나 833-910295-68307</p>
+                <p>부산 112-2006-5656-09</p>
+                <p>우리 1002-182-524815</p>
+                <p>신한 110-516303-268</p>
+            </section>
+            <section class="footer_brand mr">
+                <span>소하</span>
+                <p>대표 : 정연주</p>
+                <p>사업자등록번호 : 283-87-07389</p>
+                <p>통신판매업 신고번호 :
+                    <a href="https://www.ftc.go.kr/">2024-부산동래구-7408호</a>
+                </p>
+                <p>FAX : 070-8417-2862</p>
+                <p>이메일 : so_ha@gmail.com</p>
+                <p>(우 : 47832)</p>
+                <p>주소 : 부산광역시 동래구 중앙대로 1285번길 11 402호</p>
+            </section>
+            <!-- 브랜드 -->
+            <section class="footer_section">
+                <span>고객센터</span>
+                <p class="call">1899-3816</p>
+                <p>영업시간</p>
+                <p>월~금 09:00~18:00 </p>
+                <p>점심시간 12:00~13:00</p>
+                <p>주말/공휴일 휴무</p>
+            </section>
+            <!-- 고객센터 -->
+            <p class="copy">COPYRIGHT © soha. ALL RIGHTS RESERVED.</p>
+        </footer>
+    </footer>
+    <!-- footer -->
+</body>
+</html>

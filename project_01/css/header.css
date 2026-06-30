@@ -1,0 +1,126 @@
+* {margin: 0; padding: 0;}
+a {text-decoration: none; color: black;}
+
+.header_outer {height: 120px; z-index: 99;
+    background-color: #feffed;
+    position: sticky; top: 0;   
+}
+.header_outer .header {
+    width: 1245px; height: 60px; margin: 0 auto; padding: 30px 0;
+}
+
+.header_outer .header .logo {
+    width: 195px;
+    /* height: 60px; */
+    float: left;
+}
+
+/************************** gnb **************************/
+.header_outer .header .gnb {
+    width: 615px;
+    float: left;
+    margin-left: 120px;
+}
+.header_outer .header .gnb span {
+    padding: 0 11px;
+    font-family: "Gowun Dodum", sans-serif; font-size: 24px; line-height: 60px;
+}
+.header_outer .header .gnb span a:hover {border-bottom: 1px solid #9c7055;}
+.header_outer .header .gnb span a {color: #9c7055;}
+.header_outer .header .gnb .product .product_menu {
+    width: 300px; height: 30px;
+    display: none;
+    position: absolute; top: 80px;
+}
+.header_outer .header .gnb .product_menu div {
+    float: left; font-size: 16px; line-height: 30px;
+    padding: 0 10px;
+    font-family: "Gowun Dodum", sans-serif; 
+}
+.header_outer .header .gnb .product:hover .product_menu {
+    display: block;
+}
+.header_outer .header .gnb .product_menu div a {color: #9c7055;}
+
+/************************** gnb icon **************************/
+.header_outer .header .gnb_icon {
+    width: 195px; height: 60px; 
+    font-size: 30px; line-height: 60px; text-align: center;
+    margin-left: 120px;
+    float: left; position: relative;
+}
+.header_outer .header .gnb_icon label {float: left;}
+.header_outer .header .gnb_icon label:hover {cursor: pointer;}
+
+.header_outer .header .gnb_icon label span {color: #9c7055;}
+.header_outer .header .gnb_icon label span:hover {color: #ffc1cc;}
+.header_outer .header .gnb_icon span {float: left; padding: 0 9px;}
+.header_outer .header .gnb_icon span a {color: #9c7055;}
+.header_outer .header .gnb_icon span {color: #9c7055;}
+.header_outer .header .gnb_icon span:hover {color: #ffc1cc; cursor: pointer;}
+
+/************************** gnb icon search **************************/
+#search_chk {display: none;}
+#search_chk ~ .gnb_icon .search_box {display: none;}
+#search_chk:checked ~ .gnb_icon .search_box {display: block;}
+#search_chk ~ .gnb_icon .search_open {display: block;}
+#search_chk ~ .gnb_icon .search_close {display: none;}
+#search_chk:checked ~ .gnb_icon .search_open {display: none;}
+#search_chk:checked ~ .gnb_icon .search_close {display: block;}
+
+.header_outer .header .gnb_icon .search_box {
+    width: 300px; height: 30px;
+    border: 1px solid #9c7055; box-sizing: border-box;
+    font-size: 20px; line-height: 28px;
+    background-color: #feffed; border-radius: 20px;
+    padding-right: 10px; float: right;
+    position: absolute; top: 60px; right: 0;
+}
+.header_outer .header .gnb_icon .search_box span {
+    color: #9c7055; border: none; font-size: 16px; float: right;
+}
+.header_outer .header .gnb_icon .search_txt {
+    width: 220px; background-color: #feffed; color: #9c7055;
+    font-family: "Gowun Dodum", sans-serif; font-size: 16px;
+    border: none;
+}
+
+
+/************************** gnb icon cart **************************/
+.header_outer .header .gnb_icon .box {
+    background-color: #feffed; border-radius: 15px;
+    position: absolute; top: 60px; right: 0;
+    width: 300px; height: 400px; overflow: hidden; display: none;
+    border: 1px solid #9c7055;
+}
+
+.header_outer .header .gnb_icon .box .tit {font-family: "Gowun Dodum", sans-serif; font-size: 24px; color: #9c7055; padding-bottom: 20px;}
+
+.header_outer .header .gnb_icon .box .product_box {
+    width: 250px; height: 70px;
+    margin: 0 auto;
+    border-top: 1px solid #9c7055; border-bottom: 1px solid #9c7055; box-sizing: border-box;
+}
+.header_outer .header .gnb_icon .box .second {
+    border-top: none; border-bottom: none;
+}
+.header_outer .header .gnb_icon .box .product_box .popup_img {
+    width: 50px; height: 50px;
+    float: left; margin: 6px;
+}
+.header_outer .header .gnb_icon .box .product_box .popup_img img {width: 100%;}
+.header_outer .header .gnb_icon .box .product_box .popup_txt {
+    width: 180px; height: 70px;
+    padding-top: 3px; float: left;
+}
+.header_outer .header .gnb_icon .box .product_box .popup_txt p {font-size: 16px; font-family: "Gowun Dodum", sans-serif; color: #9c7055; line-height: 25px;}
+
+
+.header_outer .header .gnb_icon>div button {
+    width: 90px; height: 30px;
+    background-color: #feffed; border: 1px solid #9c7055; border-radius: 15px;
+    font-size: 16px; color: #9c7055; font-family: "Gowun Dodum", sans-serif;
+}
+.header_outer .header .gnb_icon>div button:hover {
+    background-color: #9c7055; color: #feffed; cursor: pointer;
+}

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자주 묻는 질문</title>
+    <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+    <link rel="stylesheet" href="../../css/4_faq.css">
+    <link rel="stylesheet" href="../../css/how_use_chat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- font-awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Gowun+Dodum&display=swap" rel="stylesheet">
+    <!-- font Gowun+Dodum -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="../../js/header.js"></script>
+    <script>
+        $(function(){
+            let btn = $('.faq_box .faq > .faq_link')
+            btn.on('click', function(e){
+                e.preventDefault()
+                let $this = $(this)
+                let target = $this.parent()
+                let description = $this.siblings('.faq_content')
+                let other = target.siblings('.faq')
+                let otherDescription = other.find('.faq_content')
+                accordionToggle(target, description, other, otherDescription)
+            })
+        })
+        function accordionToggle(target, description, other, otherDescription){
+            if (target.hasClass('active')) {
+            target.removeClass('active')
+            description.stop().slideUp(300)
+            } else {
+            target.addClass('active')
+            description.stop().slideDown(300)
+            }
+
+            if (other && otherDescription) {
+            other.removeClass('active')
+            otherDescription.stop().slideUp(300)
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="checkbox" id="how_use" checked>
+    <div>
+        <a href="https://teamnelna.notion.site/acbcaca078d6439b87397a9370e5b0d8">
+            <section class="how_use_box">
+                <label for="how_use"><i class="fa-solid fa-xmark"></i></label>
+                <p class="how_use_top">사용법</p>
+                <p>알아보기</p>
+            </section>
+        </a>
+    </div>
+    <!-- 사용법 알아보기 -->
+    
+    <input type="checkbox" id="chat_chk">
+    <section class="chat">
+        <label for="chat_chk" class="open"><div><img src="./img/icon_chat.png" alt="chat_icon"></i></div></label>
+        <label for="chat_chk" class="close"><div><i class="fa-solid fa-xmark"></i></div></label>
+        <div class="chat_box">
+            <div class="brand">
+                <div class="logo_box"><img src="./img/chat_logo.png" alt="logo"></div>
+                <div class="brand_intro">
+                    <p class="brand_tit">소하</p>
+                    <p>소소한 하루, 소하</p>
+                </div>
+            </div>
+            <div class="chat_first">무엇을 도와드릴까요?</div>
+            <div class="chat_txt_box">
+                <input type="text" name="chat_txt" class="chat_txt">
+            </div>
+        </div>
+    </section>
+    <!-- 실시간 채팅상담 -->
+    
+    <header class="header_outer" id="header">
+        <header class="header">
+            <div class="logo">
+                <a href="../../index.html"><img src="./img/logo.png" alt="soha_logo"></a>
+            </div>           <!-- logo -->
+            <nav class="gnb">
+                <span><a href="../1_brand/index.html">소하는요</a></span>
+                <span class="product">
+                    <a href="../2_product/all/index.html">디지털 문구</a>
+                    <div class="product_menu">
+                        <div><a href="../2_product/diary/index.html">다이어리</a></div>
+                        <div><a href="../2_product/planner/index.html">플래너</a></div>
+                        <div><a href="../2_product/journal/index.html">저널</a></div>
+                        <div><a href="../2_product/sticker/index.html">스티커</a></div>
+                        <div><a href="../2_product/free/index.html">무료</a></div>
+                    </div>
+                </span>
+                <span><a href="../3_review/index.html">솔직후기</a></span>
+                <span><a href="../4_faq/index.html">궁금해요</a></span>
+                <span><a href="../5_notice/index.html">알립니다</a></span>
+            </nav>                    <!-- gnb -->
+            <input type="checkbox" id="search_chk">
+            <section class="gnb_icon">
+                <label for="search_chk" class="search_open">
+                    <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                </label>
+                <label for="search_chk" class="search_close">
+                    <span><i class="fa-solid fa-xmark"></i></span>
+                </label>
+                <div class="search_box">
+                    <input type="search" name="search_txt" class="search_txt">
+                    <span><a href="./sub/0_search.html" ><i class="fa-solid fa-magnifying-glass"></i></a></span>
+                </div>                      <!-- search_box -->
+                <span class="btn_cart"><i class="fa-solid fa-cart-shopping"></i></span>
+                <div class="cart_box box">
+                    <p class="tit">장바구니</p>
+                    <div class="product_box">
+                        <a href="../2_product/all/detail/index.html">
+                            <div class="popup_img">
+                                <img src="./img/cart01.jpg" alt="cart01">
+                            </div>
+                            <div class="popup_txt">
+                                <p>불렛저널</p>
+                                <p>7,900원</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_box second">
+                        <a href="../2_product/all/detail/index.html">
+                            <div class="popup_img">
+                                <img src="./img/cart02.jpg" alt="cart02">
+                            </div>
+                            <div class="popup_txt">
+                                <p>만년 업무 플래너</p>
+                                <p>8,900원</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_box">
+                        <a href="../2_product/all/detail/index.html">
+                            <div class="popup_img">
+                                <img src="./img/cart03.jpg" alt="cart03">
+                            </div>
+                            <div class="popup_txt">
+                                <p>프로젝트 트래커</p>
+                                <p>12,900원</p>
+                            </div>
+                        </a>
+                    </div>
+                    <button>결제하기</button>
+                </div>                  <!-- cart_box -->
+                <span class="btn_recent"><i class="fa-solid fa-clock"></i></span>
+                <div class="recent_box box">
+                    <p class="tit">최근 본 상품</p>
+                    <div class="product_box">
+                        <a href="../2_product/all/detail/index.html">
+                            <div class="popup_img">
+                                <img src="./img/recent01.jpg" alt="recent01">
+                            </div>
+                            <div class="popup_txt">
+                                <p>만년형 심플 다이어리</p>
+                                <p>8,000원</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_box second">
+                        <a href="../2_product/all/detail/index.html">
+                            <div class="popup_img">
+                                <img src="./img/recent02.jpg" alt="recent02">
+                            </div>
+                            <div class="popup_txt">
+                                <p>국내여행 플래너</p>
+                                <p>6,000원</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_box">
+                        <a href="../2_product/all/detail/index.html">
+                            <div class="popup_img">
+                                <img src="./img/recent03.jpg" alt="recent03">
+                            </div>
+                            <div class="popup_txt">
+                                <p>소하 만년형 일주일 플래너</p>
+                                <p>무료</p>
+                            </div>
+                        </a>
+                    </div>
+                    <button>결제하기</button>
+                </div>                <!-- recent box -->
+                <span><a href="../login/index.html"><i class="fa-solid fa-user"></i></a></span>
+            </section>  <!-- gnb_icon -->
+        </header>
+    </header>           <!-- header -->    
+
+    <div class="sub_title" id="use">사용법</div>
+    <div><a href="https://teamnelna.notion.site/acbcaca078d6439b87397a9370e5b0d8"><div class="use">사용법<br>보러가기</div></a></div>
+    <div class="sub_title">자주 묻는 질문</div>
+
+    <div class="wrap">
+        <!-- 아코디언 메뉴 -->
+        <ul class="faq_box">
+            <li class="faq">
+                <a href="#" class="faq_link">
+                    <div class="faq_title">
+                        <span class="icon">Q.</span>
+                        다운로드 버튼을 눌렀는데 아무 일도 일어나지 않아요.
+                    </div>
+                </a>
+                <div class="faq_content">
+                    간혹 아이패드에서 다운로드 버튼을 눌러도 아무런 창이 뜨지 않아서 다운로드 버튼을 여러 번 눌렀다는 질문을 해주십니다.
+                    <br><br>
+                    이 경우 [파일]이라는 어플리케이션(기본 내장 앱)에 들어가셔서 [다운로드] 폴더를 확인해보시면 해당 파일이 저장되어 있습니다.
+                    <br><br>
+                    더불어, 다운로드 완료 후 원본 파일을 미리 백업해두시고 사용하시는 것을 권장드립니다.
+                    <br><br>
+                    더 궁금하신 내용이 있으시다면 언제든 오른쪽 아래의 [실시간 채팅상담]으로 문의해주세요~!
+                </div>
+            </li>
+            <li class="faq">
+                <a href="#" class="faq_link">
+                    <div class="faq_title">
+                        <span class="icon">Q.</span>
+                        입금 후 주문 취소를 했는데 환불이 되지 않았어요.
+                        
+                    </div>
+                </a>
+                <div class="faq_content">
+                    가상계좌입금으로 주문하신 경우, 주문 취소를 하셔도 자동으로 환불처리가 되지 않아요.😢
+                    <br><br>
+                    가상계좌 입금 후 주문을 취소하셨거나 중복으로 입금하신 경우,
+                    <br><br>
+                    오른쪽 아래에 있는 [실시간 채팅 상담]을 통해 연락주세요!
+                    <br><br>
+                    이때, 환불 받으실 은행명, 계좌번호, 그리고 예금주명을 남겨주시면 확인 후 즉시 환불 처리해드릴게요!
+                    <br><br>
+                    더 궁금하신 내용이 있으시다면 언제든 오른쪽 아래의 [실시간 채팅상담]으로 문의해주세요~!
+                </div>
+            </li>
+            <li class="faq">
+                <a href="#" class="faq_link">
+                    <div class="faq_title">
+                        <span class="icon">Q.</span>
+                        만년형 상품의 페이지를 복사하면 하이퍼링크가 제대로 작동하지 않아요.
+                    </div>
+                </a>
+                <div class="faq_content">
+                    만년형 파일의 경우, 파일 자체를 복제해 1개월씩 따로 쓰는 걸 권장하고 있어요!
+                    <br><br>
+                    파일 내의 페이지만 복사하실 경우, 기존에 설정되어 있던 하이퍼링크가 제대로 작동하지 않을 수도 있어요.😢
+                    <br><br>
+                    매월 구별하기 쉽도록, 복제한 파일 표지에 작성하고 찾는게 좋아요! 
+                    <br><br>
+                    복제한 파일을 하나의 그룹으로 넣어두고, 그룹명을 설정하면 각 만년형 파일을 한눈에 모아볼 수 있어요!
+                    <br><br>
+                    더 궁금하신 내용이 있으시다면 언제든 오른쪽 아래의 [실시간 채팅상담]으로 문의해주세요~!
+                </div>
+            </li>
+            <li class="faq">
+                <a href="#" class="faq_link">
+                    <div class="faq_title">
+                        <span class="icon">Q.</span>
+                        굿노트에서 하이퍼링크가 안돼요.
+                    </div>
+                </a>
+                <div class="faq_content">
+                    굿노트에서는 펜모드가 켜져 있는 상태에서 하이퍼링크가 작동하지 않아요😢 
+                    <br>
+                    오른쪽 위에 펜 아이콘 모양을 눌러 펜모드를 끈 다음 하이퍼링크를 이용해주세요! 
+                    <br><br>
+                    가끔, 굿노트 앱의 안정성 오류로 하이퍼링크가 부분적으로 작동하지 않을 때도 있어요😢 
+                    <br>
+                    그런 경우에는 다음 중 하나를 시도해보시길 추천드려요! 
+                    <br><br>
+                    1) 파일을 완전히 껐다가 다시 열어보세요. 
+                    <br><br>
+                    2) 굿노트 앱을 완전히 껐다가 다시 실행해보세요. 
+                    <br><br>
+                    3) 기존 파일들을 백업 후 굿노트 앱을 재설치해보세요.
+                    <br><br>
+                    더 궁금하신 내용이 있으시다면 언제든 오른쪽 아래의 [실시간 채팅상담]으로 문의해주세요~!
+                </div>
+            </li>
+                <li class="faq">
+                <a href="#" class="faq_link">
+                    <div class="faq_title">
+                    <span class="icon">Q.</span>
+                    갤럭시 탭에서도 사용 가능한가요?
+                    </div>
+                </a>
+                <div class="faq_content">
+                    소하의 모든 서식 파일은 pdf 확장자로 필기가 가능한 모든 태블릿 PC 기기에서 이용 가능합니다. (예 : 아이패드, 갤럭시 탭 등)
+                    <br><br>
+                    다만, 사용하시는 어플리케이션에 따라 하이퍼링크 기능이 원활하게 작동하지 않을 수 있습니다.
+                    <br><br>
+                    사용하시는 어플리케이션이 하이퍼링크를 지원하는지 미리 확인해보시는 것을 추천드립니다.
+                    <br><br>
+                    *삼성노트, 노트쉘프 모두 사용 가능합니다.
+                    <br><br>
+                    더 궁금하신 내용이 있으시다면 언제든 오른쪽 아래의 [실시간 채팅상담]으로 문의해주세요~!
+                </div>
+            </li>
+            </li>
+                <li class="faq">
+                <a href="#" class="faq_link">
+                    <div class="faq_title">
+                    <span class="icon">Q.</span>
+                    디지털 서식을 구입했는데 [교환] 혹은 [환불]하고 싶어요.
+                    </div>
+                </a>
+                <div class="faq_content">
+                    디지털 제품의 특성상 다운로드 버튼을 누른 후에는 교환 / 환불이 불가능하오니
+                    <br>
+                    구매 전 제품을 꼼꼼하게 확인하신 후 결제를 부탁드립니다.
+                    <br><br>
+                    다운로드 내역이 0회인 경우에는 문의를 주시면 확인 후 교환 / 환불을 도와드리도록 하겠습니다.
+                    <br><br>
+                    더 궁금하신 내용이 있으시다면 언제든 오른쪽 아래의 [실시간 채팅상담]으로 문의해주세요~!
+                </div>
+            </li>
+            </li>
+                <li class="faq">
+                <a href="#" class="faq_link">
+                    <div class="faq_title">
+                        <span class="icon">Q.</span>
+                        속지 비율 및 사이즈 변경이 가능한가요?
+                    </div>
+                </a>
+                <div class="faq_content">
+                    자체 제작 상품이기 때문에 속지 비율 및 사이즈 변경은 불가능 합니다.
+                    <br><br>
+                    더 궁금하신 내용이 있으시다면 언제든 오른쪽 아래의 [실시간 채팅상담]으로 문의해주세요~!
+                </div>
+            </li>
+            </li>
+                <li class="faq">
+                <a href="#" class="faq_link">
+                    <div class="faq_title">
+                        <span class="icon">Q.</span>
+                        어떤 필기앱에서 사용 가능한가요?
+                    </div>
+                </a>
+                <div class="faq_content">
+                    소하의 모든 제품은 [pdf 파일을 열 수 있는 필기앱]과 노션, 구글시트/엑셀에서 사용 가능합니다.
+                    <br><br>
+                    *아이패드 : 굿노트, 노트빌리티, 노트쉘프, 플렉슬, 소도 등
+                    <br>
+                    *갤럭시탭 : 삼성노트, 노트쉘프, 플렉슬, 소도 등
+                    <br>
+                    이 대표적으로 많이 사용하는 필기앱 입니다.
+                    <br><br>
+                    각 필기앱마다 장단점이 다르니 필기앱의 특성을 꼭 확인하고 고르시는 것을 추천드립니다.
+                    <br><br>
+                    더 궁금하신 내용이 있으시다면 언제든 오른쪽 아래의 [실시간 채팅상담]으로 문의해주세요~!
+                </div>
+            </li>
+        </ul>
+    </div>    <!-- FAQ -->
+    
+    <footer class="footer_outer">
+        <footer class="footer">
+            <section class="footer_logo mr">
+                <span class="personal"><a href="#!">이용약관</a></span>
+                <span class="personal info"><a href="#!">개인정보처리방침</a></span>
+                <span class="personal"><a href="#!">이용안내</a></span>
+                <div class="logo mr">
+                    <img src="./img/footer_logo.png" alt="footer_logo">
+                </div>
+                <div class="brand mr">
+                    <p class="sub">소소한 하루,</p>
+                    <p class="tit">소하</p>
+                </div>
+            </section>
+            <!-- 이용약관, 개인정보처리방침, 이용안내 + 로고 -->
+            <section class="footer_section mr">
+                <span>무통장입금</span>
+                <p>하나 833-910295-68307</p>
+                <p>부산 112-2006-5656-09</p>
+                <p>우리 1002-182-524815</p>
+                <p>신한 110-516303-268</p>
+            </section>
+            <section class="footer_brand mr">
+                <span>소하</span>
+                <p>대표 : 정연주</p>
+                <p>사업자등록번호 : 283-87-07389</p>
+                <p>통신판매업 신고번호 :
+                    <a href="https://www.ftc.go.kr/">2024-부산동래구-7408호</a>
+                </p>
+                <p>FAX : 070-8417-2862</p>
+                <p>이메일 : so_ha@gmail.com</p>
+                <p>(우 : 47832)</p>
+                <p>주소 : 부산광역시 동래구 중앙대로 1285번길 11 402호</p>
+            </section>
+            <!-- 브랜드 -->
+            <section class="footer_section">
+                <span>고객센터</span>
+                <p class="call">1899-3816</p>
+                <p>영업시간</p>
+                <p>월~금 09:00~18:00 </p>
+                <p>점심시간 12:00~13:00</p>
+                <p>주말/공휴일 휴무</p>
+            </section>
+            <!-- 고객센터 -->
+            <p class="copy">COPYRIGHT © soha. ALL RIGHTS RESERVED.</p>
+        </footer>
+    </footer>  <!-- footer -->
+</body>
+</html>

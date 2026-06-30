@@ -1,0 +1,401 @@
+@font-face {font-family: "YUniverse-B"; src: url(../font/YUniverse-B.ttf);}
+html, body {font-family: "YUniverse-B";}
+* {margin: 0; padding: 0;}
+/* * { outline: 1px solid red !important; } */
+li {list-style: none;}
+a {text-decoration: none; color: black; font-family: "YUniverse-B"; }
+p, span {color: #EFEFEF;}
+.hidden {display: none;}
+
+/*
+main : 1A1A1A, point : F4E53B EFEFEF
+fontsize= 16 24 36 50 80
+*/
+
+section {
+    width: 100%; min-height: calc(100vh - 80px);
+    background-color: #1A1A1A;
+    position: relative;
+    padding-top: 80px;
+    scroll-margin-top: 80px;
+}
+
+@media screen and (max-width: 1200px) {
+    section {
+        height: auto;
+        padding-bottom: 80px; /* 아래 여백 */
+    }
+    .about, .intro, .contact-box {
+        width: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    /* 💡 핵심: 고정된 높이(height)를 auto로 풀어서 자연스럽게 줄어들게 만듭니다 */
+    .about-image, .about-content, .profile-img {
+        width: 100%;
+        max-width: 350px; 
+        height: auto; /* 고정값 450px 해제! */
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    .about-image img, .profile-img img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/********************** popup box **********************/
+#pop {display: none;}
+#pop ~ .pop-box {display: none;}
+#pop:checked ~.pop-box {display: block;}
+
+.pop-box {
+    width: 140px; height: 140px;
+    background-color: #EFEFEF;
+    border-radius: 70px; border: 1px solid #F4E53B; box-sizing: border-box;
+    position: fixed; top: 200px; left: 50px; z-index: 9;
+    animation: upDown 4s infinite;
+}
+@keyframes upDown {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+}
+
+.pop-box p {
+    font-size: 14px; text-align: center; 
+    color: #1A1A1A;
+    padding-top: 30px;
+}
+.pop-box label {
+    float: right; color: #F4E53B;
+    width: 24px; height: 24px; border-radius: 12px;
+    text-align: center; font-size: 20px;
+}
+.pop-box label:hover {cursor: pointer;}
+
+/********************** header **********************/
+header {
+    width: 100%;
+    height: 80px;
+    box-sizing: border-box;
+    background-color: #1A1A1A; z-index: 25;
+    padding: 0 80px;
+    transition: transform 0.3s ease;
+    display: flex; justify-content: space-between; align-items: center;
+    position: sticky; top: 0; left: 0;
+}
+
+/* 헤더 숨기기 */
+header.hidden {transform: translateY(-100%);}
+
+/* 스크롤 시 헤더를 다시 보이게 하는 효과 */
+header.visible {transform: translateY(0);}
+header .name {
+    width: 170px; height: 60px;
+}
+
+header .gnb ul {
+    width: 470px; height: 20px;
+    display: flex; margin: 20px 0;
+    float: right;
+}
+header .gnb ul li {padding: 0 10px;}
+header .gnb ul li div {
+    width: 20px; height: 20px; float: left;
+}   
+header .gnb ul li span {padding: 2px 6px;}
+
+/********************** intro page **********************/
+#page01 {width: 100%; height: 100vh;}
+.intro {
+    width: 100%;
+    background-color: #1A1A1A;
+    display: flex; justify-content: center; align-items: center;
+    flex-direction: column;
+}
+.main-tit {
+    width: 400px; height: 400px;
+    background-color: #1A1A1A; color: #EFEFEF;
+    border: 2px solid #F4E53B;
+    border-radius: 50%;
+    font-size: 28px;
+    position: relative;
+    animation: fadeUp 1.8s ease-out forwards;
+    opacity: 0;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    box-shadow: 0 0 60px rgba(244, 229, 59, 0.3);
+    z-index: 2;
+    word-break: keep-all;
+}
+@keyframes fadeUp {
+    0% {opacity: 0; transform: translateY(20px);}
+    100% {opacity: 1; transform: translateY(0);}
+  }
+
+.main-tit p {
+    position: relative; z-index: 2;
+    line-height: 1.6;
+
+}
+
+.main-tit span {color: #F4E53B;}
+
+/* 블러 효과 배경 */
+.blur-circle {
+    width: 300px; height: 300px;
+    position: absolute; top: 50%; left: 50%;
+    border-radius: 50%;
+    background-color: #F4E53B;
+    transform: translate(-50%, -50%);
+    filter: blur(40px);
+    z-index: 1; opacity: 0.15;
+    animation: glowPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.2;
+    }
+}
+
+.scroll-down {
+    position: absolute; bottom: 100px;
+    font-size: 14px; color: #EFEFEF;
+    letter-spacing: 1px;
+    animation: bounce 2s infinite;
+}
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+}
+
+/********************** About ME page **********************/
+.about {
+    width: 1070px; display: flex; gap: 100px;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+/* 왼쪽 사진 영역 */
+.about-image {width: 350px; height: 450px;}
+.about-image img {width: 100%;}
+
+/* 오른쪽 텍스트 영역 */
+.about-content {width: 470px; height: 450px;}
+
+/* 자기소개 요약 텍스트 */
+.about-summary {font-size: 24px;}
+.about-summary span {color: #F4E53B;}
+
+/* 기본 프로필 정보 */
+.about-profile {margin: 20px 0;}
+.about-profile p {line-height: 40px; font-size: 24px;}
+.about-profile .label {display: inline-block; width: 90px;}
+
+/* 공통 */
+.section-title {margin: 5px 0; color: #F4E53B;}
+
+/* 학력 영역 */
+.about-education > p {font-size: 18px;}
+
+/* 경력 + 자격증 컨테이너 */
+.about-details {display: flex; gap: 10px; margin-top: 20px;}
+.about-details .section {width: 50%;}
+.about-details .section p {font-size: 18px;}
+.about-details .section .date {font-size: 14px;}
+
+/****************** skill page **********************/
+.skills-section {
+    width: 100%; height: 100vh;
+    background-color: #1A1A1A;
+    color: #EFEFEF;
+    display: flex; flex-direction: column; justify-content: center;
+}
+
+.skills-title {
+    color: #F4E53B; margin-bottom: 10px; margin-top: -50px;
+    font-size: 48px; text-align: center; font-weight: bold;    
+}
+
+.skills-subtitle {
+    font-size: 18px; margin-bottom: 50px;
+    text-align: center;
+}
+
+.skills-grid {display: flex; gap: 40px; margin: 0 auto;}
+
+.skill-category h3 {
+    color: #F4E53B; margin-bottom: 15px;
+    font-size: 20px; text-align: center;
+}
+
+.skill-category ul li {
+    margin-bottom: 10px;
+    font-size: 16px; line-height: 24px;
+}
+
+/****************** project gallery page **********************/
+/* 탭 버튼 스타일 */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.tab-button {
+    background-color: #EFEFEF;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 16px;
+    color: #333;
+    font-family: "YUniverse-B";
+}
+
+.tab-button.active {
+    background-color: #F4E53B; color: #1A1A1A;
+}
+
+.tab-button:hover {
+    background-color: #ddd;
+}
+
+/* 탭 콘텐츠 */
+.tab-contents {
+    display: flex; flex-direction: column; align-items: center;
+}
+.tab-content {display: none;}
+.tab-content.active {display: block;}
+
+/* 카드 스타일 */
+.cards-container {
+    display: flex; gap: 30px;
+    justify-content: center;
+}
+
+.card {
+    width: 300px; height: 420px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+
+.gallery {width: 200px; height: 300px; margin-top: 50px;}
+
+.card:hover {transform: translateY(-10px); cursor: pointer;}
+
+.thumbnail img {
+    width: 100%; object-fit: cover;
+}
+
+.card-body {padding: 5px;}
+
+.card-title {
+    font-size: 18px; font-weight: bold; text-align: center;
+    padding-top: 10px;
+}
+
+.tags {
+    font-size: 14px; color: #777;
+    margin-bottom: 10px; text-align: center;
+}
+.colors {display: flex; justify-self: center; margin: 10px 0;}
+.colors span {
+    width: 20px; height: 20px;
+    display: inline-block; 
+    border-radius: 50%; border: 1px solid #1A1A1A;
+    margin: 5px; 
+}
+
+.features ul {
+    padding-left: 20px; font-size: 14px; color: #333;
+    height: 60px;
+}
+
+.btn-group {
+    display: flex; gap: 5px; justify-content: center;
+    margin-top: 20px;
+}
+
+.btn {
+    background-color: #1A1A1A;
+    color: #EFEFEF;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {background-color: #F4E53B; color: #1A1A1A;}
+
+
+/* modal */
+#modal {
+    display: none; /* 기본적으로 숨겨두기 */
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 배경 */
+    z-index: 1000; /* 다른 콘텐츠보다 위에 */
+}
+
+.modal-content {
+    position: absolute; top: 50%; left: 50%;
+    width: 600px; height: 450px;
+    transform: translate(-50%, -50%);
+    background: #EFEFEF;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.modal-title {
+    font-weight: bold; text-align: center;
+}
+
+.modal-img {
+    width: 100%; margin-top: 20px;
+    max-height: 400px;
+    object-fit: contain;
+}
+.close {
+    position: absolute; top: 10px; right: 15px;
+    font-size: 36px;
+    cursor: pointer;
+    color: #1A1A1A;
+}
+
+/********************** Conetect ME page **********************/
+.contact-box {
+    display: flex; align-items: center; justify-content: center;
+}
+.contact-box .profile-img {
+    width: 350px; height: 450px; margin-right: 100px;
+}
+.contact-box .profile-img img {width: 100%;}
+.contact-box .info-box {width: 440px; height: 150px;
+    border-radius: 30px; border: 1px solid #EFEFEF;
+    padding-left: 40px; padding-top: 20px;
+}
+.contact-box .thank-you .thank{
+    margin-bottom: 50px; color: #F4E53B;
+}
+.contact-box .thank-you p {
+    font-size: 24px; line-height: 40px; 
+}
+.contact-box .thank-you .info-box p span:first-child {
+    display: inline-block; width: 10px; margin-right: 30px;
+}
+
