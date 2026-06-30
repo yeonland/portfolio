@@ -1,0 +1,12 @@
+.header_outer .header .gnb span:nth-child(1) a {
+    border-bottom: 1px solid #9c7055; box-sizing: border-box;
+}
+.sub_title {font-family: "Jua", sans-serif; font-size: 36px; color: #9c7055;
+    width: 1245px; height: 40px; margin: 0 auto; margin-top: 30px; margin-bottom: 30px;
+    text-align: center; 
+    line-height: 40px;
+}
+.wrap {
+    width: 1245px; height: 550px; margin: 0 auto;
+}
+.wrap p {font-family: "Gowun Dodum", sans-serif; color: #9c7055; line-height: 35px;}

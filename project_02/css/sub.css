@@ -1,0 +1,75 @@
+* {margin: 0; padding: 0;}
+li {list-style: none;}
+a {text-decoration: none; color: black;}
+html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
+/* fontSize : 1rem = 12px, 0.75rem = 16px, 2rem = 24px */
+
+.nav_pc,
+.menu_pc {display: none;}
+.header {position: fixed; top: 0; left: 0;}
+
+.nav {padding-top: 20px; text-align: center; color: #999; margin: 10px;}
+.nav a {color: #475775;}
+.nav_moile {
+    color: #999;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 2rem;
+}
+.nav_mobile .check {color: #475775;}
+.title, .highlight {color: #475775; font-size: 1.5rem;}
+.wrap {padding: 20px;}
+
+.banner {width: 100%;
+    /* height: auto; overflow: hidden; */
+}
+.banner img {width: 100%;}
+.txt p {text-indent: 10px;}
+.txt .research {
+    background-color: #ddd; padding: 20px; margin: 10px auto;
+    line-height: 20px;
+}
+.txt .leader {
+    text-align: right; font-size: 1.5rem; color: #475775; margin-top: 20px;
+}
+
+/* pc */
+@media all and (min-width: 1025px) {
+    html {font-size: 16px;}
+    .wrap {
+        width: 1070px; margin: 0 auto;
+        display: flex; gap: 10px;
+        padding-top: 80px;
+    }
+
+    .btn_top {
+        width: 50px; height: 50px;
+        line-height: 50px; text-align: center; cursor: pointer;
+        background-color: #475775; border: 1px solid white;
+        position: fixed; bottom: 30px; right: 30px;
+        z-index: 10;
+    }
+    .btn_top a {color: white;}
+
+    .menu_pc {display: block; margin-right: 10px;}
+    .content_wrap {width: 890px; }
+    .menu_pc .top_menu {
+        width: 170px; height: 60px; line-height: 60px;
+        font-size: 1.25rem; text-align: center;
+        background-color: #475775; color: white;
+    }
+    .menu_pc .bottom_menu {
+        width: 170px; height: 170px;
+        padding: 10px;
+        border: 1px solid #475775; box-sizing: border-box;
+    }
+    .menu_pc .bottom_menu p {
+        height: 30px; line-height: 30px;
+        color: #999; text-align: center; cursor: pointer;
+    }
+    .menu_pc .bottom_menu p:first-child {color: #475775;}
+    .nav {color: #999; text-align: left; padding-top: 0;}
+    .nav_pc {display: block;}
+    .nav_mobile {display: none;}
+    
+}

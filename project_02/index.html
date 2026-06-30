@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0, user-scalable=no">
+    <title>한화문물연구원</title>
+
+    <!-- 폰트 및 스타일시트 -->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/footer.css">
+
+    <!-- 스크립트 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.3/jquery.scrollTo.min.js"></script>
+    <script src="./js/main.js"></script>
+</head>
+
+<body>
+    <header class="header_outer">
+        <header class="header">
+            <div class="logo">
+                <img src="./img/hanhwa_logo_white.png" alt="hanhwa_logo">
+            </div>
+            <!-- logo -->
+            <input type="checkbox" name="gnb_m_btn" id="gnb_m_btn">
+            <div class="gnb_mobile">
+                <p class="search"><i class="fa-solid fa-magnifying-glass"></i></p>
+                <label for="gnb_m_btn" class="gnb_m_btn_open"><i class="fa-solid fa-bars"></i></label>
+                <label for="gnb_m_btn" class="gnb_m_btn_close"><i class="fa-solid fa-xmark"></i></label>
+
+                <input type="radio" name="gnb_m_menu" id="gnb_m_menu01" checked>
+                <input type="radio" name="gnb_m_menu" id="gnb_m_menu02">
+                <input type="radio" name="gnb_m_menu" id="gnb_m_menu03">
+                <input type="radio" name="gnb_m_menu" id="gnb_m_menu04">
+                <input type="radio" name="gnb_m_menu" id="gnb_m_menu05">
+                <div class="gnb_mobile_box">
+                    <div class="logo">
+                        <img src="./img/hanhwa_logo_black.png" alt="hanhwa_logo">
+                    </div>
+                    <div class="gnb_menu">
+                        <label for="gnb_m_menu01" class="gnb_m_menu01">연구원소개</label>
+                        <label for="gnb_m_menu02" class="gnb_m_menu02">조사현황</label>
+                        <label for="gnb_m_menu03" class="gnb_m_menu03">조사의뢰</label>
+                        <label for="gnb_m_menu04" class="gnb_m_menu04">커뮤니티</label>
+                        <label for="gnb_m_menu05" class="gnb_m_menu05">자료실</label>
+                    </div>
+
+                    <div class="gnb_menu_wrap">
+                        <div class="menu_box menu_box01">
+                            <p><a href="./sub/index.html">인사말</a></p>
+                            <p><a href="#!">연혁</a></p>
+                            <p><a href="#!">CI 소개</a></p> 
+                            <p><a href="#!">조직도</a></p>
+                            <p><a href="#!">오시는 길</a></p>
+                        </div>
+                        <div class="menu_box menu_box02">
+                            <p><a href="#!">지표조사</a></p>
+                            <p><a href="#!">발굴조사</a></p>
+                        </div>
+                        <div class="menu_box menu_box03">
+                            <p><a href="#!">지표조사</a></p>
+                            <p><a href="#!">참관조사</a></p>
+                            <p><a href="#!">표본·시굴조사</a></p>
+                            <p><a href="#!">발굴조사</a></p>
+                            <p><a href="#!">조사경비계산</a></p>
+                        </div>
+                        <div class="menu_box menu_box04">
+                            <p><a href="#!">공지사항</a></p>
+                            <p><a href="#!">자유게시판</a></p>
+                            <p><a href="#!">언론보도</a></p>
+                            <p><a href="#!">현장공개</a></p>
+                            <p><a href="#!">관련사이트</a></p>
+                        </div>
+                        <div class="menu_box menu_box05">
+                            <p><a href="#!">발간보고서</a></p>
+                            <p><a href="#!">유적 갤러리</a></p>
+                            <p><a href="#!">자료검색</a></p>
+                            <p><a href="#!">자료요청</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>            <!-- gnb_mobile -->
+
+            <nav class="top_gnb_pc">
+                <ul>
+                    <li><a href="./index.html">HOME</a></li>
+                    <li><a href="#!">LOGIN</a></li>
+                    <li><a href="#!">JOIN</a></li>
+                    <li><a href="https://only.webhard.co.kr/" target="_blank">웹하드</a></li>
+                </ul>
+            </nav>            <!-- top_gnb_pc -->
+            <nav class="gnb_pc">
+                <ul>
+                    <li>연구원 소개</li>
+                    <li>조사현황</li>
+                    <li>조사의뢰</li>
+                    <li>커뮤니티</li>
+                    <li>자료실</li>
+                </ul>
+            </nav>            <!-- gnb pc -->
+            <div class="menu_box_pc">
+                <ul>
+                    <li><a href="./sub/index.html">인사말</a></li>
+                    <li><a href="#!">연혁</a></li>
+                    <li><a href="#!">CI 소개</a></li>
+                    <li><a href="#!">조직도</a></li>
+                    <li><a href="#!">오시는 길</a></li>
+                </ul> 
+                <ul>
+                    <li><a href="#!">지표조사</a></li>
+                    <li><a href="#!">발굴조사</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#!">지표조사</a></li>
+                    <li><a href="#!">참관조사</a></li>
+                    <li><a href="#!">표본·시굴</a></li>
+                    <li><a href="#!">발굴조사</a></li>
+                    <li><a href="#!">경비계산</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#!">공지사항</a></li>
+                    <li><a href="#!">자유게시판</a></li>
+                    <li><a href="#!">언론보도</a></li>
+                    <li><a href="#!">현장공개</a></li>
+                    <li><a href="#!">관련사이트</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#!">발간보고서</a></li>
+                    <li><a href="#!">유적 갤러리</a></li>
+                    <li><a href="#!">자료검색</a></li>
+                    <li><a href="#!">자료요청</a></li>
+                </ul>
+            </div>
+            <!-- menu box -->
+            <div class="search_box">
+                <input type="text" name="search">
+                <span><i class="fa-solid fa-magnifying-glass"></i></span>
+            </div>            <!-- search_box -->
+        </header>        <!-- header -->
+    </header>    <!-- header_outer -->
+
+    <article class="slides header_bg" id="header">
+        <ul class="slide-wrap">
+            <li class="slide">
+                <a href="#">
+                    <span>김해 유하리유적 전경</span>
+                    <img src="./img/visual01_kimhae_1900.jpg" alt="김해 유하리유적 전경">
+                </a>
+            </li>            <!-- mainvisual1 -->
+            <li class="slide">
+                <a href="#">
+                    <span>하동 남산리고분군Ⅱ 1호분 전경</span>
+                    <img src="./img/visual02_hadong_1900.jpg" alt="하동 남산리고분군Ⅱ 1호분 전경">
+                </a>
+            </li>            <!-- mainvisual2 -->
+            <li class="slide">
+                <a href="#">
+                    <span>함안 오곡리 고분군 13호분</span>
+                    <img src="./img/visual03_haman_1900.jpg" alt="함안 오곡리 고분군 13호분">
+                </a>
+            </li>            <!-- mainvisual3 -->
+        </ul>
+    </article>    <!-- main visual -->
+
+
+    <div class="btn_top"><a>↑</a></div>
+
+
+    <div class="wrap">
+        <p class="sub_title">문화재 조사절차</p>
+        <section class="progress">
+            <div class="progress_box">
+                <a href="#!">
+                    <div class="progress_img">
+                        <img src="./img/process_icon01_off.png" alt="process_icon01">
+                    </div>
+                    <div class="progress_txt">
+                        <p class="tit">지표조사</p>
+                        <p class="sub_tit">건설 공사 시행자의 의뢰로 해당 건설공사 지역에 문화유산 매장·분포 사전 조사</p>
+                    </div>
+                </a>
+            </div>            <!-- progress_box 01 지표조사 -->
+
+            <div class="progress_box">
+                <a href="#!">
+                    <div class="progress_img">
+                        <img src="./img/process_icon02_off.png" alt="process_icon02">
+                    </div>
+                    <div class="progress_txt">
+                        <p class="tit">참관조사</p>
+                        <p class="sub_tit">관련전문가가 공사현장에 참관하여 매장유산의 존재 여부를 확인하는 조사</p>
+                    </div>
+                </a>
+            </div>            <!-- progress_box 02 참관조사 -->
+
+            <div class="progress_box">
+                <a href="#!">
+                    <div class="progress_img">
+                        <img src="./img/process_icon03_off.png" alt="process_icon03">
+                    </div>
+                    <div class="progress_txt">
+                        <p class="tit">표본·시굴조사</p>
+                        <p class="sub_tit">건설공사 면적 중, 일부에서 매장유산 유존 여부를 확인하는 조사</p>
+                    </div>
+                </a>
+            </div>            <!-- progress_box 03 표본·시굴조사 -->
+            
+            <div class="progress_box">
+                <a href="#!">
+                    <div class="progress_img">
+                        <img src="./img/process_icon04_off.png" alt="process_icon04">
+                    </div>
+                    <div class="progress_txt">
+                        <p class="tit">발굴조사</p>
+                        <p class="sub_tit">건설공사 면적 중, 매장유산 유존지역 면적 전체에 대한 매장유산 조사</p>
+                    </div>
+                </a>
+            </div>            <!-- progress_box 04 발굴조사 -->
+        </section>
+
+        <section class="banner_metapo">
+            <div class="banner">
+                <a href="./sub/index.html">
+                    <div>
+                        <picture>
+                            <source media="(max-width: 600px)" srcset="./img/banner_mobile.jpg">
+                            <source media="(max-width: 768px)" srcset="./img/banner_tablet.jpg">
+                            <img src="./img/banner_pc.jpg" alt="banner" style="width: 100%;">
+                        </picture>
+                    </div>
+                </a>
+            </div>            <!-- banner -->
+            <div class="metapo">
+                <div class="metapo_box">
+                    <a href="#!">
+                        <p class="metapo_txt">발간보고서 <br> <br> <span class="metapo_more">+ 더보기</span></p>
+                        <div class="metapo_img">
+                            <img src="./img/metapo_icon01_off.png" alt="metapo_icon01">
+                        </div>
+                    </a>
+                </div>                <!-- metapo_box 01 발간보고서 -->
+                <div class="metapo_box">
+                    <a href="#!">
+                        <p class="metapo_txt">자료요청 <br> <br>
+                            <span class="metapo_more">+ 더보기</span>
+                        </p>
+                        <div class="metapo_img">
+                            <img src="./img/metapo_icon02_off.png" alt="metapo_icon02">
+                        </div>
+                    </a>
+                </div>                <!-- metapo_box 02 자료요청 -->
+                <div class="metapo_box">
+                    <a href="#!">
+                        <p class="metapo_txt">
+                            조사의뢰 <br> <br>
+                            <span class="metapo_more">+ 더보기</span>
+                        </p>
+                        <div class="metapo_img">
+                            <img src="./img/metapo_icon03_off.png" alt="metapo_icon03">
+                        </div>
+                    </a>
+                </div>                <!-- metapo_box 03 조사의뢰 -->
+                <div class="metapo_box">
+                    <a href="#!">
+                        <p class="metapo_txt">
+                            조사경비계산  <br> <br>
+                            <span class="metapo_more">+ 더보기</span>
+                        </p>
+                        <div class="metapo_img">
+                            <img src="./img/metapo_icon04_off.png" alt="metapo_icon04">
+                        </div>
+                    </a>
+                </div>                <!-- metapo_box 04 조사경비계산 -->
+            </div>            <!-- metapo -->
+        </section>        <!-- banner_metapo -->
+
+        
+        <section class="open">
+            <p class="sub_title">현장공개</p>
+            <p class="more">+ 더보기</p>
+        
+            <article class="open_box">
+                <div class="open_img">
+                    <div class="open_img_btn" data-index="0"><img src="./img/open_01.jpg" alt="open01"></div>
+                    <div class="open_img_btn" data-index="1"><img src="./img/open_02.jpg" alt="open02"></div>
+                    <div class="open_img_btn" data-index="2"><img src="./img/open_03.jpg" alt="open03"></div>
+                    <div class="open_img_btn" data-index="3"><img src="./img/open_04.jpg" alt="open04"></div>
+                </div>
+                
+                <div class="open_img_sheet">
+                    <div class="sheet active"><img src="./img/open_01.jpg" alt="img01"></div>
+                    <div class="sheet"><img src="./img/open_02.jpg" alt="img02"></div>
+                    <div class="sheet"><img src="./img/open_03.jpg" alt="img03"></div>
+                    <div class="sheet"><img src="./img/open_04.jpg" alt="img04"></div>
+                </div>
+            </article>
+        </section>        <!-- open -->
+
+        <section class="notice_news_mobile">
+            <input type="radio" name="tab" id="tab01" checked>
+            <input type="radio" name="tab" id="tab02">
+            <div class="notice_news_tab">
+                <label for="tab01">공지사항</label>
+                <label for="tab02">언론보도</label>
+            </div>
+            <div class="notice_news_sheet">
+                <div class="notice_sheet tab_sheet">
+                    <ul>
+                        <li>
+                            <a href="#!">
+                                <p class="notice_news_txt">창원국가산업단지 및 창원 성산패총 발굴 50주년 기념 학술대회 안내</p>
+                                <span class="notice_news_date">2024.09.03</span>
+                            </a>
+                        </li>                        <!-- notice list 01 -->
+                        <li>
+                            <a href="#!">
+                                <p class="notice_news_txt">가야고분군 세계유산 등재 1주년 국제학술대회-가야고분군의 세계유산적 가치(세계유산의 보존과 활용)</p>
+                                <span class="notice_news_date">2024.08.26</span>
+                            </a>
+                        </li>                        <!-- notice list 02 -->
+                        <li>
+                            <a href="#!">
+                                <p class="notice_news_txt">(재)한화문물연구원 채용공고</p>
+                                <span class="notice_news_date">2024.06.03</span>
+                            </a>
+                        </li>                        <!-- notice list 03 -->
+                        <li>
+                            <a href="#!">
+                                <p class="notice_news_txt">경산 임당동 267-1번지 근린생활시설 신축부지 내 국비지원 발굴조사 현장설명회 개최 안내</p>
+                                <span class="notice_news_date">2024.03.11</span>
+                            </a>
+                        </li>                        <!-- notice list 04 -->
+                        <li>
+                            <a href="#!">
+                                <p class="notice_news_txt">남원 향교동(69-2번지) 구암지구 도시개발사업부지 내 발굴조사 현장설명회 개최 안내</p>
+                                <span class="notice_news_date">2024.02.01</span>
+                            </a>
+                        </li>                        <!-- notice list 05 -->
+                        <li class="notice_news_more"><a href="#!">+ 더보기</a></li>
+                    </ul>
+                </div>                <!-- notice list -->
+                <div class="news_sheet tab_sheet">
+                    <ul>
+                        <li>
+                            <a href="#!">
+                                <p class="notice_news_txt">
+                                    [KBS]가야사 보고 ‘거창 무릉리 고분군’ 경상남도 문화재지정
+                                </p>
+                                <span class="notice_news_date">2022.01.10</span>
+                            </a>
+                        </li>                        <!-- news list 01 -->
+                        <li>
+                            <a href="#!">
+                                <p class="notice_news_txt">
+                                    [강원일보]370여년전 강원도 최초 사액서원 문암서원 터 확인
+                                </p>
+                                <span class="notice_news_date">2022.01.10</span>
+                            </a>
+                        </li>                        <!-- news list 02 -->
+                        <li>
+                            <a href="#!">
+                                <p class="notice_news_txt">
+                                    [뉴스경남]김해 ‘유하동유적 국가사적 지정’학술대회 열려
+                                </p>
+                                <span class="notice_news_date">2021.01.19</span>
+                            </a>
+                        </li>                        <!-- news list 03 -->
+                        <li>
+                            <a href="#!">
+                                <p class="notice_news_txt">
+                                    [경남도민신문]김해 유하동 가야 유적 사적 지정 학술대회 10일 개최
+                                </p>                                
+                                <span class="notice_news_date">2021.01.19</span>
+                            </a>
+                        </li>                        <!-- news list 04 -->
+                        <li>
+                            <a href="#!">
+                                <p class="notice_news_txt">
+                                    [경남일보]김해 유하동유적 국가사적 지정 위한 학술대회 개최
+                                </p>
+                                <span class="notice_news_date">2021.01.19</span>
+                            </a>
+                        </li>                        <!-- news list 05 -->
+                    </ul>
+                    <li class="notice_news_more"><a href="#!">+ 더보기</a></li>
+                </div>                <!-- news_list_mobile -->
+            </div>        <!-- notice_news_mobile -->
+        </section>
+
+
+
+        <section class="notice_news_pc">
+            <div class="notice_news_box">
+                <span class="sub_title">공지사항</span>
+                <span class="more">+ 더보기</span>
+                <div class="notice_news_list">
+                    <ul>
+                        <li>
+                            <a href="#!">
+                                <p class="notice_news_txt">창원국가산업단지 및 창원 성산패총 발굴 50주년 기념 학술대회 안내</p>
+                                <span class="notice_news_date">2024.09.03</span>
+                            </a>
+                        </li>                        <!-- notice list 01 -->
+                        <li>
+                            <a href="#!">
+                                <p class="notice_news_txt">가야고분군 세계유산 등재 1주년 국제학술대회-가야고분군의 세계유산적 가치(세계유산의 보존과 활용)</p>
+                                <span class="notice_news_date">2024.08.26</span>
+                            </a>
+                        </li>                        <!-- notice list 02 -->
+                        <li>
+                            <a href="#!">
+                                <p class="notice_news_txt">(재)한화문물연구원 채용공고</p>
+                                <span class="notice_news_date">2024.06.03</span>
+                            </a>
+                        </li>                        <!-- notice list 03 -->
+                        <li>
+                            <a href="#!">
+                                <p class="notice_news_txt">경산 임당동 267-1번지 근린생활시설 신축부지 내 국비지원 발굴조사 현장설명회 개최 안내</p>
+                                <span class="notice_news_date">2024.03.11</span>
+                            </a>
+                        </li>                        <!-- notice list 04 -->
+                        <li>
+                            <a href="#!">
+                                <p class="notice_news_txt">
+                                    남원 향교동(69-2번지) 구암지구 도시개발사업부지 내 발굴조사 현장설명회 개최 안내
+                                </p>
+                                <span class="notice_news_date">2024.02.01</span>
+                            </a>
+                        </li>                        <!-- notice list 05 -->
+                    </ul>                
+                </div>                <!-- noticeTxt -->
+            </div>                <!-- noticeBox -->
+
+            <div class="notice_news_box">
+                <span class="sub_title">언론보도</span>
+                <span  class="more">+ 더보기</span>
+                <div class="notice_news_list">
+                    <ul>
+                        <li>
+                            <a href="#!">
+                                <p class="notice_news_txt">
+                                    [KBS]가야사 보고 ‘거창 무릉리 고분군’ 경상남도 문화재지정
+                                </p>
+                                <span class="notice_news_date">2022.01.10</span>
+                            </a>
+                        </li>                        <!-- news list 01 -->
+                        <li>
+                            <a href="#!">
+                                <p class="notice_news_txt">
+                                    [강원일보]370여년전 강원도 최초 사액서원 문암서원 터 확인
+                                </p>
+                                <span class="notice_news_date">2022.01.10</span>
+                            </a>
+                        </li>                        <!-- news list 02 -->
+                        <li>
+                            <a href="#!">
+                                <p class="notice_news_txt">
+                                    [뉴스경남]김해 ‘유하동유적 국가사적 지정’학술대회 열려
+                                </p>
+                                <span class="notice_news_date">2021.01.19</span>
+                            </a>
+                        </li>                        <!-- news list 03 -->
+                        <li>
+                            <a href="#!">
+                                <p class="notice_news_txt">
+                                    [경남도민신문]김해 유하동 가야 유적 사적 지정 학술대회 10일 개최
+                                </p>                                
+                                <span class="notice_news_date">2021.01.19</span>
+                            </a>
+                        </li>                        <!-- news list 04 -->
+                        <li>
+                            <a href="#!">
+                                <p class="notice_news_txt">
+                                    [경남일보]김해 유하동유적 국가사적 지정 위한 학술대회 개최
+                                </p>
+                                <span class="notice_news_date">2021.01.19</span>
+                            </a>
+                        </li>                        <!-- news list 05 -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+    
+        <p class="sub_title">유적 갤러리</p>
+        <p class="more">+ 더보기</p>
+        <section class="ruins">
+            <div class="ruins_box">
+                <div class="ruins_img">
+                    <img src="./img/ruins01.jpg" alt="ruins_gallery01">
+                </div>
+                <p class="runis_txt">거창 창포원에서 바라본 거창 무릉리 고분군 원경</p>
+            </div>
+            <div class="ruins_box">
+                <div class="ruins_img">
+                    <img src="./img/ruins02.jpg" alt="ruins_gallery02">
+                </div>
+                <p class="runis_txt">거창 무릉리고분군 Ⅱ지구 M49호분 조사 후 전경</p>
+            </div>
+            <div class="ruins_box">
+                <div class="ruins_img">
+                    <img src="./img/ruins03.jpg" alt="ruins_gallery03">
+                </div>
+                <p class="runis_txt">거창 무릉리고분군 Ⅱ지구 M49호분 15호 석곽묘 출토 유물</p>
+            </div>
+            <div class="ruins_box">
+                <div class="ruins_img">
+                    <img src="./img/ruins04.jpg" alt="ruins_gallery04">
+                </div>
+                <p class="runis_txt">평해읍성 외벽부 세부사진(울진군 평해리 899-4번지)</p>
+            </div>
+        </section>        <!-- ruins gallery -->
+
+
+        <div class="link_site_mobile">
+            <div class="link_site">
+                <div>
+                    <a href="https://www.khs.go.kr/" target="_blank">
+                        국가유산청
+                    </a>
+                </div>
+                <div>
+                    <a href="https://kohis.e-minwon.go.kr:9443/" target="_blank">
+                        국가유산청 <p>고객지원</p>
+                    </a>
+                </div>
+                <div>
+                    <a href="https://www.e-minwon.go.kr:8443/webs/main.jsp" target="_blank">
+                        국가유산청 <p>협업포털</p>
+                    </a>
+                </div>
+                <div>
+                    <a href="https://www.kaah.kr/" target="_blank">
+                        국가유산청 <p>공간정보</p>
+                    </a>
+                </div>
+                <div>
+                    <a href="https://www.kaah.kr/" target="_blank">
+                        한국문화유산협회
+                    </a>
+                </div>
+                <div>
+                    <a href="https://www.nrich.go.kr/" target="_blank">
+                        국립문화유산연구원
+                    </a>
+                </div>
+            </div>
+            <div class="site_more"><a href="#!">관련사이트 <br> 더보기</a></div>
+        </div>        <!-- link site -->
+
+        <div class="link_site_pc">
+            <a href="https://www.khs.go.kr/" target="_blank">
+                국가유산청
+            </a>
+             · 
+            <a href="https://kohis.e-minwon.go.kr:9443/" target="_blank">
+                국가유산청 <span>고객지원센터</span>
+            </a>
+            · 
+            <a href="https://www.e-minwon.go.kr:8443/webs/main.jsp" target="_blank">
+                국가유산청 <span>협업포털</span>
+            </a>
+            · 
+            <a href="https://www.kaah.kr/" target="_blank">
+                국가유산청 <span>공간정보서비스</span>
+            </a>
+            · 
+            <a href="https://www.kaah.kr/" target="_blank">
+                한국문화유산협회
+            </a>
+            · 
+            <a href="https://www.nrich.go.kr/" target="_blank">
+                국립문화유산연구원
+            </a>
+            <span class="site_more"><a href="#!">관련사이트 더보기</a></span>
+        </div>        <!-- link site -->
+
+        <div class="navi">
+            <span><a href="./sub/index.html">회사소개</a></span>
+            <span><a href="#!">오시는 길</a></span>
+            <span><a href="#!">이용약관</a></span>
+            <span><a href="#!">개인보호정책</a></span>
+        </div>        <!-- navi -->
+    </div>    <!-- wrap -->
+
+    <footer class="footer_outer">
+        <footer class="footer">
+            <div class="logo">
+                <img src="./img/hanhwa_logo_footer.png" alt="hanhwa_logo">
+            </div>
+            <p>
+                (50865) 경남 김해시 진영읍 여래로20번길 10 한화문물연구원
+            </p>
+            <p>
+                전화번호 : 055- 342-3288, 3286(내선 1000)
+            </p>
+            <p>
+                팩스 : 055-342-3287
+            </p>
+            <p>Copyright © Foundation of Hanhwa Cultural Heritage Institute. ALL RIGHTS RESERVED.</p>
+            <span class="facebook">
+                <a href="https://www.facebook.com/p/%ED%95%9C%ED%99%94%EB%AC%B8%EB%AC%BC%EC%97%B0%EA%B5%AC%EC%9B%90-100079640027359/?locale=gl_ES&_rdr"><i class="fa-brands fa-facebook"></i></a>
+            </span>
+        </footer>        <!-- footer -->
+    </footer>    <!-- footer outer -->
+</body>
+</html>

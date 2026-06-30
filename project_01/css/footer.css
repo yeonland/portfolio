@@ -1,0 +1,28 @@
+* {margin: 0; padding: 0;}
+a {text-decoration: none; color: black;}
+
+.footer_outer {height: 310px; background-color: #575757;}
+.footer_outer .footer {width: 1245px; height: 220px; margin: 0 auto; padding-top: 20px;}
+.footer_outer .footer p {font-size: 16px; color: #ffc1cc; font-family: "Gowun Dodum", sans-serif;}
+.footer_outer .footer .footer_section span, .footer_outer .footer .footer_brand span {color: #ffc1cc; font-family: "Gowun Dodum", sans-serif; font-size: 36px;}
+.footer_outer .footer .footer_logo .personal {margin-top: 10px; padding: 0 7px; border: 1px solid #ffc1cc; font-family: "Gowun Dodum", sans-serif; color: #ffc1cc; border-radius: 16px;}        
+.footer_outer .footer .footer_logo span a {color: #ffc1cc;}
+
+.footer_outer .footer .footer_logo .info {background-color: #ffc1cc;}
+.footer_outer .footer .footer_logo .info a {color: #575757;}
+
+.footer_outer .footer .footer_logo {width: 300px; height: 220px; float: left; padding-top: 10px; box-sizing: border-box;}
+.footer_outer .footer .footer_logo .logo {float: left; margin: 50px 20px 0 20px;}
+.footer_outer .footer .footer_logo .brand {float: left; margin: 50px 20px 0 20px;}
+.footer_outer .footer .footer_logo .brand .tit {font-size: 36px;}
+
+
+
+.footer_outer .footer .footer_section {width: 195px; height: 220px; float: left;}
+.footer_outer .footer .footer_section .call {font-size: 24px; font-style: italic; margin: 6px 0;}
+.footer_outer .footer .footer_brand {width: 405px; height: 220px; float: left; margin-left: 90px;}
+.footer_outer .footer .footer_brand a {color: #ffc1cc; text-decoration: underline;}
+.footer_outer .footer .footer_brand a:hover {color: #feffed;}
+
+/* .footer_outer .footer div {} */
+.footer_outer .footer .copy {text-align: center; line-height: 60px;}

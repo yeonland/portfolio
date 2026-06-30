@@ -1,0 +1,198 @@
+* {margin: 0; padding: 0;}
+li {list-style: none;}
+a {text-decoration: none; color: black;}
+
+.top_gnb_pc,
+.gnb_pc,
+.menu_box_pc {display: none;}
+
+.header_outer {position: relative;}
+.header {
+    position: absolute; top: 0; left: 0; z-index: 1; width: 100%;
+}
+.fixed {position: fixed; top: 0; left: 0;}
+.header .logo {width: 25%; margin-top: 5px;}
+.header .logo img {width: 100%;}
+.search {
+    position: absolute; top: 0px; right: 0px;
+    width: 40px; height: 40px;
+    text-align: center; line-height: 40px;
+    font-size: 1.5rem; z-index: 2; color: #999;
+}
+/* menu hamburger */
+#gnb_m_btn {display: none;}
+#gnb_m_btn ~ .gnb_mobile .gnb_mobile_box {display: none;}
+#gnb_m_btn:checked ~ .gnb_mobile .gnb_mobile_box {display: block;}
+
+#gnb_m_btn ~ .gnb_mobile .gnb_m_btn_open {display: block;}
+#gnb_m_btn ~ .gnb_mobile .gnb_m_btn_close {display: none;}
+#gnb_m_btn:checked ~ .gnb_mobile .gnb_m_btn_open {display: none;}
+#gnb_m_btn:checked ~ .gnb_mobile .gnb_m_btn_close {display: block;}
+#gnb_m_btn:checked ~ .gnb_mobile .search {color: #475775;}
+/* menu hamburger radio button */
+#gnb_m_menu01, #gnb_m_menu02,
+#gnb_m_menu03, #gnb_m_menu04,
+#gnb_m_menu05 {display: none;}
+
+#gnb_m_menu01:checked ~ .gnb_mobile_box .gnb_menu_wrap .menu_box01 {display: block;}
+#gnb_m_menu01:checked ~ .gnb_mobile_box .gnb_menu .gnb_m_menu01 {
+    background-color: #6987D6; color: white;
+}
+#gnb_m_menu02:checked ~ .gnb_mobile_box .gnb_menu_wrap .menu_box02 {display: block;}
+#gnb_m_menu02:checked ~ .gnb_mobile_box .gnb_menu .gnb_m_menu02 {
+    background-color: #6987D6; color: white;
+}
+#gnb_m_menu03:checked ~ .gnb_mobile_box .gnb_menu_wrap .menu_box03 {display: block;}
+#gnb_m_menu03:checked ~ .gnb_mobile_box .gnb_menu .gnb_m_menu03 {
+    background-color: #6987D6; color: white;
+}
+#gnb_m_menu04:checked ~ .gnb_mobile_box .gnb_menu_wrap .menu_box04 {display: block;}
+#gnb_m_menu04:checked ~ .gnb_mobile_box .gnb_menu .gnb_m_menu04 {
+    background-color: #6987D6; color: white;
+}
+#gnb_m_menu05:checked ~ .gnb_mobile_box .gnb_menu_wrap .menu_box05 {display: block;}
+#gnb_m_menu05:checked ~ .gnb_mobile_box .gnb_menu .gnb_m_menu05 {
+    background-color: #6987D6; color: white;
+}
+.header .gnb_mobile .search {    
+    position: absolute; top: 0; right: 40px;
+    width: 40px; height: 40px; text-align: center;
+    color: #999; font-size: 2rem;
+}
+
+.header .gnb_mobile .gnb_m_btn_open,
+.header .gnb_mobile .gnb_m_btn_close{
+    position: absolute; top: 0px; right: 0px;
+    width: 40px; height: 40px;
+    text-align: center; line-height: 40px;
+    font-size: 2rem; z-index: 2;
+}
+.header .gnb_mobile .gnb_m_btn_open {color: #999;}
+.header .gnb_mobile .gnb_m_btn_close {color: #475775;}
+.header .gnb_mobile .gnb_mobile_box {
+    width: 100%; height: 100vh; background-color: white;
+    position: absolute; top: 0; right: 0;
+    z-index: 1;
+    /* display: none; */
+}
+.header .gnb_mobile .gnb_mobile_box .logo {width: 25%; margin: 5px 0;}
+.header .gnb_mobile .gnb_mobile_box .logo img {width: 100%;}
+.header .gnb_mobile .gnb_mobile_box .gnb_menu {float: left; width: 50%; font-size: 1.5rem;}
+.header .gnb_mobile .gnb_mobile_box .gnb_menu label {
+    width: 100%; height: 40px;
+    border-top: 1px solid #475775;
+    box-sizing: border-box;
+    float: left;
+    text-align: center; line-height: 40px;
+}
+.header .gnb_mobile .gnb_mobile_box .gnb_menu_wrap .menu_box {
+    display: none;
+    border-top: 1px solid #475775;
+}
+.header .gnb_mobile .gnb_mobile_box .gnb_menu_wrap .menu_box p {
+    height: 40px; line-height: 40px; text-align: center;
+    font-size: 1.5rem;
+    /* border-top: 1px solid #475775; box-sizing: border-box; */
+}
+.header .gnb_mobile .gnb_mobile_box .gnb_menu_wrap .menu_box p a {color: #666;}
+.header .gnb_mobile .gnb_mobile_box .gnb_menu_wrap {float: left; width: 50%;}
+.pc_menu_box, .search_box {display: none;}
+
+
+
+/******************* Tablet *******************/
+@media all and (min-width: 601px) and (max-width: 1024px) {
+    .header .logo {width: 25%;}
+
+    /* menu width */
+    .header .gnb_mobile .gnb_mobile_box {width: 50%;}
+    .header .gnb_mobile .gnb_mobile_box .logo {height: 40px;}
+    .header .gnb_mobile .gnb_mobile_box .logo img {display: none;}
+    .gnb_menu {float: left; width: 25%; font-size: 1.5rem;}
+    .header .gnb_mobile .search {
+        font-size: 3rem;
+        position: absolute; top: 10px; right: 60px;
+    }
+    .header .gnb_mobile .gnb_m_btn_open,
+    .header .gnb_mobile .gnb_m_btn_close {
+        font-size: 3rem;
+        position: absolute; top: 10px; right: 10px;
+    }
+    
+}
+
+/******************* PC *******************/
+@media all and (min-width: 1025px) {
+    /* header */
+    .header_outer {position: relative;}
+    .header {
+        position: absolute; top: 0; left: 50%;
+        margin-left: -535px; width: 1070px;
+    }
+    .header .logo {width: 260px; height: 80px; float: left;}
+    .header .logo image {width: 100%;}
+
+    .gnb_mobile {display: none;}
+    
+    /* top gnb pc, gnb pc */
+    .top_gnb_pc, .gnb_pc {display: block;}
+
+    /* top gnb */
+    .top_gnb_pc ul {position: absolute; top: 0; right: 0;}
+    .top_gnb_pc ul li {
+        display: inline-block; padding: 0 10px;
+        text-align: center;
+    }    
+    .top_gnb_pc ul li a {color: #999;}
+
+    /* gnb pc */
+    .gnb_pc {float: left; position: relative;} 
+    .gnb_pc ul {width: 440px; margin-left: 60px;}
+    .gnb_pc ul li {
+        display: inline-block; color: #999; width: 80px;
+        text-align: center; margin: 20px 2px; padding: 10px 0;
+    }
+    .gnb_pc ul li:hover {
+        cursor: pointer; color: #6987D6;
+        border-bottom: 1px solid #475775;
+    }
+    .gnb_pc ul li:hover ~ .search_box {border: 1px solid #6987D6;}
+    .gnb_pc ul li:hover ~ .search_box span {color: #6987D6;}
+
+    /* menu box pc */
+    .menu_box_pc {
+        display: block;
+        width: 100%; height: 150px;
+        position: absolute; top: 80px;  
+        background-color: white; border-top: 1px solid #475775;
+        z-index: 10; opacity: 0;
+        transition: opacity 2s ease;
+    }
+    .menu_box_pc ul {
+        float: left;
+        width: 80px; margin: 0 5px;
+    }
+    .menu_box_pc ul:first-child {margin-left: 320px;}
+    .menu_box_pc ul li {text-align: center; height: 30px; line-height: 30px;}
+    .menu_box_pc ul li a {color: #999;}
+    .header_outer .header .gnb_pc:hover .header_outer {height: 80px; background-color: white;}
+    .gnb_pc:hover ~ .menu_box_pc {display: block; opacity: 1;}
+
+
+    /* search box */
+    .search_box {display: block;}
+    .search_box {
+        width: 260px; height: 30px;
+        position: absolute; top: 30px; right: 0;
+        border: 1px solid #999;
+    }
+    .search_box input {
+        font-size: 16px; width: 200px;
+        margin: 3px; font-family: "IBM Plex Sans KR", sans-serif;
+        border: none; background: transparent;
+    }
+    .search_box span {
+        float: right; padding-right: 10px;
+        color: #999; font-size: 20px;
+    }
+}

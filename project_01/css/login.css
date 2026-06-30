@@ -1,0 +1,31 @@
+* {margin: 0; padding: 0;}
+
+.login_box{
+    width: 330px; height: 360px;
+    padding: 60px;
+    margin: 160px auto;    
+    background-color: #feffed; border-radius: 15px; border: 1px solid #9c7055;
+}
+.login_box h2{
+    font-family: "Gowun Dodum", sans-serif; font-size: 36px; color: #9c7055;
+    margin-bottom: 40px;
+}
+
+.login_box .input{
+    width: 310px; height: 50px;
+    padding: 0 10px; margin-bottom: 16px;
+    border-radius: 15px; color: #9c7055;
+    font-family: "Gowun Dodum", sans-serif; font-size: 16px;
+    border: 1px solid#9c7055;
+}
+
+.login_box label span {font-family: "Gowun Dodum", sans-serif; padding-left: 5px;}
+.login_box .join {font-family: "Gowun Dodum", sans-serif; float: right;}
+.login_box .join a:hover {color: #ffc1cc;}
+.login_box .login {
+    color: #feffed;
+    font-size: 16px;
+    background-color: #9c7055; padding: 10px 100px; border-radius: 20px;
+    margin-top: 50px; margin-left: 30px; border: none; cursor: pointer;
+    
+}
