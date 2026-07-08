@@ -1,4 +1,4 @@
-* {margin: 0; padding: 0;}
+* {margin: 0; padding: 0; border: 1px #ff0000;}
 li {list-style: none;}
 a {text-decoration: none; color: black;}
 
@@ -6,11 +6,11 @@ a {text-decoration: none; color: black;}
 .gnb_pc,
 .menu_box_pc {display: none;}
 
-.header_outer {position: relative;}
+.header_outer {position: relative; }
 .header {
     position: absolute; top: 0; left: 0; z-index: 1; width: 100%;
 }
-.fixed {position: fixed; top: 0; left: 0;}
+.header.fixed {position: fixed; top: 0; background: #fff;}
 .header .logo {width: 25%; margin-top: 5px;}
 .header .logo img {width: 100%;}
 .search {
