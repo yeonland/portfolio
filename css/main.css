@@ -355,23 +355,101 @@ header .gnb ul li span {padding: 2px 6px;}
 
 /********************** Conetect ME page **********************/
 .contact-box {
-    display: flex; align-items: center; justify-content: center;
-}
-.contact-box .profile-img {
-    width: 350px; height: 450px; margin-right: 100px;
-}
-.contact-box .profile-img img {width: 100%;}
-.contact-box .info-box {width: 440px; height: 150px;
-    border-radius: 30px; border: 1px solid #EFEFEF;
-    padding-left: 40px; padding-top: 20px;
-}
-.contact-box .thank-you .thank{
-    margin-bottom: 50px; color: #F4E53B;
-}
-.contact-box .thank-you p {
-    font-size: 24px; line-height: 40px; 
-}
-.contact-box .thank-you .info-box p span:first-child {
-    display: inline-block; width: 10px; margin-right: 30px;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.contact-inner {
+  width: 85%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+}
+
+/* 왼쪽 폼 */
+.contact-left {width: 48%;}
+
+.contact-form {width: 100%;}
+
+.form-top {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.form-top input {flex: 1;}
+
+.contact-left button {
+    width: 150px; height: 30px;
+    border: none; border-radius: 5px;
+    background-color: #F4E53B;
+    color: #1A1A1A;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    border: 1px solid #EFEFEF;
+    border-radius: 10px;
+    background-color: transparent;
+    color: #EFEFEF;
+    padding: 16px;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin-bottom: 8px;
+    outline: none;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #aaa;
+}
+
+.contact-form textarea {
+  height: 200px;
+  resize: none;
+}
+
+/* 오른쪽 감사 문구 */
+.thank-you {
+  width: 45%;
+}
+
+.thank-you .thank {
+  margin-bottom: 50px;
+  font-size: 26px;
+  line-height: 1.6;
+  color: #EFEFEF;
+}
+
+.thank-you .thank span {
+  color: #F4E53B;
+  font-weight: 700;
+}
+
+.info-box {
+  width: 100%;
+  max-width: 520px;
+  border-radius: 30px;
+  border: 1px solid #EFEFEF;
+  padding: 30px 40px;
+  box-sizing: border-box;
+}
+
+.info-box p {
+  font-size: 22px;
+  line-height: 1.8;
+}
+
+.info-box i {
+  margin-right: 12px;
+  color: #F4E53B;
+}
