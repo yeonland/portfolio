@@ -13,11 +13,11 @@ fontsize= 16 24 36 50 80
 */
 
 section {
-    width: 100%; min-height: calc(100vh - 80px);
+    width: 100%; min-height: 100vh;
     background-color: #1A1A1A;
     position: relative;
-    padding-top: 80px;
     scroll-margin-top: 80px;
+    box-sizing: border-box;
 }
 
 /********************** popup box **********************/
@@ -338,10 +338,11 @@ header.visible {
 }
 
 /****************** project gallery page **********************/
+#page04 {padding-top: 80px; box-sizing: border-box;}
 .project-title {
-    text-align: center; color: #F4E53B;
-    padding-bottom: 20px;
-    font-size: 36px;
+    text-align: center; color: #EFEFEF;
+    padding-bottom: 10px;
+    font-size: 28px;
 }
 /* 카드 스타일 */
 .cards-container {
@@ -351,14 +352,16 @@ header.visible {
 
 .card {
     width: 300px; height: 420px;
-    background-color: #fff;
+    background-color: #EFEFEF;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.3s ease-in-out;
 }
 
-.card:hover {transform: translateY(-10px); cursor: pointer;}
+.card:hover {
+    transform: translateY(-10px);
+    cursor: pointer;
+}
 
 .thumbnail img {
     width: 100%; object-fit: cover;
@@ -373,7 +376,6 @@ header.visible {
     margin: 5px 0;
     text-align: center;
 }
-
 
 .card-title {
     font-size: 18px; text-align: center;
@@ -431,21 +433,22 @@ header.visible {
 .btn:hover {background-color: #F4E53B; color: #1A1A1A;}
 
 /********************** Conetect ME page **********************/
+#page05 {padding-top: 80px; box-sizing: border-box;}
 .contact-box {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    width: 100%;
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .contact-inner {
-  width: 85%;
-  max-width: 1200px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 80px;
+    width: 70%;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
 }
 
 /* 왼쪽 폼 */
@@ -479,7 +482,7 @@ header.visible {
     background-color: transparent;
     color: #EFEFEF;
     padding: 16px;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     font-size: 16px;
     margin-bottom: 8px;
     outline: none;
@@ -501,24 +504,23 @@ header.visible {
 }
 
 .thank-you .thank {
-  margin-bottom: 50px;
-  font-size: 26px;
-  line-height: 1.6;
-  color: #EFEFEF;
+    margin-bottom: 50px;
+    font-size: 24px;
+    line-height: 1.6;
+    color: #EFEFEF;
 }
 
 .thank-you .thank span {
-  color: #F4E53B;
-  font-weight: 700;
+    color: #F4E53B;
 }
 
 .info-box {
-  width: 100%;
-  max-width: 520px;
-  border-radius: 30px;
-  border: 1px solid #EFEFEF;
-  padding: 30px 40px;
-  box-sizing: border-box;
+    width: 100%;
+    max-width: 520px;
+    border-radius: 30px;
+    border: 1px solid #EFEFEF;
+    padding: 25px;
+    box-sizing: border-box;
 }
 
 .info-box p {
