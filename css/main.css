@@ -1,6 +1,6 @@
 @font-face {font-family: "YUniverse-B"; src: url(../font/YUniverse-B.ttf);}
 html, body {font-family: "YUniverse-B";}
-* {margin: 0; padding: 0;}
+* {margin: 0; padding: 0; box-sizing: border-box;}
 /* * { outline: 1px solid red !important; } */
 li {list-style: none;}
 a {text-decoration: none; color: black; font-family: "YUniverse-B"; }
@@ -51,35 +51,73 @@ section {
 
 /********************** header **********************/
 header {
-    width: 100%;
-    height: 80px;
-    box-sizing: border-box;
-    background-color: #1A1A1A; z-index: 25;
-    padding: 0 80px;
-    transition: transform 0.3s ease;
-    display: flex; justify-content: space-between; align-items: center;
-    position: sticky; top: 0; left: 0;
+  width: 100%;
+  height: 80px;
+  padding: 0 48px;
+  box-sizing: border-box;
+  background-color: #1A1A1A;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 25;
+  transition: transform 0.3s ease;
 }
 
-/* 헤더 숨기기 */
-header.hidden {transform: translateY(-100%);}
-
-/* 스크롤 시 헤더를 다시 보이게 하는 효과 */
-header.visible {transform: translateY(0);}
-header .name {
-    width: 170px; height: 60px;
+header.hidden {
+  transform: translateY(-100%);
 }
 
-header .gnb ul {
-    width: 470px; height: 20px;
-    display: flex; margin: 20px 0;
-    float: right;
+header.visible {
+  transform: translateY(0);
 }
-header .gnb ul li {padding: 0 10px;}
-header .gnb ul li div {
-    width: 20px; height: 20px; float: left;
-}   
-header .gnb ul li span {padding: 2px 6px;}
+
+/* 로고 */
+.logo {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.logo a {
+  color: #EFEFEF;
+  text-decoration: none;
+}
+
+/* 메뉴 */
+.gnb ul {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  margin: 0;
+  padding: 0;
+}
+
+.gnb li {
+  list-style: none;
+}
+
+.gnb a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #EFEFEF;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.gnb img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.gnb a:hover span {
+  color: #F4E53B;
+}
 
 /********************** intro page **********************/
 #page01 {width: 100%; height: 100vh;}
@@ -156,56 +194,138 @@ header .gnb ul li span {padding: 2px 6px;}
 }
 
 /********************** About ME page **********************/
-.about {
-    width: 1070px; display: flex; gap: 100px;
-    justify-content: center;
-    margin: 0 auto;
-    margin-top: 20px;
+.about-section {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #1A1A1A;
+  color: #EFEFEF;
+  padding: 100px 6%;
+  box-sizing: border-box;
 }
 
-/* 왼쪽 사진 영역 */
-.about-image {width: 350px; height: 450px;}
-.about-image img {width: 100%;}
+.about-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 80px;
+}
 
-/* 오른쪽 텍스트 영역 */
-.about-content {width: 470px; height: 450px;}
+.about-left {
+  width: 46%;
+}
 
-/* 자기소개 요약 텍스트 */
-.about-summary {font-size: 24px;}
-.about-summary span {color: #F4E53B;}
+.about-right {
+  width: 42%;
+}
 
-/* 기본 프로필 정보 */
-.about-profile {margin: 20px 0;}
-.about-profile p {line-height: 40px; font-size: 24px;}
-.about-profile .label {display: inline-block; width: 90px;}
+.about-label {
+    color: #F4E53B;
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}
 
-/* 공통 */
-.section-title {margin: 5px 0; color: #F4E53B;}
+.about-left h3 {
+    font-size: 26px;
+    line-height: 1.6;
+    margin-bottom: 28px;
+    font-weight: 600;
+}
 
-/* 학력 영역 */
-.about-education > p {font-size: 18px;}
+.about-desc {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #D6D6D6;
+    margin-bottom: 42px;
+}
 
-/* 경력 + 자격증 컨테이너 */
-.about-details {display: flex; gap: 10px; margin-top: 20px;}
-.about-details .section {width: 50%;}
-.about-details .section p {font-size: 18px;}
-.about-details .section .date {font-size: 14px;}
+/* 키워드 카드 */
+.keyword-box {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
 
+.keyword-item {
+    border: 1px solid rgba(244, 229, 59, 0.5);
+    border-radius: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.keyword-item strong {
+    display: block;
+    color: #F4E53B;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.keyword-item p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #DCDCDC;
+}
+
+/* 오른쪽 */
+.profile-list {
+    margin-bottom: 15px;
+}
+
+.profile-list li {
+  display: flex; 
+  margin-bottom: 18px;
+}
+
+.profile-list strong {
+  width: 90px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.profile-list span {
+  margin: 0;
+  font-size: 22px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+.info-grid h4 {
+    color: #F4E53B;
+    font-size: 28px;
+    margin-bottom: 12px;
+    margin-right: 12px;
+}
+
+.info-grid p {
+  font-size: 18px;
+  line-height: 1.6;
+}
 /****************** skill page **********************/
 .skills-section {
     width: 100%; height: 100vh;
     background-color: #1A1A1A;
     color: #EFEFEF;
-    display: flex; flex-direction: column; justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .skills-title {
-    color: #F4E53B; margin-bottom: 10px; margin-top: -50px;
-    font-size: 48px; text-align: center; font-weight: bold;    
+    color: #F4E53B; margin-bottom: 10px;
+    font-size: 48px;
+    text-align: center;
+    font-weight: bold;    
 }
 
 .skills-subtitle {
-    font-size: 18px; margin-bottom: 50px;
+    font-size: 18px;
+    margin-bottom: 50px;
     text-align: center;
 }
 
