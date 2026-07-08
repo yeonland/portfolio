@@ -27,7 +27,7 @@ $(function() {
             $('.header').addClass('fixed')
             $('.btn_top').fadeIn(500)
         } else {
-            $('header').removeClass('fixed')
+            $('.header').removeClass('fixed')
             $('.btn_top').fadeOut(500)
         }
     })    // scroll_event
@@ -35,18 +35,12 @@ $(function() {
        $(window).scrollTo(this.hash || 0, 500)
     }) // btn_top_event
 
+    // 
     const imgBtn=$('.open ul li')
     const imgSheet=$('.open .open_img_sheet .open_img')
 
-    tab.click(function(){
-        index=$(this).index()
-
-        imgBtn.removeClass('on')
-        imgBtn.eq(index).addClass('on')
-
-        imgSheet.removeClass('on_sheet')
-        imgSheet.eq(index).addClass('on_sheet')
-    })
+    
+    
     // 현장공개
     $('.open_img_btn').click(function() {
         // 1. 클릭한 버튼의 인덱스 가져오기
@@ -59,6 +53,7 @@ $(function() {
         $('.open_img_btn').removeClass('active');
         $(this).addClass('active');
     });
+    // 공지사항  탭
     const tab=$('.notice_news ul li')
     const sheet=$('.notice_news .notice_news_sheet div')
 
@@ -71,6 +66,7 @@ $(function() {
         sheet.removeClass('on_sheet')
         sheet.eq(index).addClass('on_sheet')
     })
+    // 
     $('.center').slick({
         centerMode: true,
         centerPadding: '60px',
