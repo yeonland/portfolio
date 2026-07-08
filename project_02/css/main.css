@@ -10,10 +10,10 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
 .wrap {position: relative;}
 .sub_title {
     font-size: 2rem; text-align: center;
-    padding-top: 30px; color: #475775;
+    padding-top: 50px; color: #475775;
 }
 .more {text-align: right; color: #999; cursor: pointer;}
-
+.pb{ padding-bottom: 30px;}
 .btn_top {display: none;}
 /******************* main_visual *******************/
 .slides {
@@ -83,7 +83,6 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
     display: block;
 }
 
-.open {margin: 20px 0;}
 .open .open_box {width: 100%;}
 .open .open_box .open_img {width: 100%; display: flex;}
 
@@ -91,14 +90,10 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
     width: 25%; 
 }
 
-.open .open_box .open_img_btn:checked .img_container {background-color: transparent;}
+/* .open .open_box .open_img_btn:checked .img_container {background-color: transparent;} */
 
 /* open_img_sheet */
-.open .open_box .open_img_sheet {width: 100%;}
-.open .open_box .open_img_sheet div {
-    display: none;
-    width: 100%; background-color: #475775;
-}
+
 
 /* notice news box */
 .notice_news_pc, #tab01, #tab02 {display: none;}
@@ -290,7 +285,7 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
         box-sizing: border-box;
     }
     .progress .progress_box:hover .progress_txt {color: #6987D6;}
-    .progress .progress_box:hover .progress_txt .sub_tit {font-size: 1rem; padding-top: 10px;}
+    .progress .progress_box:hover .progress_txt .sub_tit {font-size: 1rem;}
     /* banner&metapo */
     .banner_metapo {width: 100%; display: flex; gap: 10px;}
     .banner_metapo .banner {width: 50%; height: 250px;}
@@ -309,6 +304,20 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
     .metapo_more {display: block; color: white; }
     .metapo_txt {float: left;}
     .metapo_img {float: right; margin: 50px auto;}
+
+    /* 기본 상태: sheet는 숨겨두고, active 클래스가 붙은 것만 보여줌 */
+    .sheet { display: none; }
+    .sheet.active { display: block; }
+
+    /* 레이아웃 잡기 */
+    .open_box { display: flex; flex-wrap: wrap; }
+    .open_img { display: grid; width: 100%;}
+    .open_img_btn { width: 25%; cursor: pointer; border: 1px solid #ddd; }
+    .open_img_btn img { width: 100%; }
+    .open_img_sheet { width: 100%; margin-top: 20px; }
+
+    /* 클릭 효과 */
+    .open_img_btn.active { border: 2px solid #9c7055; }
 
 
     /* notice & news */
