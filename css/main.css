@@ -20,34 +20,6 @@ section {
     scroll-margin-top: 80px;
 }
 
-@media screen and (max-width: 1200px) {
-    section {
-        height: auto;
-        padding-bottom: 80px; /* 아래 여백 */
-    }
-    .about, .intro, .contact-box {
-        width: 100%;
-        padding: 0 20px;
-        box-sizing: border-box;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    
-    /* 💡 핵심: 고정된 높이(height)를 auto로 풀어서 자연스럽게 줄어들게 만듭니다 */
-    .about-image, .about-content, .profile-img {
-        width: 100%;
-        max-width: 350px; 
-        height: auto; /* 고정값 450px 해제! */
-        margin-right: 0;
-        margin-bottom: 20px;
-    }
-    .about-image img, .profile-img img {
-        width: 100%;
-        height: auto;
-    }
-}
-
 /********************** popup box **********************/
 #pop {display: none;}
 #pop ~ .pop-box {display: none;}
@@ -126,7 +98,7 @@ header .gnb ul li span {padding: 2px 6px;}
     position: relative;
     animation: fadeUp 1.8s ease-out forwards;
     opacity: 0;
-    display: flex; align-items: center; justify-content: center;
+    display: flex; align-items: center; justify-content: center; flex-direction: column;
     text-align: center;
     box-shadow: 0 0 60px rgba(244, 229, 59, 0.3);
     z-index: 2;
@@ -135,12 +107,16 @@ header .gnb ul li span {padding: 2px 6px;}
 @keyframes fadeUp {
     0% {opacity: 0; transform: translateY(20px);}
     100% {opacity: 1; transform: translateY(0);}
-  }
+}
+
+.main-tit h1 {
+    font-size: 36px;
+}
 
 .main-tit p {
     position: relative; z-index: 2;
-    line-height: 1.6;
-
+    font-size: 12px;
+    padding-top: 20px;
 }
 
 .main-tit span {color: #F4E53B;}
