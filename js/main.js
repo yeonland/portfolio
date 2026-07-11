@@ -17,6 +17,23 @@ $(function () {
         }
     });
 
+    function headerShowHide() {
+        const scrollTop = $(window).scrollTop();
+        const page02Top = $('#page02').offset().top;
+
+        if (scrollTop >= page02Top - 100) {
+            $('header').removeClass('hidden').addClass('visible');
+        } else {
+            $('header').removeClass('visible').addClass('hidden');
+        }
+        }
+
+        $(window).on('scroll resize', function () {
+        headerShowHide();
+    });
+
+    headerShowHide();
+
     // 마우스 휠 원페이지 스크롤
     $(window).on('mousewheel', function (e) {
         if ($(window).width() <= 1200) return;
