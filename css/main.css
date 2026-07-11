@@ -76,11 +76,10 @@ header.visible {transform: translateY(0);}
 
 /* 메뉴 */
 .gnb ul {
-  display: flex;
-  align-items: center;
-  gap: 34px;
-  margin: 0;
-  padding: 0;
+    display: flex;
+    gap: 34px;
+    margin: 0;
+    padding: 0;
 }
 
 .gnb li {
@@ -183,7 +182,7 @@ header.visible {transform: translateY(0);}
 }
 
 /***************** About ME page ******************/
-* {outline: 1px solid red;}
+
 .about-section {
     width: 100%;
     min-height: 100vh;
@@ -210,17 +209,17 @@ header.visible {transform: translateY(0);}
     margin-bottom: 30px;
 }
 
-.about-left h2 {
+.about-right h2 {
     font-size: 24px;
     line-height: 1.6;
     margin-bottom: 28px;
     font-weight: 600;
 }
-.about-left span {color: #F4E53B;}
+.about-right span {color: #F4E53B;}
 .about-desc {
     font-size: 18px;
     line-height: 1.8;
-    color: #D6D6D6;
+    color: #EFEFEF;
     margin-bottom: 42px;
 }
 
@@ -240,14 +239,13 @@ header.visible {transform: translateY(0);}
 
 .keyword-item strong {
     display: block;
-    color: #F4E53B;
     font-size: 20px;
 }
 
 .keyword-item p {
     font-size: 16px;
     line-height: 1.6;
-    color: #DCDCDC;
+    color: #EFEFEF;
 }
 
 /* 오른쪽 */
@@ -264,7 +262,7 @@ header.visible {transform: translateY(0);}
 
 .profile-intro .role {
     font-size: 22px;
-    color: #DCDCDC;
+    color: #EFEFEF;
     margin-bottom: 24px;
 }
 
@@ -282,20 +280,33 @@ header.visible {transform: translateY(0);}
     font-size: 16px;
 }
 
-.info-grid {
+.history-list {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
 }
 
-.info-grid h4 {
+.history-item {
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(239, 239, 239, 0.18);
+}
+
+.history-item h4 {
     font-size: 18px;
-    margin-bottom: 5px;
+    color: #F4E53B;
+    margin-bottom: 12px;
 }
 
-.info-grid p {
-  font-size: 18px;
-  line-height: 1.6;
+.history-item p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #EFEFEF;
+    margin-bottom: 8px;
+}
+
+.history-item span {
+    font-size: 16px;
+    color: rgba(239, 239, 239, 0.55);
 }
 /****************** skill page **********************/
 .skills-section {
@@ -336,8 +347,8 @@ header.visible {transform: translateY(0);}
 /****************** project gallery page **********************/
 #page04 {padding-top: 80px; box-sizing: border-box;}
 .project-title {
-    text-align: center; color: #EFEFEF;
-    padding-bottom: 10px;
+    text-align: center; color: #F4E53B;
+    padding-bottom: 20px;
     font-size: 28px;
 }
 /* 카드 스타일 */
@@ -347,7 +358,7 @@ header.visible {transform: translateY(0);}
 }
 
 .card {
-    width: 300px; height: 400px;
+    width: 300px; height: 380px;
     background-color: #EFEFEF;
     border-radius: 10px;
     transition: transform 0.3s ease-in-out;
@@ -364,22 +375,15 @@ header.visible {transform: translateY(0);}
 
 .card-body {padding: 5px;}
 
-.project-type {
-    font-size: 13px;
-    color: #999;
-    /* letter-spacing: 1px; */
-    text-align: center;
-}
-
 .card-title {
     font-size: 18px; text-align: center;
     padding-top: 5px;
 }
 
 .card-desc {
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.6;
-    color: #555;
+    color: #aaa;
     text-align: center;
 }
 
@@ -388,12 +392,6 @@ header.visible {transform: translateY(0);}
   color: #9c7055;
   margin-bottom: 5px;
   text-align: center;
-}
-
-
-.tags {
-    font-size: 14px; color: #777;
-    margin-bottom: 10px; text-align: center;
 }
 
 .features li {
@@ -506,13 +504,14 @@ header.visible {transform: translateY(0);}
     max-width: 520px;
     border-radius: 30px;
     border: 1px solid #EFEFEF;
-    padding: 25px;
+    padding: 20px;
     box-sizing: border-box;
 }
 
-.info-box p {
-  font-size: 22px;
-  line-height: 1.8;
+.info-box .contact-link {
+    font-size: 22px;
+    line-height: 1.8;
+    color: #EFEFEF;
 }
 
 .info-box i {
