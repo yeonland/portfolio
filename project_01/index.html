@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <!-- Google Fonts -->
+        <!-- 고운 돋움 -->
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Gowun+Dodum&display=swap" rel="stylesheet">
+        <!-- 배달의 민족 주아체 -->
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 
     <!-- 내부 스타일 -->
@@ -21,8 +23,11 @@
 
     <!-- ================= JS ================= -->
     <!-- 라이브러리 스크립트 -->
+        <!-- 제이쿼리 -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <!-- scrollTo -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.3/jquery.scrollTo.min.js"></script>
+        <!-- swiper-->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <!-- 내부 스크립트 -->
@@ -201,24 +206,25 @@
     </div>
     <script>
         let swiper = new Swiper(".mySwiper", {
+            loop: true,
             spaceBetween: 0,
             centeredSlides: true,
             autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
-            loop: true
+                delay: 3000,
+                disableOnInteraction: false,
+                
             }, pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
+                el: ".swiper-pagination",
+                clickable: true,
             }, navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
             }
         })
     </script>        <!-- visual main -->
 
     <div class="small_banner">
-        <a href="./sub/5_notice.html">
+        <a href="./sub/5_notice/index.html">
             <img src="./img/03_banner.png" alt="banner">
         </a>
     </div>  <!-- 발송 관련 배너 -->
@@ -328,7 +334,7 @@
             <div class="free_txt mr">
                 <p>무료</p>
                 <div>소하에서 제공하는 무료서식! <br> 가장 많이 쓰이는 제품으로 <br> 구성해 보았습니다.</div>
-                <a href="./sub/2_product_free.html"><span>더보기</span></a>
+                <a href="./sub/2_product/free/index.html"><span>더보기</span></a>
             </div>
             <div class="product_box mr">
                 <div class="product_img_box">
@@ -394,7 +400,7 @@
         
         <div class="metapo_product">
             <div class="metapo_product_sheet">
-                <span class="more"><a href="./sub/2_product_diary.html">더보기</a></span>
+                <span class="more"><a href="./sub/2_product/diary/index.html">더보기</a></span>
                 <div class="product_box mr">
                     <div class="product_img_box">
                         <a href="./sub/2_product/all/detail/index.html">
@@ -452,7 +458,7 @@
                 </div> <!-- metapo diary 01-04 -->
             </div> <!-- metapo diary -->
             <div class="metapo_product_sheet">
-                <span class="more"><a href="./sub/2_product_planner.html">더보기</a></span>
+                <span class="more"><a href="./sub/2_product/planner/index.html">더보기</a></span>
                 <div class="product_box mr">
                     <div class="product_img_box">
                         <a href="./sub/2_product/all/detail/index.html">
@@ -510,7 +516,7 @@
                 </div> <!-- metapo planner 02-04 -->
             </div> <!-- metapo planner -->
             <div class="metapo_product_sheet">
-                <span class="more"><a href="./sub/2_product_journal.html">  더보기</a></span>
+                <span class="more"><a href="./sub/2_product/journal/index.html">  더보기</a></span>
                 <div class="product_box mr">
                     <div class="product_img_box">
                         <a href="./sub/2_product/all/detail/index.html">
@@ -567,7 +573,7 @@
                 </div> <!-- metapo journal 03-04 -->
             </div> <!-- metapo journal -->
             <div class="metapo_product_sheet">
-                <span class="more"><a href="./sub/2_product_sticker.html">더보기</a></span>
+                <span class="more"><a href="./sub/2_product/sticker/index.html">더보기</a></span>
                 <div class="product_box mr">
                     <div class="product_img_box">
                         <a href="./sub/2_product/all/detail/index.html">
@@ -1058,7 +1064,7 @@
         </div>
     </div>
 
-    <div class="sub_title"><a href="./sub/3_review.html">이달의 솔직후기</a></div>
+    <div class="sub_title"><a href="./sub/3_review/index.html">이달의 솔직후기</a></div>
     
     <section class="review">
         <div class="review_box mr">
