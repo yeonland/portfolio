@@ -13,57 +13,94 @@
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <!-- font Jua -->
 
-    <link rel="stylesheet" href="../../../css/header.css">
-    <link rel="stylesheet" href="../../../css/footer.css">
-    <link rel="stylesheet" href="../../../css/2_product.css">
-    <link rel="stylesheet" href="../../../css/how_use_chat.css">
+    <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+    <link rel="stylesheet" href="../../css/how_use_chat.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.3/jquery.scrollTo.min.js"></script>
-    <script src="../../../js/main.js"></script>
+    <script src="../../js/main.js"></script>
+    <style>
+        .guide-label {
+            margin-bottom: 14px;
+            color: #9c7055;
+            font-size: 18px;
+            font-weight: 700;
+        }
 
+        .guide-main h1 {
+            margin-bottom: 18px;
+            color: #9c7055;
+            font-size: 46px;
+            line-height: 1.3;
+            font-family: "Gowun Batang", serif;
+        }
+
+        .guide-subtitle {
+            margin-bottom: 14px;
+            color: #575757;
+            font-size: 26px;
+            font-weight: 700;
+        }
+
+        .guide-desc {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #575757;
+        }
+    </style>
 </head>
 <body>
     <div class="btn_top"><i class="fa-solid fa-angle-up"></i></div>   <!-- TOP 버튼 -->
+    
     <header class="header_outer" id="header">
-        <header class="header">
+        <div class="header">
             <div class="logo">
-                <a href="../../index.html"><img src="../../img/00_logo.png" alt="soha_logo"></a>
+                <img src="../../img/00_logo.png" alt="soha_logo">
             </div>           <!-- logo -->
             <nav class="gnb">
-                <span><a href="../1_brand/index.html">소하는요</a></span>
+                <span><a href="../../1_brand/index.html">소하는요</a></span>
                 <span class="product">
-                    <a href="../2_product/all/index.html">디지털 문구</a>
+                    <a href="../../2_product/all/index.html">디지털 문구</a>
                     <div class="product_menu">
-                        <div><a href="../2_product/diary/index.html">다이어리</a></div>
-                        <div><a href="../2_product/planner/index.html">플래너</a></div>
-                        <div><a href="../2_product/journal/index.html">저널</a></div>
-                        <div><a href="../2_product/sticker/index.html">스티커</a></div>
-                        <div><a href="../2_product/free/index.html">무료</a></div>
+                        <div><a href="../../sub/2_product/diary/index.html">다이어리</a></div>
+                        <div><a href="../../sub/2_product/planner/index.html">플래너</a></div>
+                        <div><a href="../../sub/2_product/journal/index.html">저널</a></div>
+                        <div><a href="../../sub/2_product/sticker/index.html">스티커</a></div>
+                        <div><a href="../../sub/2_product/free/index.html">무료</a></div>
                     </div>
                 </span>
-                <span><a href="../3_review/index.html">솔직후기</a></span>
-                <span><a href="../4_faq/index.html">궁금해요</a></span>
-                <span><a href="../5_notice/index.html">알립니다</a></span>
+                <span><a href="../../sub/3_review/index.html">솔직후기</a></span>
+                <span><a href="../../sub/4_faq/index.html">궁금해요</a></span>
+                <span><a href="../../sub/5_notice/index.html">알립니다</a></span>
             </nav>                    <!-- gnb -->
-            <input type="checkbox" id="search_chk">
-            <section class="gnb_icon">
-                <label for="search_chk" class="search_open">
-                    <span><i class="fa-solid fa-magnifying-glass"></i></span>
-                </label>
-                <label for="search_chk" class="search_close">
-                    <span><i class="fa-solid fa-xmark"></i></span>
-                </label>
-                <div class="search_box">
-                    <input type="search" name="search_txt" class="search_txt">
-                    <span><a href="../search_result/index.html" ><i class="fa-solid fa-magnifying-glass"></i></a></span>
-                </div>                      <!-- search_box -->
-                <span class="btn_cart"><i class="fa-solid fa-cart-shopping"></i></span>
+            <div class="gnb_icon">
+                <div class="search_area">
+                    <button type="button" class="search_toggle" aria-label="검색창 열기">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+
+                    <form action="../search_result/index.html" method="get" class="search_box">
+                        <input 
+                        type="search" 
+                        name="search_txt" 
+                        class="search_txt" 
+                        placeholder="검색어를 입력하세요"
+                        >
+
+                        <button type="submit" class="search_submit" aria-label="검색">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </form>
+                </div>                <!-- search-area -->
+                <span class="btn_cart">
+                    <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                </span>
                 <div class="cart_box box">
                     <p class="tit">장바구니</p>
                     <div class="product_box">
-                        <a href="../2_product/all/detail/index.html">
+                        <a href="../../sub/2_product/all/detail/index.html">
                             <div class="popup_img">
-                                <img src="./img/cart01.jpg" alt="cart01">
+                                <img src="../../img/cart01.jpg" alt="cart01">
                             </div>
                             <div class="popup_txt">
                                 <p>불렛저널</p>
@@ -72,9 +109,9 @@
                         </a>
                     </div>
                     <div class="product_box second">
-                        <a href="../2_product/all/detail/index.html">
+                        <a href="../../sub/2_product/all/detail/index.html">
                             <div class="popup_img">
-                                <img src="./img/cart02.jpg" alt="cart02">
+                                <img src="../../img/cart02.jpg" alt="cart02">
                             </div>
                             <div class="popup_txt">
                                 <p>만년 업무 플래너</p>
@@ -83,9 +120,9 @@
                         </a>
                     </div>
                     <div class="product_box">
-                        <a href="../2_product/all/detail/index.html">
+                        <a href="../../sub/2_product/all/detail/index.html">
                             <div class="popup_img">
-                                <img src="./img/cart03.jpg" alt="cart03">
+                                <img src="../../img/cart03.jpg" alt="cart03">
                             </div>
                             <div class="popup_txt">
                                 <p>프로젝트 트래커</p>
@@ -94,14 +131,15 @@
                         </a>
                     </div>
                     <button>결제하기</button>
-                </div>                  <!-- cart_box -->
-                <span class="btn_recent"><i class="fa-solid fa-clock"></i></span>
+                </div>     
+                             <!-- cart_box -->
+                <span class="btn_recent"><a href="#"><i class="fa-solid fa-clock"></i></a></span>
                 <div class="recent_box box">
                     <p class="tit">최근 본 상품</p>
                     <div class="product_box">
-                        <a href="../2_product/all/detail/index.html">
+                        <a href="../../sub/2_product/all/detail/index.html">
                             <div class="popup_img">
-                                <img src="./img/recent01.jpg" alt="recent01">
+                                <img src="../../img/recent01.jpg" alt="recent01">
                             </div>
                             <div class="popup_txt">
                                 <p>만년형 심플 다이어리</p>
@@ -110,9 +148,9 @@
                         </a>
                     </div>
                     <div class="product_box second">
-                        <a href="../2_product/all/detail/index.html">
+                        <a href="../../sub/2_product/all/detail/index.html">
                             <div class="popup_img">
-                                <img src="./img/recent02.jpg" alt="recent02">
+                                <img src="../..//img/recent02.jpg" alt="recent02">
                             </div>
                             <div class="popup_txt">
                                 <p>국내여행 플래너</p>
@@ -121,9 +159,9 @@
                         </a>
                     </div>
                     <div class="product_box">
-                        <a href="../2_product/all/detail/index.html">
+                        <a href="../../sub/2_product/all/detail/index.html">
                             <div class="popup_img">
-                                <img src="./img/recent03.jpg" alt="recent03">
+                                <img src="../../img/recent03.jpg" alt="recent03">
                             </div>
                             <div class="popup_txt">
                                 <p>소하 만년형 일주일 플래너</p>
@@ -132,32 +170,114 @@
                         </a>
                     </div>
                     <button>결제하기</button>
-                </div>
-
-                <span><a href="../login/index.html"><i class="fa-solid fa-user"></i></a></span>
-                
-            </section>  <!-- gnb_icon -->
-        </header>
+                </div>                <!-- recent box -->
+                <span><a href="../../sub/login/index.html"><i class="fa-solid fa-user"></i></a></span>
+            </div>  <!-- gnb_icon -->
+        </div>
     </header>           <!-- header -->
-
-    <div class="search_result_box">
-        <input type="search" name="search_result" class="search">
-        <span><a href="#!"><i class="fa-solid fa-magnifying-glass"></i></a></span>
-    </div>
 
     <div class="wrap">
         <h2>[소하] 디지털 문구 사용 가이드</h2>
         <p class="guide-subtitle">디지털 문구 처음 사용하시나요?</p>
-        <h4>01 디지털 문구란?</h4>
-        <h4>02 사용 전 준비물</h4>
-        <h4>03 디지털 서식 다운로드하기</h4>
-        <h4>04 굿노트에서 불러오기</h4>
-        <h4>05 노트쉘프 / 삼성노트에서 불러오기</h4>
-        <h4>06 사용 전 확인사항</h4>
-        <h4>FAQ</h4>
-        <div class="guide-img placeholder">
-            <p>굿노트 불러오기 화면 예시 이미지가 들어갈 자리</p>
-        </div>
-    </div>
+        <section class="guide-section">
+            <span class="step-num">01</span>
+            <h2>디지털 문구란?</h2>
+            <p>
+                디지털 문구는 종이로 배송되는 실물 상품이 아니라,
+                태블릿 필기 앱에서 사용할 수 있는 PDF 형식의 파일 상품입니다.
+            </p>
+            <p>
+                아이패드, 갤럭시 탭 등에서 굿노트, 노트쉘프, 삼성노트와 같은 앱으로 불러와 사용할 수 있습니다.
+            </p>
+        </section>
+
+        <section class="guide-section">
+            <span class="step-num">02</span>
+            <h2>사용 전 준비물</h2>
+
+            <ul class="check-list">
+                <li>아이패드 또는 갤럭시 탭 등 태블릿 기기</li>
+                <li>애플펜슬 또는 S펜</li>
+                <li>PDF를 불러올 수 있는 필기 앱</li>
+                <li>다운로드한 디지털 문구 파일</li>
+            </ul>
+        </section>
+
+        <section class="guide-section">
+            <span class="step-num">03</span>
+            <h2>디지털 서식 다운로드하기</h2>
+            <p>
+                상품 상세 페이지 또는 무료 콘텐츠 페이지에서 원하는 디지털 문구를 선택한 뒤 파일을 다운로드합니다.
+            </p>
+
+            <div class="guide-img placeholder">
+                <p>다운로드 화면 예시 이미지가 들어갈 자리</p>
+            </div>
+        </section>
+
+        <section class="guide-section">
+            <span class="step-num">04</span>
+            <h2>굿노트에서 불러오기</h2>
+
+            <ol class="order-list">
+                <li>다운로드한 PDF 파일을 파일 앱에서 확인합니다.</li>
+                <li>공유 버튼을 누릅니다.</li>
+                <li>앱 목록에서 굿노트를 선택합니다.</li>
+                <li>새로운 문서로 불러온 뒤 필기를 시작합니다.</li>
+            </ol>
+
+            <div class="guide-img placeholder">
+                <p>굿노트 불러오기 화면 예시 이미지가 들어갈 자리</p>
+            </div>
+        </section>
+        <section class="guide-section">
+            <span class="step-num">05</span>
+            <h2>다른 필기 앱에서 사용하기</h2>
+
+            <details>
+                <summary>노트쉘프에서 사용하는 방법</summary>
+                <ol>
+                <li>노트쉘프 앱을 실행합니다.</li>
+                <li>가져오기 메뉴를 선택합니다.</li>
+                <li>다운로드한 PDF 파일을 선택합니다.</li>
+                <li>서식 위에 자유롭게 필기합니다.</li>
+                </ol>
+            </details>
+
+            <details>
+                <summary>삼성노트에서 사용하는 방법</summary>
+                <ol>
+                <li>삼성노트 앱을 실행합니다.</li>
+                <li>PDF 가져오기 기능을 선택합니다.</li>
+                <li>저장된 PDF 파일을 불러옵니다.</li>
+                <li>S펜으로 필기하며 사용합니다.</li>
+                </ol>
+            </details>
+        </section>
+        <section class="guide-section faq-section">
+            <span class="step-num">FAQ</span>
+            <h2>자주 묻는 질문</h2>
+
+            <details>
+                <summary>실물 상품이 배송되나요?</summary>
+                <p>아니요. 소하의 디지털 문구는 다운로드 후 사용하는 파일 상품입니다.</p>
+            </details>
+
+            <details>
+                <summary>굿노트가 꼭 필요한가요?</summary>
+                <p>아니요. PDF를 불러올 수 있는 노트쉘프, 삼성노트 등의 앱에서도 사용할 수 있습니다.</p>
+            </details>
+
+            <details>
+                <summary>휴대폰에서도 사용할 수 있나요?</summary>
+                <p>파일 확인은 가능하지만, 필기 사용은 태블릿 기기를 권장합니다.</p>
+            </details>
+
+            <details>
+                <summary>다운로드한 파일을 다시 받을 수 있나요?</summary>
+                <p>실제 서비스에서는 마이페이지 또는 주문 내역에서 재다운로드할 수 있도록 안내할 수 있습니다.</p>
+            </details>
+        </section>
+    </div>    <!-- wrap -->
 </body>
 </html>

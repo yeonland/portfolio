@@ -23,7 +23,9 @@ a {text-decoration: none; color: black;}
 }
 .header_outer .header .gnb span {
     padding: 0 11px;
-    font-family: "Gowun Dodum", sans-serif; font-size: 24px; line-height: 60px;
+    font-family: "Gowun Dodum", sans-serif;
+    font-size: 24px;
+    line-height: 60px;
 }
 .header_outer .header .gnb span a:hover {border-bottom: 1px solid #9c7055;}
 .header_outer .header .gnb span a {color: #9c7055;}
@@ -44,45 +46,96 @@ a {text-decoration: none; color: black;}
 
 /************************** gnb icon **************************/
 .header_outer .header .gnb_icon {
-    width: 195px; height: 60px; 
-    font-size: 30px; line-height: 60px; text-align: center;
+    width: 195px;
+    height: 60px;
     margin-left: 120px;
-    float: left; position: relative;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
-.header_outer .header .gnb_icon label {float: left;}
-.header_outer .header .gnb_icon label:hover {cursor: pointer;}
 
-.header_outer .header .gnb_icon label span {color: #9c7055;}
-.header_outer .header .gnb_icon label span:hover {color: #ffc1cc;}
-.header_outer .header .gnb_icon span {float: left; padding: 0 9px;}
-.header_outer .header .gnb_icon span a {color: #9c7055;}
-.header_outer .header .gnb_icon span {color: #9c7055;}
-.header_outer .header .gnb_icon span:hover {color: #ffc1cc; cursor: pointer;}
+.header_outer .header .gnb_icon span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.header_outer .header .gnb_icon span a {
+    color: #9c7055;
+    font-size: 28px;
+    line-height: 1;
+}
+
+.header_outer .header .gnb_icon span:hover a {
+    color: #ffc1cc;
+}
 /************************** gnb icon search **************************/
-#search_chk {display: none;}
-#search_chk ~ .gnb_icon .search_box {display: none;}
-#search_chk:checked ~ .gnb_icon .search_box {display: block;}
-#search_chk ~ .gnb_icon .search_open {display: block;}
-#search_chk ~ .gnb_icon .search_close {display: none;}
-#search_chk:checked ~ .gnb_icon .search_open {display: none;}
-#search_chk:checked ~ .gnb_icon .search_close {display: block;}
+
+
+.header_outer .header .gnb_icon .search_toggle {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+
+    border: none;
+    background: none;
+    color: #9c7055;
+
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .header_outer .header .gnb_icon .search_box {
-    width: 300px; height: 30px;
-    border: 1px solid #9c7055; box-sizing: border-box;
-    font-size: 20px; line-height: 28px;
-    background-color: #feffed; border-radius: 20px;
-    padding-right: 10px; float: right;
-    position: absolute; top: 60px; right: 0;
+    display: none;
+    align-items: center;
+    gap: 8px;
+
+    width: 300px;
+    height: 36px;
+    padding: 0 12px;
+
+    border: 1px solid #9c7055;
+    border-radius: 20px;
+    background-color: #feffed;
+
+    position: absolute;
+    top: 50px;
+    right: 0;
+    z-index: 20;
 }
-.header_outer .header .gnb_icon .search_box span {
-    color: #9c7055; border: none; font-size: 16px; float: right;
+
+.header_outer .header .gnb_icon .search_box.on {
+    display: flex;
 }
+
 .header_outer .header .gnb_icon .search_txt {
-    width: 220px; background-color: #feffed; color: #9c7055;
-    font-family: "Gowun Dodum", sans-serif; font-size: 16px;
+    flex: 1;
+    min-width: 0;
+
     border: none;
+    outline: none;
+    background-color: transparent;
+
+    color: #9c7055;
+    font-family: "Gowun Dodum", sans-serif;
+    font-size: 16px;
+}
+
+.header_outer .header .gnb_icon .search_txt::placeholder {color: rgba(156, 112, 85, 0.65);}
+
+.header_outer .header .gnb_icon .search_submit {
+    border: none;
+    background: none;
+    color: #9c7055;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 
@@ -94,7 +147,7 @@ a {text-decoration: none; color: black;}
     border: 1px solid #9c7055;
 }
 
-.header_outer .header .gnb_icon .box .tit {font-family: "Gowun Dodum", sans-serif; font-size: 24px; color: #9c7055; padding-bottom: 20px;}
+.header_outer .header .gnb_icon .box .tit {font-family: "Gowun Dodum", sans-serif; font-size: 24px; color: #9c7055; padding: 30px 0; text-align: center; line-height: 1.4;}
 
 .header_outer .header .gnb_icon .box .product_box {
     width: 250px; height: 70px;
@@ -115,12 +168,10 @@ a {text-decoration: none; color: black;}
 }
 .header_outer .header .gnb_icon .box .product_box .popup_txt p {font-size: 16px; font-family: "Gowun Dodum", sans-serif; color: #9c7055; line-height: 25px;}
 
-
-.header_outer .header .gnb_icon>div button {
-    width: 90px; height: 30px;
-    background-color: #feffed; border: 1px solid #9c7055; border-radius: 15px;
-    font-size: 16px; color: #9c7055; font-family: "Gowun Dodum", sans-serif;
-}
-.header_outer .header .gnb_icon>div button:hover {
-    background-color: #9c7055; color: #feffed; cursor: pointer;
+.header_outer .header .gnb_icon .box button {
+    display: block;
+    font-size: 18px; color: #feffed; background: #9c7055; border: none;
+    border-radius: 20px; width: 100px;
+    font-family: "Gowun Dodum", sans-serif;
+    margin: 30px auto 0;  padding: 5px 0;
 }

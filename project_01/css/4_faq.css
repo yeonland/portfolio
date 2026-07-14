@@ -15,7 +15,7 @@ a {text-decoration: none; color: black;}
 
 .use {
     width: 240px; height: 100px;
-    margin: 80px auto;
+    margin: 40px auto;
     border: 1px solid #9c7055; box-sizing: border-box; border-radius: 50px;
     text-align: center;  line-height: 50px; font-family: "Gowun Dodum", sans-serif; font-size: 24px; color: #9c7055;
 }
