@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>소하는요</title>
+    <title>[소하] 디지털 문구 사용 가이드</title>
     <link rel="stylesheet" href="../../css/header.css">
-    <link rel="stylesheet" href="../../css/footer.css">
-    <link rel="stylesheet" href="../../css/1_brand.css">
-    <link rel="stylesheet" href="../../css/how_use_chat.css">
+    <link rel="stylesheet" href="../../css/search_result.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <!-- font-awesome -->
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Gowun+Dodum&display=swap" rel="stylesheet">
@@ -15,48 +13,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <!-- font Jua -->
 
+    <link rel="stylesheet" href="../../../css/header.css">
+    <link rel="stylesheet" href="../../../css/footer.css">
+    <link rel="stylesheet" href="../../../css/2_product.css">
+    <link rel="stylesheet" href="../../../css/how_use_chat.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.3/jquery.scrollTo.min.js"></script>
-    <script src="../../js/main.js"></script>
+    <script src="../../../js/main.js"></script>
+
 </head>
 <body>
-    <div class="how_use_wrap">
-        <button><i class="fa-solid fa-xmark"></i></button>
-        <a href="./sub/howtouse/index.html" target="_blank">
-            <div class="how_use_box">
-                <p class="how_use_top">사용법</p>
-                <p>알아보기</p>
-            </div>
-        </a>
-    </div>    <!-- 사용법 알아보기 -->
-
-    <input type="checkbox" id="chat_chk">
-    <section class="chat">
-        <label for="chat_chk" class="open"><div><img src="./img/icon_chat.png" alt="chat_icon"></i></div></label>
-        <label for="chat_chk" class="close"><div><i class="fa-solid fa-xmark"></i></div></label>
-        <div class="chat_box">
-            <div class="brand">
-                <div class="logo_box"><img src="./img/chat_logo.png" alt="logo"></div>
-                <div class="brand_intro">
-                    <p class="brand_tit">소하</p>
-                    <p>소소한 하루, 소하</p>
-                </div>
-            </div>
-            <div class="chat_first">무엇을 도와드릴까요?</div>
-            <div class="chat_txt_box">
-                <input type="text" name="chat_txt" class="chat_txt">
-            </div>
-        </div>
-    </section>
-    <!-- 실시간 채팅상담 -->
-    
+    <div class="btn_top"><i class="fa-solid fa-angle-up"></i></div>   <!-- TOP 버튼 -->
     <header class="header_outer" id="header">
         <header class="header">
             <div class="logo">
-                <a href="../../index.html"><img src="./img/logo.png" alt="soha_logo"></a>
+                <a href="../../index.html"><img src="../../img/00_logo.png" alt="soha_logo"></a>
             </div>           <!-- logo -->
             <nav class="gnb">
-                <span><a href="#!">소하는요</a></span>
+                <span><a href="../1_brand/index.html">소하는요</a></span>
                 <span class="product">
                     <a href="../2_product/all/index.html">디지털 문구</a>
                     <div class="product_menu">
@@ -166,71 +140,24 @@
         </header>
     </header>           <!-- header -->
 
-    <div class="sub_title">소하는요</div>
-    <div class="wrap">
-        <br><br><p>안녕하세요:)</p>
-        <br>
-        <p>디지털 필기에 진심인 브랜드, 소하입니다.</p>
-        <p>디지털 필기의 장점은 살리고 소하만의 개성이 담긴 제품들을 만들고 있습니다.</p>
-        <p>소하는 ‘소소한 하루’와 '小河', 작은 물줄기라는 두 뜻을 담고 있으며,</p>
-        <p>소소한 하루하루를 기록하는 작은 물줄기가 큰 강을 이루어</p>
-        <p>여러분의 하루하루에 더 큰 의미를 만들어가는 디지털 문구점입니다!</p>
-        <br>
-        <p>허공에 구름처럼 떠다니는 생각들을 하나로 모을 때</p>
-        <p>행동의 갈피가 선명하게 그려질 때가 많습니다.</p>
-        <p>하루하루를 살아가기 바쁘지만, 바쁜 와중에도</p>
-        <p>나의 일상, 작은 행동, 오늘 해야 할 업무, 공부 계획 등 기록하는 습관을 들이면</p>
-        <p>내가 원했던 하루 더 가까워질 수 있습니다.</p>
-        <br>
-        <p>그 시작을 소하와 함께 하시면 분명 더 즐거울 거에요!</p>
+    <div class="search_result_box">
+        <input type="search" name="search_result" class="search">
+        <span><a href="#!"><i class="fa-solid fa-magnifying-glass"></i></a></span>
     </div>
-    
-    <footer class="footer_outer">
-        <footer class="footer">
-            <section class="footer_logo mr">
-                <span class="personal"><a href="#!">이용약관</a></span>
-                <span class="personal info"><a href="#!">개인정보처리방침</a></span>
-                <span class="personal"><a href="#!">이용안내</a></span>
-                <div class="logo mr">
-                    <img src="./img/footer_logo.png" alt="footer_logo">
-                </div>
-                <div class="brand mr">
-                    <p class="sub">소소한 하루,</p>
-                    <p class="tit">소하</p>
-                </div>
-            </section>
-            <!-- 이용약관, 개인정보처리방침, 이용안내 + 로고 + 인스타 -->
-            <section class="footer_section mr">
-                <span>무통장입금</span>
-                <p>하나 833-910295-68307</p>
-                <p>부산 112-2006-5656-09</p>
-                <p>우리 1002-182-524815</p>
-                <p>신한 110-516303-268</p>
-            </section>
-            <section class="footer_brand mr">
-                <span>소하</span>
-                <p>대표 : 정연주</p>
-                <p>사업자등록번호 : 283-87-07389</p>
-                <p>통신판매업 신고번호 :
-                    <a href="https://www.ftc.go.kr/">2024-부산동래구-7408호</a>
-                </p>
-                <p>FAX : 070-8417-2862</p>
-                <p>이메일 : so_ha@gmail.com</p>
-                <p>(우 : 47832)</p>
-                <p>주소 : 부산광역시 동래구 중앙대로 1285번길 11 402호</p>
-            </section>
-            <!-- 브랜드 -->
-            <section class="footer_section">
-                <span>고객센터</span>
-                <p class="call">1899-3816</p>
-                <p>영업시간</p>
-                <p>월~금 09:00~18:00 </p>
-                <p>점심시간 12:00~13:00</p>
-                <p>주말/공휴일 휴무</p>
-            </section>
-            <!-- 고객센터 -->
-            <p class="copy">COPYRIGHT © soha. ALL RIGHTS RESERVED.</p>
-        </footer>
-    </footer>  <!-- footer -->
+
+    <div class="wrap">
+        <h2>[소하] 디지털 문구 사용 가이드</h2>
+        <p class="guide-subtitle">디지털 문구 처음 사용하시나요?</p>
+        <h4>01 디지털 문구란?</h4>
+        <h4>02 사용 전 준비물</h4>
+        <h4>03 디지털 서식 다운로드하기</h4>
+        <h4>04 굿노트에서 불러오기</h4>
+        <h4>05 노트쉘프 / 삼성노트에서 불러오기</h4>
+        <h4>06 사용 전 확인사항</h4>
+        <h4>FAQ</h4>
+        <div class="guide-img placeholder">
+            <p>굿노트 불러오기 화면 예시 이미지가 들어갈 자리</p>
+        </div>
+    </div>
 </body>
 </html>
