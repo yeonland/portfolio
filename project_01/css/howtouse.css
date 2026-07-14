@@ -20,6 +20,15 @@ li {
 }
 
 /* page title */
+.wrap > h1 {
+    margin-bottom: 18px;
+    color: #9c7055;
+    font-family: "Gowun Batang", serif;
+    font-size: 44px;
+    line-height: 1.35;
+    text-align: center;
+}
+
 .wrap > h2 {
     margin-bottom: 18px;
     color: #9c7055;
@@ -30,11 +39,20 @@ li {
 }
 
 .guide-subtitle {
-    margin-bottom: 80px;
+    margin-bottom: 10px;
     color: #575757;
     font-size: 26px;
     font-weight: 700;
     text-align: center;
+}
+
+.guide-desc {
+    margin-bottom: 80px;
+    color: #575757;
+    font-size: 18px;
+    line-height: 1.7;
+    text-align: center;
+    word-break: keep-all;
 }
 
 /* section common */
