@@ -1,4 +1,4 @@
-/************************** 포트폴리오용 **************************/
+/************************** 포트폴리오용 문구 **************************/
 #pop {display: none;}
 #pop ~ .pop_box {display: none;}
 #pop:checked ~ .pop_box {display: block;}
@@ -6,7 +6,7 @@
     width: 140px; height: 140px;
     background-color: #EFEFEF;
     border-radius: 70px; border: 1px solid #F4E53B; box-sizing: border-box;
-    position: fixed; top: 300px; right: 50px; z-index: 9;
+    position: fixed; top: 150px; left: 50px; z-index: 9;
     animation: up_down 4s infinite; 
 }
 @keyframes up_down {
