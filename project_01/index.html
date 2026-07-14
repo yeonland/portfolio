@@ -97,16 +97,24 @@
             </nav>                    <!-- gnb -->
             <input type="checkbox" id="search_chk">
             <section class="gnb_icon">
-                <label for="search_chk" class="search_open">
-                    <span><i class="fa-solid fa-magnifying-glass"></i></span>
-                </label>
-                <label for="search_chk" class="search_close">
-                    <span><i class="fa-solid fa-xmark"></i></span>
-                </label>
-                <div class="search_box">
-                    <input type="search" name="search_txt" class="search_txt">
-                    <span><a href="./sub/search_result/index.html" ><i class="fa-solid fa-magnifying-glass"></i></a></span>
-                </div>                      <!-- search_box -->
+                <div class="search_area">
+                    <button type="button" class="search_toggle" aria-label="검색창 열기">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+
+                    <form action="../search_result/index.html" method="get" class="search_box">
+                        <input 
+                        type="search" 
+                        name="search_txt" 
+                        class="search_txt" 
+                        placeholder="검색어를 입력하세요"
+                        >
+
+                        <button type="submit" class="search_submit" aria-label="검색">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </form>
+                </div>                <!-- search_box -->
                 <span class="btn_cart"><i class="fa-solid fa-cart-shopping"></i></span>
                 <div class="cart_box box">
                     <p class="tit">장바구니</p>
