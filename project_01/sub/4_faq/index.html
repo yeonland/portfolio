@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Gowun+Dodum&display=swap" rel="stylesheet">
     <!-- font Gowun+Dodum -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="../../js/header.js"></script>
+    <script src="../../js/main.js"></script>
     <script>
         $(function(){
             let btn = $('.faq_box .faq > .faq_link')
@@ -44,17 +44,15 @@
     </script>
 </head>
 <body>
-    <input type="checkbox" id="how_use" checked>
-    <div>
-        <a href="https://teamnelna.notion.site/acbcaca078d6439b87397a9370e5b0d8">
-            <section class="how_use_box">
-                <label for="how_use"><i class="fa-solid fa-xmark"></i></label>
+    <div class="how_use_wrap">
+        <button><i class="fa-solid fa-xmark"></i></button>
+        <a href="./sub/howtouse/index.html" target="_blank">
+            <div class="how_use_box">
                 <p class="how_use_top">사용법</p>
                 <p>알아보기</p>
-            </section>
+            </div>
         </a>
-    </div>
-    <!-- 사용법 알아보기 -->
+    </div>    <!-- 사용법 알아보기 -->
     
     <input type="checkbox" id="chat_chk">
     <section class="chat">

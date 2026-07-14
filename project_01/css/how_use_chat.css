@@ -1,3 +1,4 @@
+/************************** 포트폴리오용 **************************/
 #pop {display: none;}
 #pop ~ .pop_box {display: none;}
 #pop:checked ~ .pop_box {display: block;}
@@ -5,7 +6,7 @@
     width: 140px; height: 140px;
     background-color: #EFEFEF;
     border-radius: 70px; border: 1px solid #F4E53B; box-sizing: border-box;
-    position: fixed; top: 300px; left: 50px; z-index: 9;
+    position: fixed; top: 300px; right: 50px; z-index: 9;
     animation: up_down 4s infinite; 
 }
 @keyframes up_down {
@@ -27,20 +28,20 @@
 
 
 /************************** 사용법 **************************/
-#how_use {display: none;}
-#how_use ~ div .how_use_box {display: none;}
-#how_use:checked ~ div .how_use_box {display: block;}
-
-.how_use_box {
-    width: 130px; height: 130px;
-    background-color: #9c7055; border-radius: 65px;
-    position: fixed; top: 150px; left: 50px; z-index: 9;
+.how_use_wrap {
     animation: up_down 4s infinite;
+    position: fixed; top: 150px; right: 50px; z-index: 9;
 }
 @keyframes up_down {
     0% { transform: translateY(0); }
     50% { transform: translateY(10px); }
 }
+
+.how_use_box {
+    width: 130px; height: 130px;
+    background-color: #9c7055; border-radius: 65px;
+}
+
 
 .how_use_box p {
     font-size: 24px; text-align: center; 
@@ -48,14 +49,14 @@
 }
 .how_use_box .how_use_top {padding-top: 28px;}
 
-.how_use_box label {
+.how_use_wrap button {
     float: right; color: #9c7055;
     width: 24px; height: 24px; border-radius: 12px;
+    border: none;
     background-color: #ffc1cc;
     text-align: center; font-size: 18px;
 }
-.how_use_box label:hover {cursor: pointer;}
-
+.how_use_wrap button:hover {cursor: pointer;}
 /************************** Top **************************/
 .btn_top {width: 60px; height: 60px;
     border: 2px solid #9c7055; box-sizing: border-box; border-radius: 30px;
