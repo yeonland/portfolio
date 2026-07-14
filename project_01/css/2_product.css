@@ -14,7 +14,7 @@
 /*************************** sub_menu ***************************/
 .sub_menu {
     width: 615px; height: 30px; margin: 0 auto;
-    position: sticky; top: 85px; z-index: 9999;
+    position: sticky; top: 85px; z-index: 50;
 }
 .sub_menu div {
     width: 90px; height: 30px; float: left; line-height: 30px; text-align: center;
