@@ -54,6 +54,7 @@ a {text-decoration: none; color: black;}
     display: flex;
     align-items: center;
     justify-content: space-between;
+    z-index: 51;
 }
 
 .header_outer .header .gnb_icon span {
@@ -145,6 +146,7 @@ a {text-decoration: none; color: black;}
     position: absolute; top: 60px; right: 0;
     width: 300px; height: 400px; overflow: hidden; display: none;
     border: 1px solid #9c7055;
+    z-index: 9999;
 }
 
 .header_outer .header .gnb_icon .box .tit {font-family: "Gowun Dodum", sans-serif; font-size: 24px; color: #9c7055; padding: 30px 0; text-align: center; line-height: 1.4;}
