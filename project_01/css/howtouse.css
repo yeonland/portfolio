@@ -1,0 +1,289 @@
+body {
+    background-color: #feffed;
+    color: #575757;
+    font-family: "Gowun Dodum", sans-serif;
+}
+
+ul,
+ol {
+    padding-left: 0;
+}
+
+li {
+    list-style: none;
+}
+
+.wrap {
+    width: 960px;
+    margin: 0 auto;
+    padding: 90px 0 120px;
+}
+
+/* page title */
+.wrap > h2 {
+    margin-bottom: 18px;
+    color: #9c7055;
+    font-family: "Gowun Batang", serif;
+    font-size: 44px;
+    line-height: 1.35;
+    text-align: center;
+}
+
+.guide-subtitle {
+    margin-bottom: 80px;
+    color: #575757;
+    font-size: 26px;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* section common */
+.guide-section {
+    margin-bottom: 90px;
+}
+
+.step-num {
+    display: inline-block;
+    margin-bottom: 16px;
+    padding: 7px 16px;
+    border-radius: 999px;
+    background-color: #ffc1cc;
+    color: #9c7055;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.guide-section h2 {
+    margin-bottom: 24px;
+    color: #9c7055;
+    font-family: "Gowun Batang", serif;
+    font-size: 34px;
+    line-height: 1.35;
+}
+
+.guide-section p {
+    margin-bottom: 14px;
+    font-size: 18px;
+    line-height: 1.75;
+    word-break: keep-all;
+}
+
+/* checklist */
+.check-list {
+    padding: 30px 34px;
+    border: 1px solid #d6b8a3;
+    border-radius: 24px;
+    background-color: #fffdf0;
+}
+
+.check-list li {
+    position: relative;
+    margin-bottom: 14px;
+    padding-left: 28px;
+    color: #575757;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.check-list li:last-child {
+    margin-bottom: 0;
+}
+
+.check-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #9c7055;
+    font-weight: 700;
+}
+
+/* image placeholder */
+.guide-img {
+    margin-top: 30px;
+    width: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.guide-img img {
+    display: block;
+    width: 100%;
+}
+
+.guide-img.placeholder {
+    height: 360px;
+    border: 1px dashed #9c7055;
+    background-color: #f4eadf;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.guide-img.placeholder p {
+    margin-bottom: 0;
+    color: #9c7055;
+    font-size: 18px;
+}
+
+/* ordered list */
+.order-list {
+    padding: 30px 34px;
+    border: 1px solid #d6b8a3;
+    border-radius: 24px;
+    background-color: #fffdf0;
+    counter-reset: order-step;
+}
+
+.order-list li {
+    position: relative;
+    margin-bottom: 16px;
+    padding-left: 38px;
+    font-size: 18px;
+    line-height: 1.6;
+    counter-increment: order-step;
+}
+
+.order-list li:last-child {
+    margin-bottom: 0;
+}
+
+.order-list li::before {
+    content: counter(order-step);
+    position: absolute;
+    left: 0;
+    top: 2px;
+
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #9c7055;
+    color: #feffed;
+
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+}
+
+/* details */
+details {
+    margin-bottom: 18px;
+    border: 1px solid #d6b8a3;
+    border-radius: 22px;
+    background-color: #fffdf0;
+    overflow: hidden;
+}
+
+details:last-child {
+    margin-bottom: 0;
+}
+
+summary {
+    padding: 22px 28px;
+    color: #9c7055;
+    font-size: 21px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+details ol {
+    padding: 0 32px 28px 56px;
+}
+
+details li {
+    margin-bottom: 12px;
+    list-style: decimal;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+details li:last-child {
+    margin-bottom: 0;
+}
+
+details p {
+    padding: 0 28px 26px;
+    margin-bottom: 0;
+    font-size: 17px;
+    line-height: 1.65;
+}
+
+/* FAQ */
+.faq-section {
+    margin-bottom: 0;
+}
+
+/* responsive */
+@media (max-width: 1023px) {
+    .wrap {
+        width: calc(100% - 48px);
+        padding: 80px 0 100px;
+    }
+
+    .wrap > h2 {
+        font-size: 38px;
+    }
+
+    .guide-subtitle {
+        font-size: 24px;
+        margin-bottom: 70px;
+    }
+}
+
+@media (max-width: 640px) {
+    .wrap {
+        width: calc(100% - 32px);
+        padding: 64px 0 80px;
+    }
+
+    .wrap > h2 {
+        font-size: 30px;
+        text-align: left;
+    }
+
+    .guide-subtitle {
+        margin-bottom: 56px;
+        font-size: 21px;
+        text-align: left;
+    }
+
+    .guide-section {
+        margin-bottom: 70px;
+    }
+
+    .guide-section h2 {
+        font-size: 27px;
+    }
+
+    .guide-section p,
+    .check-list li,
+    .order-list li {
+        font-size: 16px;
+    }
+
+    .check-list,
+    .order-list {
+        padding: 24px 22px;
+        border-radius: 20px;
+    }
+
+    .guide-img.placeholder {
+        height: 240px;
+        padding: 0 24px;
+        text-align: center;
+    }
+
+    summary {
+        padding: 20px 22px;
+        font-size: 18px;
+    }
+
+    details ol {
+        padding: 0 24px 24px 44px;
+    }
+
+    details p {
+        padding: 0 22px 24px;
+        font-size: 16px;
+    }
+}
