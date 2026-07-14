@@ -1,3 +1,11 @@
+.btn_top {width: 60px; height: 60px;
+    border: 2px solid #9c7055; box-sizing: border-box; border-radius: 30px;
+    position: fixed; bottom: 50px; right: 60px;
+    line-height: 58px; text-align: center; font-size: 36px;
+    color: #9c7055; background-color: #feffed; cursor: pointer;
+    font-family: "Gowun Dodum", sans-serif; font-weight: bold;
+}
+
 /************************** 포트폴리오용 문구 **************************/
 #pop {display: none;}
 #pop ~ .pop_box {display: none;}
@@ -58,13 +66,7 @@
 }
 .how_use_wrap button:hover {cursor: pointer;}
 /************************** Top **************************/
-.btn_top {width: 60px; height: 60px;
-    border: 2px solid #9c7055; box-sizing: border-box; border-radius: 30px;
-    position: fixed; bottom: 50px; right: 60px;
-    line-height: 58px; text-align: center; font-size: 36px;
-    color: #9c7055; background-color: #feffed; cursor: pointer;
-    font-family: "Gowun Dodum", sans-serif; font-weight: bold;
-}
+
 
 /************************** 실시간 채팅상담 **************************/
 #chat_chk {display: none;}

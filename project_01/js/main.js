@@ -22,4 +22,18 @@ $(function() {
     $('.how_use_close').on('click', function () {
         $('.how_use_wrap').fadeOut(300);
     });
+
+    // 검색 창 뜨기
+    $('.search_toggle').on('click', function () {
+        $('.search_box').toggleClass('on');
+
+        if ($('.search_box').hasClass('on')) {
+            $(this).html('<i class="fa-solid fa-xmark"></i>');
+            $(this).attr('aria-label', '검색창 닫기');
+            $('.search_txt').focus();
+        } else {
+            $(this).html('<i class="fa-solid fa-magnifying-glass"></i>');
+            $(this).attr('aria-label', '검색창 열기');
+        }
+    });
 });

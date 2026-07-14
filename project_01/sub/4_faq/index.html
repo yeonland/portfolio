@@ -6,7 +6,7 @@
     <title>자주 묻는 질문</title>
     <link rel="stylesheet" href="../../css/header.css">
     <link rel="stylesheet" href="../../css/footer.css">
-    <link rel="stylesheet" href="../../css/4_faq.css">
+    <link rel="stylesheet" href="../../css/4_faq.css    ">
     <link rel="stylesheet" href="../../css/how_use_chat.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <!-- font-awesome -->
@@ -71,13 +71,12 @@
                 <input type="text" name="chat_txt" class="chat_txt">
             </div>
         </div>
-    </section>
-    <!-- 실시간 채팅상담 -->
+    </section>    <!-- 실시간 채팅상담 -->
     
     <header class="header_outer" id="header">
-        <header class="header">
+        <div class="header">
             <div class="logo">
-                <a href="../../index.html"><img src="./img/logo.png" alt="soha_logo"></a>
+                <img src="../../img/00_logo.png" alt="soha_logo">
             </div>           <!-- logo -->
             <nav class="gnb">
                 <span><a href="../1_brand/index.html">소하는요</a></span>
@@ -92,28 +91,37 @@
                     </div>
                 </span>
                 <span><a href="../3_review/index.html">솔직후기</a></span>
-                <span><a href="../4_faq/index.html">궁금해요</a></span>
+                <span><a href="#">궁금해요</a></span>
                 <span><a href="../5_notice/index.html">알립니다</a></span>
             </nav>                    <!-- gnb -->
-            <input type="checkbox" id="search_chk">
-            <section class="gnb_icon">
-                <label for="search_chk" class="search_open">
-                    <span><i class="fa-solid fa-magnifying-glass"></i></span>
-                </label>
-                <label for="search_chk" class="search_close">
-                    <span><i class="fa-solid fa-xmark"></i></span>
-                </label>
-                <div class="search_box">
-                    <input type="search" name="search_txt" class="search_txt">
-                    <span><a href="./sub/0_search.html" ><i class="fa-solid fa-magnifying-glass"></i></a></span>
-                </div>                      <!-- search_box -->
-                <span class="btn_cart"><i class="fa-solid fa-cart-shopping"></i></span>
+            <div class="gnb_icon">
+                <div class="search_area">
+                    <button type="button" class="search_toggle" aria-label="검색창 열기">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+
+                    <form action="../search_result/index.html" method="get" class="search_box">
+                        <input 
+                        type="search" 
+                        name="search_txt" 
+                        class="search_txt" 
+                        placeholder="검색어를 입력하세요"
+                        >
+
+                        <button type="submit" class="search_submit" aria-label="검색">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </form>
+                </div>                <!-- search-area -->
+                <span class="btn_cart">
+                    <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                </span>
                 <div class="cart_box box">
                     <p class="tit">장바구니</p>
                     <div class="product_box">
                         <a href="../2_product/all/detail/index.html">
                             <div class="popup_img">
-                                <img src="./img/cart01.jpg" alt="cart01">
+                                <img src="../../img/cart01.jpg" alt="cart01">
                             </div>
                             <div class="popup_txt">
                                 <p>불렛저널</p>
@@ -124,7 +132,7 @@
                     <div class="product_box second">
                         <a href="../2_product/all/detail/index.html">
                             <div class="popup_img">
-                                <img src="./img/cart02.jpg" alt="cart02">
+                                <img src="../../img/cart02.jpg" alt="cart02">
                             </div>
                             <div class="popup_txt">
                                 <p>만년 업무 플래너</p>
@@ -135,7 +143,7 @@
                     <div class="product_box">
                         <a href="../2_product/all/detail/index.html">
                             <div class="popup_img">
-                                <img src="./img/cart03.jpg" alt="cart03">
+                                <img src="../../img/cart03.jpg" alt="cart03">
                             </div>
                             <div class="popup_txt">
                                 <p>프로젝트 트래커</p>
@@ -144,14 +152,15 @@
                         </a>
                     </div>
                     <button>결제하기</button>
-                </div>                  <!-- cart_box -->
-                <span class="btn_recent"><i class="fa-solid fa-clock"></i></span>
+                </div>     
+                             <!-- cart_box -->
+                <span class="btn_recent"><a href="#"><i class="fa-solid fa-clock"></i></a></span>
                 <div class="recent_box box">
                     <p class="tit">최근 본 상품</p>
                     <div class="product_box">
                         <a href="../2_product/all/detail/index.html">
                             <div class="popup_img">
-                                <img src="./img/recent01.jpg" alt="recent01">
+                                <img src="../../img/recent01.jpg" alt="recent01">
                             </div>
                             <div class="popup_txt">
                                 <p>만년형 심플 다이어리</p>
@@ -162,7 +171,7 @@
                     <div class="product_box second">
                         <a href="../2_product/all/detail/index.html">
                             <div class="popup_img">
-                                <img src="./img/recent02.jpg" alt="recent02">
+                                <img src="../..//img/recent02.jpg" alt="recent02">
                             </div>
                             <div class="popup_txt">
                                 <p>국내여행 플래너</p>
@@ -173,7 +182,7 @@
                     <div class="product_box">
                         <a href="../2_product/all/detail/index.html">
                             <div class="popup_img">
-                                <img src="./img/recent03.jpg" alt="recent03">
+                                <img src="../../img/recent03.jpg" alt="recent03">
                             </div>
                             <div class="popup_txt">
                                 <p>소하 만년형 일주일 플래너</p>
@@ -184,13 +193,13 @@
                     <button>결제하기</button>
                 </div>                <!-- recent box -->
                 <span><a href="../login/index.html"><i class="fa-solid fa-user"></i></a></span>
-            </section>  <!-- gnb_icon -->
-        </header>
-    </header>           <!-- header -->    
-
-    <div class="sub_title" id="use">사용법</div>
+            </div>  <!-- gnb_icon -->
+        </div>
+    </header>           <!-- header -->
+    
+    <h2 class="sub_title" id="use">사용법</h2>
     <div><a href="https://teamnelna.notion.site/acbcaca078d6439b87397a9370e5b0d8"><div class="use">사용법<br>보러가기</div></a></div>
-    <div class="sub_title">자주 묻는 질문</div>
+    <h2 class="sub_title">자주 묻는 질문</h2>
 
     <div class="wrap">
         <!-- 아코디언 메뉴 -->
@@ -369,24 +378,23 @@
             <!-- 이용약관, 개인정보처리방침, 이용안내 + 로고 -->
             <section class="footer_section mr">
                 <span>무통장입금</span>
-                <p>하나 833-910295-68307</p>
-                <p>부산 112-2006-5656-09</p>
+                <p>하나 833-592734-37602</p>
+                <p>부산 112-5729-8825-38</p>
                 <p>우리 1002-182-524815</p>
-                <p>신한 110-516303-268</p>
+                <p>신한 110-583731-724</p>
             </section>
             <section class="footer_brand mr">
                 <span>소하</span>
                 <p>대표 : 정연주</p>
                 <p>사업자등록번호 : 283-87-07389</p>
                 <p>통신판매업 신고번호 :
-                    <a href="https://www.ftc.go.kr/">2024-부산동래구-7408호</a>
+                    <a href="https://www.ftc.go.kr/">2026-부산부산진구-7408호</a>
                 </p>
                 <p>FAX : 070-8417-2862</p>
                 <p>이메일 : so_ha@gmail.com</p>
-                <p>(우 : 47832)</p>
-                <p>주소 : 부산광역시 동래구 중앙대로 1285번길 11 402호</p>
+                <p>(우 : 47296)</p>
+                <p>주소 : 부산 부산진구 중앙대로 688 한준빌딩 2층</p>
             </section>
-            <!-- 브랜드 -->
             <section class="footer_section">
                 <span>고객센터</span>
                 <p class="call">1899-3816</p>
