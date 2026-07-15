@@ -202,6 +202,26 @@ summary {
     font-size: 21px;
     font-weight: 700;
     cursor: pointer;
+    list-style: none;
+    position: relative;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+summary::after {
+    content: "+";
+    position: absolute;
+    right: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9c7055;
+    font-size: 24px;
+}
+
+details[open] summary::after {
+    content: "−";
 }
 
 details ol {
