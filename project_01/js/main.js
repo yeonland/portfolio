@@ -36,4 +36,11 @@ $(function() {
             $(this).attr('aria-label', '검색창 열기');
         }
     });
+
+    // FAQ 하나만 뜨기
+    $('.faq_box details').on('toggle', function () {
+        if (this.open) {
+            $('.faq_box details').not(this).removeAttr('open');
+        }
+    });
 });
