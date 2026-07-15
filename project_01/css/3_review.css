@@ -1,9 +1,9 @@
 * {margin: 0; padding: 0;}
 .sub_title {
-    font-family: "Jua", sans-serif; font-size: 36px; color: #9c7055;
-    height: 40px; margin-top: 60px; margin-bottom: 60px;
-    text-align: center;
-    line-height: 40px;
+    font-family: "Jua", sans-serif; font-size: 36px;
+    color: #9c7055;
+    height: 40px; margin: 40px 0;
+    text-align: center; line-height: 40px;
 }
 
 .header_outer .header .gnb span:nth-child(3) a {

@@ -3,23 +3,61 @@ ul, li {list-style: none;}
 a {text-decoration: none; color: black;}
 
 .sub_title {
-    font-family: "Jua", sans-serif; font-size: 36px; color: #9c7055;
-    height: 40px; margin: 50px 0;
-    text-align: center;
-    line-height: 40px;
+    font-family: "Jua", sans-serif; font-size: 36px;
+    color: #9c7055;
+    height: 40px; margin: 56px 0 32px;
+    text-align: center; line-height: 40px;
 }
 
 .header_outer .header .gnb span:nth-child(4) a {
     border-bottom: 1px solid #9c7055; box-sizing: border-box;
 }
 
-.use {
-    width: 240px; height: 100px;
-    margin: 40px auto;
-    border: 1px solid #9c7055; box-sizing: border-box; border-radius: 50px;
-    text-align: center;  line-height: 50px; font-family: "Gowun Dodum", sans-serif; font-size: 24px; color: #9c7055;
+.sub_desc {
+    margin: -25px 0 50px;
+    font-family: "Gowun Dodum", sans-serif;
+    font-size: 18px;
+    color: #9c7055;
+    text-align: center;
 }
-.use:hover {background-color: #feffed;}
+
+.guide_box {
+    width: 520px;
+    margin: 0 auto 70px;
+    padding: 32px 36px;
+    border: 1px solid #9c7055;
+    border-radius: 28px;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: "Gowun Dodum", sans-serif;
+    color: #9c7055;
+    background-color: #feffed;
+}
+
+.guide_box h3 {
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.guide_box p {
+    margin-bottom: 24px;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.guide_box a {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 999px;
+    background-color: #9c7055;
+    color: #feffed;
+    font-size: 18px;
+}
+.guide_box a:hover {
+    color: #9c7055; border: 1px solid #9c7055;
+    background: #feffed;
+}
 
 .wrap {width: 1245px; margin: 100px auto; font-family: "Gowun Dodum", sans-serif;}
 
@@ -27,14 +65,37 @@ a {text-decoration: none; color: black;}
 .faq_box {border-top: 2px solid #bbb;}
 .faq_box .faq {border-bottom: 1px solid #bbb;}
 .faq_box .faq .faq_link {
-    display: block; position: relative;
-    padding: 20px; border-bottom: 1px solid #bbb;
+    display: block;
+    position: relative;
+    padding: 20px;
+    border-bottom: 1px solid #bbb;
     transition: all 0.3s;
+}
+
+.faq_box .faq .faq_link:hover {
+    background-color: #feffed;
+}
+
+.faq_box .faq.active .faq_link {
+    background-color: #feffed;
 }
 .faq_box .faq_title {
     position: relative; width: calc(100% - 50px); padding-left: 40px;
     font-size: 16px;
 }
 .faq_box .faq_title .icon {
-    position: absolute; top: 3px; left: 0; color: #9c7055; vertical-align: middle;}
-.faq_box .faq .faq_content {display: none; padding: 30px 40px; color: #9c7055;}
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #9c7055;
+    font-weight: 700;
+}
+.faq_box .faq .faq_content {
+    display: none;
+    padding: 30px 40px;
+    color: #9c7055;
+    background-color: #fffdf0;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
