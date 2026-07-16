@@ -104,6 +104,7 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
     padding: 6px 10px;
     color: #fff;
     text-align: right;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .banner_txt p {
@@ -643,7 +644,7 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
     .metapo_box:hover .metapo_more {
         color: #475775;
     }
-    
+
     /* 현장공개 */
     .open .open_box {
         display: grid;
