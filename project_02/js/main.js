@@ -45,7 +45,7 @@ $(function() {
         let index = $(this).data('index');
 
         // 2. 모든 sheet 숨기고, 선택한 인덱스만 fade 효과로 보여주기
-        $('.sheet').hide().eq(index).fadeIn(500);
+        $('.sheet').hide().eq(index).fadeIn(300);
 
         // 3. 버튼 활성화 상태 표시 (선택사항)
         $('.open_img_btn').removeClass('on');

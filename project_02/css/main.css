@@ -68,32 +68,27 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
 }
 .metapo .metapo_box .metapo_img img {width: 100%;}
 
-/* open field 현장공개 */
-#open01, #open02, #open03, #open04 {display: none;}
-#open01:checked ~ .open_box .open_img_sheet .open_img_sheet01 {
-    display: block;
-}
-#open02:checked ~ .open_box .open_img_sheet .open_img_sheet02 {
-    display: block;
-}
-#open03:checked ~ .open_box .open_img_sheet .open_img_sheet03 {
-    display: block;
-}
-#open04:checked ~ .open_box .open_img_sheet .open_img_sheet04 {
-    display: block;
+
+/* 현장공개 */
+.sheet {display: none;}
+.sheet.on {display: block;}
+.open_header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: end;
+    margin-bottom: 20px;
 }
 
-.open .open_box {width: 100%;}
-.open .open_box .open_img {width: 100%; display: flex;}
-
-.open .open_box .open_img_btn {
-    width: 25%; 
+.open_header h2 {
+    grid-column: 2;
+    text-align: center;
 }
 
-/* .open .open_box .open_img_btn:checked .img_container {background-color: transparent;} */
-
-/* open_img_sheet */
-
+.open_header .more {
+    grid-column: 3;
+    justify-self: end;
+    color: #999;
+}
 
 /* notice news box */
 .notice_news_pc, #tab01, #tab02 {display: none;}
@@ -174,16 +169,56 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
 /******************* Tablet+PC *******************/
 @media all and (min-width: 601px) {
     
-    .open .open_box {
-        display: flex; width: 100%;
+    .open .open_box .open_img_sheet {
+        order: 1;
+        width: 100%;
+        aspect-ratio: 53 / 35;
+        margin: 0;
+        overflow: hidden;
     }
+
+    .open .open_box .open_img_sheet .sheet {
+        width: 100%;
+        height: 100%;
+    }
+
+    .open .open_box .open_img_sheet .sheet img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* 큰 이미지 아래 썸네일 4장 */
     .open .open_box .open_img {
-        width: 100%; display: flex; flex-wrap: wrap; justify-content: space-between;
+        order: 2;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 4px;
+        width: 100%;
+        margin-top: 6px;
     }
+
     .open .open_box .open_img .open_img_btn {
-        width: 50%;
+        width: auto;
+        min-width: 0;
+        aspect-ratio: 53 / 35;
+        overflow: hidden;
+        cursor: pointer;
+        outline: 2px solid transparent;
+        outline-offset: -2px;
     }
-    .open .open_box .open_img_sheet {width: 100%;}
+
+    .open .open_box .open_img .open_img_btn img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .open .open_box .open_img .open_img_btn.on {
+        outline-color: #6987d6;
+    }
     .sub_tit {display: block;}
 
     .slide span {font-size: 1.2rem;}
@@ -210,6 +245,72 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
         color: white; text-align: left;
     }
     .progress .progress_box .progress_txt .tit {font-size: 1.25rem;}
+
+    /* 현장공개 */
+    .open .open_box {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        width: 100%;
+
+        /* 1070px일 때 약 350px 높이 */
+        aspect-ratio: 1070 / 350;
+    }
+
+    /* 왼쪽 썸네일 */
+    .open .open_box .open_img {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        width: 100%;
+        height: 100%;
+    }
+
+    .open .open_box .open_img .open_img_btn {
+        width: auto;
+        min-width: 0;
+        overflow: hidden;
+        cursor: pointer;
+        outline: 2px solid transparent;
+        outline-offset: -2px;
+    }
+
+    .open .open_box .open_img .open_img_btn img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity 0.2s;
+    }
+
+    .open .open_box .open_img .open_img_btn:hover img {
+        opacity: 0.5;
+    }
+
+    .open .open_box .open_img .open_img_btn.on {
+        outline-color: #6987d6;
+    }
+
+    /* 오른쪽 큰 이미지 */
+    .open .open_box .open_img_sheet {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+    }
+
+    .open .open_box .open_img_sheet .sheet {
+        width: 100%;
+        height: 100%;
+    }
+
+    .open .open_box .open_img_sheet .sheet img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 
     /* banner_metapo */
     .banner_metapo {
@@ -282,7 +383,6 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
     .progress .progress_box:hover {
         background-color: white;
         border: 1px solid #6987D6;
-        box-sizing: border-box;
     }
     .progress .progress_box:hover .progress_txt {color: #6987D6;}
     .progress .progress_box:hover .progress_txt .sub_tit {font-size: 1rem;}
@@ -305,20 +405,71 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
     .metapo_txt {float: left;}
     .metapo_img {float: right; margin: 50px auto;}
 
-    /* 기본 상태: sheet는 숨겨두고, on 클래스가 붙은 것만 보여줌 */
-    .sheet { display: none; }
-    .sheet.on { display: block; }
+    /* 현장공개 */
+    .open .open_box {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        width: 100%;
 
-    /* 레이아웃 잡기 */
-    .open_box { display: flex; flex-wrap: wrap; }
-    .open_img { display: grid; width: 100%;}
-    .open_img_btn { width: 25%; cursor: pointer; border: 1px solid #ddd; }
-    .open_img_btn img { width: 100%; }
-    .open_img_sheet { width: 100%; margin-top: 20px; }
+        /* 1070px일 때 약 350px 높이 */
+        aspect-ratio: 1070 / 350;
+    }
 
-    /* 클릭 효과 */
-    .open_img_btn.on { border: 2px solid #9c7055; }
+    /* 왼쪽 썸네일 */
+    .open .open_box .open_img {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        width: 100%;
+        height: 100%;
+    }
 
+    .open .open_box .open_img .open_img_btn {
+        width: auto;
+        min-width: 0;
+        overflow: hidden;
+        cursor: pointer;
+        outline: 2px solid transparent;
+        outline-offset: -2px;
+    }
+
+    .open .open_box .open_img .open_img_btn img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity 0.2s;
+    }
+
+    .open .open_box .open_img .open_img_btn:hover img {
+        opacity: 0.3;
+    }
+
+    .open .open_box .open_img .open_img_btn.on {
+        outline-color: #6987d6;
+    }
+
+    /* 오른쪽 큰 이미지 */
+    .open .open_box .open_img_sheet {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+    }
+
+    .open .open_box .open_img_sheet .sheet {
+        width: 100%;
+        height: 100%;
+    }
+
+    .open .open_box .open_img_sheet .sheet img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 
     /* notice & news */
     .notice_news_mobile {display: none;}
