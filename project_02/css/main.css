@@ -50,36 +50,47 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
 }
 .sub_tit {display: none;}
 
-/* banner+metapo */
-/* .banner_metapo {} */
+/* banner + metapo 공통 */
+.banner_metapo {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "banner"
+        "metapo";
 
-/* banner */
-.banner {overflow: hidden; height: auto; width: 100%;}
+    width: 100%;
+    height: auto;
+    gap: 10px;
+}
 
-/* metapo */
-
-/* 배너 공통 */
-.banner {width: 100%; overflow: hidden;}
+/* 배너 */
+.banner {
+    grid-area: banner;
+    width: 100%;
+    min-width: 0;
+    aspect-ratio: 414 / 80;
+    overflow: hidden;
+}
 
 .banner > a {
     position: relative;
     display: block;
-    width: 100%; height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
-.banner picture {
-    display: block;
-    width: 100%; height: 100%;
-}
-
+.banner picture,
 .banner picture img {
     display: block;
     width: 100%;
     height: 100%;
+}
+
+.banner picture img {
     object-fit: cover;
 }
 
-/* 이미지 위 글자 */
+/* 배너 글자 */
 .banner_txt {
     position: absolute;
     inset: 0;
@@ -87,38 +98,84 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
 
     display: flex;
     flex-direction: column;
-    justify-content: space-between; align-items: flex-end;
+    justify-content: space-between;
+    align-items: flex-end;
 
-    padding: 15px;
+    padding: 6px 10px;
     color: #fff;
     text-align: right;
 }
 
 .banner_txt p {
-    line-height: 1.5;
+    max-width: 90%;
+    font-size: 10px;
+    line-height: 1.35;
 }
 
 .banner_txt strong {
-    display: block;
+    font-size: 10px;
     font-weight: 400;
 }
-.metapo {
-    width: 100%; display: flex; gap: 10px; margin-top: 5px;
-}
-.metapo .metapo_box {
-    background-color: #475775; height: 90px;
-    width: 25%;
-}
-.metapo .metapo_box .metapo_txt {
-    color: white; text-align: center;
-}
-.metapo_more {display: none;}
-.metapo .metapo_box .metapo_img {
-    width: 60px; width: 60px; margin-top: -100px;
-    margin: 0 auto;
-}
-.metapo .metapo_box .metapo_img img {width: 100%;}
 
+/* 모바일 메뉴 4개 */
+.metapo {
+    grid-area: metapo;
+
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+}
+
+.metapo .metapo_box {
+    width: auto;
+    min-width: 0;
+    height: 100px;
+
+    border: 1px solid transparent;
+    background-color: #475775;
+}
+
+.metapo .metapo_box > a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 100%;
+    padding: 8px 4px;
+}
+
+.metapo_txt {
+    width: 100%;
+    color: #fff;
+    text-align: center;
+}
+
+.metapo_name {
+    font-size: 0.85rem;
+    line-height: 1.3;
+    word-break: keep-all;
+}
+
+.metapo_more {
+    display: none;
+}
+
+.metapo_img {
+    width: 52px;
+    flex-shrink: 0;
+}
+
+.metapo_img img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
 
 /* 현장공개 */
 .sheet {display: none;}
@@ -263,6 +320,35 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
 
 /******************* Tablet+PC *******************/
 @media all and (min-width: 601px) {
+    .banner_metapo {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas: "banner metapo";
+        align-items: stretch;
+    }
+
+    /* 오른쪽 메뉴 2×2 */
+    .metapo {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: repeat(2, minmax(0, 1fr));
+        align-self: stretch;
+        height: 100%;
+    }
+
+    .metapo .metapo_box {
+        width: auto;
+        height: auto;
+    }
+
+    .metapo .metapo_box > a {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .metapo_txt {
+        width: auto;
+        text-align: left;
+    }
     
     .open .open_box .open_img_sheet {
         order: 1;
@@ -323,7 +409,6 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
 /******************* Tablet *******************/
 @media all and (min-width: 601px) and (max-width: 1024px) {
     /* 조사절차 */
-
     .progress {
         width: 100%;
         display: flex; flex-wrap: wrap; justify-items: center;
@@ -340,36 +425,42 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
         color: white; text-align: left;
     }
     .progress .progress_box .progress_txt .tit {font-size: 1.25rem;}
-
-    /* banner_metapo */
-    .banner_metapo {
+    /* banner+metapo */
+    .banner {
         width: 100%;
-        display: flex; justify-items: center; gap: 10px;
-    }
-    .banner_metapo .banner {
-        width: 50%; height: 170px;
-        aspect-ratio: 507 / 110;
-    }
-    .banner_metapo .metapo {
-        width: 49%;
-        display: flex; flex-wrap: wrap;
-        gap: 10px; height: 170px;
-    }
-    .banner_metapo .metapo .metapo_box {
-        width: 48%; height: 80px; margin-top: -1px;
-    }
-    .banner_metapo .metapo .metapo_box .metapo_txt {
-        float: left; margin-left: 10px;
-        line-height: 70px;
-    }
-    .banner_metapo .metapo .metapo_box .metapo_txt .metapo_more {
-        display: block;
-    }
-    .banner_metapo .metapo .metapo_box .metapo_img {
-        margin: 0 auto; float: right;
-        margin: 5px;    
+        aspect-ratio: 507 / 230;
     }
 
+    .banner_txt {
+        padding: 12px;
+    }
+
+    .banner_txt p {
+        max-width: 90%;
+        font-size: 0.9rem;
+        line-height: 1.45;
+    }
+
+    .banner_txt strong {
+        font-size: 0.85rem;
+    }
+
+    .metapo .metapo_box > a {
+        padding: 10px;
+    }
+
+    .metapo_name {
+        font-size: 1.1rem;
+        line-height: 1.4;
+    }
+
+    .metapo_more {
+        display: none;
+    }
+
+    .metapo_img {
+        width: 50px;
+    }
 
     /* 현장공개 */
     .open .open_box {
@@ -479,32 +570,80 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
     }
     .progress .progress_box:hover .progress_txt {color: #6987D6;}
     .progress .progress_box:hover .progress_txt .sub_tit {font-size: 1rem;}
-
-    /* banner&metapo */
-    
-    .banner_metapo {width: 100%; display: flex; gap: 10px;}
-    .banner_metapo .banner {
-        width: 50%; height: 250px;
-        aspect-ratio: 530 / 250;
-    }
-    
-
-    .banner_metapo .metapo {width: 50%; flex-wrap: wrap;}
-    .banner_metapo .metapo .metapo_box {
-            width: 49%; height: 120px; padding: 20px;
-            margin-top: -4px;
-        }
-    .banner_metapo .metapo .metapo_box:hover {
-        background-color: white; border: 1px solid #475775;
-        cursor: pointer;
+    .wrap {
+        width: min(calc(100% - 32px), 1070px);
+        margin: 0 auto;
     }
 
-    .banner_metapo .metapo .metapo_box:hover .metapo_txt {color: #475775;}
-    .banner_metapo .metapo .metapo_box:hover .metapo_more {color: #475775;}
-    .metapo_more {display: block; color: white; }
-    .metapo_txt {float: left;}
-    .metapo_img {float: right; margin: 50px auto;}
+    .banner_metapo {
+        grid-template-columns: 350px minmax(0, 1fr);
+        grid-template-rows: 250px;
+        grid-template-areas: "banner metapo";
 
+        /* 부모의 고정 height는 사용하지 않음 */
+        height: auto;
+    }
+
+    .banner {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: auto;
+    }
+
+    .banner_txt {
+        padding: 15px;
+    }
+
+    .banner_txt p {
+        max-width: 95%;
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .banner_txt strong {
+        font-size: 0.8rem;
+    }
+
+    .metapo {
+        height: 100%;
+    }
+
+    .metapo .metapo_box > a {
+        padding: 20px;
+    }
+
+    .metapo_txt {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 30px;
+    }
+
+    .metapo_name {
+        font-size: 1.2rem;
+        white-space: nowrap;
+    }
+
+    .metapo_more {
+        display: block;
+        color: #fff;
+        font-size: 0.9rem;
+    }
+
+    .metapo_img {
+        width: 80px;
+    }
+
+    .metapo_box:hover {
+        border-color: #475775;
+        background-color: #fff;
+    }
+
+    .metapo_box:hover .metapo_txt,
+    .metapo_box:hover .metapo_more {
+        color: #475775;
+    }
+    
     /* 현장공개 */
     .open .open_box {
         display: grid;
