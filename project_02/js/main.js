@@ -34,26 +34,20 @@ $(function() {
     $('.btn_top').click(function(){
         $(window).scrollTo(this.hash || 0, 500)
     }) // btn_top_event
-
-    // 
-    const imgBtn=$('.open ul li')
-    const imgSheet=$('.open .open_img_sheet .open_img')
     
     // 현장공개
     $('.open_img_btn').click(function() {
         // 1. 클릭한 버튼의 인덱스 가져오기
         let index = $(this).data('index');
-
-        // 2. 모든 sheet 숨기고, 선택한 인덱스만 fade 효과로 보여주기
-        $('.sheet').hide().eq(index).fadeIn(300);
-
-        // 3. 버튼 활성화 상태 표시 (선택사항)
+        
+        // 2. 버튼 활성화 상태 표시
         $('.open_img_btn').removeClass('on');
         $(this).addClass('on');
+
+        // 3. 모든 sheet 숨기기 + 선택한 인덱스만 fade 효과로 보여주기
+        $('.sheet').removeClass('on').hide().eq(index).addClass('on').fadeIn(300);
     });
-    // 공지사항  탭
-    const tab=$('.notice_news ul li')
-    const sheet=$('.notice_news .notice_news_sheet div')
+    // 공지사항 탭
 
     tab.click(function(){
         const index=$(this).index()
