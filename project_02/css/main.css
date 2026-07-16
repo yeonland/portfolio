@@ -34,7 +34,13 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
     display: flex; justify-content: center; 
     width: 100%; padding-top: 20px; gap: 10px; margin: 20px 0;
 }
-.progress .progress_box {width: 25%; background-color: #6987D6; }
+.progress .progress_box {
+    width: 25%;
+    background-color: #6987D6;
+    width: auto;
+    flex: 1;
+    min-width: 0;
+}
 .progress .progress_box .progress_img {
     margin: 0 auto; width: 60px; height: 60px;
 }
@@ -51,6 +57,51 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
 .banner {overflow: hidden; height: auto; width: 100%;}
 
 /* metapo */
+
+/* 배너 공통 */
+.banner {width: 100%; overflow: hidden;}
+
+.banner > a {
+    position: relative;
+    display: block;
+    width: 100%; height: 100%;
+}
+
+.banner picture {
+    display: block;
+    width: 100%; height: 100%;
+}
+
+.banner picture img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 이미지 위 글자 */
+.banner_txt {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; align-items: flex-end;
+
+    padding: 15px;
+    color: #fff;
+    text-align: right;
+}
+
+.banner_txt p {
+    line-height: 1.5;
+}
+
+.banner_txt strong {
+    display: block;
+    font-weight: 400;
+}
 .metapo {
     width: 100%; display: flex; gap: 10px; margin-top: 5px;
 }
@@ -79,7 +130,7 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
     margin-bottom: 20px;
 }
 
-.open_header h2 {
+.open_header .sub_title {
     grid-column: 2;
     text-align: center;
 }
@@ -88,6 +139,50 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
     grid-column: 3;
     justify-self: end;
     color: #999;
+}
+
+/* 모바일 기본값: 미디어쿼리 밖 */
+.open .open_box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* 큰 이미지 먼저 */
+.open .open_box .open_img_sheet {
+    width: 100%;
+    aspect-ratio: 53 / 35;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* 썸네일 4장 아래 */
+.open .open_box .open_img {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    width: 100%;
+    margin: 0;
+
+}
+
+.open .open_box .open_img .open_img_btn {
+    width: auto;
+    min-width: 0;
+    aspect-ratio: 53 / 35;
+    overflow: hidden;
+    cursor: pointer;
+    outline-offset: -2px;
+}
+
+.open .open_box img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.open .open_box .open_img .open_img_btn:hover img {
+    opacity: 0.5;
 }
 
 /* notice news box */
@@ -196,7 +291,7 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
         grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 4px;
         width: 100%;
-        margin-top: 6px;
+        margin: 0;
     }
 
     .open .open_box .open_img .open_img_btn {
@@ -235,7 +330,7 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
         gap: 10px;
     }
     .progress .progress_box {
-        width: 49%; padding: 10px;
+        width: 49%; padding: 10px;  
     }   
     .progress .progress_box .progress_img {
         width: 15%; float: left; margin-right: 10px;
@@ -246,78 +341,15 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
     }
     .progress .progress_box .progress_txt .tit {font-size: 1.25rem;}
 
-    /* 현장공개 */
-    .open .open_box {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 16px;
-        width: 100%;
-
-        /* 1070px일 때 약 350px 높이 */
-        aspect-ratio: 1070 / 350;
-    }
-
-    /* 왼쪽 썸네일 */
-    .open .open_box .open_img {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-template-rows: repeat(2, minmax(0, 1fr));
-        gap: 8px;
-        width: 100%;
-        height: 100%;
-    }
-
-    .open .open_box .open_img .open_img_btn {
-        width: auto;
-        min-width: 0;
-        overflow: hidden;
-        cursor: pointer;
-        outline: 2px solid transparent;
-        outline-offset: -2px;
-    }
-
-    .open .open_box .open_img .open_img_btn img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: opacity 0.2s;
-    }
-
-    .open .open_box .open_img .open_img_btn:hover img {
-        opacity: 0.5;
-    }
-
-    .open .open_box .open_img .open_img_btn.on {
-        outline-color: #6987d6;
-    }
-
-    /* 오른쪽 큰 이미지 */
-    .open .open_box .open_img_sheet {
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        overflow: hidden;
-    }
-
-    .open .open_box .open_img_sheet .sheet {
-        width: 100%;
-        height: 100%;
-    }
-
-    .open .open_box .open_img_sheet .sheet img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
     /* banner_metapo */
     .banner_metapo {
         width: 100%;
         display: flex; justify-items: center; gap: 10px;
     }
-    .banner_metapo .banner {width: 50%; height: 170px;}
+    .banner_metapo .banner {
+        width: 50%; height: 170px;
+        aspect-ratio: 507 / 110;
+    }
     .banner_metapo .metapo {
         width: 49%;
         display: flex; flex-wrap: wrap;
@@ -337,6 +369,67 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
         margin: 0 auto; float: right;
         margin: 5px;    
     }
+
+
+    /* 현장공개 */
+    .open .open_box {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        width: 100%;
+    }
+
+    /* 왼쪽 썸네일 */
+    .open .open_box .open_img {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        width: 100%; height: 100%;
+    }
+    .open .open_box .open_img .open_img_btn {
+        width: auto;
+        min-width: 0;
+        overflow: hidden;
+        cursor: pointer;
+        outline: 2px solid transparent;
+        outline-offset: -2px;
+    }
+
+    .open .open_box .open_img .open_img_btn img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity 0.2s;
+    }
+
+    .open .open_box .open_img .open_img_btn.on {
+        outline-color: #6987d6;
+    }
+
+    /* 오른쪽 큰 이미지 */
+    .open .open_box .open_img_sheet {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+    }
+
+    .open .open_box .open_img_sheet .sheet {
+        width: 100%;
+        height: 100%;
+        gap: 10px;
+    }
+
+    .open .open_box .open_img_sheet .sheet img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+
     .notice_news_mobile .notice_news_sheet .tab_sheet ul li {font-size: 1.25rem;}
     .ruins_txt {font-size: 1.25rem;}
     .link_site_mobile {width: 100%; display: flex;}
@@ -378,7 +471,7 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
 
     /* progress */
     .progress {width: 100%;}
-    .progress .progress_box {margin-bottom: 10px;}
+    .progress .progress_box {margin-bottom: 10px; border: 1px solid transparent;}
     .progress .progress_box .progress_txt .tit {font-size: 2rem;}
     .progress .progress_box:hover {
         background-color: white;
@@ -386,9 +479,16 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
     }
     .progress .progress_box:hover .progress_txt {color: #6987D6;}
     .progress .progress_box:hover .progress_txt .sub_tit {font-size: 1rem;}
+
     /* banner&metapo */
+    
     .banner_metapo {width: 100%; display: flex; gap: 10px;}
-    .banner_metapo .banner {width: 50%; height: 250px;}
+    .banner_metapo .banner {
+        width: 50%; height: 250px;
+        aspect-ratio: 530 / 250;
+    }
+    
+
     .banner_metapo .metapo {width: 50%; flex-wrap: wrap;}
     .banner_metapo .metapo .metapo_box {
             width: 49%; height: 120px; padding: 20px;
@@ -424,6 +524,7 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
         gap: 8px;
         width: 100%;
         height: 100%;
+        order: 1;
     }
 
     .open .open_box .open_img .open_img_btn {
@@ -447,16 +548,13 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
         opacity: 0.3;
     }
 
-    .open .open_box .open_img .open_img_btn.on {
-        outline-color: #6987d6;
-    }
-
     /* 오른쪽 큰 이미지 */
     .open .open_box .open_img_sheet {
         width: 100%;
         height: 100%;
         margin: 0;
         overflow: hidden;
+        order: 2;
     }
 
     .open .open_box .open_img_sheet .sheet {
