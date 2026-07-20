@@ -1,13 +1,15 @@
 $(function () {
     // 1. 스크롤 이벤트
     let isScrolling = false;
-    const speed = 800;
+    const speed = 600;
 
     // GNB / 로고 클릭 시 이동
     $('header .gnb a, .logo a').on('click', function (e) {
         e.preventDefault();
 
         const target = $(this).attr('href');
+
+        $('html, body').stop(true, false);
 
         // 첫 페이지는 무조건 맨 위로 이동
         if (target === '#page01') {
@@ -36,19 +38,27 @@ $(function () {
 
     // 마우스 휠 원페이지 스크롤
     $(window).on('mousewheel', function (e) {
-        if (
+        const isMobileOrTablet =
             window.innerWidth <= 1024 ||
-            window.matchMedia('(pointer: coarse)').matches
-        ) return;
+            window.matchMedia('(pointer: coarse)').matches;
+
+        // 모바일·태블릿 - 기본 스크롤
+        if (isMobileOrTablet) return;
+
+        /*
+        휠 이벤트는 한 번 굴려도 여러 번 발생,
+        isScrolling 확인보다 기본 스크롤을 막기
+        */
+        e.preventDefault();
+
         if (isScrolling) return;
 
-        e.preventDefault();
-        isScrolling = true;
-
+        const $sections = $('section');
         const scrollTop = $(window).scrollTop();
+
         let currentIndex = 0;
 
-        $('section').each(function (index) {
+        $sections.each(function (index) {
             const sectionTop = $(this).offset().top;
 
             if (scrollTop >= sectionTop - 100) {
@@ -56,30 +66,33 @@ $(function () {
             }
         });
 
-        if (e.deltaY < 0) {
-            // 아래로 스크롤
-            currentIndex++;
-        } else {
-            // 위로 스크롤
-            currentIndex--;
+        const direction = e.deltaY < 0 ? 1 : -1;
+        const nextIndex = currentIndex + direction;
+
+        // 첫 페이지 위 / 마지막 페이지 아래 = 실행 X 
+        if (nextIndex < 0 || nextIndex >= $sections.length) {
+            return;
         }
 
-        const $target = $('section').eq(currentIndex);
+        const $target = $sections.eq(nextIndex);
+        const destination = nextIndex === 0 ? 0 : $target;
 
-        if ($target.length) {
-        if ($target.attr('id') === 'page01') {
-            $.scrollTo(0, speed);
-        } else {
-            $.scrollTo($target, speed);
-        }
-        }
+        isScrolling = true;
 
-        setTimeout(function () {
-            isScrolling = false;
-        }, speed + 100);
-    });
+        // 기존에 진행 중인 스크롤 애니메이션 제거
+        $('html, body').stop(true, false);
 
-    // 2. 스크롤 시 메뉴 색상 자동 변경 (별도의 독립적 함수)
+        $.scrollTo(destination, speed, {
+            axis: 'y',
+
+            // 실제 애니메이션이 끝난 다음 잠금 해제
+            onAfter: function () {
+                isScrolling = false;
+            }
+        });
+});
+
+    // 2. 스크롤 시 메뉴 색상 자동 변경
     $(window).on('scroll', function () {
         const scrollTop = $(window).scrollTop();
         const $gnbLinks = $('.gnb li a');

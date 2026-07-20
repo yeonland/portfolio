@@ -529,7 +529,7 @@ input, textarea, button {font-family: "YUniverse-B";}
     공통 반응형 설정
 *************************************************/
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
 }
 
 html,
