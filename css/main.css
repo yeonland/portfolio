@@ -65,8 +65,8 @@ header {
     transition: transform 0.4s ease;
 }
 
-header.hidden {transform: translateY(-100%);}
-header.visible {transform: translateY(0);}
+header.header-hidden {transform: translateY(-100%);}
+header.header-visible {transform: translateY(0);}
 
 /* 로고 */
 .logo a {
@@ -145,7 +145,10 @@ header.visible {transform: translateY(0);}
     padding-top: 20px;
 }
 
-.main-tit span {color: #F4E53B; background: linear-gradient(to top, #EFEFEF 15%, transparent 25%);}
+.main-tit span {
+    color: #F4E53B;
+    background: linear-gradient(to top, #EFEFEF 15%, transparent 25%);
+}
 
 /* 블러 효과 배경 */
 .blur-circle {
@@ -520,4 +523,355 @@ input, textarea, button {font-family: "YUniverse-B";}
 .info-box i {
   margin-right: 8px;
   color: #F4E53B;
+}
+
+/*************************************************
+    공통 반응형 설정
+*************************************************/
+html {
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+section {
+    height: auto;
+    min-height: 100svh;
+}
+
+/* 고정 크기 제거 */
+.skills-section {
+    height: auto;
+    min-height: 100svh;
+}
+
+.cards-container {
+    display: grid;
+}
+
+.card {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    box-shadow: none;
+}
+
+.thumbnail {
+    aspect-ratio: 5 / 3;
+    overflow: hidden;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 18px;
+}
+
+.features br {
+    display: none;
+}
+
+.btn {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/*************************************************
+    모바일 : 600px 이하
+*************************************************/
+@media screen and (max-width: 600px) {
+
+    /* header */
+    header {
+        height: 56px;
+        padding: 0 16px;
+    }
+
+    .gnb ul {
+        gap: 10px;
+    }
+
+    .gnb a span {
+        display: none;
+    }
+
+    .gnb img {
+        width: 24px;
+        height: 24px;
+        margin-right: 0;
+    }
+
+    /* popup */
+    .pop-box {
+        width: 126px;
+        height: auto;
+        top: auto;
+        right: 16px;
+        bottom: 16px;
+        padding: 10px;
+        border-radius: 16px;
+    }
+
+    .pop-box p {
+        padding: 16px 4px 6px;
+        font-size: 11px;
+    }
+
+    /* intro */
+    #page01,
+    .intro {
+        height: 100svh;
+    }
+
+    .main-tit {
+        width: min(82vw, 320px);
+        height: auto;
+        aspect-ratio: 1 / 1;
+        padding: 30px;
+        box-shadow: none;
+    }
+
+    .main-tit h2 {
+        font-size: 23px;
+        line-height: 1.5;
+    }
+
+    .main-tit p {
+        font-size: 14px;
+    }
+
+    .blur-circle {
+        width: 230px;
+        height: 230px;
+    }
+
+    /* about */
+    .about-section {
+        padding: 88px 20px 64px;
+    }
+
+    .about-inner {
+        width: 100%;
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .profile-intro .name {
+        font-size: 30px;
+    }
+
+    .profile-intro .role {
+        font-size: 19px;
+    }
+
+    .about-right h2 {
+        font-size: 21px;
+    }
+
+    .about-right h2 br {
+        display: none;
+    }
+
+    /* skills */
+    .skills-section {
+        padding: 88px 20px 64px;
+        align-items: stretch;
+    }
+
+    .skills-title {
+        font-size: 34px;
+    }
+
+    .skills-subtitle {
+        font-size: 16px;
+        margin-bottom: 40px;
+    }
+
+    .skills-grid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+
+    .skill-category h3 {
+        text-align: left;
+    }
+
+    /* project */
+    #page04 {
+        padding: 88px 20px 64px;
+    }
+
+    .cards-container {
+        width: 100%;
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .card {
+        max-width: 420px;
+        margin: 0 auto;
+    }
+
+    /* contact */
+    #page05 {padding: 76px 20px 64px;}
+
+    .contact-box {min-height: auto;}
+
+    .contact-inner {
+        width: 100%;
+        flex-direction: column; align-items: stretch;
+        gap: 50px;
+    }
+
+    .contact-left,
+    .thank-you {
+        width: 100%;
+    }
+
+    .thank-you .thank {
+        margin-bottom: 30px;
+        font-size: 24px;
+    }
+
+    .info-box {
+        padding: 16px;
+        border-radius: 16px;
+    }
+
+    .info-box .contact-link {
+        font-size: 15px;
+        overflow-wrap: anywhere;
+    }
+}
+
+/*************** 태블릿 : 601px ~ 1024px ***************/
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+
+    header {padding: 0 24px;}
+
+    .gnb ul {gap: 18px;}
+
+    .gnb a {font-size: 15px;}
+
+    .gnb img {
+        width: 20px;
+        height: 20px;
+        margin-right: 6px;
+    }
+
+    .main-tit {
+        width: 360px;
+        height: 360px;
+        box-shadow: none;
+    }
+
+    .about-section {padding: 96px 40px 72px;}
+
+    .about-inner {
+        width: min(100%, 760px);
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .skills-section {
+        padding: 96px 40px 72px;
+    }
+
+    .skills-grid {
+        width: min(100%, 840px);
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 40px;
+    }
+
+    .skill-category:last-child {grid-column: 1 / -1;}
+
+    #page04 {padding: 96px 40px 72px;}
+
+    .cards-container {
+        width: min(100%, 840px);
+        margin: 0 auto;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px;
+    }
+
+    .card:last-child {
+        width: min(100%, 406px);
+        grid-column: 1 / -1;
+        justify-self: center;
+    }
+
+    .contact-inner {
+        width: min(100% - 80px, 760px);
+        flex-direction: column;
+        align-items: stretch;
+        padding: 60px 0;
+    }
+
+    .contact-left,
+    .thank-you {
+        width: 100%;
+    }
+}
+
+
+/*************** PC : 1025px 이상 ***************/
+@media screen and (min-width: 1025px) {
+    .about-inner {
+        width: min(calc(100% - 80px), 1200px);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .skills-section {
+        padding: 100px 40px;
+    }
+
+    .skills-grid {
+        width: min(calc(100% - 80px), 1100px);
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 40px;
+    }
+
+    #page04 {
+        padding: 100px 32px 80px;
+    }
+
+    .cards-container {
+        width: min(calc(100% - 64px), 1040px);
+        margin: 0 auto;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+    }
+
+    .contact-inner {
+        width: min(calc(100% - 80px), 1100px);
+        flex-direction: row;
+    }
+
+    .contact-left {
+        width: 48%;
+    }
+
+    .thank-you {
+        width: 45%;
+    }
 }
