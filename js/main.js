@@ -22,9 +22,9 @@ $(function () {
         const page02Top = $('#page02').offset().top;
 
         if (scrollTop >= page02Top - 100) {
-            $('header').removeClass('hidden').addClass('visible');
+            $('header').removeClass('header-hidden').addClass('header-visible');
         } else {
-            $('header').removeClass('visible').addClass('hidden');
+            $('header').removeClass('header-visible').addClass('header-hidden');
         }
         }
 
@@ -36,7 +36,10 @@ $(function () {
 
     // 마우스 휠 원페이지 스크롤
     $(window).on('mousewheel', function (e) {
-        if ($(window).width() <= 1200) return;
+        if (
+            window.innerWidth <= 1024 ||
+            window.matchMedia('(pointer: coarse)').matches
+        ) return;
         if (isScrolling) return;
 
         e.preventDefault();
