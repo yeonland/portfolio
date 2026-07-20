@@ -597,16 +597,52 @@ section {
 *************************************************/
 @media screen and (max-width: 600px) {
 
-    /* header */
+    /**************** 공통 ****************/
+    html,
+    body,
+    .wrap {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+        background-color: #1A1A1A;
+    }
+
+    section {
+        width: 100%;
+        height: auto;
+        min-height: 100svh;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+
+    /**************** 팝업 ****************/
+    /* 모바일에서는 콘텐츠를 너무 많이 가리므로 숨김 */
+    #pop:checked ~ .pop-box {
+        display: none;
+    }
+
+    /**************** 헤더 ****************/
     header {
+        width: 100%;
         height: 56px;
         padding: 0 16px;
     }
 
-    .gnb ul {
-        gap: 10px;
+    .logo p {
+        font-size: 20px;
     }
 
+    .gnb ul {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    /* 모바일에서는 메뉴 글자를 숨기고 아이콘만 표시 */
     .gnb a span {
         display: none;
     }
@@ -617,59 +653,69 @@ section {
         margin-right: 0;
     }
 
-    /* popup */
-    .pop-box {
-        width: 126px;
-        height: auto;
-        top: auto;
-        right: 16px;
-        bottom: 16px;
-        padding: 10px;
-        border-radius: 16px;
-    }
-
-    .pop-box p {
-        padding: 16px 4px 6px;
-        font-size: 11px;
-    }
-
-    /* intro */
+    /**************** Intro ****************/
     #page01,
     .intro {
+        width: 100%;
         height: 100svh;
+        min-height: 100svh;
+        overflow: hidden;
     }
 
     .main-tit {
-        width: min(82vw, 320px);
+        width: min(82vw, 310px);
         height: auto;
         aspect-ratio: 1 / 1;
-        padding: 30px;
+        padding: 28px 20px;
+
+        border: 2px solid #F4E53B;
+        border-radius: 50%;
         box-shadow: none;
     }
 
     .main-tit h2 {
-        font-size: 23px;
+        font-size: clamp(20px, 6vw, 25px);
         line-height: 1.5;
     }
 
     .main-tit p {
-        font-size: 14px;
+        padding-top: 18px;
+        font-size: 12px;
+        white-space: nowrap;
     }
 
     .blur-circle {
-        width: 230px;
-        height: 230px;
+        width: min(70vw, 260px);
+        height: min(70vw, 260px);
+        animation: none;
+        filter: blur(30px);
     }
 
-    /* about */
-    .about-section {
+    .scroll-down {
+        bottom: 24px;
+        font-size: 13px;
+    }
+
+    /**************** About ****************/
+    #page02 {
+        display: block;
+        min-height: auto;
         padding: 88px 20px 64px;
     }
 
     .about-inner {
         width: 100%;
+        max-width: none;
+
+        display: grid;
         grid-template-columns: 1fr;
-        gap: 48px;
+        gap: 44px;
+    }
+
+    .about-left,
+    .about-right {
+        width: 100%;
+        min-width: 0;
     }
 
     .profile-intro .name {
@@ -680,85 +726,293 @@ section {
         font-size: 19px;
     }
 
+    .interest-tags {
+        gap: 8px;
+    }
+
+    .interest-tags li {
+        padding: 7px 11px;
+        font-size: 14px;
+    }
+
+    .history-list {
+        gap: 24px;
+    }
+
+    .history-item p {
+        font-size: 16px;
+        line-height: 1.6;
+        word-break: keep-all;
+    }
+
+    .history-item span {
+        font-size: 14px;
+    }
+
     .about-right h2 {
         font-size: 21px;
+        line-height: 1.6;
+        word-break: keep-all;
     }
 
     .about-right h2 br {
         display: none;
     }
 
-    /* skills */
-    .skills-section {
+    .keyword-item {
+        padding: 18px;
+        border-radius: 12px;
+    }
+
+    .keyword-item strong {
+        font-size: 18px;
+    }
+
+    .keyword-item p {
+        font-size: 15px;
+    }
+
+    /**************** Skills ****************/
+    #page03.skills-section {
+        min-height: auto;
+        height: auto;
         padding: 88px 20px 64px;
-        align-items: stretch;
+
+        display: block;
     }
 
     .skills-title {
+        margin-bottom: 12px;
         font-size: 34px;
     }
 
     .skills-subtitle {
+        margin-bottom: 42px;
         font-size: 16px;
-        margin-bottom: 40px;
+        line-height: 1.6;
     }
 
     .skills-grid {
         width: 100%;
+        max-width: none;
+        margin: 0;
+
         display: grid;
         grid-template-columns: 1fr;
         gap: 36px;
     }
 
+    .skill-category {
+        width: 100%;
+        min-width: 0;
+    }
+
     .skill-category h3 {
+        margin-bottom: 14px;
+        font-size: 19px;
         text-align: left;
     }
 
-    /* project */
-    #page04 {
-        padding: 88px 20px 64px;
+    .skill-category ul li {
+        margin-bottom: 9px;
+        font-size: 15px;
+        line-height: 1.6;
+        word-break: keep-all;
     }
 
-    .cards-container {
+    /**************** Project ****************/
+    #page04 {
+        min-height: auto;
+        padding: 88px 16px 64px;
+        display: block;
+    }
+
+    .project-title {
+        padding-bottom: 28px;
+        font-size: 30px;
+    }
+
+    #page04 .cards-container {
         width: 100%;
+        max-width: none;
+        margin: 0;
+
+        display: grid;
         grid-template-columns: 1fr;
         gap: 28px;
     }
 
-    .card {
+    #page04 .card {
+        width: 100%;
         max-width: 420px;
+        height: auto;
         margin: 0 auto;
+
+        overflow: hidden;
+        border-radius: 8px;
     }
 
-    /* contact */
-    #page05 {padding: 76px 20px 64px;}
-
-    .contact-box {min-height: auto;}
-
-    .contact-inner {
+    .thumbnail {
         width: 100%;
-        flex-direction: column; align-items: stretch;
-        gap: 50px;
+        aspect-ratio: 5 / 3;
+        overflow: hidden;
     }
 
-    .contact-left,
+    .thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .card-body {
+        padding: 18px 16px 20px;
+    }
+
+    .card-title {
+        padding-top: 0;
+        font-size: 20px;
+    }
+
+    .card-desc {
+        margin-top: 6px;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .project-skill {
+        margin: 8px 0;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .features li {
+        padding-left: 0;
+        font-size: 14px;
+        line-height: 1.65;
+        word-break: keep-all;
+    }
+
+    .features br {
+        display: none;
+    }
+
+    .btn-group {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        margin-top: 16px;
+    }
+
+    .btn {
+        width: 100%;
+        min-height: 44px;
+        padding: 10px 8px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 14px;
+        white-space: nowrap;
+        border-radius: 7px;
+    }
+
+    /**************** Contact ****************/
+    #page05 {
+        min-height: auto;
+        padding: 88px 20px 64px;
+        display: block;
+    }
+
+    .contact-box {
+        width: 100%;
+        min-height: auto;
+        display: block;
+    }
+
+    .contact-box .contact-inner {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 42px;
+    }
+
+    /* 감사 문구를 먼저 표시 */
     .thank-you {
+        order: 1;
         width: 100%;
+        min-width: 0;
+    }
+
+    .contact-left {
+        order: 2;
+        width: 100%;
+        min-width: 0;
     }
 
     .thank-you .thank {
-        margin-bottom: 30px;
-        font-size: 24px;
+        margin-bottom: 28px;
+        font-size: 21px;
+        line-height: 1.65;
+        word-break: keep-all;
+    }
+
+    .contact-form {
+        width: 100%;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        padding: 16px;
+        font-size: 16px;
+        border-radius: 8px;
+    }
+
+    .contact-form textarea {
+        height: 160px;
+    }
+
+    .contact-left button {
+        width: 100%;
+        min-height: 48px;
+        height: auto;
+        font-size: 16px;
     }
 
     .info-box {
-        padding: 16px;
+        width: 100%;
+        max-width: none;
+        padding: 18px;
         border-radius: 16px;
     }
 
+    .info-box br {
+        display: none;
+    }
+
     .info-box .contact-link {
-        font-size: 15px;
+        width: 100%;
+        margin-bottom: 12px;
+
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+
+        font-size: 14px;
+        line-height: 1.5;
         overflow-wrap: anywhere;
+        word-break: break-all;
+    }
+
+    .info-box i {
+        flex-shrink: 0;
+        margin-top: 2px;
+        margin-right: 0;
     }
 }
 
