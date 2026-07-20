@@ -137,7 +137,7 @@ a {text-decoration: none; color: black;}
 @media all and (min-width: 1025px) {
     /* header */
     .header {
-        width: 1070px; margin: 0 auto;
+        width: min(calc(100% - 32px), 1070px); margin: 0 auto;
     }
     .header .logo {width: 260px; height: 80px; float: left;}
     .header .logo image {width: 100%;}
