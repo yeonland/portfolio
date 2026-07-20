@@ -835,6 +835,14 @@ section {
 
 /*************** PC : 1025px 이상 ***************/
 @media screen and (min-width: 1025px) {
+    #page02 {
+        min-height: 100svh;
+        padding: 60px 6% 40px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
     .about-inner {
         width: min(calc(100% - 80px), 1200px);
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -852,7 +860,12 @@ section {
     }
 
     #page04 {
-        padding: 100px 32px 80px;
+        min-height: 100svh;
+        padding: 60px 32px 40px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .cards-container {
