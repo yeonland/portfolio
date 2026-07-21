@@ -37,60 +37,64 @@ $(function () {
     headerShowHide();
 
     // 마우스 휠 원페이지 스크롤
-    $(window).on('mousewheel', function (e) {
-        const isMobileOrTablet =
-            window.innerWidth <= 1024 ||
-            window.matchMedia('(pointer: coarse)').matches;
+    window.addEventListener(
+        'wheel',
+        function (e) {
+            const isMobileOrTablet =
+                window.innerWidth <= 1024 ||
+                window.matchMedia('(pointer: coarse)').matches;
 
-        // 모바일·태블릿 - 기본 스크롤
-        if (isMobileOrTablet) return;
+            // 모바일·태블릿에서는 기본 스크롤 사용
+            if (isMobileOrTablet) return;
 
-        /*
-        휠 이벤트는 한 번 굴려도 여러 번 발생,
-        isScrolling 확인보다 기본 스크롤을 막기
-        */
-        e.preventDefault();
+            // PC에서는 브라우저의 기본 스크롤 방지
+            e.preventDefault();
 
-        if (isScrolling) return;
+            // 스크롤 애니메이션 중이면 추가 실행 방지
+            if (isScrolling) return;
 
-        const $sections = $('section');
-        const scrollTop = $(window).scrollTop();
+            const $sections = $('section');
+            const scrollTop = $(window).scrollTop();
 
-        let currentIndex = 0;
+            let currentIndex = 0;
 
-        $sections.each(function (index) {
-            const sectionTop = $(this).offset().top;
+            $sections.each(function (index) {
+                const sectionTop = $(this).offset().top;
 
-            if (scrollTop >= sectionTop - 100) {
-                currentIndex = index;
+                if (scrollTop >= sectionTop - 100) {
+                    currentIndex = index;
+                }
+            });
+
+            // 네이티브 wheel 이벤트:
+            // deltaY가 양수면 아래, 음수면 위
+            const direction = e.deltaY > 0 ? 1 : -1;
+            const nextIndex = currentIndex + direction;
+
+            // 첫 섹션 위 또는 마지막 섹션 아래에서는 이동하지 않음
+            if (nextIndex < 0 || nextIndex >= $sections.length) {
+                return;
             }
-        });
 
-        const direction = e.deltaY < 0 ? 1 : -1;
-        const nextIndex = currentIndex + direction;
+            const $target = $sections.eq(nextIndex);
+            const destination =
+                nextIndex === 0 ? 0 : $target.offset().top;
 
-        // 첫 페이지 위 / 마지막 페이지 아래 = 실행 X 
-        if (nextIndex < 0 || nextIndex >= $sections.length) {
-            return;
-        }
+            isScrolling = true;
 
-        const $target = $sections.eq(nextIndex);
-        const destination = nextIndex === 0 ? 0 : $target;
+            // 진행 중인 스크롤 애니메이션 중단
+            $('html, body').stop(true, false);
 
-        isScrolling = true;
+            $.scrollTo(destination, speed, {
+                axis: 'y',
 
-        // 기존에 진행 중인 스크롤 애니메이션 제거
-        $('html, body').stop(true, false);
-
-        $.scrollTo(destination, speed, {
-            axis: 'y',
-
-            // 실제 애니메이션이 끝난 다음 잠금 해제
-            onAfter: function () {
-                isScrolling = false;
-            }
-        });
-});
+                onAfter: function () {
+                    isScrolling = false;
+                }
+            });
+        },
+        { passive: false }
+    );
 
     // 2. 스크롤 시 메뉴 색상 자동 변경
     $(window).on('scroll', function () {
