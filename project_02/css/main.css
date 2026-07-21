@@ -17,26 +17,21 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
 .btn_top {display: none;}
 /* 현장공개, 유적 갤러리 */
 .open, .ruins {
-    width: 100%; padding: 0 16px; box-sizing: border-box;
-}
+    width: 100%; padding: 0 16px; box-sizing: border-box;}
 .open_header {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    display: grid; grid-template-columns: 1fr auto 1fr;
     align-items: center;
     margin-bottom: 20px; box-sizing: border-box;
 }
 
 .open_header .sub_title {
-    grid-column: 2;
-    margin: 0;
-    text-align: center;
+    grid-column: 2; margin: 0; text-align: center;
 }
 
 .open_header .more {
-    grid-column: 3;
-    justify-self: end;
-    color: #999;
-    white-space: nowrap;
+    grid-column: 3; justify-self: end; align-self: end;
+    color: #999; white-space: nowrap; padding-right: 20px;
+    
 }
 /******************* main_visual *******************/
 .slides {
@@ -76,14 +71,11 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
 /* banner + metapo 공통 */
 .banner_metapo {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; gap: 10px;
     grid-template-areas:
         "banner"
         "metapo";
-
-    width: 100%;
-    height: auto;
-    gap: 10px;
+    width: 100%; height: auto;
 }
 
 /* 배너 */
@@ -223,9 +215,8 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
 
 /* 썸네일 4장 아래 */
 .open .open_box .open_img {
-    display: grid;
+    display: grid; gap: 10px;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 10px;
     width: 100%;
     margin: 0;
 
@@ -308,7 +299,7 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
 .notice_news_more a {color: #475775;}
 
 /* ruins gallery */
-.ruins {display: flex; flex-wrap: wrap; margin: -5px; margin-bottom: 20px;}
+.ruins {display: flex; flex-wrap: wrap;margin: 0 0 20px; padding: 0 16px;}
 .ruins .ruins_box {width: calc(50% - 10px); margin: 5px; cursor: pointer;}
 .ruins .ruins_box .ruins_img img {width: 100%;}
 .ruins .ruins_box .ruins_txt {
@@ -758,7 +749,8 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
     .notice_news_date {margin-top: -30px; float: right;}
     
     /* ruins */
-    .ruins {flex-wrap: nowrap; width: 100%; margin: -5px; margin-bottom: 20px;}
+    .ruins {display:flex; flex-wrap: wrap; width: 100%; margin: 0 20px}
+    .ruins .open_header {flex: 0 0 100%; width: 100%;}
     .ruins .ruins_box {width: calc(25% - 10px); margin: 5px;}
     /* linkSite */
     .link_site_mobile {display: none;}
