@@ -48,15 +48,24 @@ $(function() {
         $('.sheet').removeClass('on').hide().eq(index).addClass('on').fadeIn(300);
     });
     // 공지사항 탭
+    const $noticeTab = $('.notice_news_tab .tab');
+    const $noticeSheet = $('.notice_news_sheet .tab_sheet');
 
-    tab.click(function(){
-        const index=$(this).index()
+    $noticeTab.on('click', function () {
+        const index = $noticeTab.index(this);
 
-        tab.removeClass('on')
-        tab.eq(index).addClass('on')
+        $noticeTab
+            .removeClass('on')
+            .attr('aria-selected', 'false');
 
-        sheet.removeClass('on_sheet')
-        sheet.eq(index).addClass('on_sheet')
-    })
+        $(this)
+            .addClass('on')
+            .attr('aria-selected', 'true');
+
+        $noticeSheet
+            .removeClass('on_sheet')
+            .eq(index)
+            .addClass('on_sheet');
+    });
 })    // jqueary
 
