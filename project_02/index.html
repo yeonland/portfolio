@@ -314,14 +314,29 @@
         </section>        <!-- open -->
 
         <section class="notice_news_mobile">
-            <input type="radio" name="tab" id="tab01" checked>
-            <input type="radio" name="tab" id="tab02">
-            <div class="notice_news_tab">
-                <label for="tab01">공지사항</label>
-                <label for="tab02">언론보도</label>
+            
+            <div class="notice_news_tab" role="tablist">
+                <button
+                    type="button"
+                    class="tab on"
+                    role="tab"
+                    aria-selected="true"
+                    aria-controls="notice_panel">
+                    공지사항
+                </button>
+
+                <button
+                    type="button"
+                    class="tab"
+                    role="tab"
+                    aria-selected="false"
+                    aria-controls="news_panel">
+                    언론보도
+                </button>
             </div>
+
             <div class="notice_news_sheet">
-                <div class="notice_sheet tab_sheet">
+                <div class="notice_sheet tab_sheet on_sheet">
                     <ul>
                         <li>
                             <a href="#!">

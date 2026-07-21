@@ -244,21 +244,43 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
 }
 
 /* notice news box */
-.notice_news_pc, #tab01, #tab02 {display: none;}
-#tab01:checked ~ .notice_news_sheet .notice_sheet {display: block;}
-#tab01:checked ~ .notice_news_tab label:first-child {
-    border-bottom: 1px solid #6987D6; color: #6987D6;
+.notice_news_pc {
+    display: none;
 }
-#tab02:checked ~ .notice_news_sheet .news_sheet {display: block;}
-#tab02:checked ~ .notice_news_tab label:last-child {
-    border-bottom: 1px solid #6987D6; color: #6987D6;
+
+.notice_news_tab {
+    display: flex;
+    border-bottom: 1px solid #999;
+}
+
+.notice_news_tab .tab {
+    padding: 10px;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    background: transparent;
+    color: #999;
+    font: inherit;
+    cursor: pointer;
+}
+
+.notice_news_tab .tab.on {
+    border-bottom-color: #6987d6;
+    color: #6987d6;
+}
+
+.notice_news_sheet .tab_sheet {
+    display: none;
+}
+
+.notice_news_sheet .tab_sheet.on_sheet {
+    display: block;
 }
 /* .notice_news_mobile {} */
 .notice_news_mobile .notice_news_tab {
     display: flex;
     border-bottom: 1px solid #999;
 }
-.notice_news_mobile .notice_news_tab label {
+.notice_news_mobile .notice_news_tab .tab {
     padding: 10px; width: 15%; text-align: center;
 }
 .notice_news_mobile .notice_news_sheet .notice_sheet,
