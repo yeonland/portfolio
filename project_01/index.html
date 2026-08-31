@@ -31,7 +31,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <!-- 내부 스크립트 -->
-    <script src="./js/main.js"></script>
+    <script src="./js/main.js" defer></script>
 </head>
 <body>
 
@@ -57,7 +57,9 @@
 
     <input type="checkbox" id="chat_chk">
     <div class="chat">
-        <label for="chat_chk" class="open"><div><img src="./img/00_icon_chat.png" alt="chat_icon"></i></div></label>
+        <label for="chat_chk" class="open">
+            <div><img src="./img/00_icon_chat.png" alt="chat_icon"></i></div>
+        </label>
         <label for="chat_chk" class="close"><div><i class="fa-solid fa-xmark"></i></div></label>
         <div class="chat_box">
             <div class="brand">
@@ -152,9 +154,10 @@
                             </div>
                         </a>
                     </div>
-                    <button>결제하기</button>
-                </div>     
-                             <!-- cart_box -->
+                    <button type="button" class="checkout-button">
+                        결제하기
+                    </button>
+                </div>          <!-- cart_box -->
                 <span class="btn_recent"><a href="#"><i class="fa-solid fa-clock"></i></a></span>
                 <div class="recent_box box">
                     <p class="tit">최근 본 상품</p>
@@ -191,7 +194,9 @@
                             </div>
                         </a>
                     </div>
-                    <button>결제하기</button>
+                    <button type="button" class="checkout-button">
+                        결제하기
+                    </button>
                 </div>                <!-- recent box -->
                 <span><a href="./sub/login/index.html"><i class="fa-solid fa-user"></i></a></span>
             </div>  <!-- gnb_icon -->
@@ -239,7 +244,7 @@
     <div class="sub_title">신상품</div>
 
     <section class="product">
-        <div class="product_box mr">
+        <div class="product_box mr product_alert">
             <div class="product_img_box">
                 <a href="./sub/2_product/all/detail/index.html">
                     <div class="product_img_01 img"></div>
@@ -252,7 +257,7 @@
             </div>
         </div>        <!-- 신상품 01 -->
         
-        <div class="product_box mr">
+        <div class="product_box mr product_alert">
             <div class="product_img_box">
                 <a href="./sub/2_product/all/detail/index.html">
                     <div class="product_img_02 img"></div>
@@ -264,7 +269,8 @@
                 <p class="product_price">8,000원</p>
             </div>
         </div>  <!-- 신상품 02 -->
-        <div class="product_box mr">
+        
+        <div class="product_box mr product_alert">
             <a href="./sub/2_product/all/detail/index.html">
                 <div class="product_img_03 img"></div>
             </a>
@@ -274,7 +280,8 @@
                 <p class="product_price">8,500원</p>
             </div>
         </div> <!-- 신상품 03 -->
-        <div class="product_box">
+
+        <div class="product_box product_alert">
             <a href="./sub/2_product/all/detail/index.html">
                 <div class="product_img_04 img"></div>
             </a>
@@ -287,9 +294,8 @@
     </section>  <!-- 신상품 -->
 
     <div class="sub_title">BEST</div>
-
     <section class="product">
-        <div class="product_box mr">
+        <div class="product_box mr product_alert">
             <a href="./sub/2_product/all/detail/index.html">
                 <div class="product_img_05 img"></div>
             </a>
@@ -311,7 +317,7 @@
             </div>
         </div>  <!-- best 02 -->
 
-        <div class="product_box mr">
+        <div class="product_box mr product_alert">
             <a href="./sub/2_product/all/detail/index.html">
                 <div class="product_img_07 img"></div>
             </a>
@@ -323,7 +329,7 @@
             </div>
         </div>  <!-- best 03 -->
 
-        <div class="product_box">
+        <div class="product_box product_alert">
             <a href="./sub/2_product/all/detail/index.html">
                 <div class="product_img_08 img"></div>
             </a>
@@ -343,7 +349,7 @@
                 <div>소하에서 제공하는 무료서식! <br> 가장 많이 쓰이는 제품으로 <br> 구성해 보았습니다.</div>
                 <a href="./sub/2_product/free/index.html"><span>더보기</span></a>
             </div>
-            <div class="product_box mr">
+            <div class="product_box mr product_alert">
                 <div class="product_img_box">
                     <a href="./sub/2_product/all/detail/index.html">
                         <div class="product_img">
@@ -357,7 +363,7 @@
                 </div>
             </div> <!-- 무료 01 -->
 
-            <div class="product_box mr">
+            <div class="product_box mr product_alert">
                 <div class="product_img_box">
                     <a href="./sub/2_product/all/detail/index.html">
                         <div class="product_img">
@@ -371,7 +377,7 @@
                 </div>
             </div> <!-- 무료 02 -->
 
-            <div class="product_box">
+            <div class="product_box product_alert">
                 <div class="product_img_box">
                     <a href="./sub/2_product/all/detail/index.html">
                         <div class="product_img">
@@ -408,7 +414,7 @@
         <div class="metapo_product">
             <div class="metapo_product_sheet">
                 <span class="more"><a href="./sub/2_product/diary/index.html">더보기</a></span>
-                <div class="product_box mr">
+                <div class="product_box mr product_alert product_alert">
                     <div class="product_img_box">
                         <a href="./sub/2_product/all/detail/index.html">
                             <div class="product_img">
@@ -421,7 +427,7 @@
                         <p class="product_price">9,900원</p>
                     </div>
                 </div> <!-- metapo diary 01-01 -->
-                <div class="product_box mr">
+                <div class="product_box mr product_alert">
                     <div class="product_img_box">
                         <a href="./sub/2_product/all/detail/index.html">
                             <div class="product_img">
@@ -435,7 +441,7 @@
                         <p class="product_price"><del>9,900원</del>8,100원</p>
                     </div>
                 </div> <!-- metapo diary 01-02 -->
-                <div class="product_box mr">
+                <div class="product_box mr product_alert">
                     <div class="product_img_box">
                         <a href="./sub/2_product/all/detail/index.html">
                             <div class="product_img">
@@ -480,7 +486,7 @@
                         <p class="product_price">8,900원</p>
                     </div>
                 </div> <!-- metapo planner 02-01 -->
-                <div class="product_box mr">
+                <div class="product_box mr product_alert">
                     <div class="product_img_box">
                         <a href="./sub/2_product/all/detail/index.html">
                             <div class="product_img">
@@ -494,7 +500,7 @@
                         <p class="product_price">12,900원</p>
                     </div>
                 </div> <!-- metapo planner 02-02 -->
-                <div class="product_box mr">
+                <div class="product_box mr product_alert">
                     <div class="product_img_box">
                         <a href="./sub/2_product/all/detail/index.html">
                             <div class="product_img">
@@ -524,7 +530,7 @@
             </div> <!-- metapo planner -->
             <div class="metapo_product_sheet">
                 <span class="more"><a href="./sub/2_product/journal/index.html">  더보기</a></span>
-                <div class="product_box mr">
+                <div class="product_box mr product_alert">
                     <div class="product_img_box">
                         <a href="./sub/2_product/all/detail/index.html">
                             <div class="product_img">
@@ -538,7 +544,7 @@
                         <p class="product_price">8,500원</p>
                     </div>
                 </div> <!-- metapo journal 03-01 -->
-                <div class="product_box mr">
+                <div class="product_box mr product_alert">
                     <div class="product_img_box">
                         <a href="./sub/2_product/all/detail/index.html">
                             <div class="product_img">
@@ -552,7 +558,7 @@
                         <p class="product_price">7,900원</p>
                     </div>
                 </div> <!-- metapo journal 03-02 -->
-                <div class="product_box mr">
+                <div class="product_box mr product_alert">
                     <div class="product_img_box">
                         <a href="./sub/2_product/all/detail/index.html">
                             <div class="product_img">
@@ -581,7 +587,7 @@
             </div> <!-- metapo journal -->
             <div class="metapo_product_sheet">
                 <span class="more"><a href="./sub/2_product/sticker/index.html">더보기</a></span>
-                <div class="product_box mr">
+                <div class="product_box mr product_alert">
                     <div class="product_img_box">
                         <a href="./sub/2_product/all/detail/index.html">
                             <div class="product_img">
@@ -594,7 +600,7 @@
                         <p class="product_price">1,500원</p>
                     </div>
                 </div> <!-- metapo sticker 04-01 -->
-                <div class="product_box mr">
+                <div class="product_box mr product_alert">
                     <div class="product_img_box">
                         <a href="./sub/2_product/all/detail/index.html">
                             <div class="product_img">
@@ -607,7 +613,7 @@
                         <p class="product_price">1,500원</p>
                     </div>
                 </div> <!-- metapo sticker 04-02 -->
-                <div class="product_box mr">
+                <div class="product_box mr product_alert">
                     <div class="product_img_box">
                         <a href="./sub/2_product/all/detail/index.html">
                             <div class="product_img">
