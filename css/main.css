@@ -377,6 +377,7 @@ header.header-visible {transform: translateY(0);}
 
 .btn-group {
     display: flex; gap: 5px;
+    flex-wrap: wrap;
     justify-content: center;
     margin-top: 10px;
 }
@@ -388,6 +389,15 @@ header.header-visible {transform: translateY(0);}
     text-decoration: none;
     border-radius: 10px;
     transition: background-color 0.3s;
+}
+
+.btn-group .btn {
+    white-space: nowrap;
+}
+
+/* 버튼이 3개인 카드는 좌우 여백을 줄여 한 줄에 맞춤 */
+.btn-group:has(.btn:nth-child(3)) .btn {
+    padding: 10px 14px;
 }
 
 .btn:hover {background-color: #F4E53B; color: #1A1A1A;}
@@ -872,6 +882,11 @@ section {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 8px;
         margin-top: 16px;
+    }
+
+    /* 버튼이 3개일 때 마지막 버튼은 한 줄 전체 */
+    .btn-group .btn:nth-child(3):last-child {
+        grid-column: 1 / -1;
     }
 
     .btn {
