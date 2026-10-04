@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'design_detail_sheet.dart';
+import 'favorites.dart';
+import 'reference_board_screen.dart';
 import 'reservation.dart';
 import 'reservation_timeline_screen.dart';
 
@@ -85,11 +88,30 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   Map<String, String>? _selectedDesign; // 핀잇 픽에서 고른 디자인 (예약 양식 자동 입력용)
 
   List<Reservation> _reservations = []; // 내 예약 타임라인
+  final FavoritesStore _favorites = FavoritesStore(); // 찜한 디자인 (레퍼런스 보드)
 
   @override
   void initState() {
     super.initState();
     _loadReservations();
+    _favorites.load();
+  }
+
+  @override
+  void dispose() {
+    _favorites.dispose();
+    super.dispose();
+  }
+
+  void _openReferenceBoard() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => ReferenceBoardScreen(
+          favorites: _favorites,
+          onReserve: _goToReservation,
+        ),
+      ),
+    );
   }
 
   Future<void> _loadReservations() async {
@@ -133,7 +155,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
       const MultiChannelMapExplorerScreen(),
 
       // 2. 핀잇 픽 (PinIt Pick) - 센스있는 디자인 피드 탭
-      PinItPickScreen(onReserve: _goToReservation),
+      PinItPickScreen(favorites: _favorites, onReserve: _goToReservation),
 
       // 3. 스마트 예약 주문서 탭 (디자인이 바뀌면 양식을 새로 채움)
       ReservationFormScreen(
@@ -163,6 +185,19 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           style: TextStyle(fontWeight: FontWeight.w800, letterSpacing: -0.5),
         ),
         actions: [
+          // 레퍼런스 보드 (찜 개수 배지)
+          ListenableBuilder(
+            listenable: _favorites,
+            builder: (context, _) => IconButton(
+              tooltip: '레퍼런스 보드',
+              onPressed: _openReferenceBoard,
+              icon: Badge(
+                isLabelVisible: _favorites.count > 0,
+                label: Text('${_favorites.count}'),
+                child: const Icon(Icons.favorite_border),
+              ),
+            ),
+          ),
           Row(
             children: [
               Icon(
@@ -172,7 +207,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
               Switch(
                 value: widget.isDarkMode,
                 onChanged: widget.onDarkModeChanged,
-                activeColor: Colors.white,
+                activeThumbColor: Colors.white,
               ),
             ],
           ),
@@ -552,9 +587,10 @@ class _MultiChannelMapExplorerScreenState extends State<MultiChannelMapExplorerS
 // ✨ 핀잇 픽 (PinIt Pick) - 검색 + 키워드 + 3열 피드 + 가격표 복원!
 // ---------------------------------------------------------------------------
 class PinItPickScreen extends StatefulWidget {
+  final FavoritesStore favorites;
   final ValueChanged<Map<String, String>> onReserve;
 
-  const PinItPickScreen({super.key, required this.onReserve});
+  const PinItPickScreen({super.key, required this.favorites, required this.onReserve});
 
   @override
   State<PinItPickScreen> createState() => _PinItPickScreenState();
@@ -694,7 +730,9 @@ class _PinItPickScreenState extends State<PinItPickScreen> {
                     style: TextStyle(color: Colors.grey),
                   ),
                 )
-              : GridView.builder(
+              : ListenableBuilder(
+                  listenable: widget.favorites,
+                  builder: (context, _) => GridView.builder(
                   padding: const EdgeInsets.all(2.0),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
@@ -706,15 +744,27 @@ class _PinItPickScreenState extends State<PinItPickScreen> {
                   itemBuilder: (context, index) {
                     final item = filteredList[index];
                     return GestureDetector(
-                      onTap: () => _showArtDetailDialog(context, item),
+                      onTap: () => showDesignDetailSheet(
+                        context,
+                        item: item,
+                        favorites: widget.favorites,
+                        onReserve: widget.onReserve,
+                      ),
                       child: Stack(
                         fit: StackFit.expand,
                         children: [
                           Image.network(
                             item['img']!,
                             fit: BoxFit.cover,
-                            errorBuilder: (context, error, stackTrace) => _imagePlaceholder(),
+                            errorBuilder: (context, error, stackTrace) => imagePlaceholder(),
                           ),
+                          // ♥ 찜한 디자인 표시 (우측 상단)
+                          if (widget.favorites.isFavorite(item))
+                            const Positioned(
+                              top: 4,
+                              right: 4,
+                              child: Icon(Icons.favorite, color: Colors.red, size: 18),
+                            ),
                           // 🏷️ 가격표 태그 복원 (좌측 하단)
                           Positioned(
                             bottom: 4,
@@ -722,7 +772,7 @@ class _PinItPickScreenState extends State<PinItPickScreen> {
                             child: Container(
                               padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
                               decoration: BoxDecoration(
-                                color: Colors.black.withOpacity(0.65),
+                                color: Colors.black.withValues(alpha: 0.65),
                                 borderRadius: BorderRadius.circular(4),
                               ),
                               child: Text(
@@ -739,89 +789,12 @@ class _PinItPickScreenState extends State<PinItPickScreen> {
                       ),
                     );
                   },
+                  ),
                 ),
         ),
       ],
     );
   }
-
-  // 팝업 상세 모달 (샵 이름, 가격, 예약 문의 버튼 복원)
-  void _showArtDetailDialog(BuildContext context, Map<String, String> item) {
-    showModalBottomSheet(
-      context: context,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-      ),
-      builder: (context) {
-        return Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    '${item['shop']} · ${item['keyword']}',
-                    style: const TextStyle(
-                      fontSize: 14,
-                      color: Colors.grey,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  const Icon(Icons.favorite_border, color: Colors.red),
-                ],
-              ),
-              const SizedBox(height: 8),
-              Text(
-                item['title']!,
-                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 6),
-              Text(
-                item['price']!,
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w800,
-                  color: Colors.black,
-                ),
-              ),
-              const SizedBox(height: 20),
-              SizedBox(
-                width: double.infinity,
-                height: 48,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.pop(context);
-                    widget.onReserve(item);
-                  },
-                  child: const Text(
-                    '이 디자인으로 예약 문의하기',
-                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        );
-      },
-    );
-  }
-}
-
-// 이미지를 불러오지 못했을 때 보여줄 회색 자리표시
-Widget _imagePlaceholder() {
-  return Container(
-    color: Colors.grey[300],
-    child: const Icon(Icons.image_not_supported_outlined, color: Colors.grey),
-  );
 }
 
 // ---------------------------------------------------------------------------
@@ -1052,7 +1025,7 @@ class _ReservationFormScreenState extends State<ReservationFormScreen> {
                       height: 64,
                       fit: BoxFit.cover,
                       errorBuilder: (context, error, stackTrace) =>
-                          SizedBox(width: 64, height: 64, child: _imagePlaceholder()),
+                          SizedBox(width: 64, height: 64, child: imagePlaceholder()),
                     ),
                   ),
                   const SizedBox(width: 12),
