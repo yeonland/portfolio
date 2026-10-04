@@ -132,6 +132,75 @@ void main() {
     expect(find.text('아직 예약이 없어요'), findsOneWidget);
   });
 
+  testWidgets('하트를 누르면 레퍼런스 보드에 저장되고 피드에 찜 표시가 생긴다', (WidgetTester tester) async {
+    await tester.pumpWidget(const PinItApp());
+    expect(find.byIcon(Icons.favorite), findsNothing);
+
+    // 상세 화면에서 찜하기
+    await tester.tap(find.text('55,000원'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byTooltip('찜하기'));
+    await tester.pump();
+    expect(find.byTooltip('찜 해제'), findsOneWidget);
+
+    // 상세 화면 닫기 → 피드에 ♥ 표시 + 상단 배지 1
+    await tester.tapAt(const Offset(20, 20));
+    await tester.pumpAndSettle();
+    expect(find.byIcon(Icons.favorite), findsOneWidget);
+    expect(find.descendant(of: find.byType(Badge), matching: find.text('1')), findsOneWidget);
+
+    // 레퍼런스 보드에서 카테고리별로 확인
+    await tester.tap(find.byTooltip('레퍼런스 보드'));
+    await tester.pumpAndSettle();
+    expect(find.text('#시럽네일 1'), findsOneWidget);
+    expect(find.text('시럽 마블 글리터 아트'), findsOneWidget);
+
+    // 기기 저장 확인
+    final prefs = await SharedPreferences.getInstance();
+    expect(prefs.getString('favorites'), contains('시럽 마블 글리터 아트'));
+  });
+
+  testWidgets('보드에서 빼면 사라지고 되돌리기로 복구된다', (WidgetTester tester) async {
+    SharedPreferences.setMockInitialValues({
+      'favorites': jsonEncode([
+        {'shop': '달콤케이크', 'title': '빈티지 레터링 커스텀', 'price': '38,000원', 'keyword': '#생일케이크', 'tag': '#레터링', 'img': 'https://example.com/a.jpg'},
+      ]),
+    });
+    await tester.pumpWidget(const PinItApp());
+    await tester.pumpAndSettle();
+    await tester.tap(find.byTooltip('레퍼런스 보드'));
+    await tester.pumpAndSettle();
+    expect(find.text('#생일케이크 1'), findsOneWidget);
+
+    await tester.tap(find.byTooltip('보드에서 빼기'));
+    await tester.pumpAndSettle();
+    expect(find.text('아직 찜한 디자인이 없어요'), findsOneWidget);
+
+    await tester.tap(find.text('되돌리기'));
+    await tester.pumpAndSettle();
+    expect(find.text('#생일케이크 1'), findsOneWidget);
+  });
+
+  testWidgets('보드에서 예약 문의하면 예약 양식으로 이동한다', (WidgetTester tester) async {
+    SharedPreferences.setMockInitialValues({
+      'favorites': jsonEncode([
+        {'shop': '달콤케이크', 'title': '빈티지 레터링 커스텀', 'price': '38,000원', 'keyword': '#생일케이크', 'tag': '#레터링', 'img': 'https://example.com/a.jpg'},
+      ]),
+    });
+    await tester.pumpWidget(const PinItApp());
+    await tester.pumpAndSettle();
+    await tester.tap(find.byTooltip('레퍼런스 보드'));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('빈티지 레터링 커스텀'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('이 디자인으로 예약 문의하기'));
+    await tester.pumpAndSettle();
+
+    expect(find.byType(ReservationFormScreen), findsOneWidget);
+    expect(find.widgetWithText(TextFormField, '달콤케이크'), findsOneWidget);
+  });
+
   test('D-day 표시 계산', () {
     final now = DateTime(2026, 10, 4, 21, 30);
     Reservation at(DateTime date) =>
