@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'reservation.dart';
+import 'reservation_timeline_screen.dart';
+
 void main() {
   runApp(const PinItApp());
 }
@@ -81,11 +84,45 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   int _selectedIndex = 1; // '핀잇 픽' 탭 기본 선택
   Map<String, String>? _selectedDesign; // 핀잇 픽에서 고른 디자인 (예약 양식 자동 입력용)
 
+  List<Reservation> _reservations = []; // 내 예약 타임라인
+
+  @override
+  void initState() {
+    super.initState();
+    _loadReservations();
+  }
+
+  Future<void> _loadReservations() async {
+    final saved = await ReservationStorage.load();
+    if (!mounted) return;
+    setState(() {
+      _reservations = saved;
+    });
+  }
+
+  void _updateReservations(List<Reservation> reservations) {
+    setState(() {
+      _reservations = reservations;
+    });
+    ReservationStorage.save(reservations);
+  }
+
   // 핀잇 픽에서 '예약 문의하기'를 누르면 예약 양식 탭으로 이동
   void _goToReservation(Map<String, String> design) {
     setState(() {
       _selectedDesign = design;
       _selectedIndex = 2;
+    });
+  }
+
+  // 주문서를 완성하면 타임라인에 추가
+  void _addReservation(Reservation reservation) {
+    _updateReservations([..._reservations, reservation]);
+  }
+
+  void _goToTimeline() {
+    setState(() {
+      _selectedIndex = 3;
     });
   }
 
@@ -102,6 +139,20 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
       ReservationFormScreen(
         key: ValueKey(_selectedDesign?['title']),
         design: _selectedDesign,
+        onSaved: _addReservation,
+        onViewTimeline: _goToTimeline,
+      ),
+
+      // 4. 내 예약 타임라인 (D-day + 진행 단계)
+      ReservationTimelineScreen(
+        reservations: _reservations,
+        onStepChanged: (reservation, step) => _updateReservations([
+          for (final r in _reservations) r.id == reservation.id ? r.copyWith(step: step) : r,
+        ]),
+        onDelete: (reservation) => _updateReservations(
+          _reservations.where((r) => r.id != reservation.id).toList(),
+        ),
+        onBrowse: () => setState(() => _selectedIndex = 1),
       ),
     ];
 
@@ -129,6 +180,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
       ),
       body: pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed, // 탭 4개 이상이면 고정형으로
         currentIndex: _selectedIndex,
         onTap: (index) {
           setState(() {
@@ -147,6 +199,10 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.edit_note),
             label: '예약 양식',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.event_note),
+            label: '내 예약',
           ),
         ],
       ),
@@ -773,8 +829,15 @@ Widget _imagePlaceholder() {
 // ---------------------------------------------------------------------------
 class ReservationFormScreen extends StatefulWidget {
   final Map<String, String>? design; // 핀잇 픽에서 넘어온 디자인 (없으면 직접 입력)
+  final ValueChanged<Reservation> onSaved; // 주문서 완성 시 타임라인에 저장
+  final VoidCallback onViewTimeline;
 
-  const ReservationFormScreen({super.key, this.design});
+  const ReservationFormScreen({
+    super.key,
+    this.design,
+    required this.onSaved,
+    required this.onViewTimeline,
+  });
 
   @override
   State<ReservationFormScreen> createState() => _ReservationFormScreenState();
@@ -854,6 +917,19 @@ class _ReservationFormScreenState extends State<ReservationFormScreen> {
     return buffer.toString();
   }
 
+  Reservation _buildReservation() {
+    return Reservation(
+      id: DateTime.now().microsecondsSinceEpoch.toString(),
+      shop: _shopController.text.trim(),
+      design: _designController.text.trim(),
+      price: widget.design?['price'],
+      img: widget.design?['img'],
+      date: _selectedDate!,
+      time: _selectedTime!,
+      channel: _selectedChannel,
+    );
+  }
+
   void _submit() {
     final isValid = _formKey.currentState!.validate();
     if (_selectedDate == null || _selectedTime == null) {
@@ -919,10 +995,22 @@ class _ReservationFormScreenState extends State<ReservationFormScreen> {
                   onPressed: () async {
                     final messenger = ScaffoldMessenger.of(context);
                     final navigator = Navigator.of(sheetContext);
-                    await Clipboard.setData(ClipboardData(text: message));
+                    // 복사가 실패해도 예약은 타임라인에 남도록 먼저 저장
+                    widget.onSaved(_buildReservation());
+                    var copied = true;
+                    try {
+                      await Clipboard.setData(ClipboardData(text: message));
+                    } catch (_) {
+                      copied = false;
+                    }
                     navigator.pop();
                     messenger.showSnackBar(
-                      SnackBar(content: Text('복사 완료! $_selectedChannel에 붙여넣기 해주세요.')),
+                      SnackBar(
+                        content: Text(copied
+                            ? '복사 완료! $_selectedChannel에 붙여넣고, 내 예약에서 일정을 확인하세요.'
+                            : '복사에 실패했어요. 메시지를 길게 눌러 직접 복사해주세요.'),
+                        action: SnackBarAction(label: '내 예약', onPressed: widget.onViewTimeline),
+                      ),
                     );
                   },
                 ),

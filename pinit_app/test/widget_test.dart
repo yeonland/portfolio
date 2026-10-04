@@ -1,9 +1,18 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:pinit_app/main.dart';
+import 'package:pinit_app/reservation.dart';
 
 void main() {
+  setUp(() {
+    SharedPreferences.setMockInitialValues({});
+  });
+
   testWidgets('PinItApp builds', (WidgetTester tester) async {
     await tester.pumpWidget(const PinItApp());
     expect(find.byType(PinItApp), findsOneWidget);
@@ -29,16 +38,120 @@ void main() {
 
     await tester.tap(find.text('예약 양식'));
     await tester.pumpAndSettle();
-    await tester.scrollUntilVisible(
-      find.text('✨ 주문서 완성하기'),
-      200,
-      scrollable: find
-          .descendant(of: find.byType(ReservationFormScreen), matching: find.byType(Scrollable))
-          .first,
-    );
+    await _scrollToSubmit(tester);
     await tester.tap(find.text('✨ 주문서 완성하기'));
     await tester.pump();
 
     expect(find.text('희망 날짜와 시간을 선택해주세요.'), findsOneWidget);
   });
+
+  testWidgets('주문서를 완성하고 복사하면 내 예약 타임라인에 저장된다', (WidgetTester tester) async {
+    // 테스트 환경용 가짜 클립보드
+    String? clipboardText;
+    tester.binding.defaultBinaryMessenger.setMockMethodCallHandler(SystemChannels.platform, (call) async {
+      if (call.method == 'Clipboard.setData') {
+        clipboardText = (call.arguments as Map)['text'] as String?;
+      }
+      return null;
+    });
+    addTearDown(() => tester.binding.defaultBinaryMessenger.setMockMethodCallHandler(SystemChannels.platform, null));
+
+    await tester.pumpWidget(const PinItApp());
+
+    // 디자인 선택 → 예약 양식
+    await tester.tap(find.text('55,000원'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('이 디자인으로 예약 문의하기'));
+    await tester.pumpAndSettle();
+
+    // 날짜(기본값: 내일) · 시간 · 예약자 정보 입력
+    await tester.tap(find.text('날짜 선택하기'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('OK'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('15:00'));
+    final nameField = find.widgetWithText(TextFormField, '이름');
+    final phoneField = find.widgetWithText(TextFormField, '연락처 (예: 010-1234-5678)');
+    await _scrollTo(tester, phoneField);
+    await tester.enterText(nameField, '김핀잇');
+    await tester.enterText(phoneField, '010-1234-5678');
+    await _scrollToSubmit(tester);
+    await tester.tap(find.text('✨ 주문서 완성하기'));
+    await tester.pumpAndSettle();
+
+    // 메시지 복사 → 타임라인 저장
+    await tester.tap(find.text('메시지 복사하기'));
+    await tester.pumpAndSettle();
+    expect(clipboardText, contains('📅 희망 일시:'));
+    await tester.tap(find.descendant(of: find.byType(BottomNavigationBar), matching: find.text('내 예약')));
+    await tester.pumpAndSettle();
+
+    expect(find.text('다가오는 예약 1'), findsOneWidget);
+    expect(find.text('D-1'), findsOneWidget);
+    expect(find.text('시럽 마블 글리터 아트'), findsOneWidget);
+
+    // 기기 저장소에도 저장됐는지 확인
+    final saved = await ReservationStorage.load();
+    expect(saved.single.shop, '루나네일');
+    expect(saved.single.time, '15:00');
+  });
+
+  testWidgets('타임라인에서 단계를 누르면 진행 상황이 바뀐다', (WidgetTester tester) async {
+    final reservation = Reservation(
+      id: '1',
+      shop: '달콤케이크',
+      design: '빈티지 레터링 커스텀',
+      date: DateTime.now().add(const Duration(days: 3)),
+      time: '13:00',
+      channel: '💬 카톡',
+    );
+    SharedPreferences.setMockInitialValues({
+      'reservations': jsonEncode([reservation.toJson()]),
+    });
+
+    await tester.pumpWidget(const PinItApp());
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('내 예약'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('D-3'), findsOneWidget);
+
+    // 방문 완료로 바꾸면 지난 예약으로 이동
+    await tester.tap(find.text('방문 완료'));
+    await tester.pumpAndSettle();
+    expect(find.text('지난 예약 1'), findsOneWidget);
+    expect(find.text('완료'), findsOneWidget);
+    expect((await ReservationStorage.load()).single.step, 2);
+  });
+
+  testWidgets('예약이 없으면 안내 화면이 보인다', (WidgetTester tester) async {
+    await tester.pumpWidget(const PinItApp());
+    await tester.tap(find.text('내 예약'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('아직 예약이 없어요'), findsOneWidget);
+  });
+
+  test('D-day 표시 계산', () {
+    final now = DateTime(2026, 10, 4, 21, 30);
+    Reservation at(DateTime date) =>
+        Reservation(id: 'x', shop: 's', design: 'd', date: date, time: '11:00', channel: 'c');
+
+    expect(at(DateTime(2026, 10, 4)).dDayLabel(now), 'D-day');
+    expect(at(DateTime(2026, 10, 7)).dDayLabel(now), 'D-3');
+    expect(at(DateTime(2026, 10, 2)).dDayLabel(now), 'D+2');
+  });
+}
+
+Future<void> _scrollToSubmit(WidgetTester tester) => _scrollTo(tester, find.text('✨ 주문서 완성하기'));
+
+// 예약 양식 안에서 원하는 위젯이 보일 때까지 스크롤
+Future<void> _scrollTo(WidgetTester tester, Finder finder) {
+  return tester.scrollUntilVisible(
+    finder,
+    200,
+    scrollable: find
+        .descendant(of: find.byType(ReservationFormScreen), matching: find.byType(Scrollable))
+        .first,
+  );
 }
