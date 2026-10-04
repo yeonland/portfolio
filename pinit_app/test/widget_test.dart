@@ -5,8 +5,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:latlong2/latlong.dart';
+
 import 'package:pinit_app/main.dart';
+import 'package:pinit_app/map_explorer_screen.dart';
 import 'package:pinit_app/reservation.dart';
+import 'package:pinit_app/shop.dart';
 
 void main() {
   setUp(() {
@@ -199,6 +203,62 @@ void main() {
 
     expect(find.byType(ReservationFormScreen), findsOneWidget);
     expect(find.widgetWithText(TextFormField, '달콤케이크'), findsOneWidget);
+  });
+
+  testWidgets('지도 탭: 등록된 채널만 버튼이 보이고 카테고리로 거를 수 있다', (WidgetTester tester) async {
+    const testShops = [
+      Shop(
+        name: '테스트네일',
+        category: '💅 네일',
+        address: '서울 강남구',
+        location: LatLng(37.4990, 127.0290),
+        instagram: '@test_nail',
+        kakaoUrl: 'https://pf.kakao.com/_test',
+      ),
+      Shop(
+        name: '테스트케이크',
+        category: '🎂 케이크',
+        address: '서울 강남구',
+        location: LatLng(37.5005, 127.0335),
+      ),
+    ];
+    await tester.pumpWidget(const MaterialApp(
+      home: Scaffold(body: MultiChannelMapExplorerScreen(shops: testShops)),
+    ));
+    await tester.pump();
+
+    // 첫 번째 샵: 네이버 + 카톡 + 인스타 모두 표시
+    expect(find.text('테스트네일'), findsOneWidget);
+    expect(find.text('💬 카톡문의'), findsOneWidget);
+    expect(find.text('📸 인스타'), findsOneWidget);
+
+    // 케이크만 보기: 링크가 없는 카톡·인스타 버튼은 숨김
+    await tester.tap(find.text('🎂 케이크'));
+    await tester.pumpAndSettle();
+    expect(find.text('테스트케이크'), findsOneWidget);
+    expect(find.text('테스트네일'), findsNothing);
+    expect(find.text('N 네이버'), findsOneWidget);
+    expect(find.text('💬 카톡문의'), findsNothing);
+
+    // 등록된 샵이 없는 카테고리
+    await tester.tap(find.text('🎨 타투'));
+    await tester.pumpAndSettle();
+    expect(find.text('이 카테고리에는 아직 등록된 샵이 없어요.'), findsOneWidget);
+  });
+
+  test('샵 예약 채널 링크 만들기', () {
+    const shop = Shop(
+      name: '루나네일 강남점',
+      category: '💅 네일',
+      address: '서울 강남구',
+      location: LatLng(37.4990, 127.0290),
+      instagram: '@luna_nail',
+    );
+    // 네이버 링크가 없으면 네이버 지도 검색으로 연결
+    expect(shop.naverUri.toString(), 'https://map.naver.com/p/search/${Uri.encodeComponent('루나네일 강남점')}');
+    expect(shop.instagramUri.toString(), 'https://www.instagram.com/luna_nail/');
+    expect(shop.kakaoUri, isNull);
+    expect(shop.distanceLabel, endsWith('m'));
   });
 
   test('D-day 표시 계산', () {
