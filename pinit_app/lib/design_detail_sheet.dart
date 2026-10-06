@@ -54,17 +54,15 @@ void showDesignDetailSheet(
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                // 하트를 누르면 레퍼런스 보드에 저장/해제
+                // 북마크를 누르면 보관함(레퍼런스 보드)에 저장/해제
                 ListenableBuilder(
                   listenable: favorites,
                   builder: (context, _) {
                     final isFavorite = favorites.isFavorite(item);
-                    return IconButton(
-                      tooltip: isFavorite ? '찜 해제' : '찜하기',
-                      icon: Icon(
-                        isFavorite ? Icons.favorite : Icons.favorite_border,
-                        color: Colors.red,
-                      ),
+                    return TextButton.icon(
+                      style: TextButton.styleFrom(foregroundColor: const Color(0xFFD63F7A)),
+                      icon: Icon(isFavorite ? Icons.bookmark : Icons.bookmark_border),
+                      label: Text(isFavorite ? '보관함에 있음' : '보관함에 저장'),
                       onPressed: () => favorites.toggle(item),
                     );
                   },
