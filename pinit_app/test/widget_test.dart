@@ -49,6 +49,27 @@ void main() {
     expect(find.text('희망 날짜와 시간을 선택해주세요.'), findsOneWidget);
   });
 
+  testWidgets('희망 시간은 30분 간격으로 고르거나 직접 입력할 수 있다', (WidgetTester tester) async {
+    await tester.pumpWidget(const PinItApp());
+    await tester.tap(find.text('예약 양식'));
+    await tester.pumpAndSettle();
+
+    // 오전 9:00부터 오후 9:00까지 30분 간격
+    expect(find.text('9:00'), findsOneWidget);
+    expect(find.text('9:30'), findsOneWidget);
+    await tester.ensureVisible(find.text('21:00'));
+    await tester.pumpAndSettle();
+    expect(find.text('21:00'), findsOneWidget);
+    expect(find.text('21:30'), findsNothing);
+
+    // 직접 입력을 고르면 입력 칸이 나타남
+    await tester.ensureVisible(find.text('✏️ 직접 입력'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('✏️ 직접 입력'));
+    await tester.pumpAndSettle();
+    expect(find.widgetWithText(TextField, '예: 오후 2시 이후 아무 때나 / 퇴근 후 7시 반'), findsOneWidget);
+  });
+
   testWidgets('주문서를 완성하고 복사하면 내 예약 타임라인에 저장된다', (WidgetTester tester) async {
     // 테스트 환경용 가짜 클립보드
     String? clipboardText;
@@ -72,6 +93,8 @@ void main() {
     await tester.tap(find.text('날짜 선택하기'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('OK'));
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.text('15:00'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('15:00'));
     final nameField = find.widgetWithText(TextFormField, '이름');
@@ -227,16 +250,28 @@ void main() {
     ));
     await tester.pump();
 
-    // 첫 번째 샵: 네이버 + 카톡 + 인스타 모두 표시
+    // 처음엔 카드 없이 지도만
+    expect(find.text('N 네이버'), findsNothing);
+
+    // 네일 핀을 누르면 카드: 네이버 + 카톡 + 인스타 모두 표시
+    await tester.tap(find.text('💅 테스트네일'));
+    await tester.pumpAndSettle();
     expect(find.text('테스트네일'), findsOneWidget);
     expect(find.text('💬 카톡문의'), findsOneWidget);
     expect(find.text('📸 인스타'), findsOneWidget);
 
-    // 케이크만 보기: 링크가 없는 카톡·인스타 버튼은 숨김
+    // 닫기 버튼을 누르면 카드가 사라짐
+    await tester.tap(find.byTooltip('닫기'));
+    await tester.pumpAndSettle();
+    expect(find.text('테스트네일'), findsNothing);
+
+    // 케이크만 보기: 네일 핀은 숨김, 링크가 없는 카톡·인스타 버튼도 숨김
     await tester.tap(find.text('🎂 케이크'));
     await tester.pumpAndSettle();
+    expect(find.text('💅 테스트네일'), findsNothing);
+    await tester.tap(find.text('🎂 테스트케이크'));
+    await tester.pumpAndSettle();
     expect(find.text('테스트케이크'), findsOneWidget);
-    expect(find.text('테스트네일'), findsNothing);
     expect(find.text('N 네이버'), findsOneWidget);
     expect(find.text('💬 카톡문의'), findsNothing);
 

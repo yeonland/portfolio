@@ -486,12 +486,27 @@ class _ReservationFormScreenState extends State<ReservationFormScreen> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _memoController = TextEditingController();
+  final TextEditingController _customTimeController = TextEditingController();
 
   DateTime? _selectedDate;
   String? _selectedTime;
+  bool _isCustomTime = false; // '직접 입력'을 고르면 칸에 자유롭게 입력
   String _selectedChannel = '💬 카톡';
 
-  final List<String> _times = ['11:00', '13:00', '15:00', '17:00', '19:00'];
+  // 오전 9:00 ~ 오후 9:00, 30분 간격
+  static final List<String> _times = [
+    for (var minutes = 9 * 60; minutes <= 21 * 60; minutes += 30)
+      '${minutes ~/ 60}:${(minutes % 60).toString().padLeft(2, '0')}',
+  ];
+  List<String> get _morningTimes => _times.where((time) => int.parse(time.split(':').first) < 12).toList();
+  List<String> get _afternoonTimes => _times.where((time) => int.parse(time.split(':').first) >= 12).toList();
+
+  // 메시지·예약에 들어갈 희망 시간 (직접 입력이면 입력한 글자 그대로)
+  String? get _timeText {
+    if (!_isCustomTime) return _selectedTime;
+    final text = _customTimeController.text.trim();
+    return text.isEmpty ? null : text;
+  }
   final List<String> _channels = ['💬 카톡', '📸 인스타 DM', 'N 네이버'];
 
   @override
@@ -508,6 +523,7 @@ class _ReservationFormScreenState extends State<ReservationFormScreen> {
     _nameController.dispose();
     _phoneController.dispose();
     _memoController.dispose();
+    _customTimeController.dispose();
     super.dispose();
   }
 
@@ -541,7 +557,7 @@ class _ReservationFormScreenState extends State<ReservationFormScreen> {
       buffer.writeln('💰 가격: ${widget.design!['price']}');
     }
     buffer
-      ..writeln('📅 희망 일시: ${_formatDate(_selectedDate!)} $_selectedTime')
+      ..writeln('📅 희망 일시: ${_formatDate(_selectedDate!)} $_timeText')
       ..writeln('🙋 이름: ${_nameController.text}')
       ..writeln('📞 연락처: ${_phoneController.text}');
     if (_memoController.text.trim().isNotEmpty) {
@@ -561,14 +577,14 @@ class _ReservationFormScreenState extends State<ReservationFormScreen> {
       price: widget.design?['price'],
       img: widget.design?['img'],
       date: _selectedDate!,
-      time: _selectedTime!,
+      time: _timeText!,
       channel: _selectedChannel,
     );
   }
 
   void _submit() {
     final isValid = _formKey.currentState!.validate();
-    if (_selectedDate == null || _selectedTime == null) {
+    if (_selectedDate == null || _timeText == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('희망 날짜와 시간을 선택해주세요.')),
       );
@@ -751,15 +767,32 @@ class _ReservationFormScreenState extends State<ReservationFormScreen> {
           ),
 
           _sectionTitle('희망 시간'),
-          Wrap(
-            spacing: 6,
-            runSpacing: 6,
-            children: _times.map((time) => _buildChoiceChip(
-                  label: time,
-                  isSelected: _selectedTime == time,
-                  onSelected: () => setState(() => _selectedTime = time),
-                )).toList(),
+          _buildTimeGroup('오전', _morningTimes),
+          const SizedBox(height: 10),
+          _buildTimeGroup('오후', _afternoonTimes),
+          const SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.only(left: 36), // 시간 칩과 왼쪽 줄 맞추기
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: _buildChoiceChip(
+                label: '✏️ 직접 입력',
+                isSelected: _isCustomTime,
+                onSelected: () => setState(() {
+                  _isCustomTime = true;
+                  _selectedTime = null;
+                }),
+              ),
+            ),
           ),
+          if (_isCustomTime) ...[
+            const SizedBox(height: 8),
+            TextField(
+              controller: _customTimeController,
+              autofocus: true,
+              decoration: _inputDecoration('예: 오후 2시 이후 아무 때나 / 퇴근 후 7시 반'),
+            ),
+          ],
 
           _sectionTitle('예약자 정보'),
           TextFormField(
@@ -813,6 +846,36 @@ class _ReservationFormScreenState extends State<ReservationFormScreen> {
           const SizedBox(height: 16),
         ],
       ),
+    );
+  }
+
+  // 오전/오후 묶음: 왼쪽에 이름표, 오른쪽에 30분 간격 시간 칩
+  Widget _buildTimeGroup(String label, List<String> times) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(
+          width: 36,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: Text(label, style: const TextStyle(fontSize: 12, color: Colors.grey)),
+          ),
+        ),
+        Expanded(
+          child: Wrap(
+            spacing: 6,
+            runSpacing: 6,
+            children: times.map((time) => _buildChoiceChip(
+                  label: time,
+                  isSelected: !_isCustomTime && _selectedTime == time,
+                  onSelected: () => setState(() {
+                    _selectedTime = time;
+                    _isCustomTime = false;
+                  }),
+                )).toList(),
+          ),
+        ),
+      ],
     );
   }
 
