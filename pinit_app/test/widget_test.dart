@@ -22,8 +22,30 @@ void main() {
     expect(find.byType(PinItApp), findsOneWidget);
   });
 
-  testWidgets('핀잇 픽에서 예약 문의하면 예약 양식이 자동으로 채워진다', (WidgetTester tester) async {
+  testWidgets('홈에서 카테고리를 고르면 그 카테고리 디자인만 보인다', (WidgetTester tester) async {
     await tester.pumpWidget(const PinItApp());
+
+    // 홈: 무엇을 예약하시겠어요? + 6개 카테고리 (메이크업 포함)
+    expect(find.text('무엇을 예약하시겠어요?'), findsOneWidget);
+    expect(find.text('메이크업'), findsOneWidget);
+    expect(find.text('샵 지도 ✓'), findsOneWidget); // 지도에 샵이 있는 건 네일뿐
+
+    await tester.tap(find.text('메이크업'));
+    await tester.pumpAndSettle();
+    expect(find.text('💄 메이크업 디자인'), findsOneWidget);
+    expect(find.text('120,000원'), findsOneWidget);
+    expect(find.text('55,000원'), findsNothing); // 네일 디자인은 숨김
+
+    // 전체 보기로 해제
+    await tester.tap(find.text('전체 보기'));
+    await tester.pumpAndSettle();
+    expect(find.text('55,000원'), findsOneWidget);
+  });
+
+  testWidgets('디자인에서 예약 문의하면 예약 양식이 자동으로 채워진다', (WidgetTester tester) async {
+    await tester.pumpWidget(const PinItApp());
+    await tester.tap(find.text('디자인'));
+    await tester.pumpAndSettle();
 
     // 첫 번째 디자인(루나네일 - 시럽 마블 글리터 아트) 선택
     await tester.tap(find.text('55,000원'));
@@ -31,7 +53,7 @@ void main() {
     await tester.tap(find.text('이 디자인으로 예약 문의하기'));
     await tester.pumpAndSettle();
 
-    // 예약 양식 탭으로 이동 + 샵/디자인 자동 입력 확인
+    // 예약 양식 화면이 열림 + 샵/디자인 자동 입력 확인
     expect(find.byType(ReservationFormScreen), findsOneWidget);
     expect(find.widgetWithText(TextFormField, '루나네일'), findsOneWidget);
     expect(find.widgetWithText(TextFormField, '시럽 마블 글리터 아트'), findsOneWidget);
@@ -40,7 +62,9 @@ void main() {
   testWidgets('날짜와 시간을 고르지 않으면 안내 메시지가 뜬다', (WidgetTester tester) async {
     await tester.pumpWidget(const PinItApp());
 
-    await tester.tap(find.text('예약 양식'));
+    await tester.tap(find.text('내 예약'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('예약 문의 쓰기'));
     await tester.pumpAndSettle();
     await _scrollToSubmit(tester);
     await tester.tap(find.text('✨ 주문서 완성하기'));
@@ -51,7 +75,9 @@ void main() {
 
   testWidgets('희망 시간은 30분 간격으로 고르거나 직접 입력할 수 있다', (WidgetTester tester) async {
     await tester.pumpWidget(const PinItApp());
-    await tester.tap(find.text('예약 양식'));
+    await tester.tap(find.text('내 예약'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('예약 문의 쓰기'));
     await tester.pumpAndSettle();
 
     // 오전 9:00부터 오후 9:00까지 30분 간격
@@ -82,6 +108,8 @@ void main() {
     addTearDown(() => tester.binding.defaultBinaryMessenger.setMockMethodCallHandler(SystemChannels.platform, null));
 
     await tester.pumpWidget(const PinItApp());
+    await tester.tap(find.text('디자인'));
+    await tester.pumpAndSettle();
 
     // 디자인 선택 → 예약 양식
     await tester.tap(find.text('55,000원'));
@@ -110,7 +138,7 @@ void main() {
     await tester.tap(find.text('메시지 복사하기'));
     await tester.pumpAndSettle();
     expect(clipboardText, contains('📅 희망 일시:'));
-    await tester.tap(find.descendant(of: find.byType(BottomNavigationBar), matching: find.text('내 예약')));
+    await tester.tap(find.widgetWithText(SnackBarAction, '내 예약'));
     await tester.pumpAndSettle();
 
     expect(find.text('다가오는 예약 1'), findsOneWidget);
@@ -159,25 +187,27 @@ void main() {
     expect(find.text('아직 예약이 없어요'), findsOneWidget);
   });
 
-  testWidgets('하트를 누르면 레퍼런스 보드에 저장되고 피드에 찜 표시가 생긴다', (WidgetTester tester) async {
+  testWidgets('보관함에 저장하면 하단 보관함 탭에 모이고 피드에 표시가 생긴다', (WidgetTester tester) async {
     await tester.pumpWidget(const PinItApp());
-    expect(find.byIcon(Icons.favorite), findsNothing);
+    await tester.tap(find.text('디자인'));
+    await tester.pumpAndSettle();
+    expect(find.byIcon(Icons.bookmark), findsNothing);
 
-    // 상세 화면에서 찜하기
+    // 상세 화면에서 보관함에 저장
     await tester.tap(find.text('55,000원'));
     await tester.pumpAndSettle();
-    await tester.tap(find.byTooltip('찜하기'));
+    await tester.tap(find.text('보관함에 저장'));
     await tester.pump();
-    expect(find.byTooltip('찜 해제'), findsOneWidget);
+    expect(find.text('보관함에 있음'), findsOneWidget);
 
-    // 상세 화면 닫기 → 피드에 ♥ 표시 + 상단 배지 1
+    // 상세 화면 닫기 → 피드에 🔖 표시 + 보관함 탭 배지 1
     await tester.tapAt(const Offset(20, 20));
     await tester.pumpAndSettle();
-    expect(find.byIcon(Icons.favorite), findsOneWidget);
+    expect(find.byIcon(Icons.bookmark), findsOneWidget);
     expect(find.descendant(of: find.byType(Badge), matching: find.text('1')), findsOneWidget);
 
-    // 레퍼런스 보드에서 카테고리별로 확인
-    await tester.tap(find.byTooltip('레퍼런스 보드'));
+    // 보관함 탭에서 카테고리별로 확인
+    await tester.tap(find.text('보관함'));
     await tester.pumpAndSettle();
     expect(find.text('#시럽네일 1'), findsOneWidget);
     expect(find.text('시럽 마블 글리터 아트'), findsOneWidget);
@@ -187,7 +217,7 @@ void main() {
     expect(prefs.getString('favorites'), contains('시럽 마블 글리터 아트'));
   });
 
-  testWidgets('보드에서 빼면 사라지고 되돌리기로 복구된다', (WidgetTester tester) async {
+  testWidgets('보관함에서 빼면 사라지고 되돌리기로 복구된다', (WidgetTester tester) async {
     SharedPreferences.setMockInitialValues({
       'favorites': jsonEncode([
         {'shop': '달콤케이크', 'title': '빈티지 레터링 커스텀', 'price': '38,000원', 'keyword': '#생일케이크', 'tag': '#레터링', 'img': 'https://example.com/a.jpg'},
@@ -195,20 +225,20 @@ void main() {
     });
     await tester.pumpWidget(const PinItApp());
     await tester.pumpAndSettle();
-    await tester.tap(find.byTooltip('레퍼런스 보드'));
+    await tester.tap(find.text('보관함'));
     await tester.pumpAndSettle();
     expect(find.text('#생일케이크 1'), findsOneWidget);
 
-    await tester.tap(find.byTooltip('보드에서 빼기'));
+    await tester.tap(find.byTooltip('보관함에서 빼기'));
     await tester.pumpAndSettle();
-    expect(find.text('아직 찜한 디자인이 없어요'), findsOneWidget);
+    expect(find.text('아직 보관한 디자인이 없어요'), findsOneWidget);
 
     await tester.tap(find.text('되돌리기'));
     await tester.pumpAndSettle();
     expect(find.text('#생일케이크 1'), findsOneWidget);
   });
 
-  testWidgets('보드에서 예약 문의하면 예약 양식으로 이동한다', (WidgetTester tester) async {
+  testWidgets('보관함에서 예약 문의하면 예약 양식으로 이동한다', (WidgetTester tester) async {
     SharedPreferences.setMockInitialValues({
       'favorites': jsonEncode([
         {'shop': '달콤케이크', 'title': '빈티지 레터링 커스텀', 'price': '38,000원', 'keyword': '#생일케이크', 'tag': '#레터링', 'img': 'https://example.com/a.jpg'},
@@ -216,9 +246,11 @@ void main() {
     });
     await tester.pumpWidget(const PinItApp());
     await tester.pumpAndSettle();
-    await tester.tap(find.byTooltip('레퍼런스 보드'));
+    await tester.tap(find.text('보관함'));
     await tester.pumpAndSettle();
 
+    await tester.ensureVisible(find.text('빈티지 레터링 커스텀'));
+    await tester.pumpAndSettle();
     await tester.tap(find.text('빈티지 레터링 커스텀'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('이 디자인으로 예약 문의하기'));

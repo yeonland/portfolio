@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'design_detail_sheet.dart';
+import 'designs.dart';
 import 'favorites.dart';
+import 'home_screen.dart';
 import 'map_explorer_screen.dart';
 import 'reference_board_screen.dart';
 import 'reservation.dart';
@@ -85,8 +87,14 @@ class MainNavigationScreen extends StatefulWidget {
 }
 
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
-  int _selectedIndex = 1; // '핀잇 픽' 탭 기본 선택
-  Map<String, String>? _selectedDesign; // 핀잇 픽에서 고른 디자인 (예약 양식 자동 입력용)
+  // 하단 탭 순서
+  static const int _homeTab = 0;
+  static const int _designTab = 1;
+  static const int _boardTab = 3;
+  static const int _timelineTab = 4;
+
+  int _selectedIndex = _homeTab;
+  String? _designCategory; // 홈에서 고른 카테고리 (null이면 전체 디자인)
 
   List<Reservation> _reservations = []; // 내 예약 타임라인
   final FavoritesStore _favorites = FavoritesStore(); // 찜한 디자인 (레퍼런스 보드)
@@ -104,17 +112,6 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     super.dispose();
   }
 
-  void _openReferenceBoard() {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (_) => ReferenceBoardScreen(
-          favorites: _favorites,
-          onReserve: _goToReservation,
-        ),
-      ),
-    );
-  }
-
   Future<void> _loadReservations() async {
     final saved = await ReservationStorage.load();
     if (!mounted) return;
@@ -130,11 +127,32 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     ReservationStorage.save(reservations);
   }
 
-  // 핀잇 픽에서 '예약 문의하기'를 누르면 예약 양식 탭으로 이동
-  void _goToReservation(Map<String, String> design) {
+  // '예약 문의하기'를 누르면 예약 양식 화면을 띄움 (design이 없으면 빈 양식)
+  void _openReservationForm([Map<String, String>? design]) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (routeContext) => Scaffold(
+          appBar: AppBar(
+            title: const Text('예약 문의', style: TextStyle(fontWeight: FontWeight.w800)),
+          ),
+          body: ReservationFormScreen(
+            design: design,
+            onSaved: _addReservation,
+            onViewTimeline: () {
+              Navigator.of(routeContext).popUntil((route) => route.isFirst);
+              _goToTimeline();
+            },
+          ),
+        ),
+      ),
+    );
+  }
+
+  // 홈에서 카테고리를 고르면 그 카테고리의 디자인 탭으로 이동
+  void _openCategory(String category) {
     setState(() {
-      _selectedDesign = design;
-      _selectedIndex = 2;
+      _designCategory = category;
+      _selectedIndex = _designTab;
     });
   }
 
@@ -145,28 +163,32 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 
   void _goToTimeline() {
     setState(() {
-      _selectedIndex = 3;
+      _selectedIndex = _timelineTab;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     final List<Widget> pages = [
-      // 1. 지도 탭 (네이버/카톡/인스타 다중 채널)
-      const MultiChannelMapExplorerScreen(),
+      // 1. 홈 - 무엇을 예약하시겠어요?
+      HomeScreen(onCategorySelected: _openCategory),
 
-      // 2. 핀잇 픽 (PinIt Pick) - 센스있는 디자인 피드 탭
-      PinItPickScreen(favorites: _favorites, onReserve: _goToReservation),
-
-      // 3. 스마트 예약 주문서 탭 (디자인이 바뀌면 양식을 새로 채움)
-      ReservationFormScreen(
-        key: ValueKey(_selectedDesign?['title']),
-        design: _selectedDesign,
-        onSaved: _addReservation,
-        onViewTimeline: _goToTimeline,
+      // 2. 디자인 (핀잇 픽) - 카테고리별 디자인 피드
+      PinItPickScreen(
+        key: ValueKey(_designCategory),
+        category: _designCategory,
+        onClearCategory: () => setState(() => _designCategory = null),
+        favorites: _favorites,
+        onReserve: _openReservationForm,
       ),
 
-      // 4. 내 예약 타임라인 (D-day + 진행 단계)
+      // 3. 지도 탭 (네이버/카톡/인스타 다중 채널)
+      const MultiChannelMapExplorerScreen(),
+
+      // 4. 보관함 (레퍼런스 보드)
+      ReferenceBoardScreen(favorites: _favorites, onReserve: _openReservationForm),
+
+      // 5. 내 예약 타임라인 (D-day + 진행 단계)
       ReservationTimelineScreen(
         reservations: _reservations,
         onStepChanged: (reservation, step) => _updateReservations([
@@ -175,7 +197,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         onDelete: (reservation) => _updateReservations(
           _reservations.where((r) => r.id != reservation.id).toList(),
         ),
-        onBrowse: () => setState(() => _selectedIndex = 1),
+        onBrowse: () => setState(() => _selectedIndex = _designTab),
       ),
     ];
 
@@ -186,19 +208,6 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
           style: TextStyle(fontWeight: FontWeight.w800, letterSpacing: -0.5),
         ),
         actions: [
-          // 레퍼런스 보드 (찜 개수 배지)
-          ListenableBuilder(
-            listenable: _favorites,
-            builder: (context, _) => IconButton(
-              tooltip: '레퍼런스 보드',
-              onPressed: _openReferenceBoard,
-              icon: Badge(
-                isLabelVisible: _favorites.count > 0,
-                label: Text('${_favorites.count}'),
-                child: const Icon(Icons.favorite_border),
-              ),
-            ),
-          ),
           Row(
             children: [
               Icon(
@@ -215,6 +224,16 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         ],
       ),
       body: pages[_selectedIndex],
+      // 내 예약 탭: 디자인 없이 바로 예약 문의 쓰기
+      floatingActionButton: _selectedIndex == _timelineTab
+          ? FloatingActionButton.extended(
+              onPressed: _openReservationForm,
+              backgroundColor: Colors.black,
+              foregroundColor: Colors.white,
+              icon: const Icon(Icons.edit_note),
+              label: const Text('예약 문의 쓰기', style: TextStyle(fontWeight: FontWeight.bold)),
+            )
+          : null,
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed, // 탭 4개 이상이면 고정형으로
         currentIndex: _selectedIndex,
@@ -223,20 +242,34 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
             _selectedIndex = index;
           });
         },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.map),
-            label: '지도 탐색',
+        items: [
+          const BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            activeIcon: Icon(Icons.home),
+            label: '홈',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.auto_awesome), // 반짝이는 픽 아이콘
-            label: '핀잇 픽',
+            label: '디자인',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.edit_note),
-            label: '예약 양식',
+          const BottomNavigationBarItem(
+            icon: Icon(Icons.map_outlined),
+            activeIcon: Icon(Icons.map),
+            label: '지도',
           ),
+          // 보관함: 저장한 디자인 개수 배지
           BottomNavigationBarItem(
+            icon: ListenableBuilder(
+              listenable: _favorites,
+              builder: (context, _) => Badge(
+                isLabelVisible: _favorites.count > 0,
+                label: Text('${_favorites.count}'),
+                child: Icon(_selectedIndex == _boardTab ? Icons.bookmark : Icons.bookmark_border),
+              ),
+            ),
+            label: '보관함',
+          ),
+          const BottomNavigationBarItem(
             icon: Icon(Icons.event_note),
             label: '내 예약',
           ),
@@ -250,10 +283,18 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 // ✨ 핀잇 픽 (PinIt Pick) - 검색 + 키워드 + 3열 피드 + 가격표 복원!
 // ---------------------------------------------------------------------------
 class PinItPickScreen extends StatefulWidget {
+  final String? category; // 홈에서 고른 카테고리 (null이면 전체)
+  final VoidCallback? onClearCategory;
   final FavoritesStore favorites;
   final ValueChanged<Map<String, String>> onReserve;
 
-  const PinItPickScreen({super.key, required this.favorites, required this.onReserve});
+  const PinItPickScreen({
+    super.key,
+    this.category,
+    this.onClearCategory,
+    required this.favorites,
+    required this.onReserve,
+  });
 
   @override
   State<PinItPickScreen> createState() => _PinItPickScreenState();
@@ -273,37 +314,59 @@ class _PinItPickScreenState extends State<PinItPickScreen> {
     '#미니타투',
     '#속눈썹펌',
     '#꽃다발',
+    '#촬영메이크업',
   ];
 
-  final List<Map<String, String>> _allArtList = [
-    {'shop': '루나네일', 'title': '시럽 마블 글리터 아트', 'price': '55,000원', 'keyword': '#시럽네일', 'tag': '#이달의아트', 'img': 'https://picsum.photos/300/300?random=1'},
-    {'shop': '달콤케이크', 'title': '빈티지 레터링 커스텀', 'price': '38,000원', 'keyword': '#생일케이크', 'tag': '#레터링', 'img': 'https://picsum.photos/300/300?random=2'},
-    {'shop': '잉크타투', 'title': '미니멀 라인 플라워', 'price': '80,000원', 'keyword': '#미니타투', 'tag': '#레터링', 'img': 'https://picsum.photos/300/300?random=3'},
-    {'shop': '글램래쉬', 'title': '플랫모 뷰러 펌 세트', 'price': '45,000원', 'keyword': '#속눈썹펌', 'tag': '#이달의아트', 'img': 'https://picsum.photos/300/300?random=4'},
-    {'shop': '블룸아뜰리에', 'title': '파스텔 튤립 꽃다발', 'price': '35,000원', 'keyword': '#꽃다발', 'tag': '#생일케이크', 'img': 'https://picsum.photos/300/300?random=5'},
-    {'shop': '모모네일', 'title': '자개 영롱 인스타 아트', 'price': '60,000원', 'keyword': '#시럽네일', 'tag': '#이달의아트', 'img': 'https://picsum.photos/300/300?random=6'},
-    {'shop': '베이크미', 'title': '캐릭터 입체 레터링 케이크', 'price': '42,000원', 'keyword': '#생일케이크', 'tag': '#레터링', 'img': 'https://picsum.photos/300/300?random=7'},
-    {'shop': '네일디자인', 'title': '치크 시럽 블러셔 아트', 'price': '50,000원', 'keyword': '#시럽네일', 'tag': '#이달의아트', 'img': 'https://picsum.photos/300/300?random=8'},
-    {'shop': '타투스튜디오', 'title': '감성 드로잉 미니타투', 'price': '70,000원', 'keyword': '#미니타투', 'tag': '#레터링', 'img': 'https://picsum.photos/300/300?random=9'},
-  ];
+  // 홈에서 카테고리를 골랐으면 그 카테고리 디자인만
+  List<Map<String, String>> get _categoryDesigns => widget.category == null
+      ? pinitDesigns
+      : pinitDesigns.where((design) => design['category'] == widget.category).toList();
 
   @override
   Widget build(BuildContext context) {
-    final filteredList = _allArtList.where((item) {
+    final designs = _categoryDesigns;
+    // 지금 카테고리에 있는 키워드만 칩으로 표시
+    final keywords = [
+      for (final keyword in _trendingKeywords)
+        if (keyword == '전체' || designs.any((item) => item['keyword'] == keyword || item['tag'] == keyword))
+          keyword,
+    ];
+    final selectedTag = keywords.contains(_selectedTag) ? _selectedTag : '전체';
+
+    final filteredList = designs.where((item) {
       final matchesSearch = _searchQuery.isEmpty ||
           item['title']!.contains(_searchQuery) ||
           item['shop']!.contains(_searchQuery) ||
           item['keyword']!.contains(_searchQuery);
 
-      final matchesTag = _selectedTag == '전체' ||
-          item['keyword'] == _selectedTag ||
-          item['tag'] == _selectedTag;
+      final matchesTag = selectedTag == '전체' ||
+          item['keyword'] == selectedTag ||
+          item['tag'] == selectedTag;
 
       return matchesSearch && matchesTag;
     }).toList();
 
     return Column(
       children: [
+        // 0. 홈에서 고른 카테고리 (전체 보기로 해제)
+        if (widget.category != null)
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 10, 8, 0),
+            child: Row(
+              children: [
+                Text(
+                  '${widget.category} 디자인',
+                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
+                ),
+                const Spacer(),
+                TextButton(
+                  onPressed: widget.onClearCategory,
+                  child: const Text('전체 보기'),
+                ),
+              ],
+            ),
+          ),
+
         // 1. 검색 바
         Padding(
           padding: const EdgeInsets.fromLTRB(12, 8, 12, 4),
@@ -348,10 +411,10 @@ class _PinItPickScreenState extends State<PinItPickScreen> {
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-            itemCount: _trendingKeywords.length,
+            itemCount: keywords.length,
             itemBuilder: (context, index) {
-              final keyword = _trendingKeywords[index];
-              final isSelected = _selectedTag == keyword;
+              final keyword = keywords[index];
+              final isSelected = selectedTag == keyword;
 
               return Padding(
                 padding: const EdgeInsets.only(right: 6.0),
@@ -387,9 +450,9 @@ class _PinItPickScreenState extends State<PinItPickScreen> {
         // 3. 3열 정사각형 피드 + 💰 가격표 완벽 복원!
         Expanded(
           child: filteredList.isEmpty
-              ? const Center(
+              ? Center(
                   child: Text(
-                    '검색 결과가 없습니다 😅',
+                    designs.isEmpty ? '아직 등록된 디자인이 없어요 🙏' : '검색 결과가 없습니다 😅',
                     style: TextStyle(color: Colors.grey),
                   ),
                 )
@@ -421,12 +484,17 @@ class _PinItPickScreenState extends State<PinItPickScreen> {
                             fit: BoxFit.cover,
                             errorBuilder: (context, error, stackTrace) => imagePlaceholder(),
                           ),
-                          // ♥ 찜한 디자인 표시 (우측 상단)
+                          // 🔖 보관한 디자인 표시 (우측 상단)
                           if (widget.favorites.isFavorite(item))
                             const Positioned(
                               top: 4,
                               right: 4,
-                              child: Icon(Icons.favorite, color: Colors.red, size: 18),
+                              child: Icon(
+                                Icons.bookmark,
+                                color: Color(0xFFFF6FA5),
+                                size: 20,
+                                shadows: [Shadow(color: Colors.black45, blurRadius: 3)],
+                              ),
                             ),
                           // 🏷️ 가격표 태그 복원 (좌측 하단)
                           Positioned(
@@ -735,7 +803,7 @@ class _ReservationFormScreenState extends State<ReservationFormScreen> {
             const SizedBox(height: 20),
           ] else ...[
             const Text(
-              '💡 핀잇 픽에서 디자인을 고르면 자동으로 채워져요.',
+              '💡 디자인 탭에서 고른 디자인으로 문의하면 자동으로 채워져요.',
               style: TextStyle(fontSize: 12, color: Colors.grey),
             ),
             const SizedBox(height: 12),

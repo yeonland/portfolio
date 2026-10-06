@@ -43,7 +43,8 @@ class Shop {
   }
 }
 
-const List<String> shopCategories = ['💅 네일', '🎂 케이크', '🎨 타투', '👁️ 속눈썹', '💐 꽃집'];
+// 앞 3개: 뷰티(몸에 직접 받는 시술) / 뒤 3개: 주문 제작
+const List<String> shopCategories = ['💅 네일', '👁️ 속눈썹', '💄 메이크업', '🎂 케이크', '💐 꽃집', '🎨 타투'];
 
 // 샵 목록
 // 좌표는 OpenStreetMap 도로 데이터 기준 추정값 (실제 건물과 최대 100m 정도 차이 가능)

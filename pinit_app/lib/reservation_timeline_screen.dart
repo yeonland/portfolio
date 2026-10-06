@@ -41,7 +41,7 @@ class ReservationTimelineScreen extends StatelessWidget {
               ),
               const SizedBox(height: 4),
               const Text(
-                '핀잇 픽에서 디자인을 골라 예약 문의를 해보세요.',
+                '디자인을 골라 문의하거나, 아래 버튼으로 바로 써보세요.',
                 style: TextStyle(fontSize: 12, color: Colors.grey),
               ),
               const SizedBox(height: 16),
