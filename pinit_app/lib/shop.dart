@@ -55,18 +55,4 @@ const List<Shop> pinitShops = [
     location: LatLng(37.503462, 127.048487),
     instagram: '@krasnyspace',
   ),
-  Shop(
-    name: '빼꼼네일&뷰티',
-    category: '💅 네일',
-    address: '서울 강남구 선릉로126길 14-12 1층',
-    location: LatLng(37.5152, 127.0433),
-    instagram: '@bbaekkom_nail',
-  ),
-  Shop(
-    name: '라르떼 네일',
-    category: '💅 네일',
-    address: '서울 강남구 논현로63길 16 서해그랑블 126호',
-    location: LatLng(37.4918, 127.0364),
-    instagram: '@rarete_nail',
-  ),
 ];
