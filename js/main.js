@@ -47,11 +47,8 @@ $(function () {
             // 모바일·태블릿에서는 기본 스크롤 사용
             if (isMobileOrTablet) return;
 
-            // PC에서는 브라우저의 기본 스크롤 방지
-            e.preventDefault();
-
-            // 스크롤 애니메이션 중이면 추가 실행 방지
-            if (isScrolling) return;
+            // 작업물 창이 열려 있으면 창 안에서 기본 스크롤 사용
+            if (!$('#designModal').prop('hidden')) return;
 
             const $sections = $('section');
             const scrollTop = $(window).scrollTop();
@@ -65,6 +62,12 @@ $(function () {
                     currentIndex = index;
                 }
             });
+
+            // PC에서는 브라우저의 기본 스크롤 방지
+            e.preventDefault();
+
+            // 스크롤 애니메이션 중이면 추가 실행 방지
+            if (isScrolling) return;
 
             // 네이티브 wheel 이벤트:
             // deltaY가 양수면 아래, 음수면 위
@@ -112,7 +115,8 @@ $(function () {
         }
 
         // 각 섹션별 색상 변경
-        ['#page02', '#page03', '#page04', '#page05'].forEach((id, index) => {
+        // [섹션, 메뉴 순서] — 프로젝트 섹션 두 개는 같은 '프로젝트' 메뉴를 켬
+        [['#page02', 0], ['#page03', 1], ['#page04', 2], ['#page04-2', 2], ['#design', 3], ['#page05', 4]].forEach(([id, index]) => {
             const $section = $(id);
             if ($section.length === 0) return;
             const top = $section.offset().top - 100;
@@ -129,5 +133,92 @@ $(function () {
                 $current.find('span').css('color', '#F4E53B');
             }
         });
+    });
+
+    // 3. 디자인 작업물 크게 보기
+    const mockups = [];
+    for (let row = 1; row <= 3; row++) {
+        for (let col = 1; col <= 4; col++) {
+            mockups.push({ src: `./project_01/img/07_${row}_${col} metapo.jpg`, alt: `소하 상품 목업 ${mockups.length + 1}` });
+        }
+    }
+
+    const galleries = {
+        'soha-visual': {
+            title: '소하 · 브랜드 비주얼',
+            groups: [
+                { name: '브랜드·상품 배너', items: [{ src: './img/design/soha-banner.jpg', alt: '소하 브랜드 소개 배너와 상품 배너' }] },
+                { name: '메인 비주얼', items: [1, 2, 3, 4, 5, 6].map((n) => ({ src: `./project_01/img/02_main_visual0${n}.jpg`, alt: `소하 메인 비주얼 ${n}` })) },
+                { name: '상품 목업', grid: true, items: mockups }
+            ]
+        },
+        'soha-product': {
+            title: '소하 · 상품 디자인',
+            groups: [{ name: '디지털 속지', items: [{ src: './img/product.jpg', alt: '일주일 플래너, 습관 트래커, 위클리 속지' }] }]
+        },
+        'simda': {
+            title: '심다 · 저축 습관 앱 UI',
+            groups: [
+                { name: '앱 화면', items: [{ src: './img/design/simda-app.jpg', alt: '심다 앱 화면 흐름' }] },
+                { name: '스타일 가이드', items: [{ src: './img/style_guide.jpg', alt: '심다 타이포그래피, 컬러, 버튼 스타일 가이드' }] }
+            ]
+        },
+        'graphic': {
+            title: '개인 그래픽 작업',
+            groups: [
+                { name: '2026 롯데자이언츠 캘린더', items: [{ src: './img/design/calendar.jpg', alt: '롯데자이언츠 팀 컬러로 만든 야구 없는 날 캘린더' }] },
+                { name: '미니 가계부', grid: true, items: [
+                    { src: './img/design/budget.jpg', alt: '미니 가계부' },
+                    { src: './img/design/budget-black.jpg', alt: '미니 가계부 블랙' }
+                ] }
+            ]
+        }
+    };
+
+    const $modal = $('#designModal');
+    const $modalBody = $modal.find('.design-modal-body');
+    let $lastTrigger = null;
+
+    function openGallery(key, $trigger) {
+        const gallery = galleries[key];
+        if (!gallery) return;
+
+        $modal.find('#designModalTitle').text(gallery.title);
+        $modalBody.empty();
+
+        gallery.groups.forEach((group) => {
+            $('<h4>').text(group.name).appendTo($modalBody);
+            const $wrap = $('<div>').addClass(group.grid ? 'design-modal-grid' : 'design-modal-list').appendTo($modalBody);
+            group.items.forEach((item) => {
+                $('<img>', { src: item.src, alt: item.alt, loading: 'lazy' }).appendTo($wrap);
+            });
+        });
+
+        $lastTrigger = $trigger;
+        $modal.prop('hidden', false);
+        $('body').addClass('modal-open');
+        $modalBody.scrollTop(0);
+        $modal.find('.design-modal-close').trigger('focus');
+    }
+
+    function closeGallery() {
+        $modal.prop('hidden', true);
+        $('body').removeClass('modal-open');
+        if ($lastTrigger) $lastTrigger.trigger('focus');
+    }
+
+    $('.design-open, .design-thumb').on('click', function () {
+        openGallery($(this).data('gallery'), $(this).closest('.design-card').find('.design-open'));
+    });
+
+    $modal.find('.design-modal-close').on('click', closeGallery);
+
+    // 바깥 어두운 영역을 누르면 닫기
+    $modal.on('click', function (e) {
+        if (e.target === this) closeGallery();
+    });
+
+    $(document).on('keydown', function (e) {
+        if (e.key === 'Escape' && !$modal.prop('hidden')) closeGallery();
     });
 })
