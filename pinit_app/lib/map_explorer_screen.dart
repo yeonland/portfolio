@@ -33,6 +33,10 @@ class _MultiChannelMapExplorerScreenState extends State<MultiChannelMapExplorerS
   Shop? _selectedShop;
   NailShop? _selectedNail;
 
+  // 이 배율 이상 확대하면 모든 핀에 샵 이름 표시
+  static const double _labelZoom = 17;
+  bool _showAllLabels = false;
+
   // 공공데이터 핀은 '전체'와 '네일' 카테고리에서만 표시
   bool get _showNailShops => _selectedCategory == '전체' || _selectedCategory == '💅 네일';
 
@@ -143,47 +147,54 @@ class _MultiChannelMapExplorerScreenState extends State<MultiChannelMapExplorerS
         // 1. 실제 지도 (OpenStreetMap)
         FlutterMap(
           mapController: _mapController,
-          // 처음 열 때 강남역과 등록된 샵이 한 화면에 보이도록 (필터 영역만큼 여백)
+          // 처음엔 아무 샵도 고르지 않은 채 강남역 주변을 보여줌
           options: MapOptions(
-            initialCameraFit: CameraFit.coordinates(
-              coordinates: [gangnamStation, for (final shop in widget.shops) shop.location],
-              padding: const EdgeInsets.fromLTRB(60, 130, 60, 60),
-              maxZoom: 16,
-            ),
+            initialCenter: gangnamStation,
+            initialZoom: 15,
             onTap: (_, _) => _closeCard(),
+            onPositionChanged: (camera, _) {
+              final showAll = camera.zoom >= _labelZoom;
+              if (showAll != _showAllLabels) setState(() => _showAllLabels = showAll);
+            },
           ),
           children: [
             TileLayer(
               urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
               userAgentPackageName: 'com.example.pinit_app',
             ),
-            // 공공데이터 네일샵: 작은 점 (직접 등록한 샵 핀보다 아래에 깔림)
-            if (_showNailShops)
-              MarkerLayer(
-                markers: [
-                  for (final nail in _nailShops)
-                    Marker(
-                      point: LatLng(nail.lat, nail.lng),
-                      width: 22,
-                      height: 22,
-                      child: GestureDetector(
-                        onTap: () => _onNailTap(nail),
-                        child: Center(child: _buildNailDot(nail == _selectedNail)),
-                      ),
-                    ),
-                ],
-              ),
+            // 모든 샵은 같은 점으로 표시, 누르거나 크게 확대하면 이름표로 바뀜 (고른 샵은 맨 위에)
             MarkerLayer(
               markers: [
+                if (_showNailShops)
+                  for (final nail in _nailShops)
+                    if (nail != _selectedNail)
+                      _buildMarker(
+                        point: LatLng(nail.lat, nail.lng),
+                        label: '💅 ${nail.name}',
+                        isSelected: false,
+                        onTap: () => _onNailTap(nail),
+                      ),
                 for (final shop in filteredShops)
-                  Marker(
-                    point: shop.location,
-                    width: 140,
-                    height: 36,
-                    child: GestureDetector(
+                  if (shop != _selectedShop)
+                    _buildMarker(
+                      point: shop.location,
+                      label: '${shop.category.split(' ').first} ${shop.name}',
+                      isSelected: false,
                       onTap: () => _onShopTap(shop),
-                      child: Center(child: _buildMapPin(shop, shop == _selectedShop)),
                     ),
+                if (_selectedNail case final nail?)
+                  _buildMarker(
+                    point: LatLng(nail.lat, nail.lng),
+                    label: '💅 ${nail.name}',
+                    isSelected: true,
+                    onTap: () => _onNailTap(nail),
+                  ),
+                if (_selectedShop case final shop?)
+                  _buildMarker(
+                    point: shop.location,
+                    label: '${shop.category.split(' ').first} ${shop.name}',
+                    isSelected: true,
+                    onTap: () => _onShopTap(shop),
                   ),
               ],
             ),
@@ -524,13 +535,31 @@ class _MultiChannelMapExplorerScreenState extends State<MultiChannelMapExplorerS
     );
   }
 
-  Widget _buildNailDot(bool isSelected) {
-    final size = isSelected ? 18.0 : 12.0;
+  // 평소엔 점, 고른 샵이거나 크게 확대했을 때는 이름표
+  Marker _buildMarker({
+    required LatLng point,
+    required String label,
+    required bool isSelected,
+    required VoidCallback onTap,
+  }) {
+    final showLabel = isSelected || _showAllLabels;
+    return Marker(
+      point: point,
+      width: showLabel ? 140 : 22,
+      height: showLabel ? 36 : 22,
+      child: GestureDetector(
+        onTap: onTap,
+        child: Center(child: showLabel ? _buildNamePin(label, isSelected) : _buildDot()),
+      ),
+    );
+  }
+
+  Widget _buildDot() {
     return Container(
-      width: size,
-      height: size,
+      width: 12,
+      height: 12,
       decoration: BoxDecoration(
-        color: isSelected ? pinitAccentDark : pinitAccent,
+        color: pinitAccent,
         shape: BoxShape.circle,
         border: Border.all(color: Colors.white, width: 2),
         boxShadow: const [
@@ -540,9 +569,7 @@ class _MultiChannelMapExplorerScreenState extends State<MultiChannelMapExplorerS
     );
   }
 
-  Widget _buildMapPin(Shop shop, bool isSelected) {
-    final emoji = shop.category.split(' ').first;
-    final shortName = shop.name.split(' ').first;
+  Widget _buildNamePin(String label, bool isSelected) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       decoration: BoxDecoration(
@@ -554,7 +581,7 @@ class _MultiChannelMapExplorerScreenState extends State<MultiChannelMapExplorerS
         ],
       ),
       child: Text(
-        '$emoji $shortName',
+        label,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
         style: TextStyle(

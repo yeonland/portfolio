@@ -10,6 +10,7 @@ import 'pinit_colors.dart';
 import 'reference_board_screen.dart';
 import 'reservation.dart';
 import 'reservation_timeline_screen.dart';
+import 'shop.dart';
 
 void main() {
   runApp(const PinItApp());
@@ -185,7 +186,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
       PinItPickScreen(
         key: ValueKey(_designCategory),
         category: _designCategory,
-        onClearCategory: () => setState(() => _designCategory = null),
+        onCategoryChanged: (category) => setState(() => _designCategory = category),
         favorites: _favorites,
         onReserve: _openReservationForm,
       ),
@@ -205,7 +206,11 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         onDelete: (reservation) => _updateReservations(
           _reservations.where((r) => r.id != reservation.id).toList(),
         ),
-        onBrowse: () => setState(() => _selectedIndex = _designTab),
+        // 둘러보기는 항상 전체 디자인부터
+        onBrowse: () => setState(() {
+          _designCategory = null;
+          _selectedIndex = _designTab;
+        }),
       ),
     ];
 
@@ -247,6 +252,8 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         currentIndex: _selectedIndex,
         onTap: (index) {
           setState(() {
+            // 하단 탭으로 디자인에 들어오면 전체부터 (카테고리는 홈 카드나 상단 칩으로 고름)
+            if (index == _designTab && _selectedIndex != _designTab) _designCategory = null;
             _selectedIndex = index;
           });
         },
@@ -293,14 +300,14 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 // ---------------------------------------------------------------------------
 class PinItPickScreen extends StatefulWidget {
   final String? category; // 홈에서 고른 카테고리 (null이면 전체)
-  final VoidCallback? onClearCategory;
+  final ValueChanged<String?> onCategoryChanged; // null이면 전체
   final FavoritesStore favorites;
   final ValueChanged<Map<String, String>> onReserve;
 
   const PinItPickScreen({
     super.key,
     this.category,
-    this.onClearCategory,
+    required this.onCategoryChanged,
     required this.favorites,
     required this.onReserve,
   });
@@ -377,24 +384,25 @@ class _PinItPickScreenState extends State<PinItPickScreen> {
 
     return Column(
       children: [
-        // 0. 홈에서 고른 카테고리 (전체 보기로 해제)
-        if (widget.category != null)
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 10, 8, 0),
-            child: Row(
-              children: [
-                Text(
-                  '${widget.category} 디자인',
-                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
+        // 0. 카테고리 (전체 · 네일 · 속눈썹 …) - 홈에서 고른 카테고리가 선택된 채로 열림
+        SizedBox(
+          height: 46,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            padding: const EdgeInsets.fromLTRB(12, 8, 12, 0),
+            children: [
+              for (final category in [null, ...shopCategories])
+                Padding(
+                  padding: const EdgeInsets.only(right: 6),
+                  child: pinitChip(
+                    label: category ?? '전체',
+                    isSelected: widget.category == category,
+                    onSelected: () => widget.onCategoryChanged(category),
+                  ),
                 ),
-                const Spacer(),
-                TextButton(
-                  onPressed: widget.onClearCategory,
-                  child: const Text('전체 보기'),
-                ),
-              ],
-            ),
+            ],
           ),
+        ),
 
         // 1. 검색 바
         Padding(
