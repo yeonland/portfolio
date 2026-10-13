@@ -4,6 +4,7 @@ import 'design_detail_sheet.dart';
 import 'favorites.dart';
 import 'my_reference.dart';
 import 'pinit_colors.dart';
+import 'reference_add_screen.dart';
 
 // ---------------------------------------------------------------------------
 // 🔖 보관함(레퍼런스 보드) - 저장한 디자인을 카테고리(키워드)별로 모아보기 (하단 탭)
@@ -40,24 +41,26 @@ class ReferenceBoardScreen extends StatelessWidget {
       builder: (context, _) {
         final items = favorites.items;
         if (items.isEmpty) {
-          return const Center(
+          return Center(
             child: Padding(
-              padding: EdgeInsets.all(24),
+              padding: const EdgeInsets.all(24),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(Icons.bookmark_border, size: 56, color: Colors.grey),
-                  SizedBox(height: 12),
-                  Text(
+                  const Icon(Icons.bookmark_border, size: 56, color: Colors.grey),
+                  const SizedBox(height: 12),
+                  const Text(
                     '아직 보관한 디자인이 없어요',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 4),
-                  Text(
-                    '디자인을 보관함에 저장하거나, 「+ 레퍼런스 추가」로 인스타 링크·캡처 사진을 모아보세요.',
+                  const SizedBox(height: 4),
+                  const Text(
+                    '디자인 사진 아래 「저장」을 누르거나,\n인스타 링크·캡처 사진을 직접 추가해 보세요.',
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 12, color: Colors.grey),
                   ),
+                  const SizedBox(height: 16),
+                  _buildAddButton(context),
                 ],
               ),
             ),
@@ -73,14 +76,26 @@ class ReferenceBoardScreen extends StatelessWidget {
         return ListView(
           padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
           children: [
-            const Text(
-              '보관함',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
-            ),
-            const SizedBox(height: 2),
-            Text(
-              '샵에 보여줄 레퍼런스 ${items.length}개',
-              style: const TextStyle(fontSize: 12, color: Colors.grey),
+            Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        '보관함',
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        '샵에 보여줄 레퍼런스 ${items.length}개',
+                        style: const TextStyle(fontSize: 12, color: Colors.grey),
+                      ),
+                    ],
+                  ),
+                ),
+                _buildAddButton(context),
+              ],
             ),
             for (final entry in groups.entries) ...[
               Padding(
@@ -108,6 +123,20 @@ class ReferenceBoardScreen extends StatelessWidget {
           ],
         );
       },
+    );
+  }
+
+  // 인스타 링크·캡처 사진을 직접 추가
+  Widget _buildAddButton(BuildContext context) {
+    return FilledButton.icon(
+      style: FilledButton.styleFrom(
+        backgroundColor: pinitAccent,
+        foregroundColor: Colors.white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      ),
+      icon: const Icon(Icons.add, size: 18),
+      label: const Text('레퍼런스 추가', style: TextStyle(fontWeight: FontWeight.bold)),
+      onPressed: () => openReferenceAddScreen(context, favorites),
     );
   }
 
