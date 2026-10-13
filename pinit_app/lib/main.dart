@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'design_detail_sheet.dart';
 import 'designs.dart';
 import 'favorites.dart';
-import 'reference_add_screen.dart';
 import 'home_screen.dart';
 import 'map_explorer_screen.dart';
 import 'pinit_colors.dart';
@@ -233,24 +232,16 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         ],
       ),
       body: pages[_selectedIndex],
-      // 내 예약 탭: 디자인 없이 바로 예약 문의 쓰기 / 보관함 탭: 인스타 링크·캡처 사진 추가
-      floatingActionButton: switch (_selectedIndex) {
-        _timelineTab => FloatingActionButton.extended(
-            onPressed: _openReservationForm,
-            backgroundColor: pinitAccent,
-            foregroundColor: Colors.white,
-            icon: const Icon(Icons.edit_note),
-            label: const Text('예약 문의 쓰기', style: TextStyle(fontWeight: FontWeight.bold)),
-          ),
-        _boardTab => FloatingActionButton.extended(
-            onPressed: () => openReferenceAddScreen(context, _favorites),
-            backgroundColor: pinitAccent,
-            foregroundColor: Colors.white,
-            icon: const Icon(Icons.add),
-            label: const Text('레퍼런스 추가', style: TextStyle(fontWeight: FontWeight.bold)),
-          ),
-        _ => null,
-      },
+      // 내 예약 탭: 디자인 없이 바로 예약 문의 쓰기 (보관함 탭의 레퍼런스 추가는 화면 상단 버튼)
+      floatingActionButton: _selectedIndex == _timelineTab
+          ? FloatingActionButton.extended(
+              onPressed: _openReservationForm,
+              backgroundColor: pinitAccent,
+              foregroundColor: Colors.white,
+              icon: const Icon(Icons.edit_note),
+              label: const Text('예약 문의 쓰기', style: TextStyle(fontWeight: FontWeight.bold)),
+            )
+          : null,
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed, // 탭 4개 이상이면 고정형으로
         currentIndex: _selectedIndex,
@@ -594,27 +585,59 @@ class _PinItPickScreenState extends State<PinItPickScreen> {
                 ],
               ),
             ),
+            // 보관함 저장 · 양식 쓰기
             Padding(
               padding: const EdgeInsets.fromLTRB(8, 6, 8, 8),
               child: SizedBox(
-                width: double.infinity,
                 height: 32,
-                child: OutlinedButton.icon(
-                  style: OutlinedButton.styleFrom(
-                    foregroundColor: pinitAccentDark,
-                    side: const BorderSide(color: pinitAccent),
-                    padding: EdgeInsets.zero,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                  ),
-                  icon: const Icon(Icons.edit_note, size: 16),
-                  label: const Text('양식 쓰기', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
-                  onPressed: () => widget.onReserve(item),
+                child: Row(
+                  children: [
+                    Expanded(child: _buildSaveButton(item)),
+                    const SizedBox(width: 6),
+                    Expanded(
+                      child: OutlinedButton.icon(
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: pinitAccentDark,
+                          side: const BorderSide(color: pinitAccent),
+                          padding: EdgeInsets.zero,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                        ),
+                        icon: const Icon(Icons.edit_note, size: 16),
+                        label: const Text('양식 쓰기', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                        onPressed: () => widget.onReserve(item),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
           ],
         ),
       ),
+    );
+  }
+
+  // 보관함 저장 버튼 (저장되면 채워진 코랄 버튼으로 바뀜)
+  Widget _buildSaveButton(Map<String, String> item) {
+    final isSaved = widget.favorites.isFavorite(item);
+    return FilledButton.icon(
+      style: FilledButton.styleFrom(
+        backgroundColor: isSaved ? pinitAccent : pinitAccent.withValues(alpha: 0.12),
+        foregroundColor: isSaved ? Colors.white : pinitAccentDark,
+        padding: EdgeInsets.zero,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      ),
+      icon: Icon(isSaved ? Icons.bookmark : Icons.bookmark_border, size: 16),
+      label: Text(isSaved ? '저장됨' : '저장', style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+      onPressed: () {
+        widget.favorites.toggle(item);
+        ScaffoldMessenger.of(context)
+          ..hideCurrentSnackBar()
+          ..showSnackBar(SnackBar(
+            duration: const Duration(seconds: 2),
+            content: Text(isSaved ? '보관함에서 뺐어요.' : '보관함에 저장했어요. 하단 「보관함」 탭에서 볼 수 있어요.'),
+          ));
+      },
     );
   }
 }
