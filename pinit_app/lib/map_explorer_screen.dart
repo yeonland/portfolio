@@ -3,7 +3,9 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'designs.dart';
 import 'nail_shop.dart';
+import 'pinit_colors.dart';
 import 'shop.dart';
 
 // ---------------------------------------------------------------------------
@@ -12,8 +14,10 @@ import 'shop.dart';
 // ---------------------------------------------------------------------------
 class MultiChannelMapExplorerScreen extends StatefulWidget {
   final List<Shop> shops;
+  // '이 샵으로 예약 양식 쓰기' (shop·category만 담아서 넘김)
+  final ValueChanged<Map<String, String>>? onReserve;
 
-  const MultiChannelMapExplorerScreen({super.key, this.shops = pinitShops});
+  const MultiChannelMapExplorerScreen({super.key, this.shops = pinitShops, this.onReserve});
 
   @override
   State<MultiChannelMapExplorerScreen> createState() => _MultiChannelMapExplorerScreenState();
@@ -21,6 +25,7 @@ class MultiChannelMapExplorerScreen extends StatefulWidget {
 
 class _MultiChannelMapExplorerScreenState extends State<MultiChannelMapExplorerScreen> {
   final MapController _mapController = MapController();
+  final TextEditingController _searchController = TextEditingController();
   String _selectedCategory = '전체';
   List<NailShop> _nailShops = []; // 공공데이터(소상공인 상가정보) 강남구 네일샵
 
@@ -53,6 +58,7 @@ class _MultiChannelMapExplorerScreenState extends State<MultiChannelMapExplorerS
   @override
   void dispose() {
     _mapController.dispose();
+    _searchController.dispose();
     super.dispose();
   }
 
@@ -78,6 +84,33 @@ class _MultiChannelMapExplorerScreenState extends State<MultiChannelMapExplorerS
       _selectedNail = nail;
     });
     _mapController.move(LatLng(nail.lat, nail.lng), _mapController.camera.zoom);
+  }
+
+  // 샵 이름으로 검색: 직접 등록한 샵 → 공공데이터 네일샵 순서로 찾아서 카드 열기
+  void _search(String query) {
+    final q = query.trim();
+    if (q.isEmpty) return;
+    FocusScope.of(context).unfocus();
+
+    final shop = widget.shops.where((s) => s.name.contains(q)).firstOrNull;
+    final nail = shop == null ? _nailShops.where((n) => n.name.contains(q)).firstOrNull : null;
+    if (shop == null && nail == null) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("'$q' 이름의 샵을 찾지 못했어요.")));
+      return;
+    }
+
+    // 지금 카테고리에서 안 보이는 샵이면 전체로 바꿔서 보여줌
+    if ((shop != null && !_filteredShops.contains(shop)) || (nail != null && !_showNailShops)) {
+      setState(() => _selectedCategory = '전체');
+    }
+    final zoom = _mapController.camera.zoom < 16 ? 16.0 : _mapController.camera.zoom;
+    if (shop != null) {
+      _onShopTap(shop);
+      _mapController.move(shop.location, zoom);
+    } else {
+      _onNailTap(nail!);
+      _mapController.move(LatLng(nail.lat, nail.lng), zoom);
+    }
   }
 
   void _closeCard() {
@@ -114,7 +147,7 @@ class _MultiChannelMapExplorerScreenState extends State<MultiChannelMapExplorerS
           options: MapOptions(
             initialCameraFit: CameraFit.coordinates(
               coordinates: [gangnamStation, for (final shop in widget.shops) shop.location],
-              padding: const EdgeInsets.fromLTRB(60, 80, 60, 60),
+              padding: const EdgeInsets.fromLTRB(60, 130, 60, 60),
               maxZoom: 16,
             ),
             onTap: (_, _) => _closeCard(),
@@ -161,9 +194,39 @@ class _MultiChannelMapExplorerScreenState extends State<MultiChannelMapExplorerS
           ],
         ),
 
-        // 2. 카테고리 필터
+        // 2. 샵 이름 검색
         Positioned(
           top: 12,
+          left: 12,
+          right: 12,
+          child: Material(
+            elevation: 3,
+            shadowColor: Colors.black26,
+            color: Theme.of(context).cardColor,
+            borderRadius: BorderRadius.circular(14),
+            child: TextField(
+              controller: _searchController,
+              textInputAction: TextInputAction.search,
+              onSubmitted: _search,
+              decoration: InputDecoration(
+                hintText: _nailShops.isEmpty ? '샵 이름 검색' : '샵 이름 검색 (강남구 네일샵 ${_nailShops.length}곳)',
+                hintStyle: const TextStyle(fontSize: 13, color: Colors.grey),
+                prefixIcon: const Icon(Icons.search, size: 20, color: Colors.grey),
+                suffixIcon: IconButton(
+                  tooltip: '검색',
+                  icon: const Icon(Icons.arrow_forward, size: 20, color: pinitAccentDark),
+                  onPressed: () => _search(_searchController.text),
+                ),
+                border: InputBorder.none,
+                contentPadding: const EdgeInsets.symmetric(vertical: 14),
+              ),
+            ),
+          ),
+        ),
+
+        // 3. 카테고리 필터
+        Positioned(
+          top: 68,
           left: 0,
           right: 0,
           child: SizedBox(
@@ -179,15 +242,16 @@ class _MultiChannelMapExplorerScreenState extends State<MultiChannelMapExplorerS
                       label: Text(
                         category,
                         style: TextStyle(
-                          color: _selectedCategory == category ? Colors.white : Colors.black,
+                          color: _selectedCategory == category ? Colors.white : Colors.black87,
                           fontWeight: _selectedCategory == category ? FontWeight.bold : FontWeight.normal,
                           fontSize: 12,
                         ),
                       ),
                       selected: _selectedCategory == category,
                       onSelected: (_) => _selectCategory(category),
-                      selectedColor: Colors.black,
+                      selectedColor: pinitAccentDark,
                       backgroundColor: Colors.white,
+                      side: BorderSide.none,
                       elevation: 3,
                       shadowColor: Colors.black26,
                       showCheckmark: false,
@@ -198,7 +262,7 @@ class _MultiChannelMapExplorerScreenState extends State<MultiChannelMapExplorerS
           ),
         ),
 
-        // 3. 하단: 핀을 눌렀을 때만 샵 카드 표시
+        // 4. 하단: 핀을 눌렀을 때만 샵 카드 표시
         if (_selectedShop != null || _selectedNail != null || hasNothing)
           Positioned(
             bottom: 28,
@@ -314,32 +378,34 @@ class _MultiChannelMapExplorerScreenState extends State<MultiChannelMapExplorerS
             style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
           ),
         ],
+        _buildDesignStrip(shop.name),
         const SizedBox(height: 12),
         // 네이버는 링크가 없으면 지도 검색으로 연결
         Row(
           children: [
             _buildChannelButton(
               label: 'N 네이버',
-              color: const Color(0xFF03C75A),
+              color: naverGreen,
               textColor: Colors.white,
               onPressed: () => _openLink(shop.naverUri, '네이버'),
             ),
             if (kakaoUri != null)
               _buildChannelButton(
                 label: '💬 카톡문의',
-                color: const Color(0xFFFEE500),
+                color: kakaoYellow,
                 textColor: Colors.black87,
                 onPressed: () => _openLink(kakaoUri, '카카오톡'),
               ),
             if (instagramUri != null)
               _buildChannelButton(
                 label: '📸 인스타',
-                color: const Color(0xFFE1306C),
+                color: instagramPink,
                 textColor: Colors.white,
                 onPressed: () => _openLink(instagramUri, '인스타그램'),
               ),
           ],
         ),
+        _buildReserveButton(shop.name, shop.category),
       ],
     );
   }
@@ -369,13 +435,65 @@ class _MultiChannelMapExplorerScreenState extends State<MultiChannelMapExplorerS
           children: [
             _buildChannelButton(
               label: 'N 네이버 지도에서 보기',
-              color: const Color(0xFF03C75A),
+              color: naverGreen,
               textColor: Colors.white,
               onPressed: () => _openLink(Uri.https('map.naver.com', '/p/search/${nail.name}'), '네이버'),
             ),
           ],
         ),
+        _buildReserveButton(nail.name, '💅 네일'),
       ],
+    );
+  }
+
+  // 이 샵의 디자인 사진 (핀잇에 등록된 디자인이 있을 때만)
+  Widget _buildDesignStrip(String shopName) {
+    final designs = pinitDesigns.where((design) => design['shop'] == shopName).toList();
+    if (designs.isEmpty) return const SizedBox.shrink();
+    return Padding(
+      padding: const EdgeInsets.only(top: 10),
+      child: SizedBox(
+        height: 72,
+        child: ListView.separated(
+          scrollDirection: Axis.horizontal,
+          itemCount: designs.length,
+          separatorBuilder: (_, _) => const SizedBox(width: 6),
+          itemBuilder: (context, index) => ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Image.network(
+              designs[index]['img']!,
+              width: 72,
+              height: 72,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) =>
+                  Container(width: 72, height: 72, color: Colors.grey.withValues(alpha: 0.2)),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  // 핀잇 예약 양식으로 이동 (샵 이름 자동 입력)
+  Widget _buildReserveButton(String shopName, String category) {
+    final onReserve = widget.onReserve;
+    if (onReserve == null) return const SizedBox.shrink();
+    return Padding(
+      padding: const EdgeInsets.only(top: 8, left: 2, right: 2),
+      child: SizedBox(
+        width: double.infinity,
+        height: 44,
+        child: FilledButton.icon(
+          style: FilledButton.styleFrom(
+            backgroundColor: pinitAccent,
+            foregroundColor: Colors.white,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          ),
+          icon: const Icon(Icons.edit_note, size: 20),
+          label: const Text('이 샵으로 예약 양식 쓰기', style: TextStyle(fontWeight: FontWeight.bold)),
+          onPressed: () => onReserve({'shop': shopName, 'category': category}),
+        ),
+      ),
     );
   }
 
@@ -412,7 +530,7 @@ class _MultiChannelMapExplorerScreenState extends State<MultiChannelMapExplorerS
       width: size,
       height: size,
       decoration: BoxDecoration(
-        color: isSelected ? Colors.black : const Color(0xFFFF6FA5),
+        color: isSelected ? pinitAccentDark : pinitAccent,
         shape: BoxShape.circle,
         border: Border.all(color: Colors.white, width: 2),
         boxShadow: const [
@@ -428,9 +546,9 @@ class _MultiChannelMapExplorerScreenState extends State<MultiChannelMapExplorerS
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       decoration: BoxDecoration(
-        color: isSelected ? Colors.black : Colors.white,
+        color: isSelected ? pinitAccentDark : Colors.white,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.black, width: 1.5),
+        border: Border.all(color: pinitAccentDark, width: 1.5),
         boxShadow: const [
           BoxShadow(color: Colors.black26, blurRadius: 4, offset: Offset(0, 2)),
         ],
@@ -440,7 +558,7 @@ class _MultiChannelMapExplorerScreenState extends State<MultiChannelMapExplorerS
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
         style: TextStyle(
-          color: isSelected ? Colors.white : Colors.black,
+          color: isSelected ? Colors.white : pinitAccentDark,
           fontSize: 11,
           fontWeight: FontWeight.bold,
         ),

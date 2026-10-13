@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'favorites.dart';
+import 'pinit_colors.dart';
 
 // 이미지를 불러오지 못했을 때 보여줄 회색 자리표시
 Widget imagePlaceholder() {
@@ -60,7 +61,7 @@ void showDesignDetailSheet(
                   builder: (context, _) {
                     final isFavorite = favorites.isFavorite(item);
                     return TextButton.icon(
-                      style: TextButton.styleFrom(foregroundColor: const Color(0xFFD63F7A)),
+                      style: TextButton.styleFrom(foregroundColor: pinitAccentDark),
                       icon: Icon(isFavorite ? Icons.bookmark : Icons.bookmark_border),
                       label: Text(isFavorite ? '보관함에 있음' : '보관함에 저장'),
                       onPressed: () => favorites.toggle(item),
@@ -84,7 +85,7 @@ void showDesignDetailSheet(
               height: 48,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.black,
+                  backgroundColor: pinitAccent,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),

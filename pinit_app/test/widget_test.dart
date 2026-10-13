@@ -59,6 +59,26 @@ void main() {
     expect(find.widgetWithText(TextFormField, '시럽 마블 글리터 아트'), findsOneWidget);
   });
 
+  testWidgets('디자인 탭: 가격대로 거르고 카드의 양식 쓰기로 바로 예약 양식을 연다', (WidgetTester tester) async {
+    await tester.pumpWidget(const PinItApp());
+    await tester.tap(find.text('디자인'));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('가격 전체'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('7만원 이상').last);
+    await tester.pumpAndSettle();
+    expect(find.text('120,000원'), findsOneWidget);
+    expect(find.text('55,000원'), findsNothing);
+    expect(find.text('디자인 3개'), findsOneWidget); // 80,000 · 70,000 · 120,000
+
+    await tester.tap(find.text('양식 쓰기').first);
+    await tester.pumpAndSettle();
+    expect(find.byType(ReservationFormScreen), findsOneWidget);
+    expect(find.widgetWithText(TextFormField, '잉크타투'), findsOneWidget);
+    expect(find.text('타사 제거'), findsNothing); // 네일이 아니면 옵션 없음
+  });
+
   testWidgets('날짜와 시간을 고르지 않으면 안내 메시지가 뜬다', (WidgetTester tester) async {
     await tester.pumpWidget(const PinItApp());
 
@@ -67,7 +87,7 @@ void main() {
     await tester.tap(find.text('예약 문의 쓰기'));
     await tester.pumpAndSettle();
     await _scrollToSubmit(tester);
-    await tester.tap(find.text('✨ 주문서 완성하기'));
+    await tester.tap(find.text('카카오톡으로 보내기'));
     await tester.pump();
 
     expect(find.text('희망 날짜와 시간을 선택해주세요.'), findsOneWidget);
@@ -125,19 +145,24 @@ void main() {
     await tester.ensureVisible(find.text('15:00'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('15:00'));
+    // 네일 디자인이라 옵션(제거·연장)이 보임
+    await _scrollTo(tester, find.text('타사 제거'));
+    await tester.tap(find.text('타사 제거'));
+    await tester.pump();
     final nameField = find.widgetWithText(TextFormField, '이름');
     final phoneField = find.widgetWithText(TextFormField, '연락처 (예: 010-1234-5678)');
     await _scrollTo(tester, phoneField);
     await tester.enterText(nameField, '김핀잇');
     await tester.enterText(phoneField, '010-1234-5678');
     await _scrollToSubmit(tester);
-    await tester.tap(find.text('✨ 주문서 완성하기'));
+    await tester.tap(find.text('카카오톡으로 보내기'));
     await tester.pumpAndSettle();
 
     // 메시지 복사 → 타임라인 저장
     await tester.tap(find.text('메시지 복사하기'));
     await tester.pumpAndSettle();
     expect(clipboardText, contains('📅 희망 일시:'));
+    expect(clipboardText, contains('🧴 제거: 타사 제거'));
     await tester.tap(find.widgetWithText(SnackBarAction, '내 예약'));
     await tester.pumpAndSettle();
 
@@ -313,6 +338,37 @@ void main() {
     expect(find.text('이 카테고리에는 아직 등록된 샵이 없어요.'), findsOneWidget);
   });
 
+  testWidgets('지도 탭: 샵 이름으로 검색하고 이 샵으로 예약 양식을 쓴다', (WidgetTester tester) async {
+    const testShops = [
+      Shop(name: '테스트네일', category: '💅 네일', address: '서울 강남구', location: LatLng(37.4990, 127.0290)),
+      Shop(name: '테스트케이크', category: '🎂 케이크', address: '서울 강남구', location: LatLng(37.5005, 127.0335)),
+    ];
+    Map<String, String>? reserved;
+    await tester.pumpWidget(MaterialApp(
+      home: Scaffold(
+        body: MultiChannelMapExplorerScreen(shops: testShops, onReserve: (shop) => reserved = shop),
+      ),
+    ));
+    await tester.pump();
+
+    // 네일만 보는 중에 케이크 샵을 검색하면 전체로 바뀌고 카드가 열림
+    await tester.tap(find.text('💅 네일'));
+    await tester.pumpAndSettle();
+    await tester.enterText(find.byType(TextField), '케이크');
+    await tester.testTextInput.receiveAction(TextInputAction.search);
+    await tester.pumpAndSettle();
+    expect(find.text('테스트케이크'), findsOneWidget);
+
+    await tester.tap(find.text('이 샵으로 예약 양식 쓰기'));
+    expect(reserved, {'shop': '테스트케이크', 'category': '🎂 케이크'});
+
+    // 없는 이름
+    await tester.enterText(find.byType(TextField), '없는샵');
+    await tester.testTextInput.receiveAction(TextInputAction.search);
+    await tester.pump();
+    expect(find.text("'없는샵' 이름의 샵을 찾지 못했어요."), findsOneWidget);
+  });
+
   test('샵 예약 채널 링크 만들기', () {
     const shop = Shop(
       name: '루나네일 강남점',
@@ -339,7 +395,7 @@ void main() {
   });
 }
 
-Future<void> _scrollToSubmit(WidgetTester tester) => _scrollTo(tester, find.text('✨ 주문서 완성하기'));
+Future<void> _scrollToSubmit(WidgetTester tester) => _scrollTo(tester, find.text('카카오톡으로 보내기'));
 
 // 예약 양식 안에서 원하는 위젯이 보일 때까지 스크롤
 Future<void> _scrollTo(WidgetTester tester, Finder finder) {
