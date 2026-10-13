@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'design_detail_sheet.dart';
 import 'favorites.dart';
+import 'my_reference.dart';
+import 'pinit_colors.dart';
 
 // ---------------------------------------------------------------------------
 // 🔖 보관함(레퍼런스 보드) - 저장한 디자인을 카테고리(키워드)별로 모아보기 (하단 탭)
@@ -52,7 +54,8 @@ class ReferenceBoardScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 4),
                   Text(
-                    '디자인을 누르고 「보관함에 저장」을 눌러 레퍼런스를 모아보세요.',
+                    '디자인을 보관함에 저장하거나, 「+ 레퍼런스 추가」로 인스타 링크·캡처 사진을 모아보세요.',
+                    textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 12, color: Colors.grey),
                   ),
                 ],
@@ -110,7 +113,7 @@ class ReferenceBoardScreen extends StatelessWidget {
 
   Widget _buildCard(BuildContext context, Map<String, String> item) {
     return GestureDetector(
-      onTap: () => showDesignDetailSheet(
+      onTap: () => (isMyReference(item) ? showMyReferenceSheet : showDesignDetailSheet)(
         context,
         item: item,
         favorites: favorites,
@@ -125,12 +128,7 @@ class ReferenceBoardScreen extends StatelessWidget {
               child: Stack(
                 fit: StackFit.expand,
                 children: [
-                  Image.network(
-                    item['img']!,
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) =>
-                        imagePlaceholder(),
-                  ),
+                  referenceImage(item),
                   Positioned(
                     top: 4,
                     right: 4,
@@ -141,7 +139,7 @@ class ReferenceBoardScreen extends StatelessWidget {
                       ),
                       icon: const Icon(
                         Icons.bookmark,
-                        color: Color(0xFFFF6FA5),
+                        color: pinitAccent,
                         size: 20,
                       ),
                       onPressed: () => _remove(context, item),
@@ -153,18 +151,27 @@ class ReferenceBoardScreen extends StatelessWidget {
           ),
           const SizedBox(height: 6),
           Text(
-            item['shop']!,
+            isMyReference(item) ? referenceShopLabel(item) : item['shop']!,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
             style: const TextStyle(fontSize: 11, color: Colors.grey),
           ),
           Text(
-            item['title']!,
+            isMyReference(item) ? (item['memo'] ?? '내가 저장한 레퍼런스') : item['title']!,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
           ),
+          // 직접 추가한 레퍼런스는 가격 대신 출처 표시
           Text(
-            item['price']!,
-            style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+            isMyReference(item)
+                ? (item['account'] != null ? '출처 @${item['account']}' : '내 사진')
+                : item['price']!,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: isMyReference(item)
+                ? const TextStyle(fontSize: 11, color: Colors.grey)
+                : const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
           ),
         ],
       ),

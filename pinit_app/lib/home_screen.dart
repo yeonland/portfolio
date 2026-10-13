@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'designs.dart';
+import 'pinit_colors.dart';
 import 'shop.dart';
 
 // ---------------------------------------------------------------------------
@@ -111,7 +112,7 @@ class HomeScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                 decoration: BoxDecoration(
                   color: hasShops
-                      ? const Color(0xFFFF6FA5).withValues(alpha: 0.15)
+                      ? pinitAccent.withValues(alpha: 0.15)
                       : Colors.grey.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(4),
                 ),
@@ -120,7 +121,7 @@ class HomeScreen extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 10,
                     fontWeight: FontWeight.bold,
-                    color: hasShops ? const Color(0xFFD63F7A) : Colors.grey,
+                    color: hasShops ? pinitAccentDark : Colors.grey,
                   ),
                 ),
               ),

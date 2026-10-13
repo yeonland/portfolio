@@ -4,8 +4,10 @@ import 'package:flutter/services.dart';
 import 'design_detail_sheet.dart';
 import 'designs.dart';
 import 'favorites.dart';
+import 'reference_add_screen.dart';
 import 'home_screen.dart';
 import 'map_explorer_screen.dart';
+import 'pinit_colors.dart';
 import 'reference_board_screen.dart';
 import 'reservation.dart';
 import 'reservation_timeline_screen.dart';
@@ -37,29 +39,33 @@ class _PinItAppState extends State<PinItApp> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.light,
+        colorSchemeSeed: pinitAccent,
         scaffoldBackgroundColor: const Color(0xFFF9F9F9),
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white,
           foregroundColor: Colors.black,
+          surfaceTintColor: Colors.transparent,
           elevation: 0,
         ),
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           backgroundColor: Colors.white,
-          selectedItemColor: Colors.black,
+          selectedItemColor: pinitAccentDark,
           unselectedItemColor: Colors.grey,
         ),
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
+        colorSchemeSeed: pinitAccent,
         scaffoldBackgroundColor: const Color(0xFF121212),
         appBarTheme: const AppBarTheme(
           backgroundColor: Color(0xFF1E1E1E),
           foregroundColor: Colors.white,
+          surfaceTintColor: Colors.transparent,
           elevation: 0,
         ),
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           backgroundColor: Color(0xFF1E1E1E),
-          selectedItemColor: Colors.white,
+          selectedItemColor: pinitAccent,
           unselectedItemColor: Colors.grey,
         ),
       ),
@@ -133,7 +139,10 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
       MaterialPageRoute(
         builder: (routeContext) => Scaffold(
           appBar: AppBar(
-            title: const Text('예약 문의', style: TextStyle(fontWeight: FontWeight.w800)),
+            title: Text(
+              design?['shop'] == null ? '예약 양식 작성' : '${design!['shop']} 예약 양식',
+              style: const TextStyle(fontWeight: FontWeight.w800),
+            ),
           ),
           body: ReservationFormScreen(
             design: design,
@@ -183,7 +192,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
       ),
 
       // 3. 지도 탭 (네이버/카톡/인스타 다중 채널)
-      const MultiChannelMapExplorerScreen(),
+      MultiChannelMapExplorerScreen(onReserve: _openReservationForm),
 
       // 4. 보관함 (레퍼런스 보드)
       ReferenceBoardScreen(favorites: _favorites, onReserve: _openReservationForm),
@@ -224,16 +233,24 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         ],
       ),
       body: pages[_selectedIndex],
-      // 내 예약 탭: 디자인 없이 바로 예약 문의 쓰기
-      floatingActionButton: _selectedIndex == _timelineTab
-          ? FloatingActionButton.extended(
-              onPressed: _openReservationForm,
-              backgroundColor: Colors.black,
-              foregroundColor: Colors.white,
-              icon: const Icon(Icons.edit_note),
-              label: const Text('예약 문의 쓰기', style: TextStyle(fontWeight: FontWeight.bold)),
-            )
-          : null,
+      // 내 예약 탭: 디자인 없이 바로 예약 문의 쓰기 / 보관함 탭: 인스타 링크·캡처 사진 추가
+      floatingActionButton: switch (_selectedIndex) {
+        _timelineTab => FloatingActionButton.extended(
+            onPressed: _openReservationForm,
+            backgroundColor: pinitAccent,
+            foregroundColor: Colors.white,
+            icon: const Icon(Icons.edit_note),
+            label: const Text('예약 문의 쓰기', style: TextStyle(fontWeight: FontWeight.bold)),
+          ),
+        _boardTab => FloatingActionButton.extended(
+            onPressed: () => openReferenceAddScreen(context, _favorites),
+            backgroundColor: pinitAccent,
+            foregroundColor: Colors.white,
+            icon: const Icon(Icons.add),
+            label: const Text('레퍼런스 추가', style: TextStyle(fontWeight: FontWeight.bold)),
+          ),
+        _ => null,
+      },
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed, // 탭 4개 이상이면 고정형으로
         currentIndex: _selectedIndex,
@@ -279,8 +296,9 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
   }
 }
 
+
 // ---------------------------------------------------------------------------
-// ✨ 핀잇 픽 (PinIt Pick) - 검색 + 키워드 + 3열 피드 + 가격표 복원!
+// ✨ 핀잇 픽 (PinIt Pick) - 검색 + 키워드 + 가격대 + 2열 디자인 카드
 // ---------------------------------------------------------------------------
 class PinItPickScreen extends StatefulWidget {
   final String? category; // 홈에서 고른 카테고리 (null이면 전체)
@@ -304,6 +322,7 @@ class _PinItPickScreenState extends State<PinItPickScreen> {
   final TextEditingController _searchController = TextEditingController();
   String _searchQuery = '';
   String _selectedTag = '전체';
+  String _priceRange = _priceAll;
 
   final List<String> _trendingKeywords = [
     '전체',
@@ -316,6 +335,21 @@ class _PinItPickScreenState extends State<PinItPickScreen> {
     '#꽃다발',
     '#촬영메이크업',
   ];
+
+  // 가격대: 이름 → (최소, 최대) 원
+  static const String _priceAll = '가격 전체';
+  static const Map<String, (int, int)> _priceRanges = {
+    _priceAll: (0, 1 << 31),
+    '3~4만원대': (30000, 49999),
+    '5~6만원대': (50000, 69999),
+    '7만원 이상': (70000, 1 << 31),
+  };
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
 
   // 홈에서 카테고리를 골랐으면 그 카테고리 디자인만
   List<Map<String, String>> get _categoryDesigns => widget.category == null
@@ -332,6 +366,7 @@ class _PinItPickScreenState extends State<PinItPickScreen> {
           keyword,
     ];
     final selectedTag = keywords.contains(_selectedTag) ? _selectedTag : '전체';
+    final (minPrice, maxPrice) = _priceRanges[_priceRange]!;
 
     final filteredList = designs.where((item) {
       final matchesSearch = _searchQuery.isEmpty ||
@@ -343,7 +378,10 @@ class _PinItPickScreenState extends State<PinItPickScreen> {
           item['keyword'] == selectedTag ||
           item['tag'] == selectedTag;
 
-      return matchesSearch && matchesTag;
+      final price = priceValue(item['price']);
+      final matchesPrice = price >= minPrice && price <= maxPrice;
+
+      return matchesSearch && matchesTag && matchesPrice;
     }).toList();
 
     return Column(
@@ -373,8 +411,8 @@ class _PinItPickScreenState extends State<PinItPickScreen> {
           child: Container(
             height: 42,
             decoration: BoxDecoration(
-              color: Colors.grey[200],
-              borderRadius: BorderRadius.circular(10),
+              color: Colors.grey.withValues(alpha: 0.12),
+              borderRadius: BorderRadius.circular(12),
             ),
             child: TextField(
               controller: _searchController,
@@ -414,126 +452,204 @@ class _PinItPickScreenState extends State<PinItPickScreen> {
             itemCount: keywords.length,
             itemBuilder: (context, index) {
               final keyword = keywords[index];
-              final isSelected = selectedTag == keyword;
-
               return Padding(
                 padding: const EdgeInsets.only(right: 6.0),
-                child: ChoiceChip(
-                  label: Text(
-                    keyword,
-                    style: TextStyle(
-                      color: isSelected ? Colors.white : Colors.black87,
-                      fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                      fontSize: 12,
-                    ),
-                  ),
-                  selected: isSelected,
-                  onSelected: (selected) {
-                    setState(() {
-                      _selectedTag = keyword;
-                    });
-                  },
-                  selectedColor: Colors.black,
-                  backgroundColor: Colors.grey[100],
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  showCheckmark: false,
+                child: pinitChip(
+                  label: keyword,
+                  isSelected: selectedTag == keyword,
+                  onSelected: () => setState(() => _selectedTag = keyword),
                 ),
               );
             },
           ),
         ),
 
-        const Divider(height: 1, thickness: 0.5),
+        // 3. 결과 개수 + 가격대 선택
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 0, 4, 0),
+          child: Row(
+            children: [
+              Text(
+                '디자인 ${filteredList.length}개',
+                style: const TextStyle(fontSize: 12, color: Colors.grey),
+              ),
+              const Spacer(),
+              PopupMenuButton<String>(
+                tooltip: '가격대',
+                initialValue: _priceRange,
+                onSelected: (range) => setState(() => _priceRange = range),
+                itemBuilder: (context) => [
+                  for (final range in _priceRanges.keys) PopupMenuItem(value: range, child: Text(range)),
+                ],
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  child: Row(
+                    children: [
+                      Text(
+                        _priceRange,
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                          color: _priceRange == _priceAll ? null : pinitAccentDark,
+                        ),
+                      ),
+                      const Icon(Icons.expand_more, size: 18),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
 
-        // 3. 3열 정사각형 피드 + 💰 가격표 완벽 복원!
+        // 4. 2열 디자인 카드 (사진 · 샵 · 가격 · 양식 쓰기)
         Expanded(
           child: filteredList.isEmpty
               ? Center(
                   child: Text(
-                    designs.isEmpty ? '아직 등록된 디자인이 없어요 🙏' : '검색 결과가 없습니다 😅',
-                    style: TextStyle(color: Colors.grey),
+                    designs.isEmpty ? '아직 등록된 디자인이 없어요 🙏' : '조건에 맞는 디자인이 없어요',
+                    style: const TextStyle(color: Colors.grey),
                   ),
                 )
               : ListenableBuilder(
                   listenable: widget.favorites,
                   builder: (context, _) => GridView.builder(
-                  padding: const EdgeInsets.all(2.0),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    crossAxisSpacing: 2.0,
-                    mainAxisSpacing: 2.0,
-                    childAspectRatio: 1.0,
-                  ),
-                  itemCount: filteredList.length,
-                  itemBuilder: (context, index) {
-                    final item = filteredList[index];
-                    return GestureDetector(
-                      onTap: () => showDesignDetailSheet(
-                        context,
-                        item: item,
-                        favorites: widget.favorites,
-                        onReserve: widget.onReserve,
-                      ),
-                      child: Stack(
-                        fit: StackFit.expand,
-                        children: [
-                          Image.network(
-                            item['img']!,
-                            fit: BoxFit.cover,
-                            errorBuilder: (context, error, stackTrace) => imagePlaceholder(),
-                          ),
-                          // 🔖 보관한 디자인 표시 (우측 상단)
-                          if (widget.favorites.isFavorite(item))
-                            const Positioned(
-                              top: 4,
-                              right: 4,
-                              child: Icon(
-                                Icons.bookmark,
-                                color: Color(0xFFFF6FA5),
-                                size: 20,
-                                shadows: [Shadow(color: Colors.black45, blurRadius: 3)],
-                              ),
-                            ),
-                          // 🏷️ 가격표 태그 복원 (좌측 하단)
-                          Positioned(
-                            bottom: 4,
-                            left: 4,
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
-                              decoration: BoxDecoration(
-                                color: Colors.black.withValues(alpha: 0.65),
-                                borderRadius: BorderRadius.circular(4),
-                              ),
-                              child: Text(
-                                item['price']!,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
+                    padding: const EdgeInsets.fromLTRB(12, 4, 12, 16),
+                    gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                      maxCrossAxisExtent: 240,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 12,
+                      childAspectRatio: 0.62,
+                    ),
+                    itemCount: filteredList.length,
+                    itemBuilder: (context, index) => _buildDesignCard(filteredList[index]),
                   ),
                 ),
         ),
       ],
     );
   }
+
+  Widget _buildDesignCard(Map<String, String> item) {
+    return Material(
+      color: Theme.of(context).cardColor,
+      borderRadius: BorderRadius.circular(14),
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        onTap: () => showDesignDetailSheet(
+          context,
+          item: item,
+          favorites: widget.favorites,
+          onReserve: widget.onReserve,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  Image.network(
+                    item['img']!,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) => imagePlaceholder(),
+                  ),
+                  // 🔖 보관한 디자인 표시 (우측 상단)
+                  if (widget.favorites.isFavorite(item))
+                    const Positioned(
+                      top: 6,
+                      right: 6,
+                      child: Icon(
+                        Icons.bookmark,
+                        color: pinitAccent,
+                        size: 22,
+                        shadows: [Shadow(color: Colors.black45, blurRadius: 3)],
+                      ),
+                    ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10, 8, 10, 0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    item['shop']!,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(fontSize: 11, color: Colors.grey),
+                  ),
+                  Text(
+                    item['title']!,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    item['price']!,
+                    style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(8, 6, 8, 8),
+              child: SizedBox(
+                width: double.infinity,
+                height: 32,
+                child: OutlinedButton.icon(
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: pinitAccentDark,
+                    side: const BorderSide(color: pinitAccent),
+                    padding: EdgeInsets.zero,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                  ),
+                  icon: const Icon(Icons.edit_note, size: 16),
+                  label: const Text('양식 쓰기', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                  onPressed: () => widget.onReserve(item),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// 선택형 칩 (선택되면 연한 코랄 배경 + 진한 코랄 글씨)
+Widget pinitChip({
+  required String label,
+  required bool isSelected,
+  required VoidCallback onSelected,
+}) {
+  return ChoiceChip(
+    label: Text(
+      label,
+      style: TextStyle(
+        color: isSelected ? pinitAccentDark : null,
+        fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+        fontSize: 12,
+      ),
+    ),
+    selected: isSelected,
+    onSelected: (_) => onSelected(),
+    selectedColor: pinitAccent.withValues(alpha: 0.14),
+    side: BorderSide(color: isSelected ? pinitAccent : Colors.grey.withValues(alpha: 0.3)),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+    showCheckmark: false,
+  );
 }
 
 // ---------------------------------------------------------------------------
-// ✍️ 스마트 예약 주문서 - 양식을 채우면 예약 문의 메시지를 자동으로 만들어줌
+// ✍️ 예약 양식 - 단계별로 채우면 샵에 보낼 예약 문의 메시지를 만들어줌
 // ---------------------------------------------------------------------------
 class ReservationFormScreen extends StatefulWidget {
-  final Map<String, String>? design; // 핀잇 픽에서 넘어온 디자인 (없으면 직접 입력)
-  final ValueChanged<Reservation> onSaved; // 주문서 완성 시 타임라인에 저장
+  // 디자인 탭에서 오면 디자인 전체, 지도에서 오면 shop·category만 (없으면 빈 양식)
+  final Map<String, String>? design;
+  final ValueChanged<Reservation> onSaved; // 메시지 복사 시 타임라인에 저장
   final VoidCallback onViewTimeline;
 
   const ReservationFormScreen({
@@ -545,6 +661,17 @@ class ReservationFormScreen extends StatefulWidget {
 
   @override
   State<ReservationFormScreen> createState() => _ReservationFormScreenState();
+}
+
+// 문의 채널: 저장용 이름 · 버튼 문구 · 아이콘 글자 · 색
+class _Channel {
+  final String name;
+  final String label;
+  final String mark;
+  final Color color;
+  final Color markColor;
+
+  const _Channel(this.name, this.label, this.mark, this.color, this.markColor);
 }
 
 class _ReservationFormScreenState extends State<ReservationFormScreen> {
@@ -559,7 +686,18 @@ class _ReservationFormScreenState extends State<ReservationFormScreen> {
   DateTime? _selectedDate;
   String? _selectedTime;
   bool _isCustomTime = false; // '직접 입력'을 고르면 칸에 자유롭게 입력
-  String _selectedChannel = '💬 카톡';
+
+  // 네일 옵션
+  String? _removal; // 기존 젤 제거
+  bool _extension = false; // 연장
+
+  static const List<String> _removalOptions = ['없음', '자사 제거', '타사 제거'];
+
+  static const List<_Channel> _channels = [
+    _Channel('💬 카톡', '카카오톡으로 보내기', 'TALK', kakaoYellow, Colors.black87),
+    _Channel('📸 인스타 DM', '인스타 DM으로 보내기', 'IG', instagramPink, Colors.white),
+    _Channel('N 네이버', '네이버 예약으로 보내기', 'N', naverGreen, Colors.white),
+  ];
 
   // 오전 9:00 ~ 오후 9:00, 30분 간격
   static final List<String> _times = [
@@ -575,7 +713,10 @@ class _ReservationFormScreenState extends State<ReservationFormScreen> {
     final text = _customTimeController.text.trim();
     return text.isEmpty ? null : text;
   }
-  final List<String> _channels = ['💬 카톡', '📸 인스타 DM', 'N 네이버'];
+
+  // 사진이 있는 디자인에서 왔는지 (지도에서 오면 샵 이름만 있음)
+  bool get _hasDesignPhoto => widget.design?['img'] != null;
+  bool get _isNail => widget.design?['category'] == '💅 네일';
 
   @override
   void initState() {
@@ -624,12 +765,17 @@ class _ReservationFormScreenState extends State<ReservationFormScreen> {
     if (widget.design?['price'] != null) {
       buffer.writeln('💰 가격: ${widget.design!['price']}');
     }
+    buffer.writeln('📅 희망 일시: ${_formatDate(_selectedDate!)} $_timeText');
+    if (_removal != null) buffer.writeln('🧴 제거: $_removal');
+    if (_extension) buffer.writeln('💅 연장: 필요해요');
     buffer
-      ..writeln('📅 희망 일시: ${_formatDate(_selectedDate!)} $_timeText')
       ..writeln('🙋 이름: ${_nameController.text}')
       ..writeln('📞 연락처: ${_phoneController.text}');
     if (_memoController.text.trim().isNotEmpty) {
       buffer.writeln('📝 요청사항: ${_memoController.text.trim()}');
+    }
+    if (_hasDesignPhoto) {
+      buffer.writeln('🖼️ 레퍼런스 사진은 이어서 보내드릴게요!');
     }
     buffer
       ..writeln()
@@ -637,7 +783,7 @@ class _ReservationFormScreenState extends State<ReservationFormScreen> {
     return buffer.toString();
   }
 
-  Reservation _buildReservation() {
+  Reservation _buildReservation(_Channel channel) {
     return Reservation(
       id: DateTime.now().microsecondsSinceEpoch.toString(),
       shop: _shopController.text.trim(),
@@ -646,11 +792,11 @@ class _ReservationFormScreenState extends State<ReservationFormScreen> {
       img: widget.design?['img'],
       date: _selectedDate!,
       time: _timeText!,
-      channel: _selectedChannel,
+      channel: channel.name,
     );
   }
 
-  void _submit() {
+  void _submit(_Channel channel) {
     final isValid = _formKey.currentState!.validate();
     if (_selectedDate == null || _timeText == null) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -674,14 +820,14 @@ class _ReservationFormScreenState extends State<ReservationFormScreen> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                '✨ 주문서 완성! ($_selectedChannel)',
-                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              const Text(
+                '예약 문의 메시지가 완성됐어요',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 4),
-              const Text(
-                '아래 메시지를 복사해서 샵에 바로 보내보세요.',
-                style: TextStyle(fontSize: 12, color: Colors.grey),
+              Text(
+                '복사해서 ${channel.name}에 붙여넣어 보내세요.',
+                style: const TextStyle(fontSize: 12, color: Colors.grey),
               ),
               const SizedBox(height: 14),
               Container(
@@ -700,23 +846,19 @@ class _ReservationFormScreenState extends State<ReservationFormScreen> {
               SizedBox(
                 width: double.infinity,
                 height: 48,
-                child: ElevatedButton.icon(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
+                child: FilledButton.icon(
+                  style: FilledButton.styleFrom(
+                    backgroundColor: pinitAccent,
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                   ),
-                  icon: const Icon(Icons.copy, color: Colors.white, size: 18),
-                  label: const Text(
-                    '메시지 복사하기',
-                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-                  ),
+                  icon: const Icon(Icons.copy, size: 18),
+                  label: const Text('메시지 복사하기', style: TextStyle(fontWeight: FontWeight.bold)),
                   onPressed: () async {
                     final messenger = ScaffoldMessenger.of(context);
                     final navigator = Navigator.of(sheetContext);
                     // 복사가 실패해도 예약은 타임라인에 남도록 먼저 저장
-                    widget.onSaved(_buildReservation());
+                    widget.onSaved(_buildReservation(channel));
                     var copied = true;
                     try {
                       await Clipboard.setData(ClipboardData(text: message));
@@ -727,7 +869,7 @@ class _ReservationFormScreenState extends State<ReservationFormScreen> {
                     messenger.showSnackBar(
                       SnackBar(
                         content: Text(copied
-                            ? '복사 완료! $_selectedChannel에 붙여넣고, 내 예약에서 일정을 확인하세요.'
+                            ? '복사 완료! ${channel.name}에 붙여넣고, 내 예약에서 일정을 확인하세요.'
                             : '복사에 실패했어요. 메시지를 길게 눌러 직접 복사해주세요.'),
                         action: SnackBarAction(label: '내 예약', onPressed: widget.onViewTimeline),
                       ),
@@ -745,71 +887,15 @@ class _ReservationFormScreenState extends State<ReservationFormScreen> {
   @override
   Widget build(BuildContext context) {
     final design = widget.design;
+    var step = 0; // 섹션 번호 (네일 옵션이 없으면 번호가 당겨짐)
+    String numbered(String title) => '${++step}. $title';
 
     return Form(
       key: _formKey,
       child: ListView(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
         children: [
-          // 핀잇 픽에서 넘어온 디자인 카드
-          if (design != null) ...[
-            Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: Theme.of(context).cardColor,
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: const [
-                  BoxShadow(color: Colors.black12, blurRadius: 8, offset: Offset(0, 2)),
-                ],
-              ),
-              child: Row(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.network(
-                      design['img']!,
-                      width: 64,
-                      height: 64,
-                      fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) =>
-                          SizedBox(width: 64, height: 64, child: imagePlaceholder()),
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          '${design['shop']} · ${design['keyword']}',
-                          style: const TextStyle(fontSize: 12, color: Colors.grey),
-                        ),
-                        const SizedBox(height: 2),
-                        Text(
-                          design['title']!,
-                          style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                        ),
-                        const SizedBox(height: 2),
-                        Text(
-                          design['price']!,
-                          style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w800),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 20),
-          ] else ...[
-            const Text(
-              '💡 디자인 탭에서 고른 디자인으로 문의하면 자동으로 채워져요.',
-              style: TextStyle(fontSize: 12, color: Colors.grey),
-            ),
-            const SizedBox(height: 12),
-          ],
-
-          _sectionTitle('샵 / 디자인'),
+          _sectionTitle(numbered('샵 · 디자인')),
           TextFormField(
             controller: _shopController,
             decoration: _inputDecoration('샵 이름'),
@@ -821,20 +907,29 @@ class _ReservationFormScreenState extends State<ReservationFormScreen> {
             decoration: _inputDecoration('원하는 디자인'),
             validator: (value) => (value == null || value.trim().isEmpty) ? '디자인을 입력해주세요.' : null,
           ),
+          if (design == null)
+            const Padding(
+              padding: EdgeInsets.only(top: 8),
+              child: Text(
+                '💡 디자인 탭에서 고른 디자인으로 문의하면 자동으로 채워져요.',
+                style: TextStyle(fontSize: 12, color: Colors.grey),
+              ),
+            ),
 
-          _sectionTitle('희망 날짜'),
+          _sectionTitle(numbered('방문 희망 날짜 & 시간')),
           OutlinedButton.icon(
             style: OutlinedButton.styleFrom(
               minimumSize: const Size(double.infinity, 48),
               alignment: Alignment.centerLeft,
+              foregroundColor: _selectedDate == null ? null : pinitAccentDark,
+              side: BorderSide(color: _selectedDate == null ? Colors.grey.withValues(alpha: 0.4) : pinitAccent),
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             ),
             icon: const Icon(Icons.calendar_today, size: 18),
             label: Text(_selectedDate == null ? '날짜 선택하기' : _formatDate(_selectedDate!)),
             onPressed: _pickDate,
           ),
-
-          _sectionTitle('희망 시간'),
+          const SizedBox(height: 12),
           _buildTimeGroup('오전', _morningTimes),
           const SizedBox(height: 10),
           _buildTimeGroup('오후', _afternoonTimes),
@@ -843,7 +938,7 @@ class _ReservationFormScreenState extends State<ReservationFormScreen> {
             padding: const EdgeInsets.only(left: 36), // 시간 칩과 왼쪽 줄 맞추기
             child: Align(
               alignment: Alignment.centerLeft,
-              child: _buildChoiceChip(
+              child: pinitChip(
                 label: '✏️ 직접 입력',
                 isSelected: _isCustomTime,
                 onSelected: () => setState(() {
@@ -862,7 +957,80 @@ class _ReservationFormScreenState extends State<ReservationFormScreen> {
             ),
           ],
 
-          _sectionTitle('예약자 정보'),
+          // 네일일 때만: 제거 · 연장 옵션
+          if (_isNail) ...[
+            _sectionTitle(numbered('옵션 선택')),
+            _buildOptionRow('제거', [
+              for (final option in _removalOptions)
+                pinitChip(
+                  label: option,
+                  isSelected: _removal == option,
+                  onSelected: () => setState(() => _removal = _removal == option ? null : option),
+                ),
+            ]),
+            const SizedBox(height: 6),
+            _buildOptionRow('연장', [
+              pinitChip(
+                label: '연장 필요해요',
+                isSelected: _extension,
+                onSelected: () => setState(() => _extension = !_extension),
+              ),
+            ]),
+          ],
+
+          _sectionTitle(numbered('레퍼런스 & 요청사항')),
+          if (_hasDesignPhoto) ...[
+            Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: Theme.of(context).cardColor,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: Colors.grey.withValues(alpha: 0.2)),
+              ),
+              child: Row(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.network(
+                      design!['img']!,
+                      width: 72,
+                      height: 72,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) =>
+                          SizedBox(width: 72, height: 72, child: imagePlaceholder()),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text('레퍼런스 사진', style: TextStyle(fontSize: 11, color: Colors.grey)),
+                        const SizedBox(height: 2),
+                        Text(
+                          design['title'] ?? '',
+                          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                        ),
+                        if (design['price'] != null)
+                          Text(
+                            design['price']!,
+                            style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w800),
+                          ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 10),
+          ],
+          TextFormField(
+            controller: _memoController,
+            decoration: _inputDecoration('예: 약지만 파츠를 분홍색으로 바꾸고 싶어요 / 손톱이 짧아요'),
+            maxLines: 3,
+          ),
+
+          _sectionTitle(numbered('예약자 정보')),
           TextFormField(
             controller: _nameController,
             decoration: _inputDecoration('이름'),
@@ -879,40 +1047,67 @@ class _ReservationFormScreenState extends State<ReservationFormScreen> {
             },
           ),
 
-          _sectionTitle('요청사항 (선택)'),
-          TextFormField(
-            controller: _memoController,
-            decoration: _inputDecoration('예: 손톱이 짧아요 / 레터링 문구는 "생일 축하해"'),
-            maxLines: 3,
-          ),
-
-          _sectionTitle('문의 채널'),
-          Wrap(
-            spacing: 6,
-            children: _channels.map((channel) => _buildChoiceChip(
-                  label: channel,
-                  isSelected: _selectedChannel == channel,
-                  onSelected: () => setState(() => _selectedChannel = channel),
-                )).toList(),
-          ),
-
-          const SizedBox(height: 28),
-          SizedBox(
-            height: 52,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.black,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              ),
-              onPressed: _submit,
-              child: const Text(
-                '✨ 주문서 완성하기',
-                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),
-              ),
-            ),
-          ),
+          _sectionTitle(numbered('예약 문의 보내기')),
+          for (final channel in _channels) ...[
+            _buildChannelButton(channel),
+            const SizedBox(height: 8),
+          ],
           const SizedBox(height: 16),
         ],
+      ),
+    );
+  }
+
+  // 옵션 한 줄: 왼쪽 이름표 + 오른쪽 칩
+  Widget _buildOptionRow(String label, List<Widget> chips) {
+    return Row(
+      children: [
+        SizedBox(
+          width: 48,
+          child: Text(label, style: const TextStyle(fontSize: 13, color: Colors.grey)),
+        ),
+        Expanded(child: Wrap(spacing: 6, runSpacing: 6, children: chips)),
+      ],
+    );
+  }
+
+  // 채널 버튼: 왼쪽 브랜드 색 아이콘 + 문구 + 화살표
+  Widget _buildChannelButton(_Channel channel) {
+    return Material(
+      color: Colors.grey.withValues(alpha: 0.1),
+      borderRadius: BorderRadius.circular(12),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(12),
+        onTap: () => _submit(channel),
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+          child: Row(
+            children: [
+              Container(
+                width: 32,
+                height: 32,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(color: channel.color, borderRadius: BorderRadius.circular(9)),
+                child: Text(
+                  channel.mark,
+                  style: TextStyle(
+                    color: channel.markColor,
+                    fontSize: channel.mark.length > 2 ? 9 : 13,
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Text(
+                  channel.label,
+                  style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                ),
+              ),
+              const Icon(Icons.chevron_right, color: Colors.grey),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -933,7 +1128,7 @@ class _ReservationFormScreenState extends State<ReservationFormScreen> {
           child: Wrap(
             spacing: 6,
             runSpacing: 6,
-            children: times.map((time) => _buildChoiceChip(
+            children: times.map((time) => pinitChip(
                   label: time,
                   isSelected: !_isCustomTime && _selectedTime == time,
                   onSelected: () => setState(() {
@@ -947,32 +1142,12 @@ class _ReservationFormScreenState extends State<ReservationFormScreen> {
     );
   }
 
-  Widget _buildChoiceChip({
-    required String label,
-    required bool isSelected,
-    required VoidCallback onSelected,
-  }) {
-    return ChoiceChip(
-      label: Text(
-        label,
-        style: TextStyle(
-          color: isSelected ? Colors.white : null,
-          fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-        ),
-      ),
-      selected: isSelected,
-      selectedColor: Colors.black,
-      showCheckmark: false,
-      onSelected: (_) => onSelected(),
-    );
-  }
-
   Widget _sectionTitle(String title) {
     return Padding(
-      padding: const EdgeInsets.only(top: 20, bottom: 8),
+      padding: const EdgeInsets.only(top: 24, bottom: 10),
       child: Text(
         title,
-        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+        style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w800),
       ),
     );
   }
@@ -984,6 +1159,10 @@ class _ReservationFormScreenState extends State<ReservationFormScreen> {
       isDense: true,
       contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: const BorderSide(color: pinitAccent, width: 1.5),
+      ),
     );
   }
 }
