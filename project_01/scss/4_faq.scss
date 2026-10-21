@@ -1,0 +1,207 @@
+@use 'variables' as *;
+
+* {margin: 0; padding: 0;}
+ul, li {list-style: none;}
+a {text-decoration: none; color: black;}
+
+.sub_title {
+    font-family: "Gowun Dodum", sans-serif; font-size: 36px;
+    color: $brown;
+    height: 40px; margin: 56px 0 32px;
+    text-align: center; line-height: 40px;
+}
+
+.header_outer .header .gnb span:nth-child(4) a {
+    border-bottom: 1px solid $brown; box-sizing: border-box;
+}
+
+.sub_desc {
+    margin: -25px 0 50px;
+    font-family: "Gowun Dodum", sans-serif;
+    font-size: 18px;
+    color: $brown;
+    text-align: center;
+}
+
+.guide_box {
+    width: 520px;
+    margin: 0 auto 70px;
+    padding: 32px 36px;
+    border: 1px solid $brown;
+    border-radius: 28px;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: "Gowun Dodum", sans-serif;
+    color: $brown;
+    background-color: $cream;
+}
+
+.guide_box h3 {
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.guide_box p {
+    margin-bottom: 24px;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.guide_box a {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 999px;
+    background-color: $brown;
+    color: $cream;
+    font-size: 18px;
+}
+.guide_box a:hover {
+    color: $brown; border: 1px solid $brown;
+    background: $cream;
+}
+
+.wrap {width: 1245px; margin: 100px auto; font-family: "Gowun Dodum", sans-serif;}
+
+/* 아코디언 메뉴 */
+.wrap {
+    width: 1245px;
+    margin: 80px auto 120px;
+    font-family: "Gowun Dodum", sans-serif;
+}
+
+.faq_box {
+    width: 100%;
+    border-top: 2px solid $brown;
+}
+
+.faq {
+    border-bottom: 1px solid $beige;
+    background-color: $ivory;
+}
+
+.faq summary {
+    position: relative;
+    display: block;
+    padding: 24px 70px 24px 56px;
+    color: $text;
+    font-size: 18px;
+    line-height: 1.6;
+    cursor: pointer;
+    word-break: keep-all;
+    list-style: none;
+}
+
+.faq summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq summary .icon {
+    position: absolute;
+    left: 24px;
+    top: 25px;
+    color: $brown;
+    font-weight: 700;
+}
+
+.faq summary::after {
+    content: "+";
+    position: absolute;
+    right: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $brown;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.faq[open] summary::after {
+    content: "−";
+}
+
+.faq summary:hover {
+    background-color: $cream;
+}
+
+.faq[open] summary {
+    background-color: $cream;
+    color: $brown;
+}
+
+.faq_content {
+    padding: 0 56px 30px;
+    color: $brown;
+    font-size: 17px;
+    line-height: 1.8;
+    background-color: $ivory;
+    word-break: keep-all;
+}
+
+.faq_content p {
+    margin-bottom: 14px;
+}
+
+.faq_content p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: $bp-xl) {
+    .wrap {
+        width: calc(100% - 80px);
+    }
+}
+
+@media (max-width: $bp-md) {
+    .wrap {
+        width: calc(100% - 40px);
+        margin: 60px auto 90px;
+    }
+
+    .faq summary {
+        padding: 22px 54px 22px 46px;
+        font-size: 16px;
+    }
+
+    .faq summary .icon {
+        left: 18px;
+        top: 23px;
+    }
+
+    .faq summary::after {
+        right: 20px;
+        font-size: 24px;
+    }
+
+    .faq_content {
+        padding: 0 46px 26px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: $bp-xs) {
+    .wrap {
+        width: calc(100% - 28px);
+    }
+
+    .faq summary {
+        padding: 20px 44px 20px 40px;
+        font-size: 15px;
+        line-height: 1.55;
+    }
+
+    .faq summary .icon {
+        left: 14px;
+        top: 21px;
+    }
+
+    .faq summary::after {
+        right: 16px;
+        font-size: 22px;
+    }
+
+    .faq_content {
+        padding: 0 40px 24px;
+        font-size: 15px;
+        line-height: 1.7;
+    }
+}
