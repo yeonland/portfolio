@@ -124,68 +124,68 @@ img {
 
 /************************** 신상품 상품이미지 **************************/
 .product .product_box .product_img_01 {
-  background-image: url(../img/04_new01.jpg);
+  background-image: url(../img/new_undated-daily-diary.jpg);
 }
 
 .product .product_box .product_img_01:hover {
-  background-image: url(../img/04_new01hover.jpg);
+  background-image: url(../img/new_undated-daily-diary_hover.jpg);
 }
 
 .product .product_box .product_img_02 {
-  background-image: url(../img/04_new02.jpg);
+  background-image: url(../img/new_undated-simple-diary.jpg);
 }
 
 .product .product_box .product_img_02:hover {
-  background-image: url(../img/04_new02hover.jpg);
+  background-image: url(../img/new_undated-simple-diary_hover.jpg);
 }
 
 .product .product_box .product_img_03 {
-  background-image: url(../img/04_new03.jpg);
+  background-image: url(../img/new_bookshelf.jpg);
 }
 
 .product .product_box .product_img_03:hover {
-  background-image: url(../img/04_new03hover.jpg);
+  background-image: url(../img/new_bookshelf_hover.jpg);
 }
 
 .product .product_box .product_img_04 {
-  background-image: url(../img/04_new04.jpg);
+  background-image: url(../img/new_domestic-travel-planner.jpg);
 }
 
 .product .product_box .product_img_04:hover {
-  background-image: url(../img/04_new04hover.jpg);
+  background-image: url(../img/new_domestic-travel-planner_hover.jpg);
 }
 
 /************************** best 상품이미지 **************************/
 .product .product_box .product_img_05 {
-  background-image: url(../img/05_best01.jpg);
+  background-image: url(../img/best_bullet-journal.jpg);
 }
 
 .product .product_box .product_img_05:hover {
-  background-image: url(../img/05_best01hover.jpg);
+  background-image: url(../img/best_bullet-journal_hover.jpg);
 }
 
 .product .product_box .product_img_06 {
-  background-image: url(../img/05_best02.jpg);
+  background-image: url(../img/best_undated-work-planner.jpg);
 }
 
 .product .product_box .product_img_06:hover {
-  background-image: url(../img/05_best02hover.jpg);
+  background-image: url(../img/best_undated-work-planner_hover.jpg);
 }
 
 .product .product_box .product_img_07 {
-  background-image: url(../img/05_best03.jpg);
+  background-image: url(../img/best_project-tracker.jpg);
 }
 
 .product .product_box .product_img_07:hover {
-  background-image: url(../img/05_best03hover.jpg);
+  background-image: url(../img/best_project-tracker_hover.jpg);
 }
 
 .product .product_box .product_img_08 {
-  background-image: url(../img/05_best04.jpg);
+  background-image: url(../img/best_2024-weekly-diary.jpg);
 }
 
 .product .product_box .product_img_08:hover {
-  background-image: url(../img/05_best04hover.jpg);
+  background-image: url(../img/best_2024-weekly-diary_hover.jpg);
 }
 
 .product .product_box .product_txt {
