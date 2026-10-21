@@ -1,0 +1,17 @@
+// 빌드: project_01 폴더에서 npx sass@1.83.0 --no-source-map scss:css  (css/ 결과물도 함께 커밋 — GitHub Pages는 빌드 없이 css/를 그대로 씀)
+
+// 소하 공통 색상
+$brown: #9c7055;
+$cream: #feffed;
+$text: #575757;
+$gray: #bbb;
+$pink: #ffc1cc;
+$ivory: #fffdf0;
+$beige: #d6b8a3;
+
+// 반응형 기준점 (max-width)
+$bp-xs: 480px;
+$bp-sm: 640px;
+$bp-md: 768px;
+$bp-lg: 1023px;
+$bp-xl: 1280px;
