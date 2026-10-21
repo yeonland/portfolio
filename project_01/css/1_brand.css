@@ -43,8 +43,8 @@
 
 .brand_layout {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 80px;
+  grid-template-columns: 615px 510px;
+  gap: 120px;
   align-items: start;
 }
 
@@ -140,6 +140,7 @@
     width: calc(100% - 80px);
   }
   .brand_layout {
+    grid-template-columns: 1.1fr 0.9fr;
     gap: 60px;
   }
 }
