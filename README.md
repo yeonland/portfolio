@@ -9,14 +9,14 @@
 | 프로젝트 | 설명 | 기술 | 링크 |
 |---|---|---|---|
 | **소하** (개인) | 감성 디지털 문구 쇼핑몰 웹사이트 | HTML · CSS · JavaScript · jQuery | [사이트](https://yeonland.github.io/portfolio/project_01/) · [기획서](./file/project_plan_01.pdf) |
-| **한화문물연구원** (개인) | 문화재 연구기관 리뉴얼 반응형 웹사이트 | HTML · CSS · JavaScript · jQuery | [사이트](https://yeonland.github.io/portfolio/project_02/) |
+| **한화문물연구원** (개인) | 문화재 연구기관 리뉴얼 반응형 웹사이트 | HTML · CSS · JavaScript · jQuery | [사이트](https://yeonland.github.io/portfolio/project_02/) · [설명](./project_02/README.md) |
 | **전시갈래** (개발 중) | 공공문화정보 API 기반 전시 탐색 서비스 | React · Vite · Vercel Functions | [사이트](https://jeonsi-gallae.vercel.app/) · [GitHub](https://github.com/yeonland/jeonsi-gallae) |
 | **핀잇 PinIt** (개발 중) | 디자인 탐색부터 예약 문의까지 이어지는 모바일 앱 | Flutter · Dart · Vercel | [사이트](https://pinit-beta.vercel.app/) · [GitHub](https://github.com/yeonland/portfolio/tree/main/pinit_app) |
 
 ### 소하 — 디지털 문구 쇼핑몰
 - 기획 흐름 정리부터 디자인·퍼블리싱까지 전담
 - Swiper.js 슬라이드, jQuery로 장바구니·최근 본 상품 인터랙션 구현
-- 1차 발표 피드백을 반영해 2차 버전에서 UI와 기능 개선 (페이지네이션, Top 버튼, 고정 헤더 앵커 위치 수정 등)
+- 강사님의 코드 리뷰 피드백을 반영해 2차 버전에서 UI와 기능 개선 (페이지네이션, Top 버튼, 고정 헤더 앵커 위치 수정 등)
 
 ### 한화문물연구원 — 홈페이지 리뉴얼
 - Figma로 화면 설계 후 PC·모바일 반응형 웹으로 구현
