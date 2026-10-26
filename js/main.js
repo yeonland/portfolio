@@ -31,6 +31,29 @@ $(function () {
 
         $(window).on('scroll resize', function () {
         headerShowHide();
+
+    // 첫 화면(인트로)만 원페이지 스크롤: 인트로에서 휠을 내리면 소개로, 소개 맨 위에서 올리면 인트로로 한 번에 이동
+    let introMoving = false;
+    window.addEventListener('wheel', function (e) {
+        if (window.innerWidth <= 1024 || window.matchMedia('(pointer: coarse)').matches) return;
+        if (!$('#designModal').prop('hidden')) return;
+        if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+
+        const introEnd = $('#page02').offset().top;
+        const y = $(window).scrollTop();
+        const down = e.deltaY > 0;
+        const inIntroZone = down ? y < introEnd - 1 : y > 0 && y <= introEnd + 1;
+        if (!inIntroZone) return;
+
+        e.preventDefault();
+        if (introMoving) return;
+        introMoving = true;
+        $('html, body').stop(true, false);
+        $.scrollTo(down ? introEnd : 0, speed, {
+            axis: 'y',
+            onAfter: function () { introMoving = false; }
+        });
+    }, { passive: false });
     });
 
     headerShowHide();
@@ -71,69 +94,22 @@ $(function () {
         });
     });
 
-    // 진행 중인 프로젝트 좌우 넘기기 (끝에서 처음으로 돌아가는 무한 넘김 + 자동 넘김)
-    const $slider = $('#page04-2 .slider');
-    const $track = $slider.find('.cards-container');
-    const $cards = $track.find('.card');
-    const $count = $('#page04-2 .slider-count');
-    const $pause = $('#page04-2 .slider-pause');
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const autoDelay = 4000;
-    let autoTimer = null;
-    let autoOn = !reduceMotion;      // 움직임 줄이기 설정이면 자동 넘김을 끈 채로 시작
-    let hovering = false;
+    // 내리면 나타나는 효과: 화면에 들어온 요소에 .is-in을 한 번만 붙임
+    $('.about-left, .about-right, .skills-title, .skill-category, .design-subtitle, .design-grid, .contact-inner').addClass('reveal');
+    const $reveals = $('.reveal');
 
-    function cardStep() {
-        return $cards.outerWidth() + parseFloat($track.css('column-gap'));
+    if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('is-in');
+                revealObserver.unobserve(entry.target);
+            });
+        }, { threshold: 0.15 });
+        $reveals.each(function () { revealObserver.observe(this); });
+    } else {
+        $reveals.addClass('is-in');
     }
-
-    function slide(direction) {
-        const track = $track[0];
-        const max = track.scrollWidth - track.clientWidth;
-        if (max <= 1) return;        // 모바일처럼 세로로 쌓였으면 넘길 것이 없음
-
-        let left = track.scrollLeft + direction * cardStep();
-        if (direction > 0 && track.scrollLeft >= max - 1) left = 0;     // 마지막 → 처음
-        if (direction < 0 && track.scrollLeft <= 1) left = max;         // 처음 → 마지막
-        track.scrollTo({left, behavior: reduceMotion ? 'auto' : 'smooth'});
-    }
-
-    // 지금 보이는 카드 범위: "1–3 / 4"
-    function updateCount() {
-        const step = cardStep();
-        const perView = Math.max(1, Math.round(($track[0].clientWidth + 1) / step));
-        const first = Math.round($track[0].scrollLeft / step) + 1;
-        const last = Math.min(first + perView - 1, $cards.length);
-        $count.text(`${first}–${last} / ${$cards.length}`);
-    }
-
-    function startAuto() {
-        clearInterval(autoTimer);
-        if (autoOn && !hovering) autoTimer = setInterval(() => slide(1), autoDelay);
-    }
-
-    function setAuto(on) {
-        autoOn = on;
-        $pause.attr('aria-label', on ? '자동 넘김 멈춤' : '자동 넘김 시작')
-            .find('i').attr('class', on ? 'fa-solid fa-pause' : 'fa-solid fa-play');
-        startAuto();
-    }
-
-    $slider.find('.slider-btn').on('click', function () {
-        slide($(this).hasClass('next') ? 1 : -1);
-        startAuto();                 // 직접 넘긴 직후 바로 또 넘어가지 않게 타이머 초기화
-    });
-
-    $pause.on('click', () => setAuto(!autoOn));
-
-    // 카드를 보거나 버튼에 초점이 있는 동안에는 멈춤
-    $slider.on('mouseenter focusin', () => { hovering = true; clearInterval(autoTimer); });
-    $slider.on('mouseleave focusout', () => { hovering = false; startAuto(); });
-
-    $track.on('scroll', updateCount);
-    $(window).on('resize', updateCount);
-    updateCount();
-    setAuto(autoOn);
 
     // 3. 디자인 작업물 크게 보기
     const mockups = [];
