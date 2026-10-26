@@ -48,6 +48,8 @@ header.header-visible {transform: translateY(0);}
     text-decoration: none;
 }
 
+.logo-img {display: block; width: auto; height: 32px;}
+
 /* 메뉴 */
 .gnb ul {
     display: flex;
@@ -640,9 +642,7 @@ section {
         padding: 0 16px;
     }
 
-    .logo p {
-        font-size: 20px;
-    }
+    .logo-img {height: 24px;}
 
     .gnb ul {
         display: flex;

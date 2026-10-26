@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 38" role="img" aria-label="YJ">
+  <!-- Y -->
+  <path d="M4 5 L14 19 L24 5 M14 19 V33" fill="none" stroke="#EFEFEF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- J 기둥 -->
+  <path d="M46 5 V20" fill="none" stroke="#EFEFEF" stroke-width="4" stroke-linecap="round"/>
+  <!-- J 꼬리 = 초승달 (메뉴의 달 아이콘과 같은 노랑) -->
+  <path d="M48 20 A11 11 0 0 1 26 20 A9 6 0 0 0 44 20 Z" fill="#F4E53B"/>
+</svg>
