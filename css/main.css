@@ -344,12 +344,21 @@ header.header-visible {transform: translate(0, -50%); opacity: 1;}
 
 .skill-category h3 {
     color: #F4E53B; margin-bottom: 15px;
-    font-size: 20px; text-align: center;
+    font-size: 20px; text-align: left;
 }
 
 .skill-category ul li {
-    margin-bottom: 10px;
-    font-size: 18px; line-height: 24px;
+    margin-bottom: 14px;
+    font-size: 16px; line-height: 1.5;
+    word-break: keep-all;
+}
+
+/* 이 기술을 쓴 프로젝트 (아래 프로젝트 섹션에서 확인 가능) */
+.skill-from {
+    display: block;
+    margin-top: 2px;
+    font-size: 13px;
+    color: #999;
 }
 
 /****************** project gallery page **********************/
@@ -1016,7 +1025,6 @@ section {
         gap: 40px;
     }
 
-    .skill-category:last-child {grid-column: 1 / -1;}
 
     #page04,
     #page04-2 {padding: 96px 40px 72px;}
@@ -1062,7 +1070,7 @@ section {
     .skills-grid {
         width: min(calc(100% - 80px), var(--content-width));
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));   /* 4칸씩 */
+        grid-template-columns: repeat(4, minmax(0, 1fr));   /* 3칸씩 */
         gap: var(--gutter);
     }
 
@@ -1456,3 +1464,4 @@ body.modal-open {overflow: hidden;}
 /* 기술 역량 3칸은 차례로 나타남 */
 .js .skill-category.reveal:nth-child(2) {transition-delay: 0.15s;}
 .js .skill-category.reveal:nth-child(3) {transition-delay: 0.3s;}
+.js .skill-category.reveal:nth-child(4) {transition-delay: 0.45s;}
