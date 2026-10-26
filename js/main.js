@@ -50,6 +50,15 @@ $(function () {
             // 작업물 창이 열려 있으면 창 안에서 기본 스크롤 사용
             if (!$('#designModal').prop('hidden')) return;
 
+            // 가로 휠(트랙패드 좌우 밀기)은 프로젝트 카드 넘기기에 사용
+            if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+
+            // 스크롤 애니메이션 중이면 추가 실행 방지
+            if (isScrolling) {
+                e.preventDefault();
+                return;
+            }
+
             const $sections = $('section');
             const scrollTop = $(window).scrollTop();
 
@@ -63,15 +72,19 @@ $(function () {
                 }
             });
 
-            // PC에서는 브라우저의 기본 스크롤 방지
-            e.preventDefault();
-
-            // 스크롤 애니메이션 중이면 추가 실행 방지
-            if (isScrolling) return;
-
             // 네이티브 wheel 이벤트:
             // deltaY가 양수면 아래, 음수면 위
             const direction = e.deltaY > 0 ? 1 : -1;
+
+            // 화면보다 긴 섹션은 끝까지 본 뒤에 다음 섹션으로 넘김 (창 높이가 낮을 때 아래 내용이 잘리지 않게)
+            const $current = $sections.eq(currentIndex);
+            const currentTop = $current.offset().top;
+            const currentBottom = currentTop + $current.outerHeight();
+            if (direction > 0 && currentBottom > scrollTop + window.innerHeight + 1) return;
+            if (direction < 0 && scrollTop > currentTop + 1) return;
+
+            // PC에서는 브라우저의 기본 스크롤 방지
+            e.preventDefault();
             const nextIndex = currentIndex + direction;
 
             // 첫 섹션 위 또는 마지막 섹션 아래에서는 이동하지 않음
@@ -134,6 +147,30 @@ $(function () {
             }
         });
     });
+
+    // 진행 중인 프로젝트 좌우 넘기기
+    const $track = $('#page04-2 .cards-container');
+    const $prev = $('#page04-2 .slider-btn.prev');
+    const $next = $('#page04-2 .slider-btn.next');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function updateSliderButtons() {
+        const track = $track[0];
+        $prev.prop('disabled', track.scrollLeft <= 1);
+        $next.prop('disabled', track.scrollLeft + track.clientWidth >= track.scrollWidth - 1);
+    }
+
+    $('#page04-2 .slider-btn').on('click', function () {
+        const step = $track.find('.card').outerWidth() + parseFloat($track.css('column-gap'));
+        $track[0].scrollBy({
+            left: $(this).hasClass('next') ? step : -step,
+            behavior: reduceMotion ? 'auto' : 'smooth'
+        });
+    });
+
+    $track.on('scroll', updateSliderButtons);
+    $(window).on('resize', updateSliderButtons);
+    updateSliderButtons();
 
     // 3. 디자인 작업물 크게 보기
     const mockups = [];
