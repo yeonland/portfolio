@@ -1,6 +1,5 @@
 $(function () {
     // 1. 스크롤 이벤트
-    let isScrolling = false;
     const speed = 600;
 
     // GNB / 로고 클릭 시 이동
@@ -35,82 +34,6 @@ $(function () {
     });
 
     headerShowHide();
-
-    // 마우스 휠 원페이지 스크롤
-    window.addEventListener(
-        'wheel',
-        function (e) {
-            const isMobileOrTablet =
-                window.innerWidth <= 1024 ||
-                window.matchMedia('(pointer: coarse)').matches;
-
-            // 모바일·태블릿에서는 기본 스크롤 사용
-            if (isMobileOrTablet) return;
-
-            // 작업물 창이 열려 있으면 창 안에서 기본 스크롤 사용
-            if (!$('#designModal').prop('hidden')) return;
-
-            // 가로 휠(트랙패드 좌우 밀기)은 프로젝트 카드 넘기기에 사용
-            if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
-
-            // 스크롤 애니메이션 중이면 추가 실행 방지
-            if (isScrolling) {
-                e.preventDefault();
-                return;
-            }
-
-            const $sections = $('section');
-            const scrollTop = $(window).scrollTop();
-
-            let currentIndex = 0;
-
-            $sections.each(function (index) {
-                const sectionTop = $(this).offset().top;
-
-                if (scrollTop >= sectionTop - 100) {
-                    currentIndex = index;
-                }
-            });
-
-            // 네이티브 wheel 이벤트:
-            // deltaY가 양수면 아래, 음수면 위
-            const direction = e.deltaY > 0 ? 1 : -1;
-
-            // 화면보다 긴 섹션은 끝까지 본 뒤에 다음 섹션으로 넘김 (창 높이가 낮을 때 아래 내용이 잘리지 않게)
-            const $current = $sections.eq(currentIndex);
-            const currentTop = $current.offset().top;
-            const currentBottom = currentTop + $current.outerHeight();
-            if (direction > 0 && currentBottom > scrollTop + window.innerHeight + 1) return;
-            if (direction < 0 && scrollTop > currentTop + 1) return;
-
-            // PC에서는 브라우저의 기본 스크롤 방지
-            e.preventDefault();
-            const nextIndex = currentIndex + direction;
-
-            // 첫 섹션 위 또는 마지막 섹션 아래에서는 이동하지 않음
-            if (nextIndex < 0 || nextIndex >= $sections.length) {
-                return;
-            }
-
-            const $target = $sections.eq(nextIndex);
-            const destination =
-                nextIndex === 0 ? 0 : $target.offset().top;
-
-            isScrolling = true;
-
-            // 진행 중인 스크롤 애니메이션 중단
-            $('html, body').stop(true, false);
-
-            $.scrollTo(destination, speed, {
-                axis: 'y',
-
-                onAfter: function () {
-                    isScrolling = false;
-                }
-            });
-        },
-        { passive: false }
-    );
 
     // 2. 스크롤 시 메뉴 색상 자동 변경
     $(window).on('scroll', function () {
