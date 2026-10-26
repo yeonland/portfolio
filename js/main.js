@@ -45,8 +45,8 @@ $(function () {
             $gnbLinks.each(function () {
                 const img = $(this).find('img');
                 img.attr('src', img.attr('src').replace('-on', '-off'));
-                $(this).find('span').css('color', '#999');
             });
+            $gnbLinks.removeClass('is-active').removeAttr('aria-current');
             return;
         }
 
@@ -62,11 +62,11 @@ $(function () {
                 $gnbLinks.each(function () {
                     const img = $(this).find('img');
                     img.attr('src', img.attr('src').replace('-on', '-off'));
-                    $(this).find('span').css('color', '#999');
                 });
                 const $current = $gnbLinks.eq(index);
                 $current.find('img').attr('src', $current.find('img').attr('src').replace('-off', '-on'));
-                $current.find('span').css('color', '#F4E53B');
+                $gnbLinks.removeClass('is-active').removeAttr('aria-current');
+                $current.addClass('is-active').attr('aria-current', 'true');
             }
         });
     });
