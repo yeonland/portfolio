@@ -1396,10 +1396,18 @@ body.modal-open {overflow: hidden;}
 }
 
 /* 진행 중인 프로젝트: 태블릿 2장 · PC 3장씩 보이고 옆으로 넘김 (모바일은 세로로 쌓음) */
-.slider-nav {display: none;}
+.slider-btn,
+.slider-status {display: none;}
 
 @media screen and (min-width: 601px) {
+    #page04-2 .slider {
+        position: relative;
+        width: min(calc(100% - 64px), var(--content-width));
+        margin: 0 auto;
+    }
+
     #page04-2 .cards-container {
+        width: 100%;
         grid-template-columns: none;
         grid-auto-flow: column;
         grid-auto-columns: calc((100% - var(--gutter) * 2) / 3);
@@ -1416,36 +1424,60 @@ body.modal-open {overflow: hidden;}
 
     #page04-2 .card {scroll-snap-align: start;}
 
-    .slider-nav {
-        display: flex;
-        justify-content: center;
-        gap: 12px;
-        margin-top: 20px;
-    }
-
+    /* 화살표는 카드 양옆 가운데, 카드 가장자리에 반쯤 걸치게 */
     .slider-btn {
+        display: block;
+        position: absolute;
+        top: 50%;
+        z-index: 1;
         width: 44px;
         height: 44px;
         border: 1px solid #F4E53B;
         border-radius: 50%;
-        background: none;
+        background: #1A1A1A;
         color: #F4E53B;
         font-size: 16px;
         cursor: pointer;
         transition: background-color 0.3s, color 0.3s;
     }
 
-    .slider-btn:hover:not(:disabled) {background-color: #F4E53B; color: #1A1A1A;}
+    .slider-btn.prev {left: 0; transform: translate(-50%, -50%);}
+    .slider-btn.next {right: 0; transform: translate(50%, -50%);}
 
-    .slider-btn:disabled {opacity: 0.3; cursor: default;}
+    .slider-btn:hover,
+    .slider-pause:hover {background-color: #F4E53B; color: #1A1A1A;}
 
-    .slider-btn:focus-visible {
+    .slider-status {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 16px;
+    }
+
+    .slider-count {font-size: 16px; color: #EFEFEF;}
+
+    .slider-pause {
+        width: 44px;
+        height: 44px;
+        border: 0;
+        border-radius: 50%;
+        background: none;
+        color: #EFEFEF;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    .slider-btn:focus-visible,
+    .slider-pause:focus-visible {
         outline: 3px solid #F4E53B;
         outline-offset: 2px;
     }
 }
 
 @media screen and (min-width: 601px) and (max-width: 1024px) {
+    #page04-2 .slider {width: min(100%, 840px);}
+
     #page04-2 .cards-container {grid-auto-columns: calc((100% - 28px) / 2);}
 
     #page04-2 .card:last-child:nth-child(odd) {
