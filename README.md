@@ -11,6 +11,7 @@
 | **소하** (개인) | 감성 디지털 문구 쇼핑몰 웹사이트 | HTML · CSS · JavaScript · jQuery | [사이트](https://yeonland.github.io/portfolio/project_01/) · [기획서](./file/project_plan_01.pdf) |
 | **한화문물연구원** (개인) | 문화재 연구기관 리뉴얼 반응형 웹사이트 | HTML · CSS · JavaScript · jQuery | [사이트](https://yeonland.github.io/portfolio/project_02/) · [설명](./project_02/README.md) |
 | **전시갈래** (개발 중) | 공공문화정보 API 기반 전시 탐색 서비스 | React · Vite · Vercel Functions | [사이트](https://jeonsi-gallae.vercel.app/) · [GitHub](https://github.com/yeonland/jeonsi-gallae) |
+| **첫직관** (개발 중) | 경기장에 처음 가는 사람을 위한 직관 가이드 웹앱 | Figma · HTML · CSS · JavaScript | [사이트](https://yeonland.github.io/first-gikgwan/) · [GitHub](https://github.com/yeonland/first-gikgwan) |
 | **핀잇 PinIt** (개발 중) | 디자인 탐색부터 예약 문의까지 이어지는 모바일 앱 | Flutter · Dart · Vercel | [사이트](https://pinit-beta.vercel.app/) · [GitHub](https://github.com/yeonland/portfolio/tree/main/pinit_app) |
 
 ### 소하 — 디지털 문구 쇼핑몰
