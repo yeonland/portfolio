@@ -1339,7 +1339,7 @@ body.modal-open {overflow: hidden;}
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 80px;
+    gap: 120px;
 }
 
 .project {
@@ -1365,13 +1365,26 @@ body.modal-open {overflow: hidden;}
 
 .project:hover .project-thumb img {transform: scale(1.04);}
 
+.project {--project-gap: 40px;}   /* 이미지와 글 사이 좌우 간격 */
+
+/* 글 상자는 내용 폭만큼만 차지하고 이미지 쪽에 붙음 */
 .project-body {
-    grid-column: 8 / span 5;
+    grid-column: 7 / span 6;
+    justify-self: start;
+    width: fit-content;
+    max-width: 100%;
+    padding-left: calc(var(--project-gap) - var(--gutter));
     text-align: left;
 }
 
 .project:nth-child(even) .project-thumb {grid-column: 7 / span 6; grid-row: 1;}
-.project:nth-child(even) .project-body {grid-column: 1 / span 5; grid-row: 1;}
+.project:nth-child(even) .project-body {
+    grid-column: 1 / span 6;
+    grid-row: 1;
+    justify-self: end;
+    padding-left: 0;
+    padding-right: calc(var(--project-gap) - var(--gutter));
+}
 
 .project-num {
     display: block;
@@ -1438,6 +1451,10 @@ body.modal-open {overflow: hidden;}
 .js .project:nth-child(even) .project-thumb.reveal {transform: translateX(60px);}
 .js .project .project-body.reveal {transition-delay: 0.15s;}
 
+/* 위의 시작 위치보다 우선해야 이미지가 제자리로 돌아옴 */
+.js .project .project-thumb.reveal.is-in,
+.js .project:nth-child(even) .project-thumb.reveal.is-in {transform: none;}
+
 .js .reveal.is-in {opacity: 1; transform: none;}
 
 @media (prefers-reduced-motion: reduce) {
@@ -1450,10 +1467,7 @@ body.modal-open {overflow: hidden;}
 @media screen and (min-width: 601px) and (max-width: 1024px) {
     .project-list {width: min(100%, 840px); gap: 96px;}
 
-    .project-body,
-    .project:nth-child(even) .project-body {grid-column: span 6;}
-
-    .project:nth-child(even) .project-body {grid-column: 1 / span 6;}
+    .project {--project-gap: 24px;}
 
     .project .card-title {font-size: 24px;}
 }
@@ -1464,7 +1478,8 @@ body.modal-open {overflow: hidden;}
 
     .project {display: block;}
 
-    .project-body {margin-top: 20px;}
+    .project-body,
+    .project:nth-child(even) .project-body {width: auto; margin-top: 20px; padding: 0;}
 
     .project .card-title {font-size: 22px;}
 
