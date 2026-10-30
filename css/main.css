@@ -274,13 +274,15 @@ header.header-visible {transform: translate(0, -50%); opacity: 1;}
     margin-bottom: 24px;
 }
 
+/* 태그 4개를 2개씩 두 줄로 */
 .interest-tags {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
     gap: 10px;
 }
 
 .interest-tags li {
+    text-align: center;
     padding: 8px 14px;
     border: 1px solid rgba(244, 229, 59, 0.5);
     border-radius: 999px;
