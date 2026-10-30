@@ -1367,7 +1367,7 @@ body.modal-open {overflow: hidden;}
 
 .project {--project-gap: 40px;}   /* 이미지와 글 사이 좌우 간격 */
 
-/* 글 상자는 내용 폭만큼만 차지하고 이미지 쪽에 붙음 */
+/* 이미지 오른쪽 글: 이미지에 붙임 / 이미지 왼쪽 글: 위 사진의 왼쪽 끝 선에 맞춤 */
 .project-body {
     grid-column: 7 / span 6;
     justify-self: start;
@@ -1381,7 +1381,7 @@ body.modal-open {overflow: hidden;}
 .project:nth-child(even) .project-body {
     grid-column: 1 / span 6;
     grid-row: 1;
-    justify-self: end;
+    justify-self: start;
     padding-left: 0;
     padding-right: calc(var(--project-gap) - var(--gutter));
 }
@@ -1520,23 +1520,65 @@ section,
     height: var(--size);
     border-radius: 50%;
     background: #FDFBE9;
-    opacity: 0.23;
-    box-shadow: 0 0 5px rgba(244, 229, 59, 0.27);
+    box-shadow: 0 0 4px rgba(253, 251, 233, 0.5);
     animation: site-star-twinkle var(--duration) ease-in-out var(--delay) infinite alternate;
 }
 
-.site-star:nth-child(9n) {
-    background: #F4E53B;
-    box-shadow: 0 0 7px rgba(244, 229, 59, 0.5);
+/* 밝은 별: 조금 크고 노란 빛 */
+.site-star.is-bright {
+    background: #FFF8C4;
+    box-shadow: 0 0 6px 1px rgba(244, 229, 59, 0.6);
 }
 
+/* ✦ 반짝이 별: 커졌다 작아지며 살짝 회전 */
+.site-star.is-sparkle {
+    width: auto;
+    height: auto;
+    background: none;
+    box-shadow: none;
+    font-size: var(--size);
+    line-height: 1;
+    color: #FDFBE9;
+    text-shadow: 0 0 6px rgba(244, 229, 59, 0.9);
+    animation-name: site-star-sparkle;
+}
+.site-star.is-sparkle::before {content: '✦';}
+
 @keyframes site-star-twinkle {
-    from {opacity: 0.13; transform: scale(0.75);}
-    to {opacity: 0.67; transform: scale(1.2);}
+    from {opacity: 0.15; transform: scale(0.6);}
+    to {opacity: 1; transform: scale(1.15);}
+}
+
+@keyframes site-star-sparkle {
+    0%, 30% {opacity: 0; transform: scale(0.3) rotate(0deg);}
+    65% {opacity: 1; transform: scale(1) rotate(45deg);}
+    100% {opacity: 0.2; transform: scale(0.5) rotate(90deg);}
+}
+
+/* 별똥별: 9초마다 한 번, 오른쪽 위에서 왼쪽 아래로 */
+.site-shooting-star {
+    position: absolute;
+    top: 12%;
+    left: 78%;
+    width: 140px;
+    height: 1.5px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #FDFBE9, rgba(253, 251, 233, 0));
+    opacity: 0;
+    transform: rotate(-35deg);
+    transform-origin: left center;
+    animation: site-shooting 9s ease-out 2s infinite;
+}
+
+@keyframes site-shooting {
+    0% {opacity: 0; transform: rotate(-35deg) translateX(0);}
+    2% {opacity: 1;}
+    10% {opacity: 0; transform: rotate(-35deg) translateX(-480px);}
+    100% {opacity: 0; transform: rotate(-35deg) translateX(-480px);}
 }
 
 /* 달(인트로 원) 안은 배경색으로 채워져 있어 별이 비치지 않음 (.main-tit background-color) */
 
 @media (prefers-reduced-motion: reduce) {
-    .site-star {animation: none; opacity: 0.35;}
+    .site-star {animation: none; opacity: 0.5;}
 }
