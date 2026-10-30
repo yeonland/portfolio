@@ -1,0 +1,200 @@
+/* Portfolio / 기술 역량 - 기존 css/main.css 뒤에 로드 */
+#page03.skills-section {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-height: 100svh;
+    height: auto;
+    padding: 110px 28px 100px;
+    background: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#page03 .skills-title,
+#page03 .skills-subtitle,
+#page03 .skills-instruction,
+#page03 .skills-grid { position: relative; z-index: 1; }
+
+#page03 .skills-title { color: #f4e53b; margin-bottom: 10px; }
+#page03 .skills-subtitle { color: #efefef; margin-bottom: 5px; }
+#page03 .skills-instruction {
+    margin: 0 0 34px;
+    color: #aba9a4;
+    font-size: 13px;
+    letter-spacing: .02em;
+    text-align: center;
+}
+#page03 .skills-instruction i { color: #f4e53b; font-size: 9px; margin-left: 5px; }
+
+/* 레이아웃: 데스크톱·태블릿 2x2, 모바일 1열 */
+#page03 .skills-grid {
+    width: min(100%, 980px);
+    max-width: 980px;
+    padding-inline: 0;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 18px;
+}
+#page03 .skill-category {
+    min-width: 0;
+    width: 100%;
+    position: relative;
+    border: 1px solid rgba(244,229,59,.20);
+    border-radius: 16px;
+    overflow: hidden;
+    background: rgba(34,34,35,.95);
+    box-shadow: 0 8px 28px rgba(0,0,0,.10);
+    /* main.css의 스크롤 등장(.reveal: opacity·transform)도 함께 유지 */
+    transition: opacity .8s ease var(--reveal-delay, 0s), transform .8s ease var(--reveal-delay, 0s),
+                border-color .25s ease, box-shadow .25s ease, background .25s ease;
+}
+#page03 .skill-category:nth-child(2) {--reveal-delay: .15s;}
+#page03 .skill-category:nth-child(3) {--reveal-delay: .3s;}
+#page03 .skill-category:nth-child(4) {--reveal-delay: .45s;}
+#page03 .skill-category:hover,
+#page03 .skill-category:focus-within {
+    border-color: rgba(244,229,59,.68);
+    box-shadow: 0 0 24px rgba(244,229,59,.07);
+}
+#page03 .skill-category.is-open {
+    background: rgba(42,42,39,.98);
+    border-color: rgba(244,229,59,.55);
+}
+#page03 .skill-heading { margin: 0; padding: 0; font-size: inherit; }
+#page03 .skill-toggle {
+    font: inherit;
+    width: 100%;
+    min-height: 100px;
+    border: 0;
+    border-radius: 0;
+    padding: 22px 24px;
+    background: transparent;
+    color: #f4e53b;
+    display: grid;
+    grid-template-columns: 36px minmax(0,1fr) 20px;
+    gap: 12px;
+    align-items: center;
+    text-align: left;
+    cursor: pointer;
+}
+#page03 .skill-toggle:focus-visible {
+    outline: 2px solid #f4e53b;
+    outline-offset: -4px;
+}
+#page03 .skill-icon {
+    font-size: 22px;
+    color: #f4e53b;
+    display: grid;
+    place-items: center;
+}
+#page03 .skill-label { display: grid; gap: 6px; min-width: 0; }
+#page03 .skill-name { color: #f4e53b; font-size: clamp(17px,2vw,21px); line-height: 1.25; word-break: keep-all; }
+#page03 .skill-summary { color: #ccc9c4; font-size: 13px; line-height: 1.45; word-break: keep-all; }
+#page03 .skill-chevron { color: #f4e53b; font-size: 13px; transition: transform .30s ease; }
+#page03 .skill-category.is-open .skill-chevron { transform: rotate(180deg); }
+
+/* grid 0fr -> 1fr 로 높이를 부드럽게 열고 닫음 (JS가 없으면 모두 펼친 채로 보임) */
+#page03 .skill-panel {display: grid; grid-template-rows: 1fr;}
+.js #page03 .skill-panel {
+    grid-template-rows: 0fr;
+    opacity: 0;
+    visibility: hidden;
+    transition: grid-template-rows .36s ease, opacity .23s ease, visibility .36s;
+}
+.js #page03 .skill-category.is-open .skill-panel {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    visibility: visible;
+}
+#page03 .skill-panel-inner { min-height: 0; overflow: hidden; }
+#page03 .skill-panel-inner ul {
+    padding: 0 24px 22px 72px;
+    border: 0;
+    margin: 0;
+}
+#page03 .skill-panel-inner ul::before {
+    content: '';
+    display: block;
+    height: 1px;
+    background: rgba(244,229,59,.16);
+    margin-bottom: 16px;
+}
+#page03 .skill-category ul li {
+    color: #eae9e5;
+    margin: 0 0 13px;
+    line-height: 1.55;
+    font-size: 14px;
+    word-break: keep-all;
+}
+#page03 .skill-category ul li:last-child { margin-bottom: 0; }
+#page03 .skill-from { color: #a6a39d; margin-top: 4px; font-size: 12px; }
+
+/* 장식 별: JS로 생성한 작은 별. 버튼을 가리지 않음 */
+#page03 .skills-stars {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+#page03 .skills-star {
+    position: absolute;
+    top: var(--y);
+    left: var(--x);
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background: #fdfbe9;
+    opacity: .23;
+    box-shadow: 0 0 5px rgba(244,229,59,.27);
+    animation: skill-star-twinkle var(--duration) ease-in-out var(--delay) infinite alternate;
+}
+#page03 .skills-star:nth-child(9n) {
+    background: #f4e53b;
+    box-shadow: 0 0 7px rgba(244,229,59,.5);
+}
+@keyframes skill-star-twinkle {
+    from { opacity: .13; transform: scale(.75); }
+    to { opacity: .67; transform: scale(1.20); }
+}
+/* 마우스가 올라오면 카드 우측 상단 별이 살짝 나타남 */
+#page03 .skill-category::after {
+    content: '✦';
+    position: absolute;
+    right: 14px;
+    top: 5px;
+    pointer-events: none;
+    color: #f4e53b;
+    font-size: 12px;
+    opacity: 0;
+    transform: scale(.6) rotate(-20deg);
+    transition: opacity .25s ease, transform .25s ease;
+}
+#page03 .skill-category:hover::after,
+#page03 .skill-category:focus-within::after {
+    opacity: .8;
+    transform: scale(1.1) rotate(20deg);
+}
+
+@media screen and (max-width: 600px) {
+    #page03.skills-section { display: block; padding: 88px 20px 86px; }
+    #page03 .skills-instruction { margin-bottom: 28px; }
+    #page03 .skills-grid { grid-template-columns: minmax(0,1fr); gap: 14px; }
+    #page03 .skill-toggle { min-height: 90px; padding: 19px 18px; grid-template-columns: 30px minmax(0,1fr) 18px; gap: 9px; }
+    #page03 .skill-icon { font-size: 20px; }
+    #page03 .skill-name { font-size: 18px; }
+    #page03 .skill-panel-inner ul { padding: 0 18px 20px 57px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #page03 .skills-star { animation: none; opacity: .35; }
+    #page03 .skill-category,
+    .js #page03 .skill-panel,
+    #page03 .skill-chevron,
+    #page03 .skill-category::after { transition: none; }
+}

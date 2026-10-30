@@ -11,12 +11,14 @@
     <!-- Font & Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/skills-accordion.css">
 
     <!-- jQuery & Plugins -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.3/jquery.scrollTo.min.js"></script>
     <script>document.documentElement.classList.add("js");</script>
     <script src="./js/main.js" defer></script>
+    <script src="./js/skills-accordion.js" defer></script>
 </head>
 <body>
 
@@ -156,42 +158,91 @@
 
         <!-- skill page -->
         <section id="page03" class="skills-section">
+            <div class="skills-stars" aria-hidden="true"></div>
             <h2 class="skills-title">기술 역량</h2>
             <p class="skills-subtitle">웹 구현 경험과 활용 도구</p>
+            <p class="skills-instruction">별을 따라, 더 자세히 알아보기 <i class="fa-solid fa-star" aria-hidden="true"></i></p>
 
             <div class="skills-grid">
-                <div class="skill-category">
-                    <h3><i class="fa-solid fa-pen-nib" aria-hidden="true"></i> 디자인</h3>
-                    <ul>
-                        <li>Figma 색·글자 스타일을 CSS 변수로 옮김<span class="skill-from">첫직관</span></li>
-                        <li>Photoshop 메인 비주얼·배너·목업 합성<span class="skill-from">소하</span></li>
-                        <li>Illustrator 캘린더·속지 그래픽<span class="skill-from">개인 작업</span></li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3><i class="fa-brands fa-html5" aria-hidden="true"></i> 퍼블리싱</h3>
-                    <ul>
-                        <li>시맨틱 마크업, Flex·Grid 반응형<span class="skill-from">한화문물연구원</span></li>
-                        <li>Sass 변수로 색·브레이크포인트 정리<span class="skill-from">소하</span></li>
-                        <li>접근성: alt 구분, 44px 터치 영역, ARIA<span class="skill-from">근무 인수인계 웹앱</span></li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3><i class="fa-brands fa-js" aria-hidden="true"></i> 인터랙션</h3>
-                    <ul>
-                        <li>jQuery 탭·hover 패널·스크롤 이동<span class="skill-from">소하</span></li>
-                        <li>Swiper 슬라이드, 고정 헤더<span class="skill-from">소하 · 한화문물연구원</span></li>
-                        <li>CSS 애니메이션, 움직임 줄이기 대응<span class="skill-from">첫직관 · 이 사이트</span></li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> AI · 작업 도구</h3>
-                    <ul>
-                        <li>기능을 나눠 Claude Code·ChatGPT에 요청하고 직접 검수<span class="skill-from">근무 인수인계 웹앱 · 전시갈래</span></li>
-                        <li>Git · GitHub Pages · Vercel 배포<span class="skill-from">전 프로젝트</span></li>
-                        <li>DevTools로 반응형·오류 검수<span class="skill-from">전 프로젝트</span></li>
-                    </ul>
-                </div>
+                <article class="skill-category is-open">
+                    <h3 class="skill-heading">
+                        <button type="button" class="skill-toggle" id="skill-toggle-design" aria-controls="skill-panel-design" aria-expanded="true">
+                            <span class="skill-icon"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i></span>
+                            <span class="skill-label">
+                                <span class="skill-name">디자인</span>
+                                <span class="skill-summary">Figma · Photoshop · Illustrator</span>
+                            </span>
+                            <span class="skill-chevron"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></span>
+                        </button>
+                    </h3>
+                    <div id="skill-panel-design" class="skill-panel" role="region" aria-labelledby="skill-toggle-design">
+                        <div class="skill-panel-inner"><ul>
+                            <li>Figma 색·글자 스타일을 CSS 변수로 옮김<span class="skill-from">첫직관</span></li>
+                            <li>Photoshop 메인 비주얼·배너·목업 합성<span class="skill-from">소하</span></li>
+                            <li>Illustrator 캘린더·속지 그래픽<span class="skill-from">개인 작업</span></li>
+                        </ul></div>
+                    </div>
+                </article>    <!-- skill category 1 -->
+
+                <article class="skill-category">
+                    <h3 class="skill-heading">
+                        <button type="button" class="skill-toggle" id="skill-toggle-markup" aria-controls="skill-panel-markup" aria-expanded="false">
+                            <span class="skill-icon"><i class="fa-brands fa-html5" aria-hidden="true"></i></span>
+                            <span class="skill-label">
+                                <span class="skill-name">퍼블리싱</span>
+                                <span class="skill-summary">시맨틱 마크업 · 반응형 · 접근성</span>
+                            </span>
+                            <span class="skill-chevron"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></span>
+                        </button>
+                    </h3>
+                    <div id="skill-panel-markup" class="skill-panel" role="region" aria-labelledby="skill-toggle-markup">
+                        <div class="skill-panel-inner"><ul>
+                            <li>시맨틱 마크업, Flex·Grid 반응형<span class="skill-from">한화문물연구원</span></li>
+                            <li>Sass 변수로 색·브레이크포인트 정리<span class="skill-from">소하</span></li>
+                            <li>접근성: alt 구분, 44px 터치 영역, ARIA<span class="skill-from">근무 인수인계 웹앱</span></li>
+                        </ul></div>
+                    </div>
+                </article>    <!-- skill category 2 -->
+
+                <article class="skill-category">
+                    <h3 class="skill-heading">
+                        <button type="button" class="skill-toggle" id="skill-toggle-interaction" aria-controls="skill-panel-interaction" aria-expanded="false">
+                            <span class="skill-icon"><i class="fa-brands fa-js" aria-hidden="true"></i></span>
+                            <span class="skill-label">
+                                <span class="skill-name">인터랙션</span>
+                                <span class="skill-summary">jQuery · Swiper · CSS 애니메이션</span>
+                            </span>
+                            <span class="skill-chevron"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></span>
+                        </button>
+                    </h3>
+                    <div id="skill-panel-interaction" class="skill-panel" role="region" aria-labelledby="skill-toggle-interaction">
+                        <div class="skill-panel-inner"><ul>
+                            <li>jQuery 탭·hover 패널·스크롤 이동<span class="skill-from">소하</span></li>
+                            <li>Swiper 슬라이드, 고정 헤더<span class="skill-from">소하 · 한화문물연구원</span></li>
+                            <li>CSS 애니메이션, 움직임 줄이기 대응<span class="skill-from">첫직관 · 이 사이트</span></li>
+                        </ul></div>
+                    </div>
+                </article>    <!-- skill category 3 -->
+
+                <article class="skill-category">
+                    <h3 class="skill-heading">
+                        <button type="button" class="skill-toggle" id="skill-toggle-tools" aria-controls="skill-panel-tools" aria-expanded="false">
+                            <span class="skill-icon"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i></span>
+                            <span class="skill-label">
+                                <span class="skill-name">AI · 작업 도구</span>
+                                <span class="skill-summary">AI 활용 · 배포 · 검수</span>
+                            </span>
+                            <span class="skill-chevron"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></span>
+                        </button>
+                    </h3>
+                    <div id="skill-panel-tools" class="skill-panel" role="region" aria-labelledby="skill-toggle-tools">
+                        <div class="skill-panel-inner"><ul>
+                            <li>기능을 나눠 Claude Code·ChatGPT에 요청하고 직접 검수<span class="skill-from">근무 인수인계 웹앱 · 전시갈래</span></li>
+                            <li>Git · GitHub Pages · Vercel 배포<span class="skill-from">전 프로젝트</span></li>
+                            <li>DevTools로 반응형·오류 검수<span class="skill-from">전 프로젝트</span></li>
+                        </ul></div>
+                    </div>
+                </article>    <!-- skill category 4 -->
             </div>            <!-- skills grid -->
         </section>    <!-- skill page -->
 
