@@ -6,17 +6,11 @@
     min-height: 100svh;
     height: auto;
     padding: 110px 28px 100px;
-    background: #1a1a1a;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-
-#page03 .skills-title,
-#page03 .skills-subtitle,
-#page03 .skills-instruction,
-#page03 .skills-grid { position: relative; z-index: 1; }
 
 #page03 .skills-title { color: #f4e53b; margin-bottom: 10px; }
 #page03 .skills-subtitle { color: #efefef; margin-bottom: 5px; }
@@ -134,34 +128,6 @@
 #page03 .skill-category ul li:last-child { margin-bottom: 0; }
 #page03 .skill-from { color: #a6a39d; margin-top: 4px; font-size: 12px; }
 
-/* 장식 별: JS로 생성한 작은 별. 버튼을 가리지 않음 */
-#page03 .skills-stars {
-    pointer-events: none;
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-}
-#page03 .skills-star {
-    position: absolute;
-    top: var(--y);
-    left: var(--x);
-    width: var(--size);
-    height: var(--size);
-    border-radius: 50%;
-    background: #fdfbe9;
-    opacity: .23;
-    box-shadow: 0 0 5px rgba(244,229,59,.27);
-    animation: skill-star-twinkle var(--duration) ease-in-out var(--delay) infinite alternate;
-}
-#page03 .skills-star:nth-child(9n) {
-    background: #f4e53b;
-    box-shadow: 0 0 7px rgba(244,229,59,.5);
-}
-@keyframes skill-star-twinkle {
-    from { opacity: .13; transform: scale(.75); }
-    to { opacity: .67; transform: scale(1.20); }
-}
 /* 마우스가 올라오면 카드 우측 상단 별이 살짝 나타남 */
 #page03 .skill-category::after {
     content: '✦';
@@ -192,7 +158,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-    #page03 .skills-star { animation: none; opacity: .35; }
     #page03 .skill-category,
     .js #page03 .skill-panel,
     #page03 .skill-chevron,

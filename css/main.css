@@ -1481,3 +1481,50 @@ body.modal-open {overflow: hidden;}
 .js .skill-category.reveal:nth-child(2) {transition-delay: 0.15s;}
 .js .skill-category.reveal:nth-child(3) {transition-delay: 0.3s;}
 .js .skill-category.reveal:nth-child(4) {transition-delay: 0.45s;}
+
+/****************** 별 배경 (사이트 전체) ******************/
+/* 화면에 고정된 별 위로 섹션이 지나가도록: 바탕색은 html에만, 섹션 배경은 투명 */
+html {background-color: #1A1A1A;}
+body,
+.wrap,
+section,
+.intro,
+.about-section,
+.skills-section {background-color: transparent;}
+
+.site-stars {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.site-star {
+    position: absolute;
+    top: var(--y);
+    left: var(--x);
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background: #FDFBE9;
+    opacity: 0.23;
+    box-shadow: 0 0 5px rgba(244, 229, 59, 0.27);
+    animation: site-star-twinkle var(--duration) ease-in-out var(--delay) infinite alternate;
+}
+
+.site-star:nth-child(9n) {
+    background: #F4E53B;
+    box-shadow: 0 0 7px rgba(244, 229, 59, 0.5);
+}
+
+@keyframes site-star-twinkle {
+    from {opacity: 0.13; transform: scale(0.75);}
+    to {opacity: 0.67; transform: scale(1.2);}
+}
+
+/* 달(인트로 원) 안은 배경색으로 채워져 있어 별이 비치지 않음 (.main-tit background-color) */
+
+@media (prefers-reduced-motion: reduce) {
+    .site-star {animation: none; opacity: 0.35;}
+}
