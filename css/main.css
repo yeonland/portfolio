@@ -258,7 +258,7 @@ header.header-visible {transform: translate(0, -50%); opacity: 1;}
 
 /* 오른쪽 */
 .profile-intro {
-    margin-bottom: 30px;
+    margin-bottom: 24px;
 }
 
 .profile-intro .name {
@@ -271,7 +271,7 @@ header.header-visible {transform: translate(0, -50%); opacity: 1;}
 .profile-intro .role {
     font-size: 22px;
     color: #EFEFEF;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
 }
 
 /* 태그 4개: 들어가면 한 줄, 좁으면 2개씩 두 줄 */
@@ -283,7 +283,7 @@ header.header-visible {transform: translate(0, -50%); opacity: 1;}
     gap: 8px;
 }
 
-@container (max-width: 434px) {
+@container (max-width: 418px) {
     .interest-tags {display: grid; grid-template-columns: repeat(2, max-content);}
     .interest-tags li {text-align: center;}
 }
@@ -297,7 +297,7 @@ header.header-visible {transform: translate(0, -50%); opacity: 1;}
 
 .interest-tags li {
     white-space: nowrap;
-    padding: 8px 14px;
+    padding: 8px 12px;
     border: 1px solid rgba(244, 229, 59, 0.5);
     border-radius: 999px;
     color: #F4E53B;
@@ -307,25 +307,25 @@ header.header-visible {transform: translate(0, -50%); opacity: 1;}
 .history-list {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 18px;
 }
 
 .history-item {
-    padding-bottom: 20px;
+    padding-bottom: 16px;
     border-bottom: 1px solid rgba(239, 239, 239, 0.18);
 }
 
 .history-item h4 {
     font-size: 18px;
     color: #F4E53B;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
 
 .history-item p {
     font-size: 18px;
     line-height: 1.5;
     color: #EFEFEF;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
 }
 
 .history-item span {
@@ -594,9 +594,6 @@ section {
     min-height: 100svh;
 }
 
-.features br {
-    display: none;
-}
 
 .btn {
     min-height: 44px;
@@ -1063,7 +1060,7 @@ section {
 @media screen and (min-width: 1025px) {
     #page02 {
         min-height: 100svh;
-        padding: 60px 6% 40px;
+        padding: 40px 6%;
 
         display: flex;
         flex-direction: column;
@@ -1342,7 +1339,7 @@ body.modal-open {overflow: hidden;}
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 120px;
+    gap: 80px;
 }
 
 .project {
@@ -1392,14 +1389,14 @@ body.modal-open {overflow: hidden;}
 }
 
 .project .card-desc {
-    margin-top: 8px;
+    margin-top: 4px;
     font-size: 16px;
     text-align: left;
     color: #aaa;
 }
 
 .project .project-skill {
-    margin: 16px 0;
+    margin: 10px 0 12px;
     font-size: 15px;
     text-align: left;
     color: #C9A27E;
@@ -1408,7 +1405,7 @@ body.modal-open {overflow: hidden;}
 .project .features li {
     padding: 0;
     font-size: 16px;
-    line-height: 1.7;
+    line-height: 1.6;
     color: #EFEFEF;
     word-break: keep-all;
 }
@@ -1416,7 +1413,7 @@ body.modal-open {overflow: hidden;}
 .project .btn-group {
     justify-content: flex-start;
     gap: 8px;
-    margin-top: 24px;
+    margin-top: 18px;
 }
 
 .project .btn {
