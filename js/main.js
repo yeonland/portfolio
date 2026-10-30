@@ -93,21 +93,40 @@ $(function () {
         });
     });
 
-    // 별 배경: 화면에 고정된 작은 별 (외부 라이브러리 없음)
+    // 별 배경: 화면에 고정된 별 (외부 라이브러리 없음)
     const starsHost = document.createElement('div');
     starsHost.className = 'site-stars';
     starsHost.setAttribute('aria-hidden', 'true');
-    const starCount = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 24 : 60;   // 별 개수
-    for (let i = 0; i < starCount; i++) {
-        const star = document.createElement('span');
-        star.className = 'site-star';
-        // 일정한 위치: 새로고침해도 별 배치가 같음
-        star.style.setProperty('--x', ((i * 67.37 + 13) % 100).toFixed(2) + '%');
-        star.style.setProperty('--y', ((i * 43.19 + 17) % 100).toFixed(2) + '%');
-        star.style.setProperty('--size', (1 + (i % 4) * 0.55).toFixed(2) + 'px');
-        star.style.setProperty('--duration', (2.7 + (i % 7) * 0.61).toFixed(2) + 's');   // 반짝이는 속도
-        star.style.setProperty('--delay', (-i * 0.29).toFixed(2) + 's');
-        starsHost.appendChild(star);
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // 늘 같은 배치를 만드는 난수 (새로고침해도 별 위치가 같음)
+    let seed = 7;
+    const rand = () => {
+        seed = (seed * 16807) % 2147483647;
+        return (seed - 1) / 2147483646;
+    };
+
+    // [종류, 개수] — 작은 별 · 밝은 별 · ✦ 반짝이 별
+    const starTypes = [['', reduceMotion ? 50 : 110], ['is-bright', 14], ['is-sparkle', 8]];
+    starTypes.forEach(([type, count]) => {
+        for (let i = 0; i < count; i++) {
+            const star = document.createElement('span');
+            star.className = ('site-star ' + type).trim();
+            star.style.setProperty('--x', (rand() * 100).toFixed(2) + '%');
+            star.style.setProperty('--y', (rand() * 100).toFixed(2) + '%');
+            star.style.setProperty('--size', type === 'is-sparkle' ? (10 + rand() * 8).toFixed(1) + 'px'
+                : type === 'is-bright' ? (2.4 + rand()).toFixed(1) + 'px' : (1 + rand() * 1.4).toFixed(1) + 'px');
+            star.style.setProperty('--duration', (2 + rand() * 3).toFixed(2) + 's');   // 반짝이는 속도
+            star.style.setProperty('--delay', (-rand() * 5).toFixed(2) + 's');
+            starsHost.appendChild(star);
+        }
+    });
+
+    // 가끔 지나가는 별똥별
+    if (!reduceMotion) {
+        const shooting = document.createElement('span');
+        shooting.className = 'site-shooting-star';
+        starsHost.appendChild(shooting);
     }
     document.body.prepend(starsHost);
 
