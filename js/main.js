@@ -27,10 +27,9 @@ $(function () {
         } else {
             $('header').removeClass('header-visible').addClass('header-hidden');
         }
-        }
+    }
 
-        $(window).on('scroll resize', function () {
-        headerShowHide();
+    $(window).on('scroll resize', headerShowHide);
 
     // 첫 화면(인트로)만 원페이지 스크롤: 인트로에서 휠을 내리면 소개로, 소개 맨 위에서 올리면 인트로로 한 번에 이동
     let introMoving = false;
@@ -38,6 +37,8 @@ $(function () {
         if (window.innerWidth <= 1024 || window.matchMedia('(pointer: coarse)').matches) return;
         if (!$('#designModal').prop('hidden')) return;
         if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+        // 이동 중이거나 막 도착한 직후의 남은 휠(트랙패드 관성)은 무시
+        if (introMoving) { e.preventDefault(); return; }
 
         const introEnd = $('#page02').offset().top;
         const y = $(window).scrollTop();
@@ -46,15 +47,13 @@ $(function () {
         if (!inIntroZone) return;
 
         e.preventDefault();
-        if (introMoving) return;
         introMoving = true;
         $('html, body').stop(true, false);
         $.scrollTo(down ? introEnd : 0, speed, {
             axis: 'y',
-            onAfter: function () { introMoving = false; }
+            onAfter: function () { setTimeout(function () { introMoving = false; }, 400); }
         });
     }, { passive: false });
-    });
 
     headerShowHide();
 
