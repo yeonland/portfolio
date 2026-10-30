@@ -238,6 +238,7 @@ header.header-visible {transform: translate(0, -50%); opacity: 1;}
 }
 
 .keyword-item {
+    background-color: #1A1A1A;   /* 달처럼 안을 채워 별이 비치지 않게 */
     border: 1px solid #F4E53B;
     border-radius: 15px;
     padding: 20px;
@@ -296,6 +297,7 @@ header.header-visible {transform: translate(0, -50%); opacity: 1;}
 }
 
 .interest-tags li {
+    background-color: #1A1A1A;
     white-space: nowrap;
     padding: 8px 12px;
     border: 1px solid rgba(244, 229, 59, 0.5);
@@ -1430,7 +1432,7 @@ body.modal-open {overflow: hidden;}
 }
 
 .project .btn {
-    background: none;
+    background-color: #1A1A1A;
     border: 1px solid #F4E53B;
     color: #F4E53B;
 }
@@ -1555,26 +1557,16 @@ section,
     100% {opacity: 0.2; transform: scale(0.5) rotate(90deg);}
 }
 
-/* 별똥별: 9초마다 한 번, 오른쪽 위에서 왼쪽 아래로 */
+/* 별똥별: JS가 위치·방향을 정해 가끔 하나씩 만들고, 다 떨어지면 지움 */
 .site-shooting-star {
     position: absolute;
-    top: 12%;
-    left: 78%;
-    width: 140px;
+    width: var(--length, 140px);
     height: 1.5px;
     border-radius: 999px;
-    background: linear-gradient(90deg, #FDFBE9, rgba(253, 251, 233, 0));
+    background: linear-gradient(90deg, rgba(253, 251, 233, 0), #FDFBE9);   /* 오른쪽 끝이 머리 */
+    box-shadow: 0 0 6px rgba(244, 229, 59, 0.5);
+    transform-origin: right center;
     opacity: 0;
-    transform: rotate(-35deg);
-    transform-origin: left center;
-    animation: site-shooting 9s ease-out 2s infinite;
-}
-
-@keyframes site-shooting {
-    0% {opacity: 0; transform: rotate(-35deg) translateX(0);}
-    2% {opacity: 1;}
-    10% {opacity: 0; transform: rotate(-35deg) translateX(-480px);}
-    100% {opacity: 0; transform: rotate(-35deg) translateX(-480px);}
 }
 
 /* 달(인트로 원) 안은 배경색으로 채워져 있어 별이 비치지 않음 (.main-tit background-color) */

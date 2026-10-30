@@ -122,13 +122,32 @@ $(function () {
         }
     });
 
-    // 가끔 지나가는 별똥별
-    if (!reduceMotion) {
-        const shooting = document.createElement('span');
-        shooting.className = 'site-shooting-star';
-        starsHost.appendChild(shooting);
-    }
     document.body.prepend(starsHost);
+
+    // 별똥별: 3~8초마다 화면 위쪽 아무 곳에서, 왼쪽 아래나 오른쪽 아래로 떨어짐
+    function shootStar() {
+        if (!document.hidden) {
+            const star = document.createElement('span');
+            star.className = 'site-shooting-star';
+            const toRight = Math.random() < 0.5;
+            const angle = toRight ? 20 + Math.random() * 40 : 120 + Math.random() * 40;   // 떨어지는 방향(도)
+            const distance = 300 + Math.random() * 350;   // 떨어지는 거리(px)
+            star.style.left = (10 + Math.random() * 80) + '%';
+            star.style.top = (Math.random() * 45) + '%';
+            star.style.setProperty('--length', (90 + Math.random() * 90) + 'px');
+            starsHost.appendChild(star);
+
+            // 머리(오른쪽 끝)를 기준점으로 방향을 돌린 뒤 그 방향으로 이동
+            const turn = `translateX(-100%) rotate(${angle}deg)`;
+            star.animate([
+                {opacity: 0, transform: `${turn} translateX(0)`},
+                {opacity: 1, offset: 0.15},
+                {opacity: 0, transform: `${turn} translateX(${distance}px)`}
+            ], {duration: 900 + Math.random() * 600, easing: 'ease-out'}).onfinish = () => star.remove();
+        }
+        setTimeout(shootStar, 3000 + Math.random() * 5000);   // 다음 별똥별까지 기다리는 시간
+    }
+    if (!reduceMotion) setTimeout(shootStar, 1500);
 
     // 내리면 나타나는 효과: 화면에 들어온 요소에 .is-in을 한 번만 붙임
     $('.about-left, .about-right, .skills-title, .skill-category, .design-subtitle, .design-grid, .contact-inner').addClass('reveal');
