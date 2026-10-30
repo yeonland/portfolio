@@ -20,26 +20,4 @@ $(function () {
         $cards.each(function () { setOpen($(this), false); });
         if (nextOpen) setOpen($card, true);
     });
-
-    // 가벼운 별 배경 (외부 라이브러리 불필요)
-    const starsHost = $section.find('.skills-stars')[0];
-    if (starsHost && !starsHost.children.length) {
-        const fragment = document.createDocumentFragment();
-        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const count = reduceMotion ? 16 : 42;
-        for (let i = 0; i < count; i++) {
-            const star = document.createElement('span');
-            star.className = 'skills-star';
-            // 일정한 위치: 페이지 재진입 시 별이 갑자기 재배치되지 않음
-            const x = (i * 67.37 + 13) % 100;
-            const y = (i * 43.19 + 17) % 100;
-            star.style.setProperty('--x', x.toFixed(2) + '%');
-            star.style.setProperty('--y', y.toFixed(2) + '%');
-            star.style.setProperty('--size', (1 + (i % 4) * .55).toFixed(2) + 'px');
-            star.style.setProperty('--duration', (2.7 + (i % 7) * .61).toFixed(2) + 's');
-            star.style.setProperty('--delay', (-i * .29).toFixed(2) + 's');
-            fragment.appendChild(star);
-        }
-        starsHost.appendChild(fragment);
-    }
 });
