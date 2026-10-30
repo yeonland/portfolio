@@ -27,10 +27,9 @@ $(function () {
         } else {
             $('header').removeClass('header-visible').addClass('header-hidden');
         }
-        }
+    }
 
-        $(window).on('scroll resize', function () {
-        headerShowHide();
+    $(window).on('scroll resize', headerShowHide);
 
     // 첫 화면(인트로)만 원페이지 스크롤: 인트로에서 휠을 내리면 소개로, 소개 맨 위에서 올리면 인트로로 한 번에 이동
     let introMoving = false;
@@ -38,6 +37,8 @@ $(function () {
         if (window.innerWidth <= 1024 || window.matchMedia('(pointer: coarse)').matches) return;
         if (!$('#designModal').prop('hidden')) return;
         if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+        // 이동 중이거나 막 도착한 직후의 남은 휠(트랙패드 관성)은 무시
+        if (introMoving) { e.preventDefault(); return; }
 
         const introEnd = $('#page02').offset().top;
         const y = $(window).scrollTop();
@@ -46,15 +47,13 @@ $(function () {
         if (!inIntroZone) return;
 
         e.preventDefault();
-        if (introMoving) return;
         introMoving = true;
         $('html, body').stop(true, false);
         $.scrollTo(down ? introEnd : 0, speed, {
             axis: 'y',
-            onAfter: function () { introMoving = false; }
+            onAfter: function () { setTimeout(function () { introMoving = false; }, 400); }
         });
     }, { passive: false });
-    });
 
     headerShowHide();
 
@@ -94,6 +93,62 @@ $(function () {
         });
     });
 
+    // 별 배경: 화면에 고정된 별 (외부 라이브러리 없음)
+    const starsHost = document.createElement('div');
+    starsHost.className = 'site-stars';
+    starsHost.setAttribute('aria-hidden', 'true');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // 늘 같은 배치를 만드는 난수 (새로고침해도 별 위치가 같음)
+    let seed = 7;
+    const rand = () => {
+        seed = (seed * 16807) % 2147483647;
+        return (seed - 1) / 2147483646;
+    };
+
+    // [종류, 개수] — 작은 별 · 밝은 별 · ✦ 반짝이 별
+    const starTypes = [['', reduceMotion ? 50 : 110], ['is-bright', 14], ['is-sparkle', 8]];
+    starTypes.forEach(([type, count]) => {
+        for (let i = 0; i < count; i++) {
+            const star = document.createElement('span');
+            star.className = ('site-star ' + type).trim();
+            star.style.setProperty('--x', (rand() * 100).toFixed(2) + '%');
+            star.style.setProperty('--y', (rand() * 100).toFixed(2) + '%');
+            star.style.setProperty('--size', type === 'is-sparkle' ? (10 + rand() * 8).toFixed(1) + 'px'
+                : type === 'is-bright' ? (2.4 + rand()).toFixed(1) + 'px' : (1 + rand() * 1.4).toFixed(1) + 'px');
+            star.style.setProperty('--duration', (2 + rand() * 3).toFixed(2) + 's');   // 반짝이는 속도
+            star.style.setProperty('--delay', (-rand() * 5).toFixed(2) + 's');
+            starsHost.appendChild(star);
+        }
+    });
+
+    document.body.prepend(starsHost);
+
+    // 별똥별: 3~8초마다 화면 위쪽 아무 곳에서, 왼쪽 아래나 오른쪽 아래로 떨어짐
+    function shootStar() {
+        if (!document.hidden) {
+            const star = document.createElement('span');
+            star.className = 'site-shooting-star';
+            const toRight = Math.random() < 0.5;
+            const angle = toRight ? 20 + Math.random() * 40 : 120 + Math.random() * 40;   // 떨어지는 방향(도)
+            const distance = 300 + Math.random() * 350;   // 떨어지는 거리(px)
+            star.style.left = (10 + Math.random() * 80) + '%';
+            star.style.top = (Math.random() * 45) + '%';
+            star.style.setProperty('--length', (90 + Math.random() * 90) + 'px');
+            starsHost.appendChild(star);
+
+            // 머리(오른쪽 끝)를 기준점으로 방향을 돌린 뒤 그 방향으로 이동
+            const turn = `translateX(-100%) rotate(${angle}deg)`;
+            star.animate([
+                {opacity: 0, transform: `${turn} translateX(0)`},
+                {opacity: 1, offset: 0.15},
+                {opacity: 0, transform: `${turn} translateX(${distance}px)`}
+            ], {duration: 900 + Math.random() * 600, easing: 'ease-out'}).onfinish = () => star.remove();
+        }
+        setTimeout(shootStar, 3000 + Math.random() * 5000);   // 다음 별똥별까지 기다리는 시간
+    }
+    if (!reduceMotion) setTimeout(shootStar, 1500);
+
     // 내리면 나타나는 효과: 화면에 들어온 요소에 .is-in을 한 번만 붙임
     $('.about-left, .about-right, .skills-title, .skill-category, .design-subtitle, .design-grid, .contact-inner').addClass('reveal');
     const $reveals = $('.reveal');
@@ -112,12 +167,21 @@ $(function () {
     }
 
     // 3. 디자인 작업물 크게 보기
-    const mockups = [];
-    for (let row = 1; row <= 3; row++) {
-        for (let col = 1; col <= 4; col++) {
-            mockups.push({ src: `./project_01/img/07_${row}_${col} metapo.jpg`, alt: `소하 상품 목업 ${mockups.length + 1}` });
-        }
-    }
+    // 소하 상품 목업 (project_01/img 파일명 = 상품명)
+    const mockups = [
+        ['category_2024-diary', '2024 다이어리'],
+        ['new_undated-daily-diary', '만년형 데일리 다이어리'],
+        ['category_2024-weekly-diary', '2024 위클리 다이어리'],
+        ['new_undated-simple-diary', '만년형 심플 다이어리'],
+        ['cart_undated-work-planner', '만년 업무 플래너'],
+        ['cart_project-tracker', '프로젝트 트래커'],
+        ['new_domestic-travel-planner', '국내 여행 플래너'],
+        ['category_office-work-log', '회사생활 업무일지'],
+        ['new_bookshelf', '북쉘프'],
+        ['cart_bullet-journal', '불렛저널'],
+        ['category_movie-journal', '무비저널'],
+        ['category_drama-review', '드라마 리뷰']
+    ].map(([file, name]) => ({ src: `./project_01/img/${file}.jpg`, alt: `소하 상품 목업: ${name}` }));
 
     const galleries = {
         'soha-visual': {

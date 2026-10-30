@@ -238,6 +238,7 @@ header.header-visible {transform: translate(0, -50%); opacity: 1;}
 }
 
 .keyword-item {
+    background-color: #1A1A1A;   /* 달처럼 안을 채워 별이 비치지 않게 */
     border: 1px solid #F4E53B;
     border-radius: 15px;
     padding: 20px;
@@ -258,7 +259,7 @@ header.header-visible {transform: translate(0, -50%); opacity: 1;}
 
 /* 오른쪽 */
 .profile-intro {
-    margin-bottom: 30px;
+    margin-bottom: 24px;
 }
 
 .profile-intro .name {
@@ -271,17 +272,34 @@ header.header-visible {transform: translate(0, -50%); opacity: 1;}
 .profile-intro .role {
     font-size: 22px;
     color: #EFEFEF;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
 }
+
+/* 태그 4개: 들어가면 한 줄, 좁으면 2개씩 두 줄 */
+.profile-intro {container-type: inline-size;}
 
 .interest-tags {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    flex-wrap: nowrap;
+    gap: 8px;
+}
+
+@container (max-width: 418px) {
+    .interest-tags {display: grid; grid-template-columns: repeat(2, max-content);}
+    .interest-tags li {text-align: center;}
+}
+
+@media screen and (max-width: 600px) {
+    /* 모바일은 글자가 작아 한 줄 기준 폭도 작음 */
+    @container (min-width: 374px) {
+        .interest-tags {display: flex;}
+    }
 }
 
 .interest-tags li {
-    padding: 8px 14px;
+    background-color: #1A1A1A;
+    white-space: nowrap;
+    padding: 8px 12px;
     border: 1px solid rgba(244, 229, 59, 0.5);
     border-radius: 999px;
     color: #F4E53B;
@@ -291,25 +309,25 @@ header.header-visible {transform: translate(0, -50%); opacity: 1;}
 .history-list {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 18px;
 }
 
 .history-item {
-    padding-bottom: 20px;
+    padding-bottom: 16px;
     border-bottom: 1px solid rgba(239, 239, 239, 0.18);
 }
 
 .history-item h4 {
     font-size: 18px;
     color: #F4E53B;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
 
 .history-item p {
     font-size: 18px;
     line-height: 1.5;
     color: #EFEFEF;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
 }
 
 .history-item span {
@@ -578,9 +596,6 @@ section {
     min-height: 100svh;
 }
 
-.features br {
-    display: none;
-}
 
 .btn {
     min-height: 44px;
@@ -1047,7 +1062,7 @@ section {
 @media screen and (min-width: 1025px) {
     #page02 {
         min-height: 100svh;
-        padding: 60px 6% 40px;
+        padding: 40px 6%;
 
         display: flex;
         flex-direction: column;
@@ -1352,13 +1367,26 @@ body.modal-open {overflow: hidden;}
 
 .project:hover .project-thumb img {transform: scale(1.04);}
 
+.project {--project-gap: 40px;}   /* 이미지와 글 사이 좌우 간격 */
+
+/* 이미지 오른쪽 글: 이미지에 붙임 / 이미지 왼쪽 글: 위 사진의 왼쪽 끝 선에 맞춤 */
 .project-body {
-    grid-column: 8 / span 5;
+    grid-column: 7 / span 6;
+    justify-self: start;
+    width: fit-content;
+    max-width: 100%;
+    padding-left: calc(var(--project-gap) - var(--gutter));
     text-align: left;
 }
 
 .project:nth-child(even) .project-thumb {grid-column: 7 / span 6; grid-row: 1;}
-.project:nth-child(even) .project-body {grid-column: 1 / span 5; grid-row: 1;}
+.project:nth-child(even) .project-body {
+    grid-column: 1 / span 6;
+    grid-row: 1;
+    justify-self: start;
+    padding-left: 0;
+    padding-right: calc(var(--project-gap) - var(--gutter));
+}
 
 .project-num {
     display: block;
@@ -1376,14 +1404,14 @@ body.modal-open {overflow: hidden;}
 }
 
 .project .card-desc {
-    margin-top: 8px;
+    margin-top: 4px;
     font-size: 16px;
     text-align: left;
     color: #aaa;
 }
 
 .project .project-skill {
-    margin: 16px 0;
+    margin: 10px 0 12px;
     font-size: 15px;
     text-align: left;
     color: #C9A27E;
@@ -1392,7 +1420,7 @@ body.modal-open {overflow: hidden;}
 .project .features li {
     padding: 0;
     font-size: 16px;
-    line-height: 1.7;
+    line-height: 1.6;
     color: #EFEFEF;
     word-break: keep-all;
 }
@@ -1400,11 +1428,11 @@ body.modal-open {overflow: hidden;}
 .project .btn-group {
     justify-content: flex-start;
     gap: 8px;
-    margin-top: 24px;
+    margin-top: 18px;
 }
 
 .project .btn {
-    background: none;
+    background-color: #1A1A1A;
     border: 1px solid #F4E53B;
     color: #F4E53B;
 }
@@ -1425,6 +1453,10 @@ body.modal-open {overflow: hidden;}
 .js .project:nth-child(even) .project-thumb.reveal {transform: translateX(60px);}
 .js .project .project-body.reveal {transition-delay: 0.15s;}
 
+/* 위의 시작 위치보다 우선해야 이미지가 제자리로 돌아옴 */
+.js .project .project-thumb.reveal.is-in,
+.js .project:nth-child(even) .project-thumb.reveal.is-in {transform: none;}
+
 .js .reveal.is-in {opacity: 1; transform: none;}
 
 @media (prefers-reduced-motion: reduce) {
@@ -1437,10 +1469,7 @@ body.modal-open {overflow: hidden;}
 @media screen and (min-width: 601px) and (max-width: 1024px) {
     .project-list {width: min(100%, 840px); gap: 96px;}
 
-    .project-body,
-    .project:nth-child(even) .project-body {grid-column: span 6;}
-
-    .project:nth-child(even) .project-body {grid-column: 1 / span 6;}
+    .project {--project-gap: 24px;}
 
     .project .card-title {font-size: 24px;}
 }
@@ -1451,7 +1480,8 @@ body.modal-open {overflow: hidden;}
 
     .project {display: block;}
 
-    .project-body {margin-top: 20px;}
+    .project-body,
+    .project:nth-child(even) .project-body {width: auto; margin-top: 20px; padding: 0;}
 
     .project .card-title {font-size: 22px;}
 
@@ -1465,3 +1495,82 @@ body.modal-open {overflow: hidden;}
 .js .skill-category.reveal:nth-child(2) {transition-delay: 0.15s;}
 .js .skill-category.reveal:nth-child(3) {transition-delay: 0.3s;}
 .js .skill-category.reveal:nth-child(4) {transition-delay: 0.45s;}
+
+/****************** 별 배경 (사이트 전체) ******************/
+/* 화면에 고정된 별 위로 섹션이 지나가도록: 바탕색은 html에만, 섹션 배경은 투명 */
+html {background-color: #1A1A1A;}
+body,
+.wrap,
+section,
+.intro,
+.about-section,
+.skills-section {background-color: transparent;}
+
+.site-stars {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.site-star {
+    position: absolute;
+    top: var(--y);
+    left: var(--x);
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background: #FDFBE9;
+    box-shadow: 0 0 4px rgba(253, 251, 233, 0.5);
+    animation: site-star-twinkle var(--duration) ease-in-out var(--delay) infinite alternate;
+}
+
+/* 밝은 별: 조금 크고 노란 빛 */
+.site-star.is-bright {
+    background: #FFF8C4;
+    box-shadow: 0 0 6px 1px rgba(244, 229, 59, 0.6);
+}
+
+/* ✦ 반짝이 별: 커졌다 작아지며 살짝 회전 */
+.site-star.is-sparkle {
+    width: auto;
+    height: auto;
+    background: none;
+    box-shadow: none;
+    font-size: var(--size);
+    line-height: 1;
+    color: #FDFBE9;
+    text-shadow: 0 0 6px rgba(244, 229, 59, 0.9);
+    animation-name: site-star-sparkle;
+}
+.site-star.is-sparkle::before {content: '✦';}
+
+@keyframes site-star-twinkle {
+    from {opacity: 0.15; transform: scale(0.6);}
+    to {opacity: 1; transform: scale(1.15);}
+}
+
+@keyframes site-star-sparkle {
+    0%, 30% {opacity: 0; transform: scale(0.3) rotate(0deg);}
+    65% {opacity: 1; transform: scale(1) rotate(45deg);}
+    100% {opacity: 0.2; transform: scale(0.5) rotate(90deg);}
+}
+
+/* 별똥별: JS가 위치·방향을 정해 가끔 하나씩 만들고, 다 떨어지면 지움 */
+.site-shooting-star {
+    position: absolute;
+    width: var(--length, 140px);
+    height: 1.5px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(253, 251, 233, 0), #FDFBE9);   /* 오른쪽 끝이 머리 */
+    box-shadow: 0 0 6px rgba(244, 229, 59, 0.5);
+    transform-origin: right center;
+    opacity: 0;
+}
+
+/* 달(인트로 원) 안은 배경색으로 채워져 있어 별이 비치지 않음 (.main-tit background-color) */
+
+@media (prefers-reduced-motion: reduce) {
+    .site-star {animation: none; opacity: 0.5;}
+}
