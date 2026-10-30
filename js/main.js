@@ -129,12 +129,21 @@ $(function () {
     }
 
     // 3. 디자인 작업물 크게 보기
-    const mockups = [];
-    for (let row = 1; row <= 3; row++) {
-        for (let col = 1; col <= 4; col++) {
-            mockups.push({ src: `./project_01/img/07_${row}_${col} metapo.jpg`, alt: `소하 상품 목업 ${mockups.length + 1}` });
-        }
-    }
+    // 소하 상품 목업 (project_01/img 파일명 = 상품명)
+    const mockups = [
+        ['category_2024-diary', '2024 다이어리'],
+        ['new_undated-daily-diary', '만년형 데일리 다이어리'],
+        ['category_2024-weekly-diary', '2024 위클리 다이어리'],
+        ['new_undated-simple-diary', '만년형 심플 다이어리'],
+        ['cart_undated-work-planner', '만년 업무 플래너'],
+        ['cart_project-tracker', '프로젝트 트래커'],
+        ['new_domestic-travel-planner', '국내 여행 플래너'],
+        ['category_office-work-log', '회사생활 업무일지'],
+        ['new_bookshelf', '북쉘프'],
+        ['cart_bullet-journal', '불렛저널'],
+        ['category_movie-journal', '무비저널'],
+        ['category_drama-review', '드라마 리뷰']
+    ].map(([file, name]) => ({ src: `./project_01/img/${file}.jpg`, alt: `소하 상품 목업: ${name}` }));
 
     const galleries = {
         'soha-visual': {
