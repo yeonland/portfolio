@@ -28,6 +28,8 @@
 
 @media (max-width: $bp-sm) {
     .wrap {width: calc(100% - 32px);}
-    .search_result_box {width: 100%;}
-    .search_result_box .search {width: calc(100% - 60px);}
+    // 검색창은 .wrap 밖에 있어서 100%면 화면 끝에 붙음 → 좌우 여백 16px 확보
+    .search_result_box {width: calc(100% - 32px); display: flex; align-items: center;}
+    .search_result_box .search {flex: 1; min-width: 0; width: auto; font-size: 16px; margin: 0 12px;}
+    .search_result_box span {float: none;}
 }

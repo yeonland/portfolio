@@ -56,18 +56,37 @@
     .review .mr {margin-right: 0;}
     .review .review_box {width: auto;}
     .review .review_box .review_img {height: auto; aspect-ratio: 1;}
-    .review .review_box .review_img img {width: 100%;}
+    // 세로로 긴 사진도 정사각형 칸에 맞춰 잘라 카드 높이를 맞춤
+    .review .review_box .review_img {overflow: hidden;}
+    .review .review_box .review_img img {width: 100%; height: auto; aspect-ratio: 1; object-fit: cover;}
     .review .review_box .review_page {height: auto; overflow: hidden;}
+
+    // 메인 후기 카드와 같은 정렬: 썸네일 | 상품명 · 리뷰 수 2칸
+    .review .review_box {display: flex; flex-direction: column;}
+    .review .review_box .review_page {flex: 1;}
+    .review .review_box .review_page a {
+        display: grid; grid-template-columns: 40px minmax(0, 1fr); column-gap: 8px;
+        align-items: center; padding: 10px 8px;
+    }
+    .review .review_box .review_page div {float: none; grid-row: span 2; margin: 0;}
+    .review .review_box .review_page div img {width: 100%; height: auto;}
+    .review .review_box .review_page .review_tit {
+        padding-top: 0; font-size: 18px;
+        white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .review .review_box .review_page .review_sub {font-size: 13px;}
 }
 
 @media (max-width: $bp-md) {
     .review {grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 10px;}
     .info {padding: 0 16px;}
-    .review .review_box .review_page div {margin: 8px;}
-    .review .review_box .review_page .review_tit {font-size: 18px;}
+    .review .review_box .review_page .review_tit {font-size: 16px;}
 }
 
 @media (max-width: $bp-sm) {
     .review {width: calc(100% - 32px);}
     .sub_title {font-size: 28px;}
+    .review .review_box .review_page a {grid-template-columns: 32px minmax(0, 1fr); column-gap: 6px;}
+    .review .review_box .review_page .review_tit {font-size: 14px;}
+    .review .review_box .review_page .review_sub {font-size: 12px;}
 }
