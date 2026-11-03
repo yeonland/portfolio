@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 검색에 노출할 페이지 목록. Google Search Console > Sitemaps에 이 파일 주소를 제출 -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url><loc>https://yeonland.github.io/portfolio/project_01/index.html</loc><lastmod>2026-10-23</lastmod></url>
+    <url><loc>https://yeonland.github.io/portfolio/project_01/sub/1_brand/index.html</loc><lastmod>2026-10-23</lastmod></url>
+    <url><loc>https://yeonland.github.io/portfolio/project_01/sub/2_product/all/detail/index.html</loc><lastmod>2026-10-23</lastmod></url>
+    <url><loc>https://yeonland.github.io/portfolio/project_01/sub/2_product/all/index.html</loc><lastmod>2026-10-23</lastmod></url>
+    <url><loc>https://yeonland.github.io/portfolio/project_01/sub/2_product/diary/index.html</loc><lastmod>2026-10-23</lastmod></url>
+    <url><loc>https://yeonland.github.io/portfolio/project_01/sub/2_product/free/index.html</loc><lastmod>2026-10-23</lastmod></url>
+    <url><loc>https://yeonland.github.io/portfolio/project_01/sub/2_product/journal/index.html</loc><lastmod>2026-10-23</lastmod></url>
+    <url><loc>https://yeonland.github.io/portfolio/project_01/sub/2_product/planner/index.html</loc><lastmod>2026-10-23</lastmod></url>
+    <url><loc>https://yeonland.github.io/portfolio/project_01/sub/2_product/sticker/index.html</loc><lastmod>2026-10-23</lastmod></url>
+    <url><loc>https://yeonland.github.io/portfolio/project_01/sub/3_review/index.html</loc><lastmod>2026-10-23</lastmod></url>
+    <url><loc>https://yeonland.github.io/portfolio/project_01/sub/4_faq/index.html</loc><lastmod>2026-10-23</lastmod></url>
+    <url><loc>https://yeonland.github.io/portfolio/project_01/sub/5_notice/index.html</loc><lastmod>2026-10-23</lastmod></url>
+    <url><loc>https://yeonland.github.io/portfolio/project_01/sub/howtouse/index.html</loc><lastmod>2026-10-23</lastmod></url>
+</urlset>
