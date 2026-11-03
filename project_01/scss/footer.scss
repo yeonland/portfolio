@@ -33,7 +33,7 @@ a {text-decoration: none; color: black;}
     .footer_outer {height: auto; padding-bottom: 20px;}
     .footer_outer .footer {
         width: calc(100% - 48px); height: auto;
-        display: flex; flex-wrap: wrap; gap: 30px 40px;
+        display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px 24px;
     }
     .footer_outer .footer .mr {margin-right: 0;}
     .footer_outer .footer .footer_section,
@@ -41,9 +41,21 @@ a {text-decoration: none; color: black;}
     .footer_outer .footer .copy {width: 100%;}
 }
 
+// 4칸(300 + 195 + 405 + 195px)이 한 줄에 안 들어가는 폭부터는 들쭉날쭉하게 꺾이던 것을 2칸 그리드로 정렬
+@media (max-width: 1220px) {
+    .footer_outer .footer {
+        display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 40px;
+    }
+    .footer_outer .footer .footer_logo {height: auto;}
+    .footer_outer .footer .footer_section,
+    .footer_outer .footer .footer_brand {width: auto; height: auto;}
+    .footer_outer .footer .copy {grid-column: 1 / -1;}
+}
+
 @media (max-width: $bp-sm) {
-    .footer_outer .footer {width: calc(100% - 32px); flex-direction: column;}
-    .footer_outer .footer .footer_logo {width: auto; height: auto;}
+    .footer_outer .footer {width: calc(100% - 32px); display: flex; flex-direction: column;}
+    // 300px보다 넓어지면 아래 float 로고가 첫 줄로 올라와 버튼을 밀어내서 PC 너비 유지
+    .footer_outer .footer .footer_logo {max-width: 100%; height: auto;}
     .footer_outer .footer .footer_logo .logo,
     .footer_outer .footer .footer_logo .brand {margin: 30px 20px 0 0;}
     .footer_outer .footer .footer_brand {width: auto;}

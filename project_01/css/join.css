@@ -98,9 +98,21 @@
     font-size: 14px;
   }
   .member table tr td input[type=text],
-  .member table tr td input[type=password] {
+  .member table tr td input[type=password],
+  .member table tr td select {
+    width: 100%;
     max-width: 100%;
+    height: 36px;
+    padding: 0 8px;
     box-sizing: border-box;
+    font-size: 16px;
+  }
+  .member table tr td input.email {
+    width: calc(100% - 36px);
+    margin-top: 6px;
+  }
+  .member table tr td select {
+    margin-top: 6px;
   }
   .member table tr td .btn {
     margin: 6px 0 0;
