@@ -20,3 +20,14 @@
     display: none;
     width: 930px; background-color: $text;
 }
+/* responsive */
+@media (max-width: $bp-xl) {
+    .wrap {width: calc(100% - 48px);}
+    .search_result .search_sheet_01 {width: auto;}
+}
+
+@media (max-width: $bp-sm) {
+    .wrap {width: calc(100% - 32px);}
+    .search_result_box {width: 100%;}
+    .search_result_box .search {width: calc(100% - 60px);}
+}

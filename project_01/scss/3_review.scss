@@ -46,3 +46,28 @@
 .review .review_box .review_page .review_sub {
     font-family: "Gowun Dodum", sans-serif; color: $text;
 }
+
+/* responsive */
+@media (max-width: $bp-xl) {
+    .review {
+        width: calc(100% - 48px); height: auto; margin-bottom: 80px;
+        display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 30px 15px;
+    }
+    .review .mr {margin-right: 0;}
+    .review .review_box {width: auto;}
+    .review .review_box .review_img {height: auto; aspect-ratio: 1;}
+    .review .review_box .review_img img {width: 100%;}
+    .review .review_box .review_page {height: auto; overflow: hidden;}
+}
+
+@media (max-width: $bp-md) {
+    .review {grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 10px;}
+    .info {padding: 0 16px;}
+    .review .review_box .review_page div {margin: 8px;}
+    .review .review_box .review_page .review_tit {font-size: 18px;}
+}
+
+@media (max-width: $bp-sm) {
+    .review {width: calc(100% - 32px);}
+    .sub_title {font-size: 28px;}
+}

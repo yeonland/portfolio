@@ -136,8 +136,12 @@
 
 /* responsive */
 @media (max-width: 1280px) {
+  .sub_title {
+    width: auto;
+  }
   .brand_wrap {
     width: calc(100% - 80px);
+    height: auto;
   }
   .brand_layout {
     grid-template-columns: 1.1fr 0.9fr;

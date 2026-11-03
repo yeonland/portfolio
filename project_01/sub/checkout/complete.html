@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주문완료</title>
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+    <link rel="stylesheet" href="../../css/checkout.css">
+    <link rel="stylesheet" href="../../css/how_use_chat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- font-awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Gowun+Dodum&display=swap" rel="stylesheet">
+    <!-- font Gowun+Dodum -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.3/jquery.scrollTo.min.js"></script>
+    <script src="../../js/main.js" defer></script>
+</head>
+<body>
+    <div class="how_use_wrap">
+        <button><i class="fa-solid fa-xmark"></i></button>
+        <a href="../howtouse/index.html" target="_blank">
+            <div class="how_use_box">
+                <p class="how_use_top">사용법</p>
+                <p>알아보기</p>
+            </div>
+        </a>
+    </div>    <!-- 사용법 알아보기 -->
+
+    <input type="checkbox" id="chat_chk">
+    <section class="chat">
+        <label for="chat_chk" class="open"><div><img src="../../img/00_icon_chat.png" alt="chat_icon"></i></div></label>
+        <label for="chat_chk" class="close"><div><i class="fa-solid fa-xmark"></i></div></label>
+        <div class="chat_box">
+            <div class="brand">
+                <div class="logo_box"><img src="../../img/00_chat_logo.png" alt="logo"></div>
+                <div class="brand_intro">
+                    <p class="brand_tit">소하</p>
+                    <p>소소한 하루, 소하</p>
+                </div>
+            </div>
+            <div class="chat_first">무엇을 도와드릴까요?</div>
+            <div class="chat_txt_box">
+                <input type="text" name="chat_txt" class="chat_txt">
+            </div>
+        </div>
+    </section>
+    <!-- 실시간 채팅상담 -->
+
+    <header class="header_outer" id="header">
+        <div class="header">
+            <div class="logo">
+                <img src="../../img/00_logo.png" alt="soha_logo">
+            </div>           <!-- logo -->
+            <nav class="gnb">
+                <span><a href="../1_brand/index.html">소하는요</a></span>
+                <span class="product">
+                    <a href="../2_product/all/index.html">디지털 문구</a>
+                    <div class="product_menu">
+                        <div><a href="../2_product/diary/index.html">다이어리</a></div>
+                        <div><a href="../2_product/planner/index.html">플래너</a></div>
+                        <div><a href="../2_product/journal/index.html">저널</a></div>
+                        <div><a href="../2_product/sticker/index.html">스티커</a></div>
+                        <div><a href="../2_product/free/index.html">무료</a></div>
+                    </div>
+                </span>
+                <span><a href="../3_review/index.html">솔직후기</a></span>
+                <span><a href="../4_faq/index.html">궁금해요</a></span>
+                <span><a href="../5_notice/index.html">알립니다</a></span>
+            </nav>                    <!-- gnb -->
+            <div class="gnb_icon">
+                <div class="search_area">
+                    <button type="button" class="search_toggle" aria-label="검색창 열기">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+
+                    <form action="../search_result/index.html" method="get" class="search_box">
+                        <input 
+                        type="search" 
+                        name="search_txt" 
+                        class="search_txt" 
+                        placeholder="검색어를 입력하세요"
+                        >
+
+                        <button type="submit" class="search_submit" aria-label="검색">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </form>
+                </div>                <!-- search-area -->
+                <span class="btn_cart">
+                    <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                </span>
+                <div class="cart_box box">
+                    <p class="tit">장바구니</p>
+                    <div class="product_box">
+                        <a href="../2_product/all/detail/index.html">
+                            <div class="popup_img">
+                                <img src="../../img/cart_bullet-journal.jpg" alt="불렛저널">
+                            </div>
+                            <div class="popup_txt">
+                                <p>불렛저널</p>
+                                <p>7,900원</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_box second">
+                        <a href="../2_product/all/detail/index.html">
+                            <div class="popup_img">
+                                <img src="../../img/cart_undated-work-planner.jpg" alt="만년 업무 플래너">
+                            </div>
+                            <div class="popup_txt">
+                                <p>만년 업무 플래너</p>
+                                <p>8,900원</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_box">
+                        <a href="../2_product/all/detail/index.html">
+                            <div class="popup_img">
+                                <img src="../../img/cart_project-tracker.jpg" alt="프로젝트 트래커">
+                            </div>
+                            <div class="popup_txt">
+                                <p>프로젝트 트래커</p>
+                                <p>12,900원</p>
+                            </div>
+                        </a>
+                    </div>
+                    <button>결제하기</button>
+                </div>          <!-- cart_box -->
+                <span class="btn_recent"><a href="#"><i class="fa-solid fa-clock"></i></a></span>
+                <div class="recent_box box">
+                    <p class="tit">최근 본 상품</p>
+                    <div class="product_box">
+                        <a href="../2_product/all/detail/index.html">
+                            <div class="popup_img">
+                                <img src="../../img/recent_undated-simple-diary.jpg" alt="만년형 심플 다이어리">
+                            </div>
+                            <div class="popup_txt">
+                                <p>만년형 심플 다이어리</p>
+                                <p>8,000원</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_box second">
+                        <a href="../2_product/all/detail/index.html">
+                            <div class="popup_img">
+                                <img src="../..//img/recent_domestic-travel-planner.jpg" alt="국내여행 플래너">
+                            </div>
+                            <div class="popup_txt">
+                                <p>국내여행 플래너</p>
+                                <p>6,000원</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="product_box">
+                        <a href="../../sub/2_product/all/detail/index.html">
+                            <div class="popup_img">
+                                <img src="../../img/recent_soha-undated-weekly-planner.jpg" alt="소하 만년형 일주일 플래너">
+                            </div>
+                            <div class="popup_txt">
+                                <p>소하 만년형 일주일 플래너</p>
+                                <p>무료</p>
+                            </div>
+                        </a>
+                    </div>
+                    <button>결제하기</button>
+                </div>                <!-- recent box -->
+                <span><a href="../login/index.html"><i class="fa-solid fa-user"></i></a></span>
+            </div>  <!-- gnb_icon -->
+        </div>
+    </header>           <!-- header -->
+
+    <main class="checkout_page">
+        <section class="checkout_title">
+            <h1>주문완료</h1>
+            <ol class="checkout_step">
+                <li>장바구니</li>
+                <li>주문/결제</li>
+                <li class="on" aria-current="step">주문완료</li>
+            </ol>
+        </section>
+
+        <section class="complete_box">
+            <i class="fa-solid fa-circle-check complete_icon"></i>
+            <p class="complete_msg">주문이 완료되었어요!</p>
+            <p class="complete_sub"><strong class="complete_email"></strong> 으로 다운로드 링크를 보내드렸어요.</p>
+            <dl class="complete_info">
+                <div><dt>주문번호</dt><dd class="complete_number"></dd></div>
+                <div><dt>결제수단</dt><dd class="complete_payment"></dd></div>
+                <div><dt>결제금액</dt><dd class="complete_total"></dd></div>
+            </dl>
+            <ul class="order_list"></ul>
+            <div class="complete_btns">
+                <a href="../../index.html">홈으로</a>
+                <a href="../2_product/all/index.html" class="on">쇼핑 계속하기</a>
+            </div>
+        </section>
+
+        <section class="complete_box complete_empty" hidden>
+            <p class="complete_msg">확인할 주문 내역이 없어요.</p>
+            <div class="complete_btns">
+                <a href="../../index.html">홈으로</a>
+                <a href="../2_product/all/index.html" class="on">상품 보러 가기</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer_outer">
+        <div class="footer">
+            <section class="footer_logo mr">
+                <span class="personal"><a href="#!">이용약관</a></span>
+                <span class="personal info"><a href="#!">개인정보처리방침</a></span>
+                <span class="personal"><a href="#!">이용안내</a></span>
+                <div class="logo mr">
+                    <img src="../../img/00_footer_logo.png" alt="footer_logo">
+                </div>
+                <div class="brand mr">
+                    <p class="sub">소소한 하루,</p>
+                    <p class="tit">소하</p>
+                </div>
+            </section>     <!-- 이용약관, 개인정보처리방침, 이용안내 + 로고-->
+            <section class="footer_section mr">
+                <span>무통장입금</span>
+                <p>하나 000-000000-00000</p>
+                <p>부산 000-0000-0000-00</p>
+                <p>우리 0000-000-000000</p>
+                <p>신한 000-000000-000</p>
+            </section>
+            <section class="footer_brand mr">
+                <span>소하</span>
+                <p>대표 : 정연주</p>
+                <p>사업자등록번호 : 000-00-00000</p>
+                <p>통신판매업 신고번호 :
+                    <a href="https://www.ftc.go.kr/">0000-○○○○-0000호</a>
+                </p>
+                <p>FAX : 070-0000-0000</p>
+                <p>이메일 : so_ha@example.com</p>
+                <p>(우 : 00000)</p>
+                <p>주소 : 부산광역시 ○○구 ○○로 00</p>
+            </section>
+            <section class="footer_section">
+                <span>고객센터</span>
+                <p class="call">0000-0000</p>
+                <p>영업시간</p>
+                <p>월~금 09:00~18:00 </p>
+                <p>점심시간 12:00~13:00</p>
+                <p>주말/공휴일 휴무</p>
+            </section>     <!-- 고객센터 -->
+            <p class="copy">COPYRIGHT © soha. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>  <!-- footer -->
+    
+</body>
+</html>
