@@ -871,7 +871,7 @@ img {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 15px;
   }
-  .product .mr, .free_outer .free .mr, .metapo_wrap .mr, .insta .mr {
+  .product .mr, .free_outer .free .mr, .metapo_wrap .mr, .review .mr, .insta .mr {
     margin-right: 0;
   }
   .product .product_box, .free_outer .free .product_box, .free_outer .free .free_txt,
@@ -891,9 +891,17 @@ img {
     background-size: cover;
   }
   .free_outer .free .product_box .product_img img,
-  .metapo_wrap .metapo_product .product_box .product_img_box .product_img img,
+  .metapo_wrap .metapo_product .product_box .product_img_box .product_img img {
+    width: 100%;
+  }
+  .review .review_box .review_img {
+    overflow: hidden;
+  }
   .review .review_box .review_img img {
     width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
   }
   .product .product_box .product_txt,
   .free_outer .free .product_box .product_txt,
@@ -902,6 +910,11 @@ img {
     height: auto;
     min-height: 90px;
     padding-bottom: 8px;
+  }
+  .product .product_box .product_txt .product_name,
+  .free_outer .free .product_box .product_txt .product_name,
+  .metapo_wrap .metapo_product .product_box .product_txt .product_name {
+    font-size: 20px;
   }
   .free_outer {
     height: auto;
@@ -1016,10 +1029,44 @@ img {
     height: auto;
   }
   .insta div {
-    width: auto;
+    float: none;
+    width: 100%;
     height: auto;
     aspect-ratio: 1;
     background-size: cover;
+  }
+  .review .review_box {
+    display: flex;
+    flex-direction: column;
+  }
+  .review .review_box .review_page {
+    flex: 1;
+  }
+  .review .review_box .review_page a {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    column-gap: 8px;
+    align-items: center;
+    padding: 10px 8px;
+  }
+  .review .review_box .review_page div {
+    float: none;
+    grid-row: span 2;
+    margin: 0;
+  }
+  .review .review_box .review_page div img {
+    width: 100%;
+    height: auto;
+  }
+  .review .review_box .review_page .review_tit {
+    padding-top: 0;
+    font-size: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .review .review_box .review_page p:last-child {
+    font-size: 13px;
   }
 }
 @media (max-width: 768px) {
@@ -1088,6 +1135,9 @@ img {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     padding-bottom: 80px;
   }
+  .review .review_box .review_page .review_tit {
+    font-size: 16px;
+  }
 }
 @media (max-width: 640px) {
   .sub_title, .swiper, .small_banner, section.product, .free_outer .free,
@@ -1105,12 +1155,6 @@ img {
   .metapo_wrap .metapo_product .metapo_product_sheet {
     gap: 10px;
   }
-  .review .review_box .review_page div {
-    margin: 8px;
-  }
-  .review .review_box .review_page .review_tit {
-    font-size: 18px;
-  }
   .product .product_box .product_txt .product_name,
   .free_outer .free .product_box .product_txt .product_name,
   .metapo_wrap .metapo_product .product_box .product_txt .product_name {
@@ -1119,5 +1163,15 @@ img {
   .suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_txt p:first-child {
     font-size: 18px;
     padding-top: 30%;
+  }
+  .review .review_box .review_page a {
+    grid-template-columns: 32px minmax(0, 1fr);
+    column-gap: 6px;
+  }
+  .review .review_box .review_page .review_tit {
+    font-size: 14px;
+  }
+  .review .review_box .review_page p:last-child {
+    font-size: 12px;
   }
 }
