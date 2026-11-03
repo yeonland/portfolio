@@ -271,3 +271,76 @@
   border: none;
   background-color: #feffed;
 }
+
+/* responsive */
+@media (max-width: 768px) {
+  .btn_top {
+    width: 44px;
+    height: 44px;
+    bottom: 20px;
+    right: 16px;
+    line-height: 42px;
+    font-size: 24px;
+  }
+  .pop_box {
+    width: 100px;
+    height: 100px;
+    top: auto;
+    bottom: 20px;
+    left: 16px;
+  }
+  .pop_box p {
+    font-size: 9px;
+    padding-top: 18px;
+  }
+  .how_use_wrap {
+    top: auto;
+    bottom: 140px;
+    right: 12px;
+  }
+  .how_use_box {
+    width: 64px;
+    height: 64px;
+  }
+  .how_use_box p {
+    font-size: 14px;
+    padding-top: 0;
+  }
+  .how_use_box .how_use_top {
+    padding-top: 14px;
+  }
+  .how_use_wrap button {
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+  }
+  .chat label {
+    bottom: 76px;
+    right: 16px;
+  }
+  .chat label div {
+    width: 52px;
+    height: 52px;
+    font-size: 28px;
+    line-height: 48px;
+  }
+  .chat label div img {
+    width: 100%;
+  }
+  .chat .chat_box {
+    width: auto;
+    left: 16px;
+    right: 16px;
+    bottom: 140px;
+    height: 380px;
+  }
+  .chat .chat_box .brand {
+    width: 100%;
+  }
+  .chat .chat_box .brand .brand_intro {
+    width: auto;
+  }
+  .chat .chat_box .chat_txt_box .chat_txt {
+    width: calc(100% - 12px);
+  }
+}

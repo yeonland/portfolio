@@ -179,3 +179,71 @@ a {text-decoration: none; color: black;}
     font-family: "Gowun Dodum", sans-serif;
     margin: 30px auto 0;  padding: 5px 0;
 }
+/************************** gnb icon cart: 비어 있음 · 결제 버튼 비활성 **************************/
+.header_outer .header .gnb_icon .box .empty {
+    padding: 80px 0; text-align: center;
+    font-size: 16px; color: $text;
+}
+.header_outer .header .gnb_icon .box button {cursor: pointer;}
+.header_outer .header .gnb_icon .box button:disabled {background: $gray; cursor: default;}
+
+/************************** 상품 카드 장바구니 담기 버튼 (메인 · 상품 목록 공통이라 header에 둠) **************************/
+.product_box:has(> .btn_add_cart) {position: relative;}
+.product_box > .btn_add_cart {
+    position: absolute; top: 10px; right: 10px;
+    width: 40px; height: 40px;
+    border: 1px solid $brown; border-radius: 50%;
+    background: $cream; color: $brown;
+    font-size: 16px; cursor: pointer;
+    opacity: 0; transition: opacity .2s, background-color .2s, color .2s;
+}
+.product_box:hover > .btn_add_cart,
+.product_box > .btn_add_cart:focus-visible {opacity: 1;}
+.product_box > .btn_add_cart:hover {background: $brown; color: $cream;}
+// 마우스가 없는 기기에서는 항상 보이게
+@media (hover: none) {
+    .product_box > .btn_add_cart {opacity: 1;}
+}
+
+/* responsive */
+@media (max-width: $bp-xl) {
+    .header_outer .header {
+        width: calc(100% - 48px);
+        display: flex; align-items: center; justify-content: space-between;
+    }
+    .header_outer .header .logo,
+    .header_outer .header .gnb {float: none;}
+    .header_outer .header .gnb,
+    .header_outer .header .gnb_icon {width: auto; margin-left: 0;}
+    .header_outer .header .gnb_icon {gap: 24px;}
+    .header_outer .header .gnb span {padding: 0 8px; font-size: 20px;}
+}
+
+// 메뉴가 한 줄에 안 들어가면 로고 · 아이콘 아래 두 번째 줄로 내리고 가로 스크롤
+@media (max-width: $bp-lg) {
+    .header_outer {height: auto;}
+    .header_outer .header {height: auto; padding: 16px 0 0; flex-wrap: wrap;}
+    .header_outer .header .logo {width: 150px;}
+    .header_outer .header .logo img {width: 100%; height: auto;}
+    .header_outer .header .gnb {
+        order: 1; width: 100%;
+        overflow-x: auto; white-space: nowrap;
+        scrollbar-width: none;
+    }
+    .header_outer .header .gnb span {line-height: 48px;}
+    .header_outer .header .gnb span:first-child {padding-left: 0;}
+    // 하위 메뉴는 터치에서 열 수 없어서 숨기고, '디지털 문구' 목록 페이지의 카테고리 탭으로 이동
+    .header_outer .header .gnb .product:hover .product_menu {display: none;}
+}
+
+@media (max-width: $bp-sm) {
+    .header_outer .header {width: calc(100% - 32px);}
+    .header_outer .header .logo {width: 110px;}
+    .header_outer .header .gnb_icon {gap: 18px; height: 40px;}
+    .header_outer .header .gnb_icon span a,
+    .header_outer .header .gnb_icon .search_toggle {font-size: 22px;}
+    .header_outer .header .gnb span {font-size: 17px;}
+    .header_outer .header .gnb_icon .box,
+    .header_outer .header .gnb_icon .search_box {top: 44px; width: min(300px, calc(100vw - 32px));}
+    .header_outer .header .gnb_icon .search_box {box-sizing: border-box;}
+}

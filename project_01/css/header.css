@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -236,4 +237,143 @@ a {
   font-family: "Gowun Dodum", sans-serif;
   margin: 30px auto 0;
   padding: 5px 0;
+}
+
+/************************** gnb icon cart: 비어 있음 · 결제 버튼 비활성 **************************/
+.header_outer .header .gnb_icon .box .empty {
+  padding: 80px 0;
+  text-align: center;
+  font-size: 16px;
+  color: #575757;
+}
+
+.header_outer .header .gnb_icon .box button {
+  cursor: pointer;
+}
+
+.header_outer .header .gnb_icon .box button:disabled {
+  background: #bbb;
+  cursor: default;
+}
+
+/************************** 상품 카드 장바구니 담기 버튼 (메인 · 상품 목록 공통이라 header에 둠) **************************/
+.product_box:has(> .btn_add_cart) {
+  position: relative;
+}
+
+.product_box > .btn_add_cart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #9c7055;
+  border-radius: 50%;
+  background: #feffed;
+  color: #9c7055;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s, background-color 0.2s, color 0.2s;
+}
+
+.product_box:hover > .btn_add_cart,
+.product_box > .btn_add_cart:focus-visible {
+  opacity: 1;
+}
+
+.product_box > .btn_add_cart:hover {
+  background: #9c7055;
+  color: #feffed;
+}
+
+@media (hover: none) {
+  .product_box > .btn_add_cart {
+    opacity: 1;
+  }
+}
+/* responsive */
+@media (max-width: 1280px) {
+  .header_outer .header {
+    width: calc(100% - 48px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header_outer .header .logo,
+  .header_outer .header .gnb {
+    float: none;
+  }
+  .header_outer .header .gnb,
+  .header_outer .header .gnb_icon {
+    width: auto;
+    margin-left: 0;
+  }
+  .header_outer .header .gnb_icon {
+    gap: 24px;
+  }
+  .header_outer .header .gnb span {
+    padding: 0 8px;
+    font-size: 20px;
+  }
+}
+@media (max-width: 1023px) {
+  .header_outer {
+    height: auto;
+  }
+  .header_outer .header {
+    height: auto;
+    padding: 16px 0 0;
+    flex-wrap: wrap;
+  }
+  .header_outer .header .logo {
+    width: 150px;
+  }
+  .header_outer .header .logo img {
+    width: 100%;
+    height: auto;
+  }
+  .header_outer .header .gnb {
+    order: 1;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+  .header_outer .header .gnb span {
+    line-height: 48px;
+  }
+  .header_outer .header .gnb span:first-child {
+    padding-left: 0;
+  }
+  .header_outer .header .gnb .product:hover .product_menu {
+    display: none;
+  }
+}
+@media (max-width: 640px) {
+  .header_outer .header {
+    width: calc(100% - 32px);
+  }
+  .header_outer .header .logo {
+    width: 110px;
+  }
+  .header_outer .header .gnb_icon {
+    gap: 18px;
+    height: 40px;
+  }
+  .header_outer .header .gnb_icon span a,
+  .header_outer .header .gnb_icon .search_toggle {
+    font-size: 22px;
+  }
+  .header_outer .header .gnb span {
+    font-size: 17px;
+  }
+  .header_outer .header .gnb_icon .box,
+  .header_outer .header .gnb_icon .search_box {
+    top: 44px;
+    width: min(300px, 100vw - 32px);
+  }
+  .header_outer .header .gnb_icon .search_box {
+    box-sizing: border-box;
+  }
 }

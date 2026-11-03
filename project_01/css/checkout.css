@@ -1,0 +1,423 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.checkout_page {
+  min-height: 700px;
+  padding: 70px 20px 120px;
+  color: #575757;
+  font-family: "Gowun Dodum", sans-serif;
+}
+
+.checkout_page [hidden] {
+  display: none !important;
+}
+
+/*************************** 제목 · 단계 ***************************/
+.checkout_title {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.checkout_title h1 {
+  margin-bottom: 20px;
+  color: #9c7055;
+  font-size: 48px;
+}
+
+.checkout_step {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  color: #bbb;
+  font-size: 17px;
+}
+
+.checkout_step li + li::before {
+  content: "›";
+  margin-right: 10px;
+}
+
+.checkout_step .on {
+  color: #9c7055;
+}
+
+/*************************** 레이아웃 ***************************/
+.checkout_form,
+.complete_box {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.checkout_form {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.checkout_main {
+  flex: 1;
+  min-width: 0;
+}
+
+.checkout_section {
+  margin-bottom: 40px;
+}
+
+.checkout_section h2,
+.checkout_summary h2 {
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #9c7055;
+  color: #9c7055;
+  font-size: 24px;
+}
+
+/*************************** 주문 상품 ***************************/
+.order_list li {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.order_list img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.order_list .order_name {
+  flex: 1;
+  font-size: 18px;
+}
+
+.order_list .order_price {
+  color: #9c7055;
+  font-size: 18px;
+}
+
+.order_list .btn_remove {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  color: #bbb;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.order_list .btn_remove:hover {
+  color: #9c7055;
+}
+
+.order_empty {
+  padding: 40px 0;
+  text-align: center;
+}
+
+.order_empty a {
+  margin-left: 10px;
+  color: #9c7055;
+}
+
+.order_notice {
+  margin-top: 15px;
+  padding: 15px 20px;
+  border-radius: 10px;
+  background-color: #feffed;
+  font-size: 15px;
+}
+
+.order_notice i {
+  margin-right: 6px;
+  color: #9c7055;
+}
+
+/*************************** 입력 ***************************/
+.field {
+  margin-bottom: 20px;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  height: 46px;
+  padding: 0 15px;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  box-sizing: border-box;
+  color: #575757;
+  font-family: inherit;
+  font-size: 16px;
+  background-color: white;
+}
+
+.field input:focus,
+.field select:focus {
+  outline: none;
+  border-color: #9c7055;
+}
+
+.points_row {
+  display: flex;
+  gap: 10px;
+}
+
+.points_row .btn_points_all {
+  flex-shrink: 0;
+  padding: 0 20px;
+  border: 1px solid #9c7055;
+  border-radius: 10px;
+  background-color: white;
+  color: #9c7055;
+  font-family: inherit;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.points_row .btn_points_all:hover {
+  background-color: #9c7055;
+  color: #feffed;
+}
+
+.points_owned {
+  margin-top: 8px;
+  color: #888;
+  font-size: 14px;
+}
+
+.points_owned strong {
+  color: #9c7055;
+}
+
+/*************************** 결제 수단 ***************************/
+.payment_list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.payment_list label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 50px;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.payment_list label:has(input:checked) {
+  border-color: #9c7055;
+  background-color: #feffed;
+  color: #9c7055;
+}
+
+.payment_list input {
+  accent-color: #9c7055;
+}
+
+/*************************** 결제 금액 ***************************/
+.checkout_summary {
+  position: sticky;
+  top: 140px;
+  width: 340px;
+  padding: 30px;
+  border: 1px solid #9c7055;
+  border-radius: 15px;
+  box-sizing: border-box;
+  background-color: #fffdf0;
+}
+
+.checkout_summary dl div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+.checkout_summary .sum_total_row {
+  padding-top: 15px;
+  margin: 20px 0;
+  border-top: 1px solid #d6b8a3;
+  color: #9c7055;
+  font-size: 20px;
+}
+
+.checkout_summary .agree {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.checkout_summary .agree input {
+  flex-shrink: 0;
+  margin-top: 4px;
+  accent-color: #9c7055;
+}
+
+.btn_pay {
+  width: 100%;
+  height: 54px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 27px;
+  background-color: #9c7055;
+  color: #feffed;
+  font-family: inherit;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.btn_pay:disabled {
+  background-color: #bbb;
+  cursor: default;
+}
+
+.demo_notice {
+  margin-top: 12px;
+  color: #999;
+  font-size: 13px;
+  text-align: center;
+}
+
+/*************************** 주문완료 ***************************/
+.complete_box {
+  max-width: 700px;
+  text-align: center;
+}
+
+.complete_icon {
+  margin-bottom: 20px;
+  color: #ffc1cc;
+  font-size: 64px;
+}
+
+.complete_msg {
+  margin-bottom: 10px;
+  color: #9c7055;
+  font-size: 28px;
+}
+
+.complete_sub {
+  font-size: 16px;
+}
+
+.complete_sub strong {
+  color: #9c7055;
+}
+
+.complete_info {
+  margin: 30px 0;
+  padding: 20px 30px;
+  border-radius: 15px;
+  background-color: #feffed;
+  text-align: left;
+}
+
+.complete_info div {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+}
+
+.complete_info dd {
+  color: #9c7055;
+}
+
+.complete_box .order_list {
+  text-align: left;
+}
+
+.complete_box .btn_download {
+  padding: 8px 18px;
+  border: 1px solid #9c7055;
+  border-radius: 20px;
+  background: none;
+  color: #9c7055;
+  font-family: inherit;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.complete_box .btn_download:hover {
+  background-color: #9c7055;
+  color: #feffed;
+}
+
+.complete_btns {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 40px;
+}
+
+.complete_btns a {
+  width: 160px;
+  height: 50px;
+  border: 1px solid #9c7055;
+  border-radius: 25px;
+  color: #9c7055;
+  font-size: 18px;
+  line-height: 50px;
+  text-decoration: none;
+}
+
+.complete_btns .on {
+  background-color: #9c7055;
+  color: #feffed;
+}
+
+/*************************** 반응형 ***************************/
+@media (max-width: 1023px) {
+  .checkout_form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .checkout_summary {
+    position: static;
+    width: 100%;
+  }
+}
+@media (max-width: 640px) {
+  .checkout_page {
+    padding: 40px 16px 80px;
+  }
+  .checkout_title h1 {
+    font-size: 36px;
+  }
+  .payment_list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .order_list img {
+    width: 60px;
+    height: 60px;
+  }
+  .order_list .order_name,
+  .order_list .order_price {
+    font-size: 16px;
+  }
+  .complete_btns a {
+    width: 140px;
+    font-size: 16px;
+  }
+}

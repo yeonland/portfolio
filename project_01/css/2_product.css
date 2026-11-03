@@ -246,3 +246,109 @@
 .page .page_nation .num01 {
   background-color: #feffed;
 }
+
+/* responsive */
+@media (max-width: 1280px) {
+  .wrap {
+    width: calc(100% - 48px);
+  }
+  section.product {
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 30px 15px;
+  }
+  .product .product_box {
+    width: auto;
+    height: auto;
+    margin: 0;
+  }
+  .product .product_box .product_img_box .product_img {
+    width: auto;
+    height: auto;
+    aspect-ratio: 1;
+  }
+  .product .product_box .product_img img {
+    width: 100%;
+  }
+  .product .product_box .product_txt {
+    height: auto;
+    min-height: 90px;
+    padding-bottom: 8px;
+  }
+}
+@media (max-width: 1023px) {
+  section.product {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 768px) {
+  .sort, .page {
+    width: auto;
+  }
+  .sort {
+    margin: 40px auto 30px;
+    text-align: center;
+  }
+  .sort p:first-child {
+    font-size: 28px;
+  }
+  .sort p:last-child {
+    font-size: 18px;
+  }
+  .sub_menu {
+    width: auto;
+    height: auto;
+    top: 0;
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    background-color: white;
+    padding: 6px 0;
+  }
+  .sub_menu div {
+    flex: none;
+    float: none;
+    margin-right: 0;
+  }
+  .nav {
+    height: auto;
+    overflow: hidden;
+  }
+  .nav div span {
+    font-size: 18px;
+  }
+  .nav .align {
+    width: auto;
+    height: auto;
+    float: none;
+    clear: both;
+    padding-top: 8px;
+  }
+  section.product {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 10px;
+  }
+  .product .product_box .product_txt .product_name {
+    font-size: 18px;
+  }
+  .page {
+    text-align: center;
+  }
+  .page .page_nation li {
+    font-size: 18px;
+  }
+  .page .page_nation .num {
+    width: 32px;
+    margin: 0 3px;
+  }
+}
+@media (max-width: 640px) {
+  .wrap {
+    width: calc(100% - 32px);
+  }
+  .product .product_box .product_txt .product_name {
+    font-size: 16px;
+  }
+}

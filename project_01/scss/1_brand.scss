@@ -125,8 +125,11 @@
 
 /* responsive */
 @media (max-width: $bp-xl) {
+    .sub_title {width: auto;}
+
     .brand_wrap {
         width: calc(100% - 80px);
+        height: auto;
     }
 
     .brand_layout {

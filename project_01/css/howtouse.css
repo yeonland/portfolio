@@ -130,6 +130,7 @@ li {
 }
 
 .guide-img.placeholder {
+  box-sizing: border-box;
   height: 360px;
   border: 1px dashed #9c7055;
   background-color: #f4eadf;

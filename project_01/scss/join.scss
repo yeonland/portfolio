@@ -39,3 +39,14 @@
     margin-top: 30px; margin-left: 210px; margin-bottom: 30px;
 }
 .email {width: 100px;}
+/* responsive */
+@media (max-width: $bp-md) {
+    .member {width: calc(100% - 32px); height: auto; margin: 60px auto; padding: 0 16px 20px; box-sizing: border-box;}
+    .member table {width: 100%;}
+    .member table tr td:first-child {width: 90px; padding-left: 0; font-size: 14px;}
+    .member table tr td input[type="text"],
+    .member table tr td input[type="password"] {max-width: 100%; box-sizing: border-box;}
+    .member table tr td .btn {margin: 6px 0 0;}
+    .btn01 {margin-left: 0;}
+    .member > .btn {margin: 20px 10px 0 0;}
+}

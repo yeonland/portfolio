@@ -57,3 +57,27 @@
   border: none;
   cursor: pointer;
 }
+
+/* responsive */
+@media (max-width: 640px) {
+  .login_box {
+    width: auto;
+    height: auto;
+    margin: 80px 16px;
+    padding: 40px 20px;
+  }
+  .login_box h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+  .login_box .input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .login_box .login {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    margin: 40px 0 0;
+  }
+}

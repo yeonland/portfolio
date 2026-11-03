@@ -75,3 +75,24 @@
   width: 930px;
   background-color: #575757;
 }
+
+/* responsive */
+@media (max-width: 1280px) {
+  .wrap {
+    width: calc(100% - 48px);
+  }
+  .search_result .search_sheet_01 {
+    width: auto;
+  }
+}
+@media (max-width: 640px) {
+  .wrap {
+    width: calc(100% - 32px);
+  }
+  .search_result_box {
+    width: 100%;
+  }
+  .search_result_box .search {
+    width: calc(100% - 60px);
+  }
+}

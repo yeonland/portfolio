@@ -28,3 +28,26 @@ a {text-decoration: none; color: black;}
 
 /* .footer_outer .footer div {} */
 .footer_outer .footer .copy {text-align: center; line-height: 60px;}
+/* responsive */
+@media (max-width: $bp-xl) {
+    .footer_outer {height: auto; padding-bottom: 20px;}
+    .footer_outer .footer {
+        width: calc(100% - 48px); height: auto;
+        display: flex; flex-wrap: wrap; gap: 30px 40px;
+    }
+    .footer_outer .footer .mr {margin-right: 0;}
+    .footer_outer .footer .footer_section,
+    .footer_outer .footer .footer_brand {height: auto; margin-left: 0;}
+    .footer_outer .footer .copy {width: 100%;}
+}
+
+@media (max-width: $bp-sm) {
+    .footer_outer .footer {width: calc(100% - 32px); flex-direction: column;}
+    .footer_outer .footer .footer_logo {width: auto; height: auto;}
+    .footer_outer .footer .footer_logo .logo,
+    .footer_outer .footer .footer_logo .brand {margin: 30px 20px 0 0;}
+    .footer_outer .footer .footer_brand {width: auto;}
+    .footer_outer .footer .footer_section span,
+    .footer_outer .footer .footer_brand span {font-size: 28px;}
+    .footer_outer .footer .copy {line-height: 1.5;}
+}
