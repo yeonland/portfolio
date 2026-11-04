@@ -1,10 +1,57 @@
 * {margin: 0; padding: 0;}
 li {list-style: none;}
 a {text-decoration: none; color: black;}
+button {font-family: inherit;}
+
+/******************* 공통 접근성 · 상태 표시 (메인 · 서브 공통) *******************/
+/* 화면에는 숨기고 화면 낭독기에는 읽히는 텍스트 */
+.blind {
+    position: absolute !important;
+    width: 1px; height: 1px;
+    margin: -1px; padding: 0;
+    overflow: hidden; clip: rect(0 0 0 0);
+    white-space: nowrap; border: 0;
+}
+/* 본문 바로가기 */
+.skip_link {
+    position: absolute; top: -100px; left: 8px;
+    z-index: 2000;
+    padding: 8px 16px;
+    background-color: #475775; color: #fff;
+}
+.skip_link:focus {top: 8px;}
+/* 키보드 초점 표시 */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+    outline: 3px solid #ff9f1c;
+    outline-offset: 2px;
+}
+/* 미구현(준비 중) 요소 */
+.pending {cursor: not-allowed;}
+/* 준비 중 안내 토스트 (js/main.js에서 생성) */
+.toast {
+    position: fixed; left: 50%; bottom: 24px;
+    z-index: 3000;
+    width: max-content; max-width: calc(100% - 32px);
+    padding: 12px 18px;
+    background-color: rgba(30, 38, 56, 0.92); color: #fff;
+    font-size: 14px; line-height: 1.5; text-align: center;
+    border-radius: 4px;
+    transform: translate(-50%, 20px);
+    opacity: 0; visibility: hidden;
+    transition: opacity 0.25s, transform 0.25s, visibility 0s 0.25s;
+}
+.toast.show {
+    opacity: 1; visibility: visible;
+    transform: translate(-50%, 0);
+    transition: opacity 0.25s, transform 0.25s;
+}
 
 .top_gnb_pc,
 .gnb_pc,
-.menu_box_pc {display: none;}
+.search_box {display: none;}
 
 .header_outer {
     position: absolute;
@@ -24,113 +71,84 @@ a {text-decoration: none; color: black;}
     background-color: #fff;
     border-bottom: 1px solid #ddd;
 }
+/* 모바일 메뉴를 연 상태에서는 스크롤 위치와 관계없이 헤더(닫기 버튼)를 화면에 고정 */
+.header_outer.menu_open {position: fixed;}
 .header .logo {width: 25%; margin-top: 5px;}
+.header .logo a {display: block;}
 .header .logo img {width: 100%;}
-.search {
-    position: absolute; top: 0px; right: 0px;
-    width: 40px; height: 40px;
-    text-align: center; line-height: 40px;
-    font-size: 1.5rem; z-index: 2; color: #999;
-}
-/* menu hamburger */
-#gnb_m_btn {display: none;}
-#gnb_m_btn ~ .gnb_mobile .gnb_mobile_box {display: none;}
-#gnb_m_btn:checked ~ .gnb_mobile .gnb_mobile_box {display: block;}
 
-#gnb_m_btn ~ .gnb_mobile .gnb_m_btn_open {display: block;}
-#gnb_m_btn ~ .gnb_mobile .gnb_m_btn_close {display: none;}
-#gnb_m_btn:checked ~ .gnb_mobile .gnb_m_btn_open {display: none;}
-#gnb_m_btn:checked ~ .gnb_mobile .gnb_m_btn_close {display: block;}
-#gnb_m_btn:checked ~ .gnb_mobile .search {color: #475775;}
-/* menu hamburger radio button */
-#gnb_m_menu01, #gnb_m_menu02,
-#gnb_m_menu03, #gnb_m_menu04,
-#gnb_m_menu05 {display: none;}
-
-#gnb_m_menu01:checked ~ .gnb_mobile_box .gnb_menu_wrap .menu_box01 {display: block;}
-#gnb_m_menu01:checked ~ .gnb_mobile_box .gnb_menu .gnb_m_menu01 {
-    background-color: #6987D6; color: white;
-}
-#gnb_m_menu02:checked ~ .gnb_mobile_box .gnb_menu_wrap .menu_box02 {display: block;}
-#gnb_m_menu02:checked ~ .gnb_mobile_box .gnb_menu .gnb_m_menu02 {
-    background-color: #6987D6; color: white;
-}
-#gnb_m_menu03:checked ~ .gnb_mobile_box .gnb_menu_wrap .menu_box03 {display: block;}
-#gnb_m_menu03:checked ~ .gnb_mobile_box .gnb_menu .gnb_m_menu03 {
-    background-color: #6987D6; color: white;
-}
-#gnb_m_menu04:checked ~ .gnb_mobile_box .gnb_menu_wrap .menu_box04 {display: block;}
-#gnb_m_menu04:checked ~ .gnb_mobile_box .gnb_menu .gnb_m_menu04 {
-    background-color: #6987D6; color: white;
-}
-#gnb_m_menu05:checked ~ .gnb_mobile_box .gnb_menu_wrap .menu_box05 {display: block;}
-#gnb_m_menu05:checked ~ .gnb_mobile_box .gnb_menu .gnb_m_menu05 {
-    background-color: #6987D6; color: white;
-}
-.header .gnb_mobile .search {    
-    position: absolute; top: 0; right: 40px;
-    width: 40px; height: 40px; text-align: center;
-    color: #999; font-size: 2rem;
-}
-
-.header .gnb_mobile .gnb_m_btn_open,
-.header .gnb_mobile .gnb_m_btn_close{
-    position: absolute; top: 0px; right: 0px;
-    width: 40px; height: 40px;
-    text-align: center; line-height: 40px;
+/******************* 모바일 · 태블릿 메뉴 *******************/
+.header .gnb_mobile .search,
+.header .gnb_mobile .gnb_m_toggle {
+    position: absolute; top: 0;
+    width: 44px; height: 44px;
+    text-align: center; line-height: 44px;
     font-size: 2rem; z-index: 2;
+    color: #999;
+    background: transparent; border: 0;
+    cursor: pointer;
 }
-.header .gnb_mobile .gnb_m_btn_open {color: #999;}
-.header .gnb_mobile .gnb_m_btn_close {color: #475775;}
+.header .gnb_mobile .search {right: 44px; cursor: not-allowed;}
+.header .gnb_mobile .gnb_m_toggle {right: 0;}
+.header .gnb_mobile .gnb_m_toggle[aria-expanded="true"],
+.header_outer.menu_open .gnb_mobile .search {color: #475775;}
+
 .header .gnb_mobile .gnb_mobile_box {
-    width: 100%; height: 100vh; background-color: white;
-    position: absolute; top: 0; right: 0;
+    position: fixed; top: 0; right: 0;
+    width: 100%; height: 100vh; height: 100dvh;
+    overflow-y: auto;
+    background-color: white;
     z-index: 1;
-    /* display: none; */
 }
+.header .gnb_mobile .gnb_mobile_box[hidden] {display: none;}
 .header .gnb_mobile .gnb_mobile_box .logo {width: 25%; margin: 5px 0;}
 .header .gnb_mobile .gnb_mobile_box .logo img {width: 100%;}
 .header .gnb_mobile .gnb_mobile_box .gnb_menu {float: left; width: 50%; font-size: 1.5rem;}
-.header .gnb_mobile .gnb_mobile_box .gnb_menu label {
-    width: 100%; height: 40px;
-    border-top: 1px solid #475775;
-    box-sizing: border-box;
-    float: left;
-    text-align: center; line-height: 40px;
+.header .gnb_mobile .gnb_mobile_box .gnb_menu .gnb_m_tab {
+    display: block;
+    width: 100%; height: 44px;
+    border: 0; border-top: 1px solid #475775;
+    background-color: #fff; color: #333;
+    font-size: inherit; text-align: center; line-height: 44px;
+    cursor: pointer;
 }
-.header .gnb_mobile .gnb_mobile_box .gnb_menu_wrap .menu_box {
-    display: none;
-    border-top: 1px solid #475775;
+.header .gnb_mobile .gnb_mobile_box .gnb_menu .gnb_m_tab[aria-selected="true"] {
+    background-color: #6987D6; color: white;
 }
-.header .gnb_mobile .gnb_mobile_box .gnb_menu_wrap .menu_box p {
-    height: 40px; line-height: 40px; text-align: center;
-    font-size: 1.5rem;  
-}
-.header .gnb_mobile .gnb_mobile_box .gnb_menu_wrap .menu_box p a {color: #666;}
 .header .gnb_mobile .gnb_mobile_box .gnb_menu_wrap {float: left; width: 50%;}
-.pc_menu_box, .search_box {display: none;}
-
-
+.header .gnb_mobile .gnb_mobile_box .gnb_menu_wrap .menu_box {border-top: 1px solid #475775;}
+.header .gnb_mobile .gnb_mobile_box .gnb_menu_wrap .menu_box[hidden] {display: none;}
+.header .gnb_mobile .gnb_mobile_box .gnb_menu_wrap .menu_box p {
+    height: 44px; line-height: 44px; text-align: center;
+    font-size: 1.5rem;
+}
+.header .gnb_mobile .gnb_mobile_box .gnb_menu_wrap .menu_box p a {display: block; color: #475775;}
+.header .gnb_mobile .gnb_mobile_box .gnb_menu_wrap .menu_box p a.pending {color: #aaa;}
+.header .gnb_mobile .gnb_mobile_box .menu_notice {
+    clear: both;
+    padding: 20px 16px;
+    color: #666; font-size: 14px; line-height: 1.5;
+}
 
 /******************* Tablet *******************/
 @media all and (min-width: 601px) and (max-width: 1024px) {
     .header .logo {width: 25%;}
 
     /* menu width */
-    .header .gnb_mobile .gnb_mobile_box {width: 50%;}
-    .header .gnb_mobile .gnb_mobile_box .logo {height: 40px;}
+    .header .gnb_mobile .gnb_mobile_box {
+        width: 50%;
+        box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.4);
+    }
+    .header .gnb_mobile .gnb_mobile_box .logo {height: 64px;}
     .header .gnb_mobile .gnb_mobile_box .logo img {display: none;}
-    .gnb_menu {float: left; width: 25%; font-size: 1.5rem;}
-    .header .gnb_mobile .search {
+    .header .gnb_mobile .search,
+    .header .gnb_mobile .gnb_m_toggle {
+        top: 10px;
+        width: 50px; height: 50px; line-height: 50px;
         font-size: 3rem;
-        position: absolute; top: 10px; right: 60px;
     }
-    .header .gnb_mobile .gnb_m_btn_open,
-    .header .gnb_mobile .gnb_m_btn_close {
-        font-size: 3rem;
-        position: absolute; top: 10px; right: 10px;
-    }
-    
+    .header .gnb_mobile .search {right: 60px;}
+    .header .gnb_mobile .gnb_m_toggle {right: 10px;}
 }
 
 /******************* PC *******************/
@@ -139,11 +157,10 @@ a {text-decoration: none; color: black;}
     .header {
         width: min(calc(100% - 32px), 1070px); margin: 0 auto;
     }
-    .header .logo {width: 260px; height: 80px; float: left;}
-    .header .logo image {width: 100%;}
+    .header .logo {width: 260px; height: 80px; float: left; margin-top: 0; padding-top: 5px; box-sizing: border-box;}
 
     .gnb_mobile {display: none;}
-    
+
     /* top gnb pc, gnb pc */
     .top_gnb_pc, .gnb_pc {display: block;}
 
@@ -152,57 +169,85 @@ a {text-decoration: none; color: black;}
     .top_gnb_pc ul li {
         display: inline-block; padding: 0 10px;
         text-align: center;
-    }    
+    }
     .top_gnb_pc ul li a {color: #999;}
+    .top_gnb_pc ul li a.pending {color: #bbb;}
 
-    /* gnb pc */
-    .gnb_pc {float: left; position: relative;} 
-    .gnb_pc ul {width: 440px; margin-left: 60px;}
-    .gnb_pc ul li {
-        display: inline-block; color: #999; width: 80px;
-        text-align: center; margin: 20px 2px; padding: 10px 0;
-    }
-    .gnb_pc ul li:hover {
-        cursor: pointer; color: #6987D6;
-        border-bottom: 1px solid #475775;
-    }
-    .gnb_pc ul li:hover ~ .search_box {border: 1px solid #6987D6;}
-    .gnb_pc ul li:hover ~ .search_box span {color: #6987D6;}
-
-    /* menu box pc */
-    .menu_box_pc {
+    /* gnb pc — 상위 메뉴 버튼과 하위 메뉴를 같은 li 안에 두어 마우스 이동 중 닫히지 않도록 함 */
+    .gnb_pc {float: left;}
+    .gnb_pc .gnb_pc_list {display: flex; gap: 4px; margin-left: 60px;}
+    .gnb_pc .gnb_pc_item {position: relative; margin: 20px 0;}
+    .gnb_pc .gnb_pc_btn {
         display: block;
-        width: 100%; height: 150px;
-        position: absolute; top: 80px;  
+        min-width: 84px; padding: 10px 6px;
+        border: 0; border-bottom: 1px solid transparent;
+        background: transparent; color: #999;
+        font-size: 1rem; white-space: nowrap;
+        cursor: pointer;
+    }
+    .gnb_pc .gnb_pc_btn:hover,
+    .gnb_pc.is_open .gnb_pc_btn[aria-expanded="true"]:focus,
+    .gnb_pc .gnb_pc_item:hover .gnb_pc_btn {
+        color: #6987D6;
+        border-bottom-color: #475775;
+    }
+
+    /* 하위 메뉴 (닫힌 상태는 visibility: hidden으로 클릭 · 탭 이동 대상에서 제외) */
+    .gnb_pc .gnb_pc_sub,
+    .gnb_pc::after,
+    .gnb_pc .menu_notice {
+        opacity: 0; visibility: hidden;
+        transition: opacity 0.25s ease, visibility 0s linear 0.25s;
+    }
+    .gnb_pc.is_open .gnb_pc_sub,
+    .gnb_pc.is_open::after,
+    .gnb_pc.is_open .menu_notice {
+        opacity: 1; visibility: visible;
+        transition: opacity 0.25s ease;
+    }
+    /* 하위 메뉴 흰 배경 (header 기준, 상위 메뉴 바로 아래) */
+    .gnb_pc::after {
+        content: "";
+        position: absolute; top: 80px; left: 0;
+        width: 100%; height: 190px;
         background-color: white; border-top: 1px solid #475775;
-        z-index: 10; opacity: 0;
-        transition: opacity 2s ease;
+        box-sizing: border-box;
+        z-index: 9;
+        pointer-events: auto;
     }
-    .menu_box_pc ul {
-        float: left;
-        width: 80px; margin: 0 5px;
+    .gnb_pc .gnb_pc_sub {
+        position: absolute; top: 60px; left: 0;
+        width: 100%; padding-top: 6px;
+        z-index: 10;
     }
-    .menu_box_pc ul:first-child {margin-left: 320px;}
-    .menu_box_pc ul li {text-align: center; height: 30px; line-height: 30px;}
-    .menu_box_pc ul li a {color: #999;}
-    .header_outer .header .gnb_pc:hover .header_outer {height: 80px; background-color: white;}
-    .gnb_pc:hover ~ .menu_box_pc {display: block; opacity: 1;}
+    .gnb_pc .gnb_pc_sub li {text-align: center; height: 30px; line-height: 30px;}
+    .gnb_pc .gnb_pc_sub li a {display: block; color: #475775; white-space: nowrap;}
+    .gnb_pc .gnb_pc_sub li a:not(.pending):hover {color: #6987D6; text-decoration: underline;}
+    .gnb_pc .gnb_pc_sub li a.pending {color: #aaa;}
+    .gnb_pc .menu_notice {
+        position: absolute; top: 236px; right: 16px;
+        z-index: 10;
+        color: #666; font-size: 13px;
+    }
 
-
-    /* search box */
-    .search_box {display: block;}
+    /* search box (기능 미구현: 비활성 입력창) */
     .search_box {
-        width: 260px; height: 30px;
+        display: block;
+        width: clamp(180px, 20vw, 260px); height: 30px;
         position: absolute; top: 30px; right: 0;
         border: 1px solid #999;
+        box-sizing: border-box;
+        background-color: rgba(255, 255, 255, 0.85);
     }
     .search_box input {
-        font-size: 16px; width: 200px;
+        font-size: 14px; width: calc(100% - 46px);
         margin: 3px; font-family: "IBM Plex Sans KR", sans-serif;
         border: none; background: transparent;
+        cursor: not-allowed;
     }
+    .search_box input::placeholder {color: #777;}
     .search_box span {
         float: right; padding-right: 10px;
-        color: #999; font-size: 20px;
+        color: #999; font-size: 20px; line-height: 28px;
     }
 }

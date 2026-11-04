@@ -4,18 +4,21 @@ a {text-decoration: none; color: black;}
 
 .footer_outer {
     width: 100%; background-color: #475775;
-    font-size: 12px; padding: 15px 0;
+    font-size: 12px; padding: 15px 16px;
+    box-sizing: border-box;
 }
 .footer {
     width: 100%; max-width: 1070px; margin: 0 auto;
     position: relative;
 }
 .footer p {
-    color: white; text-wrap: balance;
+    color: white; text-wrap: balance; line-height: 1.6;
 }
+.footer .site_notice {margin-bottom: 8px; color: #e3e8f2;}
 .footer .logo {
     width: 15%; margin-bottom: 30px;
 }
 .footer .logo img {width: 100%;}
-.footer .facebook {position: absolute; top: 20px; right: 20px; font-size: 20px;}
+.footer .facebook {position: absolute; top: 10px; right: 0; font-size: 20px;}
+.footer .facebook a {display: inline-block; padding: 8px;}
 .footer .facebook a {color: white;}

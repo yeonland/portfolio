@@ -6,9 +6,9 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
 
 .nav_pc,
 .menu_pc {display: none;}
-.header {position: fixed; top: 0; left: 0;}
+/* 헤더 고정은 header.css의 .header_outer.fixed(스크롤 시)로 통일 */
 
-.nav {padding-top: 20px; text-align: center; color: #999; margin: 10px;}
+.nav {padding-top: 70px; text-align: center; color: #767676; margin: 10px;}
 .nav a {color: #475775;}
 .nav_mobile {
     color: #999;
@@ -17,7 +17,10 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
     font-size: 2rem;
 }
 .nav_mobile .check {color: #475775;}
-.title, .highlight {color: #475775; font-size: 1.5rem;}
+.nav_mobile .pending {color: #aaa;}
+.title, .highlight {color: #475775; font-size: 1.5rem; font-weight: 400;}
+.title {margin: 16px 0 8px;}
+.txt p {line-height: 1.6;}
 .wrap {padding: 20px;}
 
 .banner {width: 100%;
@@ -37,9 +40,9 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
 @media all and (min-width: 1025px) {
     html {font-size: 16px;}
     .wrap {
-        width: 1070px; margin: 0 auto;
+        width: min(calc(100% - 32px), 1070px); margin: 0 auto;
         display: flex; gap: 10px;
-        padding-top: 80px;
+        padding: 80px 0 40px;
     }
 
     .btn_top {
@@ -52,10 +55,10 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
     .btn_top a {color: white;}
 
     .menu_pc {display: block; margin-right: 10px;}
-    .content_wrap {width: 890px; }
+    .content_wrap {flex: 1; min-width: 0; max-width: 890px;}
     .menu_pc .top_menu {
         width: 170px; height: 60px; line-height: 60px;
-        font-size: 1.25rem; text-align: center;
+        font-size: 1.25rem; font-weight: 400; text-align: center;
         background-color: #475775; color: white;
     }
     .menu_pc .bottom_menu {
@@ -63,12 +66,13 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
         padding: 10px;
         border: 1px solid #475775; box-sizing: border-box;
     }
-    .menu_pc .bottom_menu p {
+    .menu_pc .bottom_menu li {
         height: 30px; line-height: 30px;
-        color: #999; text-align: center; cursor: pointer;
+        text-align: center;
     }
-    .menu_pc .bottom_menu p:first-child {color: #475775;}
-    .nav {color: #999; text-align: left; padding-top: 0;}
+    .menu_pc .bottom_menu li a {display: block; color: #aaa;}
+    .menu_pc .bottom_menu li a[aria-current="page"] {color: #475775; font-weight: 500;}
+    .nav {color: #767676; text-align: left; padding-top: 0; margin: 10px 0;}
     .nav_pc {display: block;}
     .nav_mobile {display: none;}
     

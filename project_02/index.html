@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>한화문물연구원</title>
 
     <!-- 폰트 및 스타일시트 -->
@@ -20,205 +20,211 @@
 </head>
 
 <body>
+    <a class="skip_link" href="#content">본문 바로가기</a>
     <header class="header_outer">
         <div class="header">
             <div class="logo">
-                <img src="./img/hanhwa_logo_white.png" alt="hanhwa_logo">
+                <a href="./index.html">
+                    <img src="./img/hanhwa_logo_white.png" alt="한화문물연구원 홈">
+                </a>
             </div>
             <!-- logo -->
-            <input type="checkbox" name="gnb_m_btn" id="gnb_m_btn">
             <div class="gnb_mobile">
-                <p class="search"><i class="fa-solid fa-magnifying-glass"></i></p>
-                <label for="gnb_m_btn" class="gnb_m_btn_open"><i class="fa-solid fa-bars"></i></label>
-                <label for="gnb_m_btn" class="gnb_m_btn_close"><i class="fa-solid fa-xmark"></i></label>
-
-                <input type="radio" name="gnb_m_menu" id="gnb_m_menu01" checked>
-                <input type="radio" name="gnb_m_menu" id="gnb_m_menu02">
-                <input type="radio" name="gnb_m_menu" id="gnb_m_menu03">
-                <input type="radio" name="gnb_m_menu" id="gnb_m_menu04">
-                <input type="radio" name="gnb_m_menu" id="gnb_m_menu05">
-                <div class="gnb_mobile_box">
+                <button type="button" class="search pending" aria-disabled="true" aria-label="검색 (준비 중)"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></button>
+                <button type="button" class="gnb_m_toggle" aria-expanded="false" aria-controls="gnb_mobile_box" aria-label="전체 메뉴 열기">
+                    <i class="fa-solid fa-bars" aria-hidden="true"></i>
+                </button>
+                <div class="gnb_mobile_box" id="gnb_mobile_box" role="dialog" aria-modal="true" aria-label="전체 메뉴" hidden>
                     <div class="logo">
-                        <img src="./img/hanhwa_logo_black.png" alt="hanhwa_logo">
+                        <img src="./img/hanhwa_logo_black.png" alt="한화문물연구원">
                     </div>
-                    <div class="gnb_menu">
-                        <label for="gnb_m_menu01" class="gnb_m_menu01">연구원소개</label>
-                        <label for="gnb_m_menu02" class="gnb_m_menu02">조사현황</label>
-                        <label for="gnb_m_menu03" class="gnb_m_menu03">조사의뢰</label>
-                        <label for="gnb_m_menu04" class="gnb_m_menu04">커뮤니티</label>
-                        <label for="gnb_m_menu05" class="gnb_m_menu05">자료실</label>
+                    <div class="gnb_menu" role="tablist" aria-orientation="vertical" aria-label="메뉴 분류">
+                        <button type="button" role="tab" id="gnb_m_tab01" class="gnb_m_tab" aria-selected="true" aria-controls="gnb_m_panel01">연구원소개</button>
+                        <button type="button" role="tab" id="gnb_m_tab02" class="gnb_m_tab" aria-selected="false" aria-controls="gnb_m_panel02" tabindex="-1">조사현황</button>
+                        <button type="button" role="tab" id="gnb_m_tab03" class="gnb_m_tab" aria-selected="false" aria-controls="gnb_m_panel03" tabindex="-1">조사의뢰</button>
+                        <button type="button" role="tab" id="gnb_m_tab04" class="gnb_m_tab" aria-selected="false" aria-controls="gnb_m_panel04" tabindex="-1">커뮤니티</button>
+                        <button type="button" role="tab" id="gnb_m_tab05" class="gnb_m_tab" aria-selected="false" aria-controls="gnb_m_panel05" tabindex="-1">자료실</button>
                     </div>
 
                     <div class="gnb_menu_wrap">
-                        <div class="menu_box menu_box01">
+                        <div class="menu_box" role="tabpanel" id="gnb_m_panel01" aria-labelledby="gnb_m_tab01">
                             <p><a href="./sub/index.html">인사말</a></p>
-                            <p><a href="#!">연혁</a></p>
-                            <p><a href="#!">CI 소개</a></p> 
-                            <p><a href="#!">조직도</a></p>
-                            <p><a href="#!">오시는 길</a></p>
+                            <p><a class="pending" aria-disabled="true">연혁<span class="blind"> (준비 중)</span></a></p>
+                            <p><a class="pending" aria-disabled="true">CI 소개<span class="blind"> (준비 중)</span></a></p>
+                            <p><a class="pending" aria-disabled="true">조직도<span class="blind"> (준비 중)</span></a></p>
+                            <p><a class="pending" aria-disabled="true">오시는 길<span class="blind"> (준비 중)</span></a></p>
                         </div>
-                        <div class="menu_box menu_box02">
-                            <p><a href="#!">지표조사</a></p>
-                            <p><a href="#!">발굴조사</a></p>
+                        <div class="menu_box" role="tabpanel" id="gnb_m_panel02" aria-labelledby="gnb_m_tab02" hidden>
+                            <p><a class="pending" aria-disabled="true">지표조사<span class="blind"> (준비 중)</span></a></p>
+                            <p><a class="pending" aria-disabled="true">발굴조사<span class="blind"> (준비 중)</span></a></p>
                         </div>
-                        <div class="menu_box menu_box03">
-                            <p><a href="#!">지표조사</a></p>
-                            <p><a href="#!">참관조사</a></p>
-                            <p><a href="#!">표본·시굴조사</a></p>
-                            <p><a href="#!">발굴조사</a></p>
-                            <p><a href="#!">조사경비계산</a></p>
+                        <div class="menu_box" role="tabpanel" id="gnb_m_panel03" aria-labelledby="gnb_m_tab03" hidden>
+                            <p><a class="pending" aria-disabled="true">지표조사<span class="blind"> (준비 중)</span></a></p>
+                            <p><a class="pending" aria-disabled="true">참관조사<span class="blind"> (준비 중)</span></a></p>
+                            <p><a class="pending" aria-disabled="true">표본·시굴조사<span class="blind"> (준비 중)</span></a></p>
+                            <p><a class="pending" aria-disabled="true">발굴조사<span class="blind"> (준비 중)</span></a></p>
+                            <p><a class="pending" aria-disabled="true">조사경비계산<span class="blind"> (준비 중)</span></a></p>
                         </div>
-                        <div class="menu_box menu_box04">
-                            <p><a href="#!">공지사항</a></p>
-                            <p><a href="#!">자유게시판</a></p>
-                            <p><a href="#!">언론보도</a></p>
-                            <p><a href="#!">현장공개</a></p>
-                            <p><a href="#!">관련사이트</a></p>
+                        <div class="menu_box" role="tabpanel" id="gnb_m_panel04" aria-labelledby="gnb_m_tab04" hidden>
+                            <p><a href="#notice">공지사항</a></p>
+                            <p><a class="pending" aria-disabled="true">자유게시판<span class="blind"> (준비 중)</span></a></p>
+                            <p><a href="#notice">언론보도</a></p>
+                            <p><a href="#open">현장공개</a></p>
+                            <p><a href="#links">관련사이트</a></p>
                         </div>
-                        <div class="menu_box menu_box05">
-                            <p><a href="#!">발간보고서</a></p>
-                            <p><a href="#!">유적 갤러리</a></p>
-                            <p><a href="#!">자료검색</a></p>
-                            <p><a href="#!">자료요청</a></p>
+                        <div class="menu_box" role="tabpanel" id="gnb_m_panel05" aria-labelledby="gnb_m_tab05" hidden>
+                            <p><a class="pending" aria-disabled="true">발간보고서<span class="blind"> (준비 중)</span></a></p>
+                            <p><a href="#ruins">유적 갤러리</a></p>
+                            <p><a class="pending" aria-disabled="true">자료검색<span class="blind"> (준비 중)</span></a></p>
+                            <p><a class="pending" aria-disabled="true">자료요청<span class="blind"> (준비 중)</span></a></p>
                         </div>
                     </div>
+                    <p class="menu_notice">학습용 사이트로 메인·인사말만 구현했습니다. 회색 메뉴는 준비 중입니다.</p>
                 </div>
             </div>            <!-- gnb_mobile -->
 
-            <nav class="top_gnb_pc">
+            <nav class="top_gnb_pc" aria-label="회원 메뉴">
                 <ul>
                     <li><a href="./index.html">HOME</a></li>
-                    <li><a href="#!">LOGIN</a></li>
-                    <li><a href="#!">JOIN</a></li>
-                    <li><a href="https://only.webhard.co.kr/" target="_blank">웹하드</a></li>
+                    <li><a class="pending" aria-disabled="true">LOGIN<span class="blind"> (준비 중)</span></a></li>
+                    <li><a class="pending" aria-disabled="true">JOIN<span class="blind"> (준비 중)</span></a></li>
+                    <li><a href="https://only.webhard.co.kr/" target="_blank" rel="noopener noreferrer">웹하드<span class="blind"> (새 창)</span></a></li>
                 </ul>
             </nav>            <!-- top_gnb_pc -->
-            <nav class="gnb_pc">
-                <ul>
-                    <li>연구원 소개</li>
-                    <li>조사현황</li>
-                    <li>조사의뢰</li>
-                    <li>커뮤니티</li>
-                    <li>자료실</li>
+
+            <nav class="gnb_pc" aria-label="주 메뉴">
+                <ul class="gnb_pc_list">
+                    <li class="gnb_pc_item">
+                        <button type="button" class="gnb_pc_btn" aria-expanded="false" aria-controls="gnb_pc_sub01">연구원 소개</button>
+                        <ul class="gnb_pc_sub" id="gnb_pc_sub01">
+                            <li><a href="./sub/index.html">인사말</a></li>
+                            <li><a class="pending" aria-disabled="true">연혁<span class="blind"> (준비 중)</span></a></li>
+                            <li><a class="pending" aria-disabled="true">CI 소개<span class="blind"> (준비 중)</span></a></li>
+                            <li><a class="pending" aria-disabled="true">조직도<span class="blind"> (준비 중)</span></a></li>
+                            <li><a class="pending" aria-disabled="true">오시는 길<span class="blind"> (준비 중)</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="gnb_pc_item">
+                        <button type="button" class="gnb_pc_btn" aria-expanded="false" aria-controls="gnb_pc_sub02">조사현황</button>
+                        <ul class="gnb_pc_sub" id="gnb_pc_sub02">
+                            <li><a class="pending" aria-disabled="true">지표조사<span class="blind"> (준비 중)</span></a></li>
+                            <li><a class="pending" aria-disabled="true">발굴조사<span class="blind"> (준비 중)</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="gnb_pc_item">
+                        <button type="button" class="gnb_pc_btn" aria-expanded="false" aria-controls="gnb_pc_sub03">조사의뢰</button>
+                        <ul class="gnb_pc_sub" id="gnb_pc_sub03">
+                            <li><a class="pending" aria-disabled="true">지표조사<span class="blind"> (준비 중)</span></a></li>
+                            <li><a class="pending" aria-disabled="true">참관조사<span class="blind"> (준비 중)</span></a></li>
+                            <li><a class="pending" aria-disabled="true">표본·시굴<span class="blind"> (준비 중)</span></a></li>
+                            <li><a class="pending" aria-disabled="true">발굴조사<span class="blind"> (준비 중)</span></a></li>
+                            <li><a class="pending" aria-disabled="true">경비계산<span class="blind"> (준비 중)</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="gnb_pc_item">
+                        <button type="button" class="gnb_pc_btn" aria-expanded="false" aria-controls="gnb_pc_sub04">커뮤니티</button>
+                        <ul class="gnb_pc_sub" id="gnb_pc_sub04">
+                            <li><a href="#notice">공지사항</a></li>
+                            <li><a class="pending" aria-disabled="true">자유게시판<span class="blind"> (준비 중)</span></a></li>
+                            <li><a href="#notice">언론보도</a></li>
+                            <li><a href="#open">현장공개</a></li>
+                            <li><a href="#links">관련사이트</a></li>
+                        </ul>
+                    </li>
+                    <li class="gnb_pc_item">
+                        <button type="button" class="gnb_pc_btn" aria-expanded="false" aria-controls="gnb_pc_sub05">자료실</button>
+                        <ul class="gnb_pc_sub" id="gnb_pc_sub05">
+                            <li><a class="pending" aria-disabled="true">발간보고서<span class="blind"> (준비 중)</span></a></li>
+                            <li><a href="#ruins">유적 갤러리</a></li>
+                            <li><a class="pending" aria-disabled="true">자료검색<span class="blind"> (준비 중)</span></a></li>
+                            <li><a class="pending" aria-disabled="true">자료요청<span class="blind"> (준비 중)</span></a></li>
+                        </ul>
+                    </li>
                 </ul>
+                <p class="menu_notice">※ 학습용 사이트로 메인·인사말만 구현했습니다. 회색 메뉴는 준비 중입니다.</p>
             </nav>            <!-- gnb pc -->
-            <div class="menu_box_pc">
-                <ul>
-                    <li><a href="./sub/index.html">인사말</a></li>
-                    <li><a href="#!">연혁</a></li>
-                    <li><a href="#!">CI 소개</a></li>
-                    <li><a href="#!">조직도</a></li>
-                    <li><a href="#!">오시는 길</a></li>
-                </ul> 
-                <ul>
-                    <li><a href="#!">지표조사</a></li>
-                    <li><a href="#!">발굴조사</a></li>
-                </ul>
-                <ul>
-                    <li><a href="#!">지표조사</a></li>
-                    <li><a href="#!">참관조사</a></li>
-                    <li><a href="#!">표본·시굴</a></li>
-                    <li><a href="#!">발굴조사</a></li>
-                    <li><a href="#!">경비계산</a></li>
-                </ul>
-                <ul>
-                    <li><a href="#!">공지사항</a></li>
-                    <li><a href="#!">자유게시판</a></li>
-                    <li><a href="#!">언론보도</a></li>
-                    <li><a href="#!">현장공개</a></li>
-                    <li><a href="#!">관련사이트</a></li>
-                </ul>
-                <ul>
-                    <li><a href="#!">발간보고서</a></li>
-                    <li><a href="#!">유적 갤러리</a></li>
-                    <li><a href="#!">자료검색</a></li>
-                    <li><a href="#!">자료요청</a></li>
-                </ul>
-            </div>
-            <!-- menu box -->
             <div class="search_box">
-                <input type="text" name="search">
-                <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                <label class="blind" for="search_input">검색어 (검색 기능 준비 중)</label>
+                <input type="search" name="search" id="search_input" placeholder="검색 기능 준비 중" disabled>
+                <span aria-hidden="true"><i class="fa-solid fa-magnifying-glass"></i></span>
             </div>            <!-- search_box -->
         </div>        <!-- header -->
     </header>    <!-- header_outer -->
 
-    <article class="slides header_bg" id="header">
+    <main id="content">
+    <section class="slides header_bg" id="header" aria-label="메인 비주얼">
         <ul class="slide-wrap">
             <li class="slide">
-                <a href="#">
-                    <span>김해 유하리유적 전경</span>
-                    <img src="./img/visual01_kimhae_1900.jpg" alt="김해 유하리유적 전경">
-                </a>
+                <span>김해 유하리유적 전경</span>
+                <img src="./img/visual01_kimhae_1900.jpg" alt="김해 유하리유적 전경">
             </li>            <!-- mainvisual1 -->
             <li class="slide">
-                <a href="#">
-                    <span>하동 남산리고분군Ⅱ 1호분 전경</span>
-                    <img src="./img/visual02_hadong_1900.jpg" alt="하동 남산리고분군Ⅱ 1호분 전경">
-                </a>
+                <span>하동 남산리고분군Ⅱ 1호분 전경</span>
+                <img src="./img/visual02_hadong_1900.jpg" alt="하동 남산리고분군Ⅱ 1호분 전경">
             </li>            <!-- mainvisual2 -->
             <li class="slide">
-                <a href="#">
-                    <span>함안 오곡리 고분군 13호분</span>
-                    <img src="./img/visual03_haman_1900.jpg" alt="함안 오곡리 고분군 13호분">
-                </a>
+                <span>함안 오곡리 고분군 13호분</span>
+                <img src="./img/visual03_haman_1900.jpg" alt="함안 오곡리 고분군 13호분">
             </li>            <!-- mainvisual3 -->
         </ul>
-    </article>    <!-- main visual -->
+        <button type="button" class="slide_pause" aria-pressed="false" aria-label="자동 슬라이드 일시정지">
+            <i class="fa-solid fa-pause" aria-hidden="true"></i>
+        </button>
+    </section>    <!-- main visual -->
 
 
-    <div class="btn_top"><a href="#!">↑</a></div>
+    <div class="btn_top"><a href="#content" aria-label="맨 위로">↑</a></div>
 
 
     <div class="wrap">
         <h2 class="sub_title">문화재 조사절차</h2>
         <section class="progress pb">
             <div class="progress_box">
-                <a href="#!">
+                <div class="progress_inner">
                     <div class="progress_img">
-                        <img src="./img/process_icon01_off.png" alt="process_icon01">
+                        <img src="./img/process_icon01_off.png" alt="">
                     </div>
                     <div class="progress_txt">
                         <p class="tit">지표조사</p>
                         <p class="sub_tit">건설 공사 시행자의 의뢰로 해당 건설공사 지역에 문화유산 매장·분포 사전 조사</p>
                     </div>
-                </a>
+                </div>
             </div>            <!-- progress_box 01 지표조사 -->
 
             <div class="progress_box">
-                <a href="#!">
+                <div class="progress_inner">
                     <div class="progress_img">
-                        <img src="./img/process_icon02_off.png" alt="process_icon02">
+                        <img src="./img/process_icon02_off.png" alt="">
                     </div>
                     <div class="progress_txt">
                         <p class="tit">참관조사</p>
                         <p class="sub_tit">관련전문가가 공사현장에 참관하여 매장유산의 존재 여부를 확인하는 조사</p>
                     </div>
-                </a>
+                </div>
             </div>            <!-- progress_box 02 참관조사 -->
 
             <div class="progress_box">
-                <a href="#!">
+                <div class="progress_inner">
                     <div class="progress_img">
-                        <img src="./img/process_icon03_off.png" alt="process_icon03">
+                        <img src="./img/process_icon03_off.png" alt="">
                     </div>
                     <div class="progress_txt">
                         <p class="tit">표본·시굴조사</p>
                         <p class="sub_tit">건설공사 면적 중, 일부에서 매장유산 유존 여부를 확인하는 조사</p>
                     </div>
-                </a>
+                </div>
             </div>            <!-- progress_box 03 표본·시굴조사 -->
             
             <div class="progress_box">
-                <a href="#!">
+                <div class="progress_inner">
                     <div class="progress_img">
-                        <img src="./img/process_icon04_off.png" alt="process_icon04">
+                        <img src="./img/process_icon04_off.png" alt="">
                     </div>
                     <div class="progress_txt">
                         <p class="tit">발굴조사</p>
                         <p class="sub_tit">건설공사 면적 중, 매장유산 유존지역 면적 전체에 대한 매장유산 조사</p>
                     </div>
-                </a>
+                </div>
             </div>            <!-- progress_box 04 발굴조사 -->
         </section>
 
@@ -242,10 +248,10 @@
             </div>            <!-- banner -->
             <div class="metapo">
                 <div class="metapo_box">
-                    <a href="#!">
+                    <a class="pending" aria-disabled="true">
                         <p class="metapo_txt">
                             <span class="metapo_name">발간보고서</span>
-                            <span class="metapo_more">+ 더보기</span>
+                            <span class="metapo_more">준비 중</span><span class="blind"> (준비 중)</span>
                         </p>
                         <div class="metapo_img">
                             <img src="./img/metapo_icon01_off.png" alt="">
@@ -253,10 +259,10 @@
                     </a>
                 </div>                <!-- metapo_box 01 발간보고서 -->
                 <div class="metapo_box">
-                    <a href="#!">
+                    <a class="pending" aria-disabled="true">
                         <p class="metapo_txt">
                             <span class="metapo_name">자료요청</span>
-                            <span class="metapo_more">+ 더보기</span>
+                            <span class="metapo_more">준비 중</span><span class="blind"> (준비 중)</span>
                         </p>
                         <div class="metapo_img">
                             <img src="./img/metapo_icon02_off.png" alt="">
@@ -264,10 +270,10 @@
                     </a>
                 </div>                <!-- metapo_box 02 자료요청 -->
                 <div class="metapo_box">
-                    <a href="#!">
+                    <a class="pending" aria-disabled="true">
                         <p class="metapo_txt">
                             <span class="metapo_name">조사의뢰</span>
-                            <span class="metapo_more">+ 더보기</span>
+                            <span class="metapo_more">준비 중</span><span class="blind"> (준비 중)</span>
                         </p>
                         <div class="metapo_img">
                             <img src="./img/metapo_icon03_off.png" alt="">
@@ -275,10 +281,10 @@
                     </a>
                 </div>                <!-- metapo_box 03 조사의뢰 -->
                 <div class="metapo_box">
-                    <a href="#!">
+                    <a class="pending" aria-disabled="true">
                         <p class="metapo_txt">
                             <span class="metapo_name">조사경비계산</span>
-                            <span class="metapo_more">+ 더보기</span>
+                            <span class="metapo_more">준비 중</span><span class="blind"> (준비 중)</span>
                         </p>
                         <div class="metapo_img">
                             <img src="./img/metapo_icon04_off.png" alt="">
@@ -289,37 +295,39 @@
         </section>        <!-- banner_metapo -->
 
         
-        <section class="open">
+        <section class="open" id="open" aria-labelledby="open_title">
             <div class="open_header">
-                <h2 class="sub_title">현장공개</h2>
-                <span class="more">+ 더보기</span>
+                <h2 class="sub_title" id="open_title">현장공개</h2>
+                <a class="more pending" aria-disabled="true">+ 더보기<span class="blind"> (준비 중)</span></a>
             </div>
             
         
             <article class="open_box">
-                <ul class="open_img">
-                    <li class="open_img_btn on" data-index="0"><img src="./img/open_01.jpg" alt="현장공개 사진 1"></li>
-                    <li class="open_img_btn" data-index="1"><img src="./img/open_02.jpg" alt="현장공개 사진 2"></li>
-                    <li class="open_img_btn" data-index="2"><img src="./img/open_03.jpg" alt="현장공개 사진 3"></li>
-                    <li class="open_img_btn" data-index="3"><img src="./img/open_04.jpg" alt="현장공개 사진 4"></li>
+                <ul class="open_img" aria-label="현장공개 사진 선택">
+                    <li class="open_img_btn on"><button type="button" data-index="0" aria-pressed="true" aria-controls="open_sheet"><img src="./img/open_01.jpg" alt="현장공개 사진 1 크게 보기"></button></li>
+                    <li class="open_img_btn"><button type="button" data-index="1" aria-pressed="false" aria-controls="open_sheet"><img src="./img/open_02.jpg" alt="현장공개 사진 2 크게 보기"></button></li>
+                    <li class="open_img_btn"><button type="button" data-index="2" aria-pressed="false" aria-controls="open_sheet"><img src="./img/open_03.jpg" alt="현장공개 사진 3 크게 보기"></button></li>
+                    <li class="open_img_btn"><button type="button" data-index="3" aria-pressed="false" aria-controls="open_sheet"><img src="./img/open_04.jpg" alt="현장공개 사진 4 크게 보기"></button></li>
                 </ul>
                 
-                <ul class="open_img_sheet">
-                    <li class="sheet on"><img src="./img/open_01.jpg" alt="현장공개 사진 1 크게보기"></li>
-                    <li class="sheet"><img src="./img/open_02.jpg" alt="현장공개 사진 2 크게보기"></li>
-                    <li class="sheet"><img src="./img/open_03.jpg" alt="현장공개 사진 3 크게보기"></li>
-                    <li class="sheet"><img src="./img/open_04.jpg" alt="현장공개 사진 4 크게보기"></li>
+                <ul class="open_img_sheet" id="open_sheet" aria-live="polite">
+                    <li class="sheet on"><img src="./img/open_01.jpg" alt="현장공개 사진 1"></li>
+                    <li class="sheet"><img src="./img/open_02.jpg" alt="현장공개 사진 2"></li>
+                    <li class="sheet"><img src="./img/open_03.jpg" alt="현장공개 사진 3"></li>
+                    <li class="sheet"><img src="./img/open_04.jpg" alt="현장공개 사진 4"></li>
                 </ul>
             </article>
         </section>        <!-- open -->
 
-        <section class="notice_news_mobile">
+        <div id="notice" class="notice_anchor">
+        <section class="notice_news_mobile" aria-label="공지사항·언론보도">
             
-            <div class="notice_news_tab" role="tablist">
+            <div class="notice_news_tab" role="tablist" aria-label="게시판 선택">
                 <button
                     type="button"
                     class="tab on"
                     role="tab"
+                    id="notice_tab"
                     aria-selected="true"
                     aria-controls="notice_panel">
                     공지사항
@@ -329,6 +337,8 @@
                     type="button"
                     class="tab"
                     role="tab"
+                    id="news_tab"
+                    tabindex="-1"
                     aria-selected="false"
                     aria-controls="news_panel">
                     언론보도
@@ -336,45 +346,45 @@
             </div>
 
             <div class="notice_news_sheet">
-                <div class="notice_sheet tab_sheet on_sheet">
+                <div class="notice_sheet tab_sheet on_sheet" id="notice_panel" role="tabpanel" aria-labelledby="notice_tab" tabindex="0">
                     <ul>
                         <li>
-                            <a href="#!">
+                            <a class="pending" aria-disabled="true">
                                 <p class="notice_news_txt">창원국가산업단지 및 창원 성산패총 발굴 50주년 기념 학술대회 안내</p>
                                 <span class="notice_news_date">2024.09.03</span>
                             </a>
                         </li>                        <!-- notice list 01 -->
                         <li>
-                            <a href="#!">
+                            <a class="pending" aria-disabled="true">
                                 <p class="notice_news_txt">가야고분군 세계유산 등재 1주년 국제학술대회-가야고분군의 세계유산적 가치(세계유산의 보존과 활용)</p>
                                 <span class="notice_news_date">2024.08.26</span>
                             </a>
                         </li>                        <!-- notice list 02 -->
                         <li>
-                            <a href="#!">
+                            <a class="pending" aria-disabled="true">
                                 <p class="notice_news_txt">(재)한화문물연구원 채용공고</p>
                                 <span class="notice_news_date">2024.06.03</span>
                             </a>
                         </li>                        <!-- notice list 03 -->
                         <li>
-                            <a href="#!">
+                            <a class="pending" aria-disabled="true">
                                 <p class="notice_news_txt">경산 임당동 267-1번지 근린생활시설 신축부지 내 국비지원 발굴조사 현장설명회 개최 안내</p>
                                 <span class="notice_news_date">2024.03.11</span>
                             </a>
                         </li>                        <!-- notice list 04 -->
                         <li>
-                            <a href="#!">
+                            <a class="pending" aria-disabled="true">
                                 <p class="notice_news_txt">남원 향교동(69-2번지) 구암지구 도시개발사업부지 내 발굴조사 현장설명회 개최 안내</p>
                                 <span class="notice_news_date">2024.02.01</span>
                             </a>
                         </li>                        <!-- notice list 05 -->
-                        <li class="notice_news_more"><a href="#!">+ 더보기</a></li>
+                        <li class="notice_news_more"><a class="pending" aria-disabled="true">+ 더보기<span class="blind"> (준비 중)</span></a></li>
                     </ul>
                 </div>                <!-- notice list -->
-                <div class="news_sheet tab_sheet">
+                <div class="news_sheet tab_sheet" id="news_panel" role="tabpanel" aria-labelledby="news_tab" tabindex="0" hidden>
                     <ul>
                         <li>
-                            <a href="#!">
+                            <a class="pending" aria-disabled="true">
                                 <p class="notice_news_txt">
                                     [KBS]가야사 보고 ‘거창 무릉리 고분군’ 경상남도 문화재지정
                                 </p>
@@ -382,7 +392,7 @@
                             </a>
                         </li>                        <!-- news list 01 -->
                         <li>
-                            <a href="#!">
+                            <a class="pending" aria-disabled="true">
                                 <p class="notice_news_txt">
                                     [강원일보]370여년전 강원도 최초 사액서원 문암서원 터 확인
                                 </p>
@@ -390,7 +400,7 @@
                             </a>
                         </li>                        <!-- news list 02 -->
                         <li>
-                            <a href="#!">
+                            <a class="pending" aria-disabled="true">
                                 <p class="notice_news_txt">
                                     [뉴스경남]김해 ‘유하동유적 국가사적 지정’학술대회 열려
                                 </p>
@@ -398,7 +408,7 @@
                             </a>
                         </li>                        <!-- news list 03 -->
                         <li>
-                            <a href="#!">
+                            <a class="pending" aria-disabled="true">
                                 <p class="notice_news_txt">
                                     [경남도민신문]김해 유하동 가야 유적 사적 지정 학술대회 10일 개최
                                 </p>                                
@@ -406,53 +416,51 @@
                             </a>
                         </li>                        <!-- news list 04 -->
                         <li>
-                            <a href="#!">
+                            <a class="pending" aria-disabled="true">
                                 <p class="notice_news_txt">
                                     [경남일보]김해 유하동유적 국가사적 지정 위한 학술대회 개최
                                 </p>
                                 <span class="notice_news_date">2021.01.19</span>
                             </a>
                         </li>                        <!-- news list 05 -->
-                        <li class="notice_news_more"><a href="#!">+ 더보기</a></li>
+                        <li class="notice_news_more"><a class="pending" aria-disabled="true">+ 더보기<span class="blind"> (준비 중)</span></a></li>
                     </ul>                    
                 </div>                <!-- news_list_mobile -->
             </div>        <!-- notice_news_mobile -->
         </section>
 
-
-
-        <section class="notice_news_pc">
+        <section class="notice_news_pc" aria-label="공지사항·언론보도">
             <div class="notice_news_box">
-                <span class="sub_title">공지사항</span>
-                <span class="more">+ 더보기</span>
+                <h2 class="sub_title">공지사항</h2>
+                <a class="more pending" aria-disabled="true">+ 더보기<span class="blind"> (준비 중)</span></a>
                 <div class="notice_news_list">
                     <ul>
                         <li>
-                            <a href="#!">
+                            <a class="pending" aria-disabled="true">
                                 <p class="notice_news_txt">창원국가산업단지 및 창원 성산패총 발굴 50주년 기념 학술대회 안내</p>
                                 <span class="notice_news_date">2024.09.03</span>
                             </a>
                         </li>                        <!-- notice list 01 -->
                         <li>
-                            <a href="#!">
+                            <a class="pending" aria-disabled="true">
                                 <p class="notice_news_txt">가야고분군 세계유산 등재 1주년 국제학술대회-가야고분군의 세계유산적 가치(세계유산의 보존과 활용)</p>
                                 <span class="notice_news_date">2024.08.26</span>
                             </a>
                         </li>                        <!-- notice list 02 -->
                         <li>
-                            <a href="#!">
+                            <a class="pending" aria-disabled="true">
                                 <p class="notice_news_txt">(재)한화문물연구원 채용공고</p>
                                 <span class="notice_news_date">2024.06.03</span>
                             </a>
                         </li>                        <!-- notice list 03 -->
                         <li>
-                            <a href="#!">
+                            <a class="pending" aria-disabled="true">
                                 <p class="notice_news_txt">경산 임당동 267-1번지 근린생활시설 신축부지 내 국비지원 발굴조사 현장설명회 개최 안내</p>
                                 <span class="notice_news_date">2024.03.11</span>
                             </a>
                         </li>                        <!-- notice list 04 -->
                         <li>
-                            <a href="#!">
+                            <a class="pending" aria-disabled="true">
                                 <p class="notice_news_txt">
                                     남원 향교동(69-2번지) 구암지구 도시개발사업부지 내 발굴조사 현장설명회 개최 안내
                                 </p>
@@ -464,12 +472,12 @@
             </div>                <!-- noticeBox -->
 
             <div class="notice_news_box">
-                <span class="sub_title">언론보도</span>
-                <span  class="more">+ 더보기</span>
+                <h2 class="sub_title">언론보도</h2>
+                <a class="more pending" aria-disabled="true">+ 더보기<span class="blind"> (준비 중)</span></a>
                 <div class="notice_news_list">
                     <ul>
                         <li>
-                            <a href="#!">
+                            <a class="pending" aria-disabled="true">
                                 <p class="notice_news_txt">
                                     [KBS]가야사 보고 ‘거창 무릉리 고분군’ 경상남도 문화재지정
                                 </p>
@@ -477,7 +485,7 @@
                             </a>
                         </li>                        <!-- news list 01 -->
                         <li>
-                            <a href="#!">
+                            <a class="pending" aria-disabled="true">
                                 <p class="notice_news_txt">
                                     [강원일보]370여년전 강원도 최초 사액서원 문암서원 터 확인
                                 </p>
@@ -485,7 +493,7 @@
                             </a>
                         </li>                        <!-- news list 02 -->
                         <li>
-                            <a href="#!">
+                            <a class="pending" aria-disabled="true">
                                 <p class="notice_news_txt">
                                     [뉴스경남]김해 ‘유하동유적 국가사적 지정’학술대회 열려
                                 </p>
@@ -493,7 +501,7 @@
                             </a>
                         </li>                        <!-- news list 03 -->
                         <li>
-                            <a href="#!">
+                            <a class="pending" aria-disabled="true">
                                 <p class="notice_news_txt">
                                     [경남도민신문]김해 유하동 가야 유적 사적 지정 학술대회 10일 개최
                                 </p>                                
@@ -501,7 +509,7 @@
                             </a>
                         </li>                        <!-- news list 04 -->
                         <li>
-                            <a href="#!">
+                            <a class="pending" aria-disabled="true">
                                 <p class="notice_news_txt">
                                     [경남일보]김해 유하동유적 국가사적 지정 위한 학술대회 개최
                                 </p>
@@ -512,54 +520,55 @@
                 </div>
             </div>
         </section>
-    
-        
-        <section class="ruins">
+        </div>        <!-- notice -->
+
+        <section class="ruins" id="ruins" aria-labelledby="ruins_title">
             <div class="open_header">
-                <h2 class="sub_title">유적 갤러리</h2>
-                <span class="more">+ 더보기</span>
+                <h2 class="sub_title" id="ruins_title">유적 갤러리</h2>
+                <a class="more pending" aria-disabled="true">+ 더보기<span class="blind"> (준비 중)</span></a>
             </div>
-            <div class="ruins_box">
+            <figure class="ruins_box">
                 <div class="ruins_img">
-                    <img src="./img/ruins01.jpg" alt="ruins_gallery01">
+                    <img src="./img/ruins01.jpg" alt="">
                 </div>
-                <p class="ruins_txt">거창 창포원에서 바라본 거창 무릉리 고분군 원경</p>
-            </div>
-            <div class="ruins_box">
+                <figcaption class="ruins_txt">거창 창포원에서 바라본 거창 무릉리 고분군 원경</figcaption>
+            </figure>
+            <figure class="ruins_box">
                 <div class="ruins_img">
-                    <img src="./img/ruins02.jpg" alt="ruins_gallery02">
+                    <img src="./img/ruins02.jpg" alt="">
                 </div>
-                <p class="ruins_txt">거창 무릉리고분군 Ⅱ지구 M49호분 조사 후 전경</p>
-            </div>
-            <div class="ruins_box">
+                <figcaption class="ruins_txt">거창 무릉리고분군 Ⅱ지구 M49호분 조사 후 전경</figcaption>
+            </figure>
+            <figure class="ruins_box">
                 <div class="ruins_img">
-                    <img src="./img/ruins03.jpg" alt="ruins_gallery03">
+                    <img src="./img/ruins03.jpg" alt="">
                 </div>
-                <p class="ruins_txt">거창 무릉리고분군 Ⅱ지구 M49호분 15호 석곽묘 출토 유물</p>
-            </div>
-            <div class="ruins_box">
+                <figcaption class="ruins_txt">거창 무릉리고분군 Ⅱ지구 M49호분 15호 석곽묘 출토 유물</figcaption>
+            </figure>
+            <figure class="ruins_box">
                 <div class="ruins_img">
-                    <img src="./img/ruins04.jpg" alt="ruins_gallery04">
+                    <img src="./img/ruins04.jpg" alt="">
                 </div>
-                <p class="ruins_txt">평해읍성 외벽부 세부사진(울진군 평해리 899-4번지)</p>
-            </div>
+                <figcaption class="ruins_txt">평해읍성 외벽부 세부사진(울진군 평해리 899-4번지)</figcaption>
+            </figure>
         </section>        <!-- ruins gallery -->
 
 
+        <nav class="link_site_wrap" id="links" aria-label="관련 사이트">
         <div class="link_site_mobile">
             <div class="link_site">
                 <div>
-                    <a href="https://www.khs.go.kr/" target="_blank">
+                    <a href="https://www.khs.go.kr/" target="_blank" rel="noopener noreferrer">
                         국가유산청
                     </a>
                 </div>
                 <div>
-                    <a href="https://kohis.e-minwon.go.kr/" target="_blank">
+                    <a href="https://kohis.e-minwon.go.kr/" target="_blank" rel="noopener noreferrer">
                         국가유산청 <p>고객지원</p>
                     </a>
                 </div>
                 <div>
-                    <a href="https://www.e-minwon.go.kr/" target="_blank">
+                    <a href="https://www.e-minwon.go.kr/" target="_blank" rel="noopener noreferrer">
                         국가유산청 <p>협업포털</p>
                     </a>
                 </div>
@@ -569,59 +578,61 @@
                     </a>
                 </div>
                 <div>
-                    <a href="https://www.kaah.kr/" target="_blank">
+                    <a href="https://www.kaah.kr/" target="_blank" rel="noopener noreferrer">
                         한국문화유산협회
                     </a>
                 </div>
                 <div>
-                    <a href="https://www.nrich.go.kr/" target="_blank">
+                    <a href="https://www.nrich.go.kr/" target="_blank" rel="noopener noreferrer">
                         국립문화유산연구원
                     </a>
                 </div>
             </div>
-            <div class="site_more"><a href="#!">관련사이트 <br> 더보기</a></div>
+            <div class="site_more"><a class="pending" aria-disabled="true">관련사이트 <br> 더보기<span class="blind"> (준비 중)</span></a></div>
         </div>        <!-- link site -->
 
         <div class="link_site_pc">
-            <a href="https://www.khs.go.kr/" target="_blank">
+            <a href="https://www.khs.go.kr/" target="_blank" rel="noopener noreferrer">
                 국가유산청
             </a>
              · 
-            <a href="https://kohis.e-minwon.go.kr/" target="_blank">
+            <a href="https://kohis.e-minwon.go.kr/" target="_blank" rel="noopener noreferrer">
                 국가유산청 <span>고객지원센터</span>
             </a>
             · 
-            <a href="https://www.e-minwon.go.kr/" target="_blank">
+            <a href="https://www.e-minwon.go.kr/" target="_blank" rel="noopener noreferrer">
                 국가유산청 <span>협업포털</span>
             </a>
             · 
-            <a href="https://www.kaah.kr/" target="_blank">
+            <a href="https://gis-heritage.go.kr/" target="_blank" rel="noopener noreferrer">
                 국가유산청 <span>공간정보서비스</span>
             </a>
             · 
-            <a href="https://www.kaah.kr/" target="_blank">
+            <a href="https://www.kaah.kr/" target="_blank" rel="noopener noreferrer">
                 한국문화유산협회
             </a>
             · 
-            <a href="https://www.nrich.go.kr/" target="_blank">
+            <a href="https://www.nrich.go.kr/" target="_blank" rel="noopener noreferrer">
                 국립문화유산연구원
             </a>
-            <span class="site_more"><a href="#!">관련사이트 더보기</a></span>
+            <span class="site_more"><a class="pending" aria-disabled="true">관련사이트 더보기<span class="blind"> (준비 중)</span></a></span>
         </div>        <!-- link site -->
+        </nav>
 
         <div class="navi">
             <span><a href="./sub/index.html">회사소개</a></span>
-            <span><a href="#!">오시는 길</a></span>
-            <span><a href="#!">이용약관</a></span>
-            <span><a href="#!">개인정보처리방침</a></span>
+            <span><a class="pending" aria-disabled="true">오시는 길<span class="blind"> (준비 중)</span></a></span>
+            <span><a class="pending" aria-disabled="true">이용약관<span class="blind"> (준비 중)</span></a></span>
+            <span><a class="pending" aria-disabled="true">개인정보처리방침<span class="blind"> (준비 중)</span></a></span>
         </div>        <!-- navi -->
     </div>    <!-- wrap -->
+    </main>
 
     <footer class="footer_outer">
         <div class="footer">
             <div class="logo">
-                <a href="#">
-                    <img src="./img/hanhwa_logo_footer.png" alt="hanhwa_logo">
+                <a href="./index.html">
+                    <img src="./img/hanhwa_logo_footer.png" alt="한화문물연구원 홈">
                 </a>
             </div>
             <p>
@@ -633,9 +644,12 @@
             <p>
                 팩스 : 055-342-3287
             </p>
+            <p class="site_notice">
+                학습용 포트폴리오 사이트입니다. 메인과 인사말 페이지만 구현했으며, 회색으로 표시된 메뉴·버튼은 준비 중입니다.
+            </p>
             <p>Copyright © Foundation of Hanhwa Cultural Heritage Institute. ALL RIGHTS RESERVED.</p>
             <span class="facebook">
-                <a href="https://www.facebook.com/p/%ED%95%9C%ED%99%94%EB%AC%B8%EB%AC%BC%EC%97%B0%EA%B5%AC%EC%9B%90-100079640027359/?locale=gl_ES&_rdr"><i class="fa-brands fa-facebook"></i></a>
+                <a aria-label="한화문물연구원 페이스북 (새 창)" target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/p/%ED%95%9C%ED%99%94%EB%AC%B8%EB%AC%BC%EC%97%B0%EA%B5%AC%EC%9B%90-100079640027359/?locale=gl_ES&_rdr"><i class="fa-brands fa-facebook" aria-hidden="true"></i></a>
             </span>
         </div>        <!-- footer -->
     </footer>    <!-- footer outer -->

@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>한화문물연구원 인사말</title>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- font-family: "IBM Plex Sans KR", sans-serif; -->
@@ -19,160 +19,165 @@
     
 </head>
 <body>
+    <a class="skip_link" href="#content">본문 바로가기</a>
     <header class="header_outer">
         <div class="header">
             <div class="logo">
                 <a href="../index.html">
-                    <img src="../img/hanhwa_logo_white.png" alt="hanhwa_logo">
+                    <img src="../img/hanhwa_logo_white.png" alt="한화문물연구원 홈">
                 </a>
             </div>
             <!-- logo -->
-            <input type="checkbox" name="gnb_m_btn" id="gnb_m_btn">
             <div class="gnb_mobile">
-                <p class="search"><i class="fa-solid fa-magnifying-glass"></i></p>
-                <label for="gnb_m_btn" class="gnb_m_btn_open"><i class="fa-solid fa-bars"></i></label>
-                <label for="gnb_m_btn" class="gnb_m_btn_close"><i class="fa-solid fa-xmark"></i></label>
-
-                <input type="radio" name="gnb_m_menu" id="gnb_m_menu01" checked>
-                <input type="radio" name="gnb_m_menu" id="gnb_m_menu02">
-                <input type="radio" name="gnb_m_menu" id="gnb_m_menu03">
-                <input type="radio" name="gnb_m_menu" id="gnb_m_menu04">
-                <input type="radio" name="gnb_m_menu" id="gnb_m_menu05">
-                <div class="gnb_mobile_box">
+                <button type="button" class="search pending" aria-disabled="true" aria-label="검색 (준비 중)"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></button>
+                <button type="button" class="gnb_m_toggle" aria-expanded="false" aria-controls="gnb_mobile_box" aria-label="전체 메뉴 열기">
+                    <i class="fa-solid fa-bars" aria-hidden="true"></i>
+                </button>
+                <div class="gnb_mobile_box" id="gnb_mobile_box" role="dialog" aria-modal="true" aria-label="전체 메뉴" hidden>
                     <div class="logo">
-                        <img src="../img/hanhwa_logo_black.png" alt="hanhwa_logo">
+                        <img src="../img/hanhwa_logo_black.png" alt="한화문물연구원">
                     </div>
-                    <div class="gnb_menu">
-                        <label for="gnb_m_menu01" class="gnb_m_menu01">연구원소개</label>
-                        <label for="gnb_m_menu02" class="gnb_m_menu02">조사현황</label>
-                        <label for="gnb_m_menu03" class="gnb_m_menu03">조사의뢰</label>
-                        <label for="gnb_m_menu04" class="gnb_m_menu04">커뮤니티</label>
-                        <label for="gnb_m_menu05" class="gnb_m_menu05">자료실</label>
+                    <div class="gnb_menu" role="tablist" aria-orientation="vertical" aria-label="메뉴 분류">
+                        <button type="button" role="tab" id="gnb_m_tab01" class="gnb_m_tab" aria-selected="true" aria-controls="gnb_m_panel01">연구원소개</button>
+                        <button type="button" role="tab" id="gnb_m_tab02" class="gnb_m_tab" aria-selected="false" aria-controls="gnb_m_panel02" tabindex="-1">조사현황</button>
+                        <button type="button" role="tab" id="gnb_m_tab03" class="gnb_m_tab" aria-selected="false" aria-controls="gnb_m_panel03" tabindex="-1">조사의뢰</button>
+                        <button type="button" role="tab" id="gnb_m_tab04" class="gnb_m_tab" aria-selected="false" aria-controls="gnb_m_panel04" tabindex="-1">커뮤니티</button>
+                        <button type="button" role="tab" id="gnb_m_tab05" class="gnb_m_tab" aria-selected="false" aria-controls="gnb_m_panel05" tabindex="-1">자료실</button>
                     </div>
 
                     <div class="gnb_menu_wrap">
-                        <div class="menu_box menu_box01">
-                            <p><a href="#!">인사말</a></p>
-                            <p><a href="#!">연혁</a></p>
-                            <p><a href="#!">CI 소개</a></p> 
-                            <p><a href="#!">조직도</a></p>
-                            <p><a href="#!">오시는 길</a></p>
+                        <div class="menu_box" role="tabpanel" id="gnb_m_panel01" aria-labelledby="gnb_m_tab01">
+                            <p><a href="./index.html" aria-current="page">인사말</a></p>
+                            <p><a class="pending" aria-disabled="true">연혁<span class="blind"> (준비 중)</span></a></p>
+                            <p><a class="pending" aria-disabled="true">CI 소개<span class="blind"> (준비 중)</span></a></p>
+                            <p><a class="pending" aria-disabled="true">조직도<span class="blind"> (준비 중)</span></a></p>
+                            <p><a class="pending" aria-disabled="true">오시는 길<span class="blind"> (준비 중)</span></a></p>
                         </div>
-                        <div class="menu_box menu_box02">
-                            <p><a href="#!">지표조사</a></p>
-                            <p><a href="#!">발굴조사</a></p>
+                        <div class="menu_box" role="tabpanel" id="gnb_m_panel02" aria-labelledby="gnb_m_tab02" hidden>
+                            <p><a class="pending" aria-disabled="true">지표조사<span class="blind"> (준비 중)</span></a></p>
+                            <p><a class="pending" aria-disabled="true">발굴조사<span class="blind"> (준비 중)</span></a></p>
                         </div>
-                        <div class="menu_box menu_box03">
-                            <p><a href="#!">지표조사</a></p>
-                            <p><a href="#!">참관조사</a></p>
-                            <p><a href="#!">표본·시굴조사</a></p>
-                            <p><a href="#!">발굴조사</a></p>
-                            <p><a href="#!">조사경비계산</a></p>
+                        <div class="menu_box" role="tabpanel" id="gnb_m_panel03" aria-labelledby="gnb_m_tab03" hidden>
+                            <p><a class="pending" aria-disabled="true">지표조사<span class="blind"> (준비 중)</span></a></p>
+                            <p><a class="pending" aria-disabled="true">참관조사<span class="blind"> (준비 중)</span></a></p>
+                            <p><a class="pending" aria-disabled="true">표본·시굴조사<span class="blind"> (준비 중)</span></a></p>
+                            <p><a class="pending" aria-disabled="true">발굴조사<span class="blind"> (준비 중)</span></a></p>
+                            <p><a class="pending" aria-disabled="true">조사경비계산<span class="blind"> (준비 중)</span></a></p>
                         </div>
-                        <div class="menu_box menu_box04">
-                            <p><a href="#!">공지사항</a></p>
-                            <p><a href="#!">자유게시판</a></p>
-                            <p><a href="#!">언론보도</a></p>
-                            <p><a href="#!">현장공개</a></p>
-                            <p><a href="#!">관련사이트</a></p>
+                        <div class="menu_box" role="tabpanel" id="gnb_m_panel04" aria-labelledby="gnb_m_tab04" hidden>
+                            <p><a href="../index.html#notice">공지사항</a></p>
+                            <p><a class="pending" aria-disabled="true">자유게시판<span class="blind"> (준비 중)</span></a></p>
+                            <p><a href="../index.html#notice">언론보도</a></p>
+                            <p><a href="../index.html#open">현장공개</a></p>
+                            <p><a href="../index.html#links">관련사이트</a></p>
                         </div>
-                        <div class="menu_box menu_box05">
-                            <p><a href="#!">발간보고서</a></p>
-                            <p><a href="#!">유적 갤러리</a></p>
-                            <p><a href="#!">자료검색</a></p>
-                            <p><a href="#!">자료요청</a></p>
+                        <div class="menu_box" role="tabpanel" id="gnb_m_panel05" aria-labelledby="gnb_m_tab05" hidden>
+                            <p><a class="pending" aria-disabled="true">발간보고서<span class="blind"> (준비 중)</span></a></p>
+                            <p><a href="../index.html#ruins">유적 갤러리</a></p>
+                            <p><a class="pending" aria-disabled="true">자료검색<span class="blind"> (준비 중)</span></a></p>
+                            <p><a class="pending" aria-disabled="true">자료요청<span class="blind"> (준비 중)</span></a></p>
                         </div>
                     </div>
+                    <p class="menu_notice">학습용 사이트로 메인·인사말만 구현했습니다. 회색 메뉴는 준비 중입니다.</p>
                 </div>
-            </div>
+            </div>            <!-- gnb_mobile -->
 
-            <nav class="top_gnb_pc">
+            <nav class="top_gnb_pc" aria-label="회원 메뉴">
                 <ul>
                     <li><a href="../index.html">HOME</a></li>
-                    <li><a href="#!">LOGIN</a></li>
-                    <li><a href="#!">JOIN</a></li>
-                    <li><a href="https://only.webhard.co.kr/" target="_blank">웹하드</a></li>
+                    <li><a class="pending" aria-disabled="true">LOGIN<span class="blind"> (준비 중)</span></a></li>
+                    <li><a class="pending" aria-disabled="true">JOIN<span class="blind"> (준비 중)</span></a></li>
+                    <li><a href="https://only.webhard.co.kr/" target="_blank" rel="noopener noreferrer">웹하드<span class="blind"> (새 창)</span></a></li>
                 </ul>
-            </nav>
+            </nav>            <!-- top_gnb_pc -->
 
-            <nav class="gnb_pc">
-                <ul>
-                    <li>연구원 소개</li>
-                    <li>조사현황</li>
-                    <li>조사의뢰</li>
-                    <li>커뮤니티</li>
-                    <li>자료실</li>
+            <nav class="gnb_pc" aria-label="주 메뉴">
+                <ul class="gnb_pc_list">
+                    <li class="gnb_pc_item">
+                        <button type="button" class="gnb_pc_btn" aria-expanded="false" aria-controls="gnb_pc_sub01">연구원 소개</button>
+                        <ul class="gnb_pc_sub" id="gnb_pc_sub01">
+                            <li><a href="./index.html" aria-current="page">인사말</a></li>
+                            <li><a class="pending" aria-disabled="true">연혁<span class="blind"> (준비 중)</span></a></li>
+                            <li><a class="pending" aria-disabled="true">CI 소개<span class="blind"> (준비 중)</span></a></li>
+                            <li><a class="pending" aria-disabled="true">조직도<span class="blind"> (준비 중)</span></a></li>
+                            <li><a class="pending" aria-disabled="true">오시는 길<span class="blind"> (준비 중)</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="gnb_pc_item">
+                        <button type="button" class="gnb_pc_btn" aria-expanded="false" aria-controls="gnb_pc_sub02">조사현황</button>
+                        <ul class="gnb_pc_sub" id="gnb_pc_sub02">
+                            <li><a class="pending" aria-disabled="true">지표조사<span class="blind"> (준비 중)</span></a></li>
+                            <li><a class="pending" aria-disabled="true">발굴조사<span class="blind"> (준비 중)</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="gnb_pc_item">
+                        <button type="button" class="gnb_pc_btn" aria-expanded="false" aria-controls="gnb_pc_sub03">조사의뢰</button>
+                        <ul class="gnb_pc_sub" id="gnb_pc_sub03">
+                            <li><a class="pending" aria-disabled="true">지표조사<span class="blind"> (준비 중)</span></a></li>
+                            <li><a class="pending" aria-disabled="true">참관조사<span class="blind"> (준비 중)</span></a></li>
+                            <li><a class="pending" aria-disabled="true">표본·시굴<span class="blind"> (준비 중)</span></a></li>
+                            <li><a class="pending" aria-disabled="true">발굴조사<span class="blind"> (준비 중)</span></a></li>
+                            <li><a class="pending" aria-disabled="true">경비계산<span class="blind"> (준비 중)</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="gnb_pc_item">
+                        <button type="button" class="gnb_pc_btn" aria-expanded="false" aria-controls="gnb_pc_sub04">커뮤니티</button>
+                        <ul class="gnb_pc_sub" id="gnb_pc_sub04">
+                            <li><a href="../index.html#notice">공지사항</a></li>
+                            <li><a class="pending" aria-disabled="true">자유게시판<span class="blind"> (준비 중)</span></a></li>
+                            <li><a href="../index.html#notice">언론보도</a></li>
+                            <li><a href="../index.html#open">현장공개</a></li>
+                            <li><a href="../index.html#links">관련사이트</a></li>
+                        </ul>
+                    </li>
+                    <li class="gnb_pc_item">
+                        <button type="button" class="gnb_pc_btn" aria-expanded="false" aria-controls="gnb_pc_sub05">자료실</button>
+                        <ul class="gnb_pc_sub" id="gnb_pc_sub05">
+                            <li><a class="pending" aria-disabled="true">발간보고서<span class="blind"> (준비 중)</span></a></li>
+                            <li><a href="../index.html#ruins">유적 갤러리</a></li>
+                            <li><a class="pending" aria-disabled="true">자료검색<span class="blind"> (준비 중)</span></a></li>
+                            <li><a class="pending" aria-disabled="true">자료요청<span class="blind"> (준비 중)</span></a></li>
+                        </ul>
+                    </li>
                 </ul>
+                <p class="menu_notice">※ 학습용 사이트로 메인·인사말만 구현했습니다. 회색 메뉴는 준비 중입니다.</p>
             </nav>            <!-- gnb pc -->
-            <div class="menu_box_pc">
-                <ul>
-                    <li><a href="#!">인사말</a></li>
-                    <li><a href="#!">연혁</a></li>
-                    <li><a href="#!">CI 소개</a></li>
-                    <li><a href="#!">조직도</a></li>
-                    <li><a href="#!">오시는 길</a></li>
-                </ul> 
-                <ul>
-                    <li><a href="#!">지표조사</a></li>
-                    <li><a href="#!">발굴조사</a></li>
-                </ul>
-                <ul>
-                    <li><a href="#!">지표조사</a></li>
-                    <li><a href="#!">참관조사</a></li>
-                    <li><a href="#!">표본·시굴</a></li>
-                    <li><a href="#!">발굴조사</a></li>
-                    <li><a href="#!">경비계산</a></li>
-                </ul>
-                <ul>
-                    <li><a href="#!">공지사항</a></li>
-                    <li><a href="#!">자유게시판</a></li>
-                    <li><a href="#!">언론보도</a></li>
-                    <li><a href="#!">현장공개</a></li>
-                    <li><a href="#!">관련사이트</a></li>
-                </ul>
-                <ul>
-                    <li><a href="#!">발간보고서</a></li>
-                    <li><a href="#!">유적 갤러리</a></li>
-                    <li><a href="#!">자료검색</a></li>
-                    <li><a href="#!">자료요청</a></li>
-                </ul>
-            </div>
-            <!-- menu box -->
             <div class="search_box">
-                <input type="text" name="search">
-                <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                <label class="blind" for="search_input">검색어 (검색 기능 준비 중)</label>
+                <input type="search" name="search" id="search_input" placeholder="검색 기능 준비 중" disabled>
+                <span aria-hidden="true"><i class="fa-solid fa-magnifying-glass"></i></span>
             </div>            <!-- search_box -->
         </div>        <!-- header -->
     </header>    <!-- header_outer -->
     
     <div class="wrap">
-        <div class="menu_pc">
-            <div class="top_menu">연구원소개</div>
-            <div class="bottom_menu">
-                <p>인사말</p>
-                <p>연혁</p>
-                <p>CI 소개</p>
-                <p>조직도</p>
-                <p>오시는 길</p>
-            </div>
-        </div>
+        <nav class="menu_pc" aria-label="연구원소개 하위 메뉴">
+            <h2 class="top_menu">연구원소개</h2>
+            <ul class="bottom_menu">
+                <li><a href="./index.html" aria-current="page">인사말</a></li>
+                <li><a class="pending" aria-disabled="true">연혁<span class="blind"> (준비 중)</span></a></li>
+                <li><a class="pending" aria-disabled="true">CI 소개<span class="blind"> (준비 중)</span></a></li>
+                <li><a class="pending" aria-disabled="true">조직도<span class="blind"> (준비 중)</span></a></li>
+                <li><a class="pending" aria-disabled="true">오시는 길<span class="blind"> (준비 중)</span></a></li>
+            </ul>
+        </nav>
         
-        <div class="content_wrap">
+        <main class="content_wrap" id="content">
             <p class="nav">
                 <a href="../index.html">홈</a>
-                > 연구원 소개
+                &gt; 연구원 소개 &gt; 인사말
             </p>
             <p class="nav_mobile">
-                <span class="check">인사말</span>
-                 · 연혁 · CI소개 · 조직도 · 오시는 길
+                <span class="check" aria-current="page">인사말</span>
+                 · <span class="pending">연혁</span> · <span class="pending">CI소개</span> · <span class="pending">조직도</span> · <span class="pending">오시는 길</span><span class="blind"> (인사말 외 메뉴는 준비 중)</span>
             </p>
     
             <div class="banner">
-                <img src="../img/sub_banner_img.jpg" alt="sub_banner_img">
+                <img src="../img/sub_banner_img.jpg" alt="">
             </div>
     
             <div class="txt">
-                <p class="title">한화문물연구원을 찾아주신 여러분, <br> 감사합니다.</p>
+                <h1 class="title">한화문물연구원을 찾아주신 여러분, <br> 감사합니다.</h1>
         
                 <p>
                     재단법인 한화문물연구원(韓和文物硏究院)은 고대 한민족의 문화흔적 또는 이와 관련된 고대의 유적과 유물을 고고학적인 연구와 조사연구를 위해 설립되었습니다.
@@ -210,14 +215,14 @@
                 <p class="leader">재단법인 한화문물연구원 원장 <br> 신용민</p>
             </div>
             <!-- 본문 -->
-        </div>
+        </main>
         <!-- content wrap -->
     </div>    <!-- wrap -->
 
     <footer class="footer_outer">
         <div class="footer">
             <div class="logo">
-                <img src="../img/hanhwa_logo_footer.png" alt="hanhwa_logo">
+                <img src="../img/hanhwa_logo_footer.png" alt="한화문물연구원">
             </div>
             <p>
                 (50865) 경남 김해시 진영읍 여래로20번길 10 한화문물연구원
@@ -228,9 +233,12 @@
             <p>
                 팩스 : 055-342-3287
             </p>
+            <p class="site_notice">
+                학습용 포트폴리오 사이트입니다. 메인과 인사말 페이지만 구현했으며, 회색으로 표시된 메뉴·버튼은 준비 중입니다.
+            </p>
             <p>Copyright © Foundation of Hanhwa Cultural Heritage Institute. ALL RIGHTS RESERVED.</p>
             <span class="facebook">
-                <a href="https://www.facebook.com/p/%ED%95%9C%ED%99%94%EB%AC%B8%EB%AC%BC%EC%97%B0%EA%B5%AC%EC%9B%90-100079640027359/?locale=gl_ES&_rdr"><i class="fa-brands fa-facebook"></i></a>
+                <a aria-label="한화문물연구원 페이스북 (새 창)" target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/p/%ED%95%9C%ED%99%94%EB%AC%B8%EB%AC%BC%EC%97%B0%EA%B5%AC%EC%9B%90-100079640027359/?locale=gl_ES&_rdr"><i class="fa-brands fa-facebook" aria-hidden="true"></i></a>
             </span>
         </div>        <!-- footer -->
     </footer>    <!-- footer outer -->
