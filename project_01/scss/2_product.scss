@@ -145,6 +145,9 @@
     .page {text-align: center;}
     .page .page_nation li {font-size: 18px;}
     .page .page_nation .num {width: 32px; margin: 0 3px;}
+    // 같은 줄 카드 높이를 맞추고 글자 영역을 줄여 사진이 먼저 보이게
+    .product .product_box {display: flex; flex-direction: column;}
+    .product .product_box .product_txt {flex: 1; min-height: 0; padding: 8px 6px;}
 }
 
 @media (max-width: $bp-sm) {

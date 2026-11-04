@@ -81,6 +81,9 @@
     .review {grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 10px;}
     .info {padding: 0 16px;}
     .review .review_box .review_page .review_tit {font-size: 16px;}
+    // 정사각형이면 2×2 카드가 너무 길어져 4:3으로
+    .review .review_box .review_img,
+    .review .review_box .review_img img {aspect-ratio: 4 / 3;}
 }
 
 @media (max-width: $bp-sm) {

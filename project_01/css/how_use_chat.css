@@ -137,7 +137,7 @@
 }
 
 #chat_chk:checked ~ .chat .chat_box {
-  display: block;
+  display: flex;
 }
 
 #chat_chk ~ .chat .open {
@@ -189,11 +189,14 @@
   bottom: 210px;
   right: 100px;
   z-index: 99999;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .chat .chat_box .brand {
-  width: 405px;
+  width: 100%;
   height: 100px;
+  flex: none;
   border-radius: 15px 15px 0 0;
   background-color: #feffed;
   border-bottom: 1px solid #9c7055;
@@ -228,119 +231,251 @@
 }
 
 .chat .chat_box .chat_first {
-  width: 200px;
-  height: 40px;
-  line-height: 40px;
-  font-family: "Gowun Dodum", sans-serif;
-  font-size: 18px;
-  color: #feffed;
-  float: left;
-  margin: 0 30px;
-  margin-top: 20px;
-  padding-left: 20px;
-  background-color: white;
-  border-radius: 15px;
-  background-color: #9c7055;
+  display: none;
 }
 
-.chat .chat_box .faq span:hover {
+/************************** 채팅: 자동 응답 데모 **************************/
+.chat .chat_box .chat_log {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 20px;
+}
+
+.chat .chat_box .msg {
+  max-width: 80%;
+  padding: 8px 14px;
+  font-family: "Gowun Dodum", sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  border-radius: 15px;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.chat .chat_box .msg.bot {
+  align-self: flex-start;
+  background-color: #fffdf0;
+  color: #575757;
+  border: 1px solid #d6b8a3;
+  border-top-left-radius: 4px;
+}
+
+.chat .chat_box .msg.user {
+  align-self: flex-end;
   background-color: #9c7055;
   color: #feffed;
+  border-top-right-radius: 4px;
+}
+
+.chat .chat_box .msg.typing {
+  color: #bbb;
+}
+
+.chat .chat_box .msg a {
+  color: #9c7055;
+  text-decoration: underline;
+}
+
+.chat .chat_box .chat_quick {
+  flex: none;
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 0 20px 10px;
+}
+
+.chat .chat_box .chat_quick button {
+  flex: none;
+  padding: 4px 12px;
+  border: 1px solid #9c7055;
+  border-radius: 15px;
+  background-color: white;
+  color: #9c7055;
+  font-family: "Gowun Dodum", sans-serif;
+  font-size: 14px;
   cursor: pointer;
 }
 
+.chat .chat_box .chat_quick button:hover {
+  background-color: #9c7055;
+  color: #feffed;
+}
+
 .chat .chat_box .chat_txt_box {
-  width: 100%;
-  height: 40px;
-  border-radius: 0 0 15px 15px;
-  background-color: white;
+  flex: none;
+  display: flex;
+  align-items: center;
+  height: 44px;
+  padding: 0 6px 0 14px;
   border-top: 1px solid #9c7055;
-  box-sizing: border-box;
-  position: absolute;
-  bottom: 0;
-  left: 0;
   background-color: #feffed;
 }
 
 .chat .chat_box .chat_txt_box .chat_txt {
-  width: 390px;
-  margin: 6px;
+  flex: 1;
+  min-width: 0;
   font-size: 16px;
   color: #9c7055;
   font-family: "Gowun Dodum", sans-serif;
   border: none;
-  background-color: #feffed;
+  outline: none;
+  background-color: transparent;
+}
+
+.chat .chat_box .chat_txt_box .chat_send {
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background-color: #9c7055;
+  color: #feffed;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/************************** 떠 있는 버튼 쌓임 순서 **************************/
+.btn_top, .chat label, .how_use_wrap, .pop_box {
+  z-index: 60;
+}
+
+/************************** TOP: 맨 위에서는 숨김 (js에서 .show) **************************/
+.btn_top {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.btn_top.show {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* responsive */
 @media (max-width: 768px) {
   .btn_top {
-    width: 44px;
-    height: 44px;
-    bottom: 20px;
+    width: 40px;
+    height: 40px;
+    bottom: 16px;
     right: 16px;
-    line-height: 42px;
-    font-size: 24px;
-  }
-  .pop_box {
-    width: 100px;
-    height: 100px;
-    top: auto;
-    bottom: 20px;
-    left: 16px;
-  }
-  .pop_box p {
-    font-size: 9px;
-    padding-top: 18px;
-  }
-  .how_use_wrap {
-    top: auto;
-    bottom: 140px;
-    right: 12px;
-  }
-  .how_use_box {
-    width: 64px;
-    height: 64px;
-  }
-  .how_use_box p {
-    font-size: 14px;
-    padding-top: 0;
-  }
-  .how_use_box .how_use_top {
-    padding-top: 14px;
-  }
-  .how_use_wrap button {
-    width: 20px;
-    height: 20px;
-    font-size: 14px;
+    line-height: 37px;
+    font-size: 22px;
+    border-width: 1.5px;
   }
   .chat label {
-    bottom: 76px;
+    bottom: 64px;
     right: 16px;
   }
   .chat label div {
-    width: 52px;
-    height: 52px;
-    font-size: 28px;
-    line-height: 48px;
+    width: 40px;
+    height: 40px;
+    border-width: 1.5px;
+    font-size: 20px;
+    line-height: 37px;
   }
   .chat label div img {
     width: 100%;
   }
+  .how_use_wrap {
+    top: auto;
+    bottom: 112px;
+    right: 16px;
+  }
+  .how_use_box {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .how_use_box p,
+  .how_use_box .how_use_top {
+    font-size: 11px;
+    padding-top: 0;
+    line-height: 1.2;
+  }
+  .how_use_box p:not(.how_use_top) {
+    display: none;
+  }
+  .how_use_wrap button {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    font-size: 10px;
+    line-height: 16px;
+    padding: 0;
+  }
+  .pop_box {
+    width: auto;
+    height: auto;
+    top: auto;
+    bottom: 16px;
+    left: 16px;
+    right: 72px;
+    padding: 6px 30px 6px 12px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    animation: none;
+  }
+  .pop_box p {
+    font-size: 11px;
+    padding-top: 0;
+    text-align: left;
+    line-height: 1.4;
+  }
+  .pop_box p br {
+    display: none;
+  }
+  .pop_box label {
+    position: absolute;
+    top: 50%;
+    right: 6px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    font-size: 16px;
+    line-height: 20px;
+  }
   .chat .chat_box {
     width: auto;
+    height: min(440px, 100vh - 240px);
     left: 16px;
     right: 16px;
-    bottom: 140px;
-    height: 380px;
+    bottom: 112px;
+  }
+  body:has(#chat_chk:checked) .how_use_wrap {
+    display: none;
   }
   .chat .chat_box .brand {
+    height: 72px;
+  }
+  .chat .chat_box .brand .logo_box {
+    width: 44px;
+    height: 44px;
+    margin: 14px 0 0 16px;
+  }
+  .chat .chat_box .brand .logo_box img {
     width: 100%;
   }
   .chat .chat_box .brand .brand_intro {
     width: auto;
+    height: auto;
+    margin: 14px 0 0 12px;
   }
-  .chat .chat_box .chat_txt_box .chat_txt {
-    width: calc(100% - 12px);
+  .chat .chat_box .brand .brand_intro .brand_tit {
+    font-size: 18px;
+  }
+  .chat .chat_box .chat_log {
+    padding: 12px 14px;
+  }
+  .chat .chat_box .chat_quick {
+    padding: 0 14px 10px;
   }
 }

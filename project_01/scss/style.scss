@@ -554,9 +554,23 @@ font-size: 24px; font-weight: bold;
     .big_banner_outer .big_banner p {font-size: 28px; padding: 30px 0 20px;}
     .big_banner_outer .big_banner span {font-size: 20px;}
 
-    .insta {grid-template-columns: repeat(2, minmax(0, 1fr)); padding-bottom: 80px;}
+    .insta {padding-bottom: 80px;}
 
     .review .review_box .review_page .review_tit {font-size: 16px;}
+
+    // 사진 크기 정리 (휴대폰 · 작은 태블릿)
+    // 상품 카드: 같은 줄 카드 높이를 맞추고 글자 영역을 줄여 사진이 먼저 보이게
+    .product .product_box, .free_outer .free .product_box,
+    .metapo_wrap .metapo_product .metapo_product_sheet .product_box {display: flex; flex-direction: column;}
+    .product .product_box .product_txt,
+    .free_outer .free .product_box .product_txt,
+    .metapo_wrap .metapo_product .product_box .product_txt {flex: 1; min-height: 0; padding: 8px 6px;}
+    // 후기 사진: 정사각형이면 2×2 카드가 너무 길어져 4:3으로
+    .review .review_box .review_img,
+    .review .review_box .review_img img {aspect-ratio: 4 / 3;}
+    // 인스타그램: 큰 2×2 대신 한 줄 4장 미리보기
+    .insta {grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px;}
+    .insta div {border-radius: 10px;}
 }
 
 @media (max-width: $bp-sm) {

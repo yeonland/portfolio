@@ -292,6 +292,15 @@ a {
     opacity: 1;
   }
 }
+@media (max-width: 768px) {
+  .product_box > .btn_add_cart {
+    top: 6px;
+    right: 6px;
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+}
 /* responsive */
 @media (max-width: 1280px) {
   .header_outer .header {
