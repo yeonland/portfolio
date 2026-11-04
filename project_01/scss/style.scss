@@ -1,3 +1,4 @@
+@use 'sass:list';
 @use 'variables' as *;
 
 * {margin: 0; padding: 0;}
@@ -254,53 +255,112 @@ font-size: 24px; font-weight: bold;
 }
 
 /************************** 키워드 추천 **************************/
-// 라디오(#keyword01~08)로 탭 전환: 선택한 탭은 굵게 + 밑줄, 해당 상품 시트만 보임
 #keyword01, #keyword02, #keyword03, #keyword04,
 #keyword05, #keyword06, #keyword07, #keyword08 {display: none;}
 
-@for $i from 1 through 8 {
-    #keyword0#{$i}:checked ~ .suggest_box .suggest_word label:nth-child(#{$i}) {
-        color: $brown; font-weight: bold; border-bottom-color: $brown;
-    }
-    #keyword0#{$i}:checked ~ .suggest_box .suggest_img_wrap > .suggest_img_sheet:nth-child(#{$i}) {display: grid;}
+#keyword01:checked ~ .suggest_box .suggest_img_wrap div:nth-child(1) {display: block;}
+#keyword01:checked ~ .suggest_box .suggest_word .keyword_01 {
+    background-color: $brown; color: $cream; box-shadow: 2px 1px 6px $brown;
 }
 
-.suggest_box {width: 1245px; margin: 0 auto;}
+#keyword02:checked ~ .suggest_box .suggest_img_wrap div:nth-child(2) {display: block;}
+#keyword02:checked ~ .suggest_box .suggest_word .keyword_02 {
+    background-color: $brown; color: $cream; box-shadow: 2px 1px 6px $brown;
+}        
 
-// 탭: 글자 메뉴 한 줄, 아래 얇은 구분선
-.suggest_box .suggest_word {
-    display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 40px;
-    margin-bottom: 30px; border-bottom: 1px solid #eee;
+#keyword03:checked ~ .suggest_box .suggest_img_wrap div:nth-child(3) {display: block;}
+#keyword03:checked ~ .suggest_box .suggest_word .keyword_03 {
+    background-color: $brown; color: $cream; box-shadow: 2px 1px 6px $brown;
 }
-.suggest_box .suggest_word label {
-    padding: 0 2px 14px; margin-bottom: -1px;
-    border-bottom: 2px solid transparent;
-    font-family: "Gowun Dodum", sans-serif; font-size: 20px; color: $text;
-    white-space: nowrap; cursor: pointer; transition: color .2s;
-}
-.suggest_box .suggest_word label span {margin-right: 4px;}
-.suggest_box .suggest_word label:hover {color: $brown;}
 
-// 상품: 4칸 카드 (둥근 사진 + 상품명 + 가격)
-.suggest_box .suggest_img_sheet {
+#keyword04:checked ~ .suggest_box .suggest_img_wrap div:nth-child(4) {display: block;}
+#keyword04:checked ~ .suggest_box .suggest_word .keyword_04 {
+    background-color: $brown; color: $cream; box-shadow: 2px 1px 6px $brown;
+}
+
+#keyword05:checked ~ .suggest_box .suggest_img_wrap div:nth-child(5) {display: block;}
+#keyword05:checked ~ .suggest_box .suggest_word .keyword_05 {
+    background-color: $brown; color: $cream; box-shadow: 2px 1px 6px $brown;
+}
+
+#keyword06:checked ~ .suggest_box .suggest_img_wrap div:nth-child(6) {display: block;}
+#keyword06:checked ~ .suggest_box .suggest_word .keyword_06 {
+    background-color: $brown; color: $cream; box-shadow: 2px 1px 6px $brown;
+}
+
+#keyword07:checked ~ .suggest_box .suggest_img_wrap div:nth-child(7) {display: block;}
+#keyword07:checked ~ .suggest_box .suggest_word .keyword_07 {
+    background-color: $brown; color: $cream; box-shadow: 2px 1px 6px $brown;
+}
+
+#keyword08:checked ~ .suggest_box .suggest_img_wrap div:nth-child(8) {display: block;}
+#keyword08:checked ~ .suggest_box .suggest_word .keyword_08 {
+    background-color: $brown; color: $cream; box-shadow: 2px 1px 6px $brown;
+}
+
+
+.suggest_box {width: 1245px; height: 615px; margin: 0 auto;}
+.suggest_box .suggest_img_wrap {width: 615px; float: left;}
+.suggest_box .suggest_img_wrap .suggest_img_sheet {
     display: none;
-    grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 15px;
+    width: 615px; height: 615px;
 }
-.suggest_box .suggest_item {display: block;}
-.suggest_box .suggest_img {
-    aspect-ratio: 1; border-radius: 12px; overflow: hidden;
-    border: 1px solid #eee; box-sizing: border-box; background-color: #f5f5f5;  // 흰 배경 사진도 카드 경계가 보이게
+
+.suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_img_box {
+    width: 300px; height: 300px;
+    position: relative; float: left; overflow: hidden;
 }
-.suggest_box .suggest_img img {width: 100%; height: 100%; object-fit: cover; transition: transform .4s;}
-.suggest_box .suggest_item:hover .suggest_img img {transform: scale(1.05);}
-.suggest_box .suggest_name {
-    margin-top: 14px;
-    font-family: "Gowun Dodum", sans-serif; font-size: 18px; color: $text;
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+.suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_img {
+    width: 300px; height: 300px;
+    position: absolute; top: 0; left: 0;
 }
-.suggest_box .suggest_price {
-    margin-top: 4px;
-    font-family: "Gowun Dodum", sans-serif; font-size: 18px; font-weight: bold; color: $brown;
+.suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_txt {
+    width: 300px; height: 300px;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute; top: 300px; left: 0;
+    transition: all 0.5s;
+}
+.suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_txt p {
+    font-family: "Gowun Dodum", sans-serif; text-align: center; color: $cream;
+}
+.suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_txt p:first-child {
+    font-size: 24px; padding-top: 120px;
+}
+.suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_txt p:last-child {
+    padding-bottom: 120px;
+}
+.suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_img_box:hover .suggest_txt {
+    top: 0;
+}
+
+.suggest_box .suggest_word {
+    width: 405px; height: 195px; float: left;
+    margin-top: 210px; margin-left: 120px;
+}
+.suggest_box .suggest_word label {cursor: pointer;}
+.suggest_box .suggest_word label {
+    width: 90px; height: 90px;
+    border-radius: 45px;
+    font-family: "Gowun Dodum", sans-serif; font-size: 24px;
+    line-height: 90px; text-align: center;
+    float: left;
+}
+.suggest_box .suggest_word .keyword_01,
+.suggest_box .suggest_word .keyword_02,
+.suggest_box .suggest_word .keyword_03,
+.suggest_box .suggest_word .keyword_04 {margin-bottom: 15px;}
+
+.suggest_box .suggest_word .keyword_01,
+.suggest_box .suggest_word .keyword_03,
+.suggest_box .suggest_word .keyword_06,
+.suggest_box .suggest_word .keyword_08 {
+    background-color: $pink; color: $text;
+}
+.suggest_box .suggest_word .keyword_02,
+.suggest_box .suggest_word .keyword_04,
+.suggest_box .suggest_word .keyword_05,
+.suggest_box .suggest_word .keyword_07 {
+    background-color: $text; color: $pink;
 }
 
 /*************************** 이달의 솔직 후기 **************************/
@@ -432,6 +492,16 @@ font-size: 24px; font-weight: bold;
     .metapo_wrap .metapo .metapo_menu div {width: auto;}
     .metapo_wrap .metapo_product .metapo_product_sheet .more {grid-column: 1 / -1;}
 
+    .suggest_box {height: auto; display: flex; align-items: center; justify-content: center; gap: 40px;}
+    .suggest_box .suggest_img_wrap {width: 100%; max-width: 615px;}
+    .suggest_box .suggest_img_wrap .suggest_img_sheet {width: auto; height: auto; overflow: hidden;}
+    .suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_img_box {width: calc(50% - 7.5px); height: auto; aspect-ratio: 1;}
+    .suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_img {width: 100%; height: 100%;}
+    .suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_img img {width: 100%; height: 100%; object-fit: cover;}
+    .suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_txt {width: 100%; height: 100%; top: 100%;}
+    .suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_txt p:first-child {padding-top: 38%;}
+    .suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_txt p:last-child {padding-bottom: 0;}
+    .suggest_box .suggest_word {flex: none; margin: 0; height: auto;}
 
     .review .review_box .review_page {height: auto; overflow: hidden;}
 
@@ -474,16 +544,57 @@ font-size: 24px; font-weight: bold;
     .metapo_wrap .metapo .metapo_menu div,
     .metapo_wrap .more {font-size: 18px;}
 
-    // 키워드 탭은 한 줄 가로 스크롤, 상품은 2칸
+    // 키워드 추천 (휴대폰): PC의 동그라미 키워드 → 글자 탭 한 줄, 사진 위 검은 막 → 사진 아래 상품명 · 가격 카드
+    .suggest_box {flex-direction: column-reverse; gap: 20px;}
     .suggest_box .suggest_word {
-        flex-wrap: nowrap; justify-content: flex-start; gap: 24px;
-        overflow-x: auto; scrollbar-width: none; margin-bottom: 20px;
+        width: 100%; max-width: none; display: flex; gap: 24px;
+        overflow-x: auto; scrollbar-width: none;
+        border-bottom: 1px solid #eee;
     }
     .suggest_box .suggest_word::-webkit-scrollbar {display: none;}
-    .suggest_box .suggest_word label {flex: none; padding-bottom: 10px; font-size: 17px;}
-    .suggest_box .suggest_img_sheet {grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 10px;}
-    .suggest_box .suggest_name {margin-top: 10px; font-size: 15px;}
-    .suggest_box .suggest_price {font-size: 15px;}
+    .suggest_box .suggest_word label,
+    .suggest_box .suggest_word .keyword_01, .suggest_box .suggest_word .keyword_02,
+    .suggest_box .suggest_word .keyword_03, .suggest_box .suggest_word .keyword_04,
+    .suggest_box .suggest_word .keyword_05, .suggest_box .suggest_word .keyword_06,
+    .suggest_box .suggest_word .keyword_07, .suggest_box .suggest_word .keyword_08 {
+        flex: none; float: none; width: auto; height: auto; margin: 0 0 -1px; padding: 0 2px 10px;
+        border-radius: 0; border-bottom: 2px solid transparent;
+        background: none; color: $text; font-size: 17px; line-height: 1.4; white-space: nowrap;
+    }
+    // 이모지는 휴대폰 탭에서만 CSS로 붙임 (PC 동그라미는 글자만)
+    $keyword-emoji: "📅", "✏️", "💼", "🎀", "📚", "💪", "🧶", "🌱";
+    @for $i from 1 through 8 {
+        .suggest_box .suggest_word .keyword_0#{$i}::before {content: list.nth($keyword-emoji, $i); margin-right: 4px;}
+        // PC의 선택 스타일(갈색 동그라미 · 그림자)을 같은 선택자로 덮어 굵은 글자 + 밑줄로
+        #keyword0#{$i}:checked ~ .suggest_box .suggest_word .keyword_0#{$i} {
+            background: none; color: $brown; font-weight: bold; box-shadow: none; border-bottom-color: $brown;
+        }
+    }
+
+    .suggest_box .suggest_img_wrap {max-width: none;}
+    .suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_img_box {
+        width: calc(50% - 5px); height: auto; aspect-ratio: auto; margin: 0;
+        position: relative; overflow: visible;
+    }
+    .suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_img_box.mr {margin-right: 10px;}
+    .suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_img_box.mb {margin-bottom: 20px;}
+    .suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_img {
+        position: static; height: auto; aspect-ratio: 1;
+        border: 1px solid #eee; border-radius: 12px; box-sizing: border-box; overflow: hidden;
+    }
+    .suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_txt {
+        position: static; width: auto; height: auto; background: none;
+    }
+    // 글자 링크를 카드 전체로 넓혀 사진을 눌러도 이동
+    .suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_txt a::after {content: ""; position: absolute; inset: 0;}
+    .suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_txt p {text-align: left; color: $text;}
+    .suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_txt p:first-child {
+        padding-top: 10px; font-size: 15px;
+        white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_txt p:last-child {
+        padding: 2px 0 0; font-size: 15px; font-weight: bold; color: $brown;
+    }
 
     .big_banner_outer {margin-top: 80px;}
     .big_banner_outer .big_banner p {font-size: 28px; padding: 30px 0 20px;}
