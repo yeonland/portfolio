@@ -209,12 +209,105 @@ a {text-decoration: none; color: black;}
     .product_box > .btn_add_cart {top: 6px; right: 6px; width: 30px; height: 30px; font-size: 12px;}
 }
 
-/************************** 모바일 메뉴 버튼 **************************/
-// 햄버거 메뉴 작업 중: 스타일 · 기능을 붙이기 전까지 모든 화면에서 숨김
+/************************** 스팟메뉴 **************************/
+// 헤더 위 작은 글자 줄: 헤더와 같은 크림색, 스크롤하면 위로 사라지고 아래 헤더만 고정
+.spot_menu {background-color: $cream;}
+// PC 헤더는 12칸 그리드라 아이콘 오른쪽에 120px 여백이 있어서, 스팟메뉴 끝을 아이콘 끝에 맞춤
+.spot_menu ul {
+    display: flex; justify-content: flex-end;
+    width: 1245px; margin: 0 auto; padding-right: 120px; box-sizing: border-box; list-style: none;
+}
+.spot_menu li a {
+    display: block; position: relative; padding: 0 12px;
+    font-family: "Gowun Dodum", sans-serif; font-size: 13px; line-height: 32px; color: $text;
+}
+.spot_menu li:last-child a {padding-right: 0;}
+.spot_menu li + li a::before {
+    content: ""; position: absolute; left: 0; top: 50%;
+    width: 1px; height: 11px; margin-top: -5.5px; background-color: $beige;
+}
+.spot_menu li a:hover {color: $brown;}
+
+// 로그인 · 마이페이지는 스팟메뉴로 옮겨서 사람 아이콘은 숨기고, 남은 아이콘 3개를 오른쪽 끝에 맞춤
+.header_outer .header .gnb_icon > span:last-child {display: none;}
+.header_outer .header .gnb_icon {justify-content: flex-end; gap: 28px;}
+
+/************************** 장바구니 개수 (모바일) **************************/
+.header_outer .header .gnb_icon .btn_cart {position: relative;}
+.header_outer .header .gnb_icon .cart_count {display: none;}
+
+/************************** 모바일 메뉴 (☰) **************************/
+// PC에서는 버튼 · 메뉴 모두 숨기고 1023px 이하에서만 사용
 .header_outer .header .menu_toggle {display: none;}
+
+.m_menu_dim {
+    position: fixed; inset: 0; z-index: 200;
+    background-color: rgba(0, 0, 0, 0.4);
+    opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s;
+}
+.m_menu_dim.open {opacity: 1; visibility: visible;}
+.m_menu {
+    position: fixed; top: 0; bottom: 0; left: 0; z-index: 201;
+    width: min(300px, 85vw); overflow-y: auto;
+    background-color: white; font-family: "Gowun Dodum", sans-serif;
+    transform: translateX(-100%); visibility: hidden; transition: transform .3s, visibility .3s;
+}
+// 열 때는 바로 보이게(포커스를 옮길 수 있도록), 닫을 때만 밀려나는 동안 보이게 둠
+.m_menu.open {transform: none; visibility: visible; transition: transform .3s, visibility 0s;}
+body.m_menu_on {overflow: hidden;}
+
+.m_menu_head {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px; padding: 0 8px 0 20px;
+    background-color: $cream; border-bottom: 1px solid #f1eadf;
+}
+.m_menu_head p {font-size: 16px; color: $brown;}
+.m_menu_close {width: 40px; height: 40px; border: none; background: none; color: $brown; font-size: 20px; cursor: pointer;}
+
+.m_menu_list {list-style: none; padding: 8px 0;}
+.m_menu_list > li > a,
+.m_menu_sub_toggle {
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%; padding: 0 20px; box-sizing: border-box;
+    border: none; border-bottom: 1px solid #f6f2ec; background: none;
+    font-family: inherit; font-size: 17px; line-height: 50px; color: $text; text-align: left; cursor: pointer;
+}
+.m_menu_list a[aria-current="page"] {color: $brown; font-weight: bold;}
+.m_menu_sub_toggle i {font-size: 13px; color: $brown; transition: transform .2s;}
+.m_menu_sub_toggle[aria-expanded="true"] i {transform: rotate(180deg);}
+.m_menu_sub {display: none; list-style: none; padding: 4px 0 8px; background-color: $ivory;}
+.m_menu_sub_toggle[aria-expanded="true"] + .m_menu_sub {display: block;}
+.m_menu_sub a {display: block; padding: 0 32px; font-size: 15px; line-height: 40px; color: $brown;}
+
+.m_menu_recent {padding: 20px;}
+.m_menu_tit {margin-bottom: 10px; font-size: 15px; color: $brown;}
+.m_menu_recent ul {display: flex; gap: 10px; list-style: none;}
+.m_menu_recent li {width: calc((100% - 20px) / 3);}
+.m_menu_recent img {
+    display: block; width: 100%; aspect-ratio: 1; object-fit: cover;
+    border: 1px solid #eee; border-radius: 8px; box-sizing: border-box;
+}
+.m_menu_recent span {
+    display: block; margin-top: 4px;
+    font-size: 12px; line-height: 1.4; color: $text;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.m_menu_recent .empty {font-size: 13px; color: $gray;}
+
+.m_menu_help {display: flex; gap: 8px; padding: 0 20px 24px;}
+.m_menu_help a {
+    flex: 1; text-align: center;
+    border: 1px solid $beige; border-radius: 20px;
+    font-size: 14px; line-height: 36px; color: $text;
+}
+
+@media (min-width: $bp-lg + 1) {
+    .m_menu, .m_menu_dim {display: none;}
+}
 
 /* responsive */
 @media (max-width: $bp-xl) {
+    .spot_menu ul {width: calc(100% - 48px); padding-right: 0;}
     .header_outer .header {
         width: calc(100% - 48px);
         display: flex; align-items: center; justify-content: space-between;
@@ -227,31 +320,41 @@ a {text-decoration: none; color: black;}
     .header_outer .header .gnb span {padding: 0 8px; font-size: 20px;}
 }
 
-// 메뉴가 한 줄에 안 들어가면 로고 · 아이콘 아래 두 번째 줄로 내리고 가로 스크롤
+// 메뉴가 한 줄에 안 들어가는 폭: ☰ · 로고(가운데) · 검색 · 장바구니 한 줄 (56px)
 @media (max-width: $bp-lg) {
+    .spot_menu li a {padding: 0 10px; font-size: 12px; line-height: 30px;}
+
     .header_outer {height: auto;}
-    .header_outer .header {height: auto; padding: 16px 0 0; flex-wrap: wrap;}
-    .header_outer .header .logo {width: 150px;}
-    .header_outer .header .logo img {width: 100%; height: auto;}
-    .header_outer .header .gnb {
-        order: 1; width: 100%;
-        overflow-x: auto; white-space: nowrap;
-        scrollbar-width: none;
+    .header_outer .header {height: 56px; padding: 0; position: relative;}
+    .header_outer .header .menu_toggle {
+        display: flex; align-items: center; justify-content: center;
+        width: 40px; height: 40px; margin-left: -8px; padding: 0;
+        border: none; background: none; color: $brown; font-size: 22px; cursor: pointer;
     }
-    .header_outer .header .gnb span {line-height: 48px;}
-    .header_outer .header .gnb span:first-child {padding-left: 0;}
-    // 하위 메뉴는 터치에서 열 수 없어서 숨기고, '디지털 문구' 목록 페이지의 카테고리 탭으로 이동
-    .header_outer .header .gnb .product:hover .product_menu {display: none;}
+    .header_outer .header .logo {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 84px;}
+    .header_outer .header .logo img {width: 100%; height: auto;}
+    .header_outer .header .gnb {display: none;}
+
+    .header_outer .header .gnb_icon {gap: 16px; height: 56px;}
+    .header_outer .header .gnb_icon span a,
+    .header_outer .header .gnb_icon .search_toggle {font-size: 21px;}
+    // 최근 본 상품은 ☰ 메뉴 안으로 옮김 (팝업은 js가 display를 직접 바꿔서 !important)
+    .header_outer .header .gnb_icon .btn_recent,
+    .header_outer .header .gnb_icon .recent_box {display: none !important;}
+    .header_outer .header .gnb_icon .box,
+    .header_outer .header .gnb_icon .search_box {top: 50px; width: min(300px, calc(100vw - 32px));}
+    .header_outer .header .gnb_icon .search_box {box-sizing: border-box;}
+
+    .header_outer .header .gnb_icon .cart_count {
+        display: block; position: absolute; top: -6px; right: -9px;
+        min-width: 16px; height: 16px; padding: 0 4px; box-sizing: border-box;
+        border-radius: 8px; background-color: $pink; color: $brown;
+        font-size: 11px; font-weight: bold; line-height: 16px; text-align: center;
+    }
+    .header_outer .header .gnb_icon .cart_count[hidden] {display: none;}
 }
 
 @media (max-width: $bp-sm) {
+    .spot_menu ul {width: calc(100% - 32px);}
     .header_outer .header {width: calc(100% - 32px);}
-    .header_outer .header .logo {width: 110px;}
-    .header_outer .header .gnb_icon {gap: 18px; height: 40px;}
-    .header_outer .header .gnb_icon span a,
-    .header_outer .header .gnb_icon .search_toggle {font-size: 22px;}
-    .header_outer .header .gnb span {font-size: 17px;}
-    .header_outer .header .gnb_icon .box,
-    .header_outer .header .gnb_icon .search_box {top: 44px; width: min(300px, calc(100vw - 32px));}
-    .header_outer .header .gnb_icon .search_box {box-sizing: border-box;}
 }

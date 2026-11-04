@@ -165,8 +165,8 @@ img {display: block;}
 }
 
 @media (max-width: $bp-lg) {
-    // 헤더가 두 줄이 되어 높이가 줄어든 만큼 앵커 위치도 맞춤
-    .anchor {height: 110px; margin-top: -110px;}
+    // 헤더가 한 줄(56px)로 줄어든 만큼 앵커 위치도 맞춤 (헤더 아래 6px 여백)
+    .anchor {height: 62px; margin-top: -62px;}
     .review_star_box {height: auto; padding-bottom: 30px;}
     .review_star_box .review_star_left_box,
     .review .review_star_box .review_star_right_box {

@@ -187,6 +187,192 @@ document.addEventListener('DOMContentLoaded', function () {
         return Number(text.replace(/\D/g, ''));
     }
 
+    // 모바일 메뉴 (☰, 1023px 이하): 헤더의 PC 메뉴 링크를 읽어 만들어서 페이지마다 경로가 자동으로 맞음
+    const menuToggle = document.querySelector('.menu_toggle');
+    const pcMenu = document.querySelector('.header .gnb');
+    let menuRecentList = null;
+
+    if (menuToggle && pcMenu) {
+        const dim = document.createElement('div');
+        dim.className = 'm_menu_dim';
+
+        const menu = document.createElement('nav');
+        menu.className = 'm_menu';
+        menu.id = 'm_menu';
+        menu.setAttribute('aria-label', '전체 메뉴');
+        menu.inert = true;
+        menu.innerHTML =
+            '<div class="m_menu_head"><p>메뉴</p>' +
+            '<button type="button" class="m_menu_close" aria-label="메뉴 닫기"><i class="fa-solid fa-xmark"></i></button></div>' +
+            '<ul class="m_menu_list"></ul>' +
+            '<div class="m_menu_recent"><p class="m_menu_tit">최근 본 상품</p><ul></ul></div>' +
+            '<div class="m_menu_help"></div>';
+
+        const list = menu.querySelector('.m_menu_list');
+        const here = location.href.split('#')[0].split('?')[0];
+
+        function menuLink(source, text) {
+            const link = document.createElement('a');
+            // 현재 페이지 메뉴는 PC에서 href="#"로 걸려 있어서 지금 주소로 바꿈
+            const isSelf = source.getAttribute && source.getAttribute('href') === '#';
+            link.href = isSelf ? here : source.href;
+            link.textContent = text || source.textContent.trim();
+            if (link.href === here) link.setAttribute('aria-current', 'page');
+            return link;
+        }
+
+        // 디지털 문구 하위 카테고리: 페이지마다 PC 하위 메뉴가 있기도 없기도 해서 목록을 고정해 두고 경로만 계산
+        const productCategories = [
+            ['all', '전체'], ['diary', '다이어리'], ['planner', '플래너'],
+            ['journal', '저널'], ['sticker', '스티커'], ['free', '무료']
+        ];
+
+        pcMenu.querySelectorAll(':scope > span').forEach(function (item, index) {
+            const mainLink = item.querySelector(':scope > a');
+            const li = document.createElement('li');
+
+            if (item.classList.contains('product')) {
+                // 하위 메뉴가 있는 항목(디지털 문구)은 눌러서 펼치기
+                const toggle = document.createElement('button');
+                toggle.type = 'button';
+                toggle.className = 'm_menu_sub_toggle';
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.setAttribute('aria-controls', 'm_menu_sub' + index);
+                toggle.innerHTML = '<span></span><i class="fa-solid fa-chevron-down"></i>';
+                toggle.querySelector('span').textContent = mainLink.textContent.trim();
+
+                const sub = document.createElement('ul');
+                sub.className = 'm_menu_sub';
+                sub.id = 'm_menu_sub' + index;
+
+                // 메뉴 링크(.../2_product/all/index.html)에서 2_product 폴더 경로를 구함
+                const productRoot = mainLink.href.replace(/[^/]+\/index\.html$/, '');
+
+                productCategories.forEach(function (category) {
+                    const subLi = document.createElement('li');
+                    subLi.appendChild(menuLink(
+                        { href: productRoot + category[0] + '/index.html', textContent: category[1] }
+                    ));
+                    sub.appendChild(subLi);
+                });
+
+                toggle.addEventListener('click', function () {
+                    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+                    toggle.setAttribute('aria-expanded', String(!expanded));
+                });
+
+                li.appendChild(toggle);
+                li.appendChild(sub);
+            } else {
+                li.appendChild(menuLink(mainLink));
+            }
+
+            list.appendChild(li);
+        });
+
+        const help = menu.querySelector('.m_menu_help');
+        [
+            { href: rootUrl + 'sub/howtouse/index.html', text: '사용법 알아보기' },
+            { href: rootUrl + 'sub/4_faq/index.html', text: '고객센터' }
+        ].forEach(function (item) {
+            const link = document.createElement('a');
+            link.href = item.href;
+            link.textContent = item.text;
+            help.appendChild(link);
+        });
+
+        menuRecentList = menu.querySelector('.m_menu_recent ul');
+
+        document.body.appendChild(dim);
+        document.body.appendChild(menu);
+
+        const closeButton = menu.querySelector('.m_menu_close');
+        const chatCheck = document.querySelector('#chat_chk');
+
+        function openMenu() {
+            if (chatCheck) chatCheck.checked = false;   // 채팅창이 메뉴 위에 겹치지 않게
+            menu.inert = false;
+            menu.classList.add('open');
+            dim.classList.add('open');
+            document.body.classList.add('m_menu_on');
+            menuToggle.setAttribute('aria-expanded', 'true');
+            // 숨김(visibility)이 풀린 다음 프레임에 포커스를 옮김
+            requestAnimationFrame(function () {
+                closeButton.focus();
+            });
+        }
+
+        function closeMenu() {
+            if (!menu.classList.contains('open')) return;
+            menu.inert = true;
+            menu.classList.remove('open');
+            dim.classList.remove('open');
+            document.body.classList.remove('m_menu_on');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuToggle.focus();
+        }
+
+        menuToggle.addEventListener('click', openMenu);
+        closeButton.addEventListener('click', closeMenu);
+        dim.addEventListener('click', closeMenu);
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') closeMenu();
+        });
+        // 열어 둔 채 PC 폭으로 넓어지면 닫기
+        window.matchMedia('(min-width: 1024px)').addEventListener('change', function (event) {
+            if (event.matches) closeMenu();
+        });
+    }
+
+    function renderMenuRecent(items) {
+        if (!menuRecentList) return;
+
+        menuRecentList.innerHTML = '';
+
+        if (!items.length) {
+            const empty = document.createElement('li');
+            empty.className = 'empty';
+            empty.textContent = '최근 본 상품이 없어요.';
+            menuRecentList.appendChild(empty);
+            return;
+        }
+
+        items.forEach(function (item) {
+            const li = document.createElement('li');
+            const link = document.createElement('a');
+            const img = document.createElement('img');
+            const name = document.createElement('span');
+
+            link.href = item.link;
+            img.src = item.img;
+            img.alt = '';
+            name.textContent = item.name;
+
+            link.appendChild(img);
+            link.appendChild(name);
+            li.appendChild(link);
+            menuRecentList.appendChild(li);
+        });
+    }
+
+    // 장바구니 개수 (모바일 헤더에서만 보임)
+    const cartButton = document.querySelector('.btn_cart');
+    let cartCount = null;
+
+    if (cartButton) {
+        cartCount = document.createElement('span');
+        cartCount.className = 'cart_count';
+        cartCount.setAttribute('aria-hidden', 'true');
+        cartButton.appendChild(cartCount);
+    }
+
+    function renderCartCount(items) {
+        if (!cartCount) return;
+        cartCount.textContent = items.length;
+        cartCount.hidden = !items.length;
+        cartButton.querySelector('a').setAttribute('aria-label', '장바구니 (' + items.length + '개)');
+    }
+
     // 헤더 팝업 그리기
     function renderPopup(box, items, emptyText) {
         if (!box) return;
@@ -225,8 +411,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function renderPopups() {
-        renderPopup(cartBox, loadItems(CART_KEY), '장바구니가 비어 있어요.');
-        renderPopup(recentBox, loadItems(RECENT_KEY), '최근 본 상품이 없어요.');
+        const cart = loadItems(CART_KEY);
+        const recent = loadItems(RECENT_KEY);
+
+        renderPopup(cartBox, cart, '장바구니가 비어 있어요.');
+        renderPopup(recentBox, recent, '최근 본 상품이 없어요.');
+        renderCartCount(cart);
+        renderMenuRecent(recent);
     }
 
     // 담은 직후 잠깐 열었다가 1초 뒤 닫기 (그 사이 마우스를 올리면 계속 열림)
@@ -640,10 +831,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const chatInput = chatBox.querySelector('.chat_txt');
         const quickButtons = chatBox.querySelectorAll('.chat_quick button');
 
-        // 페이지 깊이가 달라도 링크가 맞도록 메뉴의 '궁금해요' 링크를 기준으로 sub 폴더 경로를 구함
-        const faqLink = document.querySelector('.gnb a[href*="4_faq"]');
-        const faqHref = faqLink ? faqLink.getAttribute('href') : '#';
-        const subPath = faqHref.replace('4_faq/index.html', '');
+        // 페이지 깊이가 달라도 링크가 맞도록 사이트 루트(main.js 위치)를 기준으로 경로를 만듦
+        // (FAQ 페이지는 메뉴의 '궁금해요'가 href="#"라서 메뉴 링크를 기준으로 삼으면 깨짐)
+        const subPath = rootUrl + 'sub/';
+        const faqHref = subPath + '4_faq/index.html';
 
         // 앞에서부터 확인해 처음 맞는 키워드의 답을 사용
         const answers = [
