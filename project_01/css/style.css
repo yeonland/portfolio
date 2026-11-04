@@ -1104,22 +1104,180 @@ img {
   }
   .suggest_box {
     flex-direction: column-reverse;
-    gap: 30px;
+    gap: 20px;
   }
   .suggest_box .suggest_word {
     width: 100%;
-    max-width: 405px;
+    max-width: none;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+    gap: 24px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    border-bottom: 1px solid #eee;
   }
-  .suggest_box .suggest_word label {
-    width: 72px;
-    height: 72px;
-    line-height: 72px;
-    font-size: 18px;
+  .suggest_box .suggest_word::-webkit-scrollbar {
+    display: none;
+  }
+  .suggest_box .suggest_word label,
+  .suggest_box .suggest_word .keyword_01, .suggest_box .suggest_word .keyword_02,
+  .suggest_box .suggest_word .keyword_03, .suggest_box .suggest_word .keyword_04,
+  .suggest_box .suggest_word .keyword_05, .suggest_box .suggest_word .keyword_06,
+  .suggest_box .suggest_word .keyword_07, .suggest_box .suggest_word .keyword_08 {
+    flex: none;
+    float: none;
+    width: auto;
+    height: auto;
+    margin: 0 0 -1px;
+    padding: 0 2px 10px;
+    border-radius: 0;
+    border-bottom: 2px solid transparent;
+    background: none;
+    color: #575757;
+    font-size: 17px;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+  .suggest_box .suggest_word .keyword_01::before {
+    content: "📅";
+    margin-right: 4px;
+  }
+  #keyword01:checked ~ .suggest_box .suggest_word .keyword_01 {
+    background: none;
+    color: #9c7055;
+    font-weight: bold;
+    box-shadow: none;
+    border-bottom-color: #9c7055;
+  }
+  .suggest_box .suggest_word .keyword_02::before {
+    content: "✏️";
+    margin-right: 4px;
+  }
+  #keyword02:checked ~ .suggest_box .suggest_word .keyword_02 {
+    background: none;
+    color: #9c7055;
+    font-weight: bold;
+    box-shadow: none;
+    border-bottom-color: #9c7055;
+  }
+  .suggest_box .suggest_word .keyword_03::before {
+    content: "💼";
+    margin-right: 4px;
+  }
+  #keyword03:checked ~ .suggest_box .suggest_word .keyword_03 {
+    background: none;
+    color: #9c7055;
+    font-weight: bold;
+    box-shadow: none;
+    border-bottom-color: #9c7055;
+  }
+  .suggest_box .suggest_word .keyword_04::before {
+    content: "🎀";
+    margin-right: 4px;
+  }
+  #keyword04:checked ~ .suggest_box .suggest_word .keyword_04 {
+    background: none;
+    color: #9c7055;
+    font-weight: bold;
+    box-shadow: none;
+    border-bottom-color: #9c7055;
+  }
+  .suggest_box .suggest_word .keyword_05::before {
+    content: "📚";
+    margin-right: 4px;
+  }
+  #keyword05:checked ~ .suggest_box .suggest_word .keyword_05 {
+    background: none;
+    color: #9c7055;
+    font-weight: bold;
+    box-shadow: none;
+    border-bottom-color: #9c7055;
+  }
+  .suggest_box .suggest_word .keyword_06::before {
+    content: "💪";
+    margin-right: 4px;
+  }
+  #keyword06:checked ~ .suggest_box .suggest_word .keyword_06 {
+    background: none;
+    color: #9c7055;
+    font-weight: bold;
+    box-shadow: none;
+    border-bottom-color: #9c7055;
+  }
+  .suggest_box .suggest_word .keyword_07::before {
+    content: "🧶";
+    margin-right: 4px;
+  }
+  #keyword07:checked ~ .suggest_box .suggest_word .keyword_07 {
+    background: none;
+    color: #9c7055;
+    font-weight: bold;
+    box-shadow: none;
+    border-bottom-color: #9c7055;
+  }
+  .suggest_box .suggest_word .keyword_08::before {
+    content: "🌱";
+    margin-right: 4px;
+  }
+  #keyword08:checked ~ .suggest_box .suggest_word .keyword_08 {
+    background: none;
+    color: #9c7055;
+    font-weight: bold;
+    box-shadow: none;
+    border-bottom-color: #9c7055;
+  }
+  .suggest_box .suggest_img_wrap {
+    max-width: none;
+  }
+  .suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_img_box {
+    width: calc(50% - 5px);
+    height: auto;
+    aspect-ratio: auto;
     margin: 0;
+    position: relative;
+    overflow: visible;
+  }
+  .suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_img_box.mr {
+    margin-right: 10px;
+  }
+  .suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_img_box.mb {
+    margin-bottom: 20px;
+  }
+  .suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_img {
+    position: static;
+    height: auto;
+    aspect-ratio: 1;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_txt {
+    position: static;
+    width: auto;
+    height: auto;
+    background: none;
+  }
+  .suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_txt a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+  .suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_txt p {
+    text-align: left;
+    color: #575757;
+  }
+  .suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_txt p:first-child {
+    padding-top: 10px;
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_txt p:last-child {
+    padding: 2px 0 0;
+    font-size: 15px;
+    font-weight: bold;
+    color: #9c7055;
   }
   .big_banner_outer {
     margin-top: 80px;
@@ -1132,11 +1290,33 @@ img {
     font-size: 20px;
   }
   .insta {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
     padding-bottom: 80px;
   }
   .review .review_box .review_page .review_tit {
     font-size: 16px;
+  }
+  .product .product_box, .free_outer .free .product_box,
+  .metapo_wrap .metapo_product .metapo_product_sheet .product_box {
+    display: flex;
+    flex-direction: column;
+  }
+  .product .product_box .product_txt,
+  .free_outer .free .product_box .product_txt,
+  .metapo_wrap .metapo_product .product_box .product_txt {
+    flex: 1;
+    min-height: 0;
+    padding: 8px 6px;
+  }
+  .review .review_box .review_img,
+  .review .review_box .review_img img {
+    aspect-ratio: 4/3;
+  }
+  .insta {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .insta div {
+    border-radius: 10px;
   }
 }
 @media (max-width: 640px) {
@@ -1159,10 +1339,6 @@ img {
   .free_outer .free .product_box .product_txt .product_name,
   .metapo_wrap .metapo_product .product_box .product_txt .product_name {
     font-size: 16px;
-  }
-  .suggest_box .suggest_img_wrap .suggest_img_sheet .suggest_txt p:first-child {
-    font-size: 18px;
-    padding-top: 30%;
   }
   .review .review_box .review_page a {
     grid-template-columns: 32px minmax(0, 1fr);

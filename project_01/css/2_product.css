@@ -343,6 +343,15 @@
     width: 32px;
     margin: 0 3px;
   }
+  .product .product_box {
+    display: flex;
+    flex-direction: column;
+  }
+  .product .product_box .product_txt {
+    flex: 1;
+    min-height: 0;
+    padding: 8px 6px;
+  }
 }
 @media (max-width: 640px) {
   .wrap {

@@ -34,7 +34,7 @@
 </head>
 <body>
     <div class="how_use_wrap">
-        <button><i class="fa-solid fa-xmark"></i></button>
+        <button type="button" class="how_use_close" aria-label="사용법 버튼 닫기"><i class="fa-solid fa-xmark"></i></button>
         <a href="./sub/howtouse/index.html" target="_blank">
             <div class="how_use_box">
                 <p class="how_use_top">사용법</p>
@@ -47,26 +47,47 @@
 
     <input type="checkbox" id="chat_chk">
     <section class="chat">
-        <label for="chat_chk" class="open"><div><img src="./img/icon_chat.png" alt="chat_icon"></i></div></label>
+        <label for="chat_chk" class="open"><div><img src="./img/icon_chat.png" alt="실시간 채팅 열기"></div></label>
         <label for="chat_chk" class="close"><div><i class="fa-solid fa-xmark"></i></div></label>
         <div class="chat_box">
             <div class="brand">
                 <div class="logo_box"><img src="./img/chat_logo.png" alt="logo"></div>
                 <div class="brand_intro">
                     <p class="brand_tit">소하</p>
-                    <p>소소한 하루, 소하</p>
+                    <p>자동 응답 상담 (데모)</p>
                 </div>
             </div>
-            <div class="chat_first">무엇을 도와드릴까요?</div>
-            <div class="chat_txt_box">
-                <input type="text" name="chat_txt" class="chat_txt">
+            <div class="chat_log" aria-live="polite">
+                <p class="msg bot">안녕하세요, 소하입니다 :)<br>아래 버튼을 누르거나 궁금한 내용을 입력해 주세요.</p>
             </div>
+            <div class="chat_quick">
+                <button type="button">다운로드</button>
+                <button type="button">환불</button>
+                <button type="button">필기앱</button>
+                <button type="button">쿠폰</button>
+                <button type="button">운영시간</button>
+            </div>
+            <form class="chat_txt_box">
+                <input type="text" name="chat_txt" class="chat_txt" placeholder="메시지를 입력하세요" autocomplete="off" aria-label="채팅 메시지">
+                <button type="submit" class="chat_send" aria-label="보내기"><i class="fa-solid fa-paper-plane"></i></button>
+            </form>
         </div>
     </section>
     <!-- 실시간 채팅상담 -->
     
+    <div class="spot_menu">
+        <ul>
+            <li><a href="../../login/index.html">로그인</a></li>
+            <li><a href="../../join/index.html">회원가입</a></li>
+            <li><a href="../../mypage/index.html">마이페이지</a></li>
+            <li><a href="../../4_faq/index.html">고객센터</a></li>
+        </ul>
+    </div>    <!-- 스팟메뉴 -->
     <header class="header_outer" id="header">
         <div class="header">
+            <button type="button" class="menu_toggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="m_menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>    <!-- 모바일 메뉴 열기 (1023px 이하) -->
             <div class="logo">
                 <img src="../../../img/00_logo.png" alt="soha_logo">
             </div>           <!-- logo -->

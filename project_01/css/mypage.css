@@ -1,0 +1,344 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.mypage {
+  width: 1000px;
+  margin: 0 auto;
+  padding: 70px 0 120px;
+  font-family: "Gowun Dodum", sans-serif;
+  color: #575757;
+}
+
+/************************** 제목 **************************/
+.my_title {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.my_title h1 {
+  margin-bottom: 10px;
+  font-size: 48px;
+  font-weight: normal;
+  color: #9c7055;
+}
+
+.my_title p {
+  font-size: 17px;
+  color: #888;
+}
+
+/************************** 인사 · 요약 **************************/
+.my_profile {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px 20px;
+  align-items: center;
+  padding: 32px 36px;
+  border: 1px solid #d6b8a3;
+  border-radius: 20px;
+  background-color: #feffed;
+}
+
+.my_name_line {
+  font-size: 24px;
+  color: #575757;
+}
+
+.my_name {
+  font-weight: normal;
+  color: #9c7055;
+}
+
+.my_guide {
+  margin-top: 6px;
+  font-size: 15px;
+  color: #888;
+}
+
+.my_btn {
+  display: inline-block;
+  padding: 0 22px;
+  border: 1px solid #9c7055;
+  border-radius: 20px;
+  background-color: white;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 38px;
+  color: #9c7055;
+  cursor: pointer;
+}
+
+.my_btn:hover {
+  background-color: #9c7055;
+  color: #feffed;
+}
+
+.my_btn[hidden] {
+  display: none;
+}
+
+.my_summary {
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid #d6b8a3;
+  padding-top: 22px;
+}
+
+.my_summary li {
+  text-align: center;
+}
+
+.my_summary li + li {
+  border-left: 1px solid #d6b8a3;
+}
+
+.my_summary span {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #888;
+}
+
+.my_summary strong {
+  font-size: 22px;
+  font-weight: normal;
+  color: #9c7055;
+}
+
+/************************** 바로가기 탭 **************************/
+.my_tabs {
+  display: flex;
+  gap: 10px;
+  margin: 36px 0 10px;
+}
+
+.my_tabs a {
+  padding: 0 18px;
+  border: 1px solid #d6b8a3;
+  border-radius: 20px;
+  font-size: 15px;
+  line-height: 36px;
+  color: #575757;
+}
+
+.my_tabs a:hover {
+  border-color: #9c7055;
+  color: #9c7055;
+}
+
+/************************** 섹션 공통 **************************/
+.my_section {
+  padding-top: 40px;
+  scroll-margin-top: 120px;
+}
+
+.my_section h2 {
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #9c7055;
+  font-size: 22px;
+  font-weight: normal;
+  color: #9c7055;
+}
+
+.my_empty {
+  padding: 40px 0;
+  text-align: center;
+  font-size: 15px;
+  color: #999;
+}
+
+.my_empty a {
+  color: #9c7055;
+  text-decoration: underline;
+}
+
+.my_empty[hidden], .my_section ul[hidden] {
+  display: none;
+}
+
+/************************** 주문 내역 **************************/
+.my_order_list li {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: 16px;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.my_order_list img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.my_order_meta {
+  font-size: 13px;
+  color: #999;
+}
+
+.my_order_name {
+  margin-top: 4px;
+  font-size: 17px;
+  color: #575757;
+}
+
+.my_order_total {
+  font-size: 17px;
+  font-weight: bold;
+  color: #9c7055;
+}
+
+/************************** 카드 (다운로드함 · 최근 본 상품) **************************/
+.my_card_list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px 15px;
+}
+
+.my_card_list a {
+  display: block;
+}
+
+.my_card_list img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+.my_card_name {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #575757;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.my_card_price {
+  margin-top: 2px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #9c7055;
+}
+
+.my_btn_download {
+  width: 100%;
+  margin-top: 8px;
+  border: none;
+  border-radius: 18px;
+  background-color: #9c7055;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 34px;
+  color: #feffed;
+  cursor: pointer;
+}
+
+.my_btn_download:hover {
+  background-color: #575757;
+}
+
+.my_notice {
+  margin-top: 60px;
+  text-align: center;
+  font-size: 13px;
+  color: #aaa;
+}
+
+/* responsive */
+@media (max-width: 1280px) {
+  .mypage {
+    width: calc(100% - 48px);
+  }
+}
+@media (max-width: 1023px) {
+  .my_section {
+    scroll-margin-top: 66px;
+  }
+}
+@media (max-width: 768px) {
+  .mypage {
+    padding: 40px 0 80px;
+  }
+  .my_title {
+    margin-bottom: 30px;
+  }
+  .my_title h1 {
+    font-size: 32px;
+  }
+  .my_title p {
+    font-size: 15px;
+  }
+  .my_profile {
+    grid-template-columns: 1fr;
+    padding: 24px 20px;
+    gap: 16px;
+  }
+  .my_name_line {
+    font-size: 20px;
+  }
+  .my_summary {
+    padding-top: 16px;
+  }
+  .my_summary strong {
+    font-size: 18px;
+  }
+  .my_tabs {
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin-top: 24px;
+  }
+  .my_tabs a {
+    flex: none;
+    font-size: 14px;
+    line-height: 34px;
+  }
+  .my_section h2 {
+    font-size: 19px;
+  }
+  .my_order_list li {
+    grid-template-columns: 52px 1fr;
+    gap: 4px 12px;
+  }
+  .my_order_list img {
+    width: 52px;
+    height: 52px;
+    grid-row: span 2;
+  }
+  .my_order_total {
+    font-size: 15px;
+  }
+  .my_card_list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px 10px;
+  }
+  .my_card_name {
+    font-size: 15px;
+  }
+}
+@media (max-width: 640px) {
+  .mypage {
+    width: calc(100% - 32px);
+  }
+}

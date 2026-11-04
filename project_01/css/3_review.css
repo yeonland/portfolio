@@ -175,6 +175,10 @@
   .review .review_box .review_page .review_tit {
     font-size: 16px;
   }
+  .review .review_box .review_img,
+  .review .review_box .review_img img {
+    aspect-ratio: 4/3;
+  }
 }
 @media (max-width: 640px) {
   .review {
