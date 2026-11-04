@@ -146,7 +146,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // ※ 장바구니 · 최근 본 상품 저장 (브라우저 localStorage, 최대 3개)
     const CART_KEY = 'soha_cart';
     const RECENT_KEY = 'soha_recent';
-    const ORDER_KEY = 'soha_order';
+    const ORDER_KEY = 'soha_order';          // 방금 한 주문 (주문완료 화면)
+    const ORDERS_KEY = 'soha_orders';        // 주문 내역 (마이페이지, 최근 10건)
+    const USER_KEY = 'soha_user';            // 데모 로그인 (이메일만 저장)
     const MAX_ITEMS = 3;
     // 페이지마다 폴더 깊이가 달라서 main.js 주소로 사이트 루트를 구함
     const rootUrl = document
@@ -185,6 +187,35 @@ document.addEventListener('DOMContentLoaded', function () {
             .join('');
 
         return Number(text.replace(/\D/g, ''));
+    }
+
+    // 데모 로그인 상태
+    function loadUser() {
+        try {
+            return JSON.parse(localStorage.getItem(USER_KEY));
+        } catch (error) {
+            return null;
+        }
+    }
+
+    function logout() {
+        try {
+            localStorage.removeItem(USER_KEY);
+        } catch (error) {
+            // 저장이 막힌 브라우저에서는 지울 것도 없음
+        }
+        location.reload();
+    }
+
+    // 스팟메뉴: 로그인했으면 '로그인'을 '로그아웃'으로
+    const spotLogin = document.querySelector('.spot_menu li:first-child a');
+
+    if (spotLogin && loadUser()) {
+        spotLogin.textContent = '로그아웃';
+        spotLogin.addEventListener('click', function (event) {
+            event.preventDefault();
+            logout();
+        });
     }
 
     // 모바일 메뉴 (☰, 1023px 이하): 헤더의 PC 메뉴 링크를 읽어 만들어서 페이지마다 경로가 자동으로 맞음
@@ -679,7 +710,14 @@ document.addEventListener('DOMContentLoaded', function () {
             summary.email = checkoutForm.querySelector('#order_email').value.trim();
             summary.payment = summary.total && payment ? payment.value : '무료';
 
+            summary.date =
+                today.getFullYear() + '.' +
+                String(today.getMonth() + 1).padStart(2, '0') + '.' +
+                String(today.getDate()).padStart(2, '0');
+
             saveItems(ORDER_KEY, summary);
+            // 마이페이지 주문 내역: 최신순 10건까지
+            saveItems(ORDERS_KEY, [summary].concat(loadItems(ORDERS_KEY)).slice(0, 10));
             saveItems(CART_KEY, []);
             location.href = 'complete.html';
         });
@@ -724,6 +762,99 @@ document.addEventListener('DOMContentLoaded', function () {
                 list.appendChild(li);
             });
         }
+    }
+
+    // 마이페이지 (데모): 이 브라우저에 저장된 로그인 · 주문 · 최근 본 상품으로 화면을 그림
+    const mypage = document.querySelector('.mypage');
+
+    if (mypage) {
+        const user = loadUser();
+        const orders = loadItems(ORDERS_KEY);
+
+        if (user && user.email) {
+            mypage.querySelector('.my_name').textContent = user.email.split('@')[0] + '님';
+            mypage.querySelector('.my_guide').textContent = user.email + ' 으로 로그인했어요.';
+            mypage.querySelector('.my_login').hidden = true;
+            mypage.querySelector('.my_logout').hidden = false;
+        }
+        mypage.querySelector('.my_logout').addEventListener('click', logout);
+        mypage.querySelector('.my_order_count').textContent = orders.length + '건';
+
+        function showEmpty(list, isEmpty) {
+            list.hidden = isEmpty;
+            list.nextElementSibling.hidden = !isEmpty;
+        }
+
+        // 주문 내역
+        const orderList = mypage.querySelector('.my_order_list');
+
+        orders.forEach(function (order) {
+            const li = document.createElement('li');
+            li.innerHTML =
+                '<img alt="">' +
+                '<div class="my_order_info"><p class="my_order_meta"></p><p class="my_order_name"></p></div>' +
+                '<p class="my_order_total"></p>';
+            li.querySelector('img').src = order.items[0].img;
+            li.querySelector('.my_order_meta').textContent =
+                (order.date || '') + ' · 주문번호 ' + order.number;
+            li.querySelector('.my_order_name').textContent =
+                order.items[0].name + (order.items.length > 1 ? ' 외 ' + (order.items.length - 1) + '개' : '');
+            li.querySelector('.my_order_total').textContent =
+                order.total ? order.total.toLocaleString() + '원' : '무료';
+            orderList.appendChild(li);
+        });
+        showEmpty(orderList, !orders.length);
+
+        // 카드 목록 (다운로드함 · 최근 본 상품)
+        function renderCards(list, items, withDownload) {
+            items.forEach(function (item) {
+                const li = document.createElement('li');
+                const link = document.createElement('a');
+                const img = document.createElement('img');
+                const name = document.createElement('p');
+
+                link.href = item.link;
+                img.src = item.img;
+                img.alt = '';
+                name.className = 'my_card_name';
+                name.textContent = item.name;
+                link.appendChild(img);
+                link.appendChild(name);
+                li.appendChild(link);
+
+                if (withDownload) {
+                    const button = document.createElement('button');
+                    button.type = 'button';
+                    button.className = 'my_btn_download';
+                    button.textContent = '다운로드';
+                    button.addEventListener('click', function () {
+                        alert('포트폴리오용 화면이라 실제 파일은 내려받을 수 없어요.');
+                    });
+                    li.appendChild(button);
+                } else {
+                    const price = document.createElement('p');
+                    price.className = 'my_card_price';
+                    price.textContent = formatPrice(item.price);
+                    link.appendChild(price);
+                }
+
+                list.appendChild(li);
+            });
+            showEmpty(list, !items.length);
+        }
+
+        // 다운로드함: 주문한 상품을 이름 기준으로 한 번씩만
+        const downloads = [];
+        orders.forEach(function (order) {
+            order.items.forEach(function (item) {
+                if (!downloads.some(function (saved) { return saved.name === item.name; })) {
+                    downloads.push(item);
+                }
+            });
+        });
+
+        renderCards(mypage.querySelector('.my_download_list'), downloads, true);
+        renderCards(mypage.querySelector('.my_recent_list'), loadItems(RECENT_KEY), false);
     }
 
     // 3. TOP 버튼 부드럽게 스크롤
