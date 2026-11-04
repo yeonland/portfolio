@@ -209,6 +209,10 @@ a {text-decoration: none; color: black;}
     .product_box > .btn_add_cart {top: 6px; right: 6px; width: 30px; height: 30px; font-size: 12px;}
 }
 
+/************************** 모바일 메뉴 버튼 **************************/
+// 햄버거 메뉴 작업 중: 스타일 · 기능을 붙이기 전까지 모든 화면에서 숨김
+.header_outer .header .menu_toggle {display: none;}
+
 /* responsive */
 @media (max-width: $bp-xl) {
     .header_outer .header {

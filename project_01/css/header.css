@@ -301,6 +301,11 @@ a {
     font-size: 12px;
   }
 }
+/************************** 모바일 메뉴 버튼 **************************/
+.header_outer .header .menu_toggle {
+  display: none;
+}
+
 /* responsive */
 @media (max-width: 1280px) {
   .header_outer .header {
