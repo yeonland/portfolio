@@ -539,6 +539,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const topButton = document.querySelector('.btn_top');
 
     if (topButton) {
+        // 맨 위에서는 숨기고, 한 화면 정도 내려가면 보여줌 (작은 화면에서 본문을 덜 가리게)
+        function toggleTopButton() {
+            topButton.classList.toggle('show', window.scrollY > 400);
+        }
+        toggleTopButton();
+        window.addEventListener('scroll', toggleTopButton, { passive: true });
+
         topButton.addEventListener('click', function (event) {
             event.preventDefault();
 
@@ -623,4 +630,122 @@ document.addEventListener('DOMContentLoaded', function () {
             );
         });
     });
+
+    // 실시간 채팅: 자동 응답 데모 (서버 없이 키워드로 정해 둔 답을 보여줌)
+    const chatBox = document.querySelector('.chat .chat_box');
+
+    if (chatBox) {
+        const chatLog = chatBox.querySelector('.chat_log');
+        const chatForm = chatBox.querySelector('.chat_txt_box');
+        const chatInput = chatBox.querySelector('.chat_txt');
+        const quickButtons = chatBox.querySelectorAll('.chat_quick button');
+
+        // 페이지 깊이가 달라도 링크가 맞도록 메뉴의 '궁금해요' 링크를 기준으로 sub 폴더 경로를 구함
+        const faqLink = document.querySelector('.gnb a[href*="4_faq"]');
+        const faqHref = faqLink ? faqLink.getAttribute('href') : '#';
+        const subPath = faqHref.replace('4_faq/index.html', '');
+
+        // 앞에서부터 확인해 처음 맞는 키워드의 답을 사용
+        const answers = [
+            {
+                keywords: ['다운', '파일', '안 열', '안열'],
+                text: '아이패드에서 다운로드 버튼을 눌러도 창이 뜨지 않았다면 [파일] 앱 → [다운로드] 폴더를 확인해 주세요. 원본 파일은 미리 백업해 두시는 걸 권장드려요.'
+            },
+            {
+                keywords: ['환불', '취소', '교환'],
+                text: '디지털 상품 특성상 다운로드 후에는 교환·환불이 어려워요. 다운로드 내역이 없거나 입금 후 주문을 취소하셨다면 은행명·계좌번호·예금주명을 남겨 주세요.'
+            },
+            {
+                keywords: ['필기', '앱', '굿노트', '노트쉘프', '갤럭시', '삼성'],
+                text: 'PDF를 열 수 있는 필기 앱이면 모두 사용할 수 있어요. 아이패드는 굿노트·노트쉘프·플렉슬, 갤럭시 탭은 삼성노트·노트쉘프를 추천드려요.',
+                link: { href: subPath + 'howtouse/index.html', label: '사용법 자세히 보기' }
+            },
+            {
+                keywords: ['하이퍼', '링크'],
+                text: '굿노트에서는 펜 모드가 켜져 있으면 하이퍼링크가 작동하지 않을 수 있어요. 오른쪽 위 펜 아이콘을 눌러 펜 모드를 꺼 주세요.'
+            },
+            {
+                keywords: ['쿠폰', '할인', '적립'],
+                text: '신규회원 10% 할인 쿠폰과 15,000원 이상 구매 시 3,000원 할인 쿠폰이 있어요. 주문/결제 화면에서 쿠폰과 적립금을 함께 사용할 수 있어요.'
+            },
+            {
+                keywords: ['운영', '시간', '상담', '전화', '연락'],
+                text: '상담 시간은 평일 09:00~18:00 (점심 12:00~13:00)이에요. 주말·공휴일은 쉬어요.'
+            },
+            {
+                keywords: ['배송', '발송', '메일'],
+                text: '디지털 상품이라 배송 없이, 결제 후 입력하신 이메일로 바로 다운로드 링크를 보내 드려요.'
+            },
+            {
+                keywords: ['안녕', '하이', '반가'],
+                text: '안녕하세요! 소소한 하루, 소하입니다 :) 무엇이 궁금하세요?'
+            }
+        ];
+
+        const fallback = {
+            text: '죄송해요, 아직 답을 준비하지 못한 질문이에요. 자주 묻는 질문에서 찾아보시거나 아래 버튼을 눌러 주세요.',
+            link: { href: faqHref, label: '자주 묻는 질문 보기' }
+        };
+
+        function findAnswer(message) {
+            const text = message.replace(/\s/g, '');
+
+            for (let i = 0; i < answers.length; i++) {
+                const matched = answers[i].keywords.some(function (keyword) {
+                    return text.indexOf(keyword.replace(/\s/g, '')) !== -1;
+                });
+
+                if (matched) return answers[i];
+            }
+
+            return fallback;
+        }
+
+        // 사용자가 입력한 글은 textContent로만 넣어 HTML이 실행되지 않게 함
+        function addMessage(text, who, link) {
+            const bubble = document.createElement('p');
+            bubble.className = 'msg ' + who;
+            bubble.textContent = text;
+
+            if (link) {
+                const anchor = document.createElement('a');
+                anchor.href = link.href;
+                anchor.textContent = link.label;
+                bubble.appendChild(document.createElement('br'));
+                bubble.appendChild(anchor);
+            }
+
+            chatLog.appendChild(bubble);
+            chatLog.scrollTop = chatLog.scrollHeight;
+            return bubble;
+        }
+
+        function send(message) {
+            message = message.trim();
+            if (!message) return;
+
+            addMessage(message, 'user');
+
+            const typing = addMessage('입력 중…', 'bot typing');
+            const answer = findAnswer(message);
+
+            setTimeout(function () {
+                typing.remove();
+                addMessage(answer.text, 'bot', answer.link);
+            }, 600);
+        }
+
+        chatForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            send(chatInput.value);
+            chatInput.value = '';
+            chatInput.focus();
+        });
+
+        quickButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                send(button.textContent);
+            });
+        });
+    }
 });

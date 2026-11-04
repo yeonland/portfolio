@@ -204,6 +204,10 @@ a {text-decoration: none; color: black;}
 @media (hover: none) {
     .product_box > .btn_add_cart {opacity: 1;}
 }
+// 작은 카드에서 40px 버튼이 사진을 많이 가려서 줄임
+@media (max-width: $bp-md) {
+    .product_box > .btn_add_cart {top: 6px; right: 6px; width: 30px; height: 30px; font-size: 12px;}
+}
 
 /* responsive */
 @media (max-width: $bp-xl) {

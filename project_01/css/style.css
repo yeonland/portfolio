@@ -1132,11 +1132,33 @@ img {
     font-size: 20px;
   }
   .insta {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
     padding-bottom: 80px;
   }
   .review .review_box .review_page .review_tit {
     font-size: 16px;
+  }
+  .product .product_box, .free_outer .free .product_box,
+  .metapo_wrap .metapo_product .metapo_product_sheet .product_box {
+    display: flex;
+    flex-direction: column;
+  }
+  .product .product_box .product_txt,
+  .free_outer .free .product_box .product_txt,
+  .metapo_wrap .metapo_product .product_box .product_txt {
+    flex: 1;
+    min-height: 0;
+    padding: 8px 6px;
+  }
+  .review .review_box .review_img,
+  .review .review_box .review_img img {
+    aspect-ratio: 4/3;
+  }
+  .insta {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .insta div {
+    border-radius: 10px;
   }
 }
 @media (max-width: 640px) {
