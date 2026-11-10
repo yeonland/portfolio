@@ -47,6 +47,27 @@
 |---|---|
 | <img src="docs/wireframe-main.jpg" width="280" alt="소하 메인 화면 설계: 메인 비주얼, 신상품, 베스트, 무료 서식, 키워드 추천, 솔직후기, 사용법, 푸터 영역의 크기와 간격을 표기한 와이어프레임"> | <img src="docs/wireframe-main-grid.jpg" width="280" alt="같은 메인 화면 설계에 12칼럼 그리드를 겹쳐 상품 카드와 여백이 칼럼에 맞는지 확인한 화면"> |
 
+### 시안 제작 (2024, 최초 제작)
+
+와이어프레임을 바탕으로 Photoshop에서 만든 메인 화면 시안입니다. 마우스를 올리기 전(off)과 올렸을 때(on)를 따로 그려 인터랙션을 미리 정한 뒤 구현했습니다.
+
+| 메인 시안 (off) | 메인 시안 (on) |
+|---|---|
+| <img src="docs/design-main-off.jpg" width="280" alt="소하 메인 화면 시안 기본 상태: 메인 비주얼, 신상품, 베스트, 무료 서식, 카테고리 탭, 키워드 추천, 솔직후기, 푸터"> | <img src="docs/design-main-on.jpg" width="280" alt="소하 메인 화면 시안 인터랙션 상태: 하위 메뉴, 채팅 상담 창, 상품 이미지 전환, 더보기 버튼, 키워드 추천상품에 마우스를 올린 모습"> |
+
+**메인 비주얼 슬라이드 6장**
+
+<img src="docs/design-main-visual.jpg" width="420" alt="메인 비주얼 슬라이드 시안 6장: 브랜드 소개, 소하의 장점 4가지, 만년 업무 플래너, 2024 위클리 다이어리, 국내여행 플래너, 만년형 데일리 다이어리">
+
+<details>
+<summary>카테고리 탭 · 키워드 추천상품 시안 펼쳐 보기</summary>
+
+| 카테고리 탭 (다이어리 · 플래너 · 저널 · 스티커) | 키워드 추천상품 (off) | 키워드 추천상품 (on) |
+|---|---|---|
+| <img src="docs/design-category-tabs.jpg" width="300" alt="카테고리 탭 시안: 다이어리, 플래너, 저널, 스티커 탭을 각각 선택했을 때의 상품 4개"> | <img src="docs/design-keyword-off.jpg" width="170" alt="키워드 추천상품 시안 기본 상태: 계획, 기록, 업무, 다꾸, 공부, 운동, 취미, 습관 키워드별 상품 4개"> | <img src="docs/design-keyword-on.jpg" width="170" alt="키워드 추천상품 시안 마우스를 올린 상태: 상품 사진이 어두워지고 상품명과 가격이 나타남"> |
+
+</details>
+
 ## 디자인 작업 범위
 
 | 구분 | 직접 제작 | 외부 소스 활용 |
@@ -113,7 +134,7 @@ project_01/
 ├─ scss/           Sass 원본 (_variables.scss: 공통 색상 · 브레이크포인트)
 ├─ css/            빌드 결과물 (GitHub Pages가 그대로 사용)
 ├─ js/main.js
-├─ docs/           README용 화면 설계 이미지
+├─ docs/           README용 와이어프레임 · 시안 이미지
 └─ img/            메인 · 공통 이미지 (서브 페이지는 각 폴더의 img/)
 ```
 
