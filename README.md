@@ -8,7 +8,7 @@
 
 | 프로젝트 | 설명 | 기술 | 링크 |
 |---|---|---|---|
-| **소하** (개인) | 감성 디지털 문구 쇼핑몰 웹사이트 | HTML · CSS · JavaScript · jQuery | [사이트](https://yeonland.github.io/portfolio/project_01/) · [설명](./project_01/README.md) · [기획서](./file/project_plan_01.pdf) |
+| **소하** (개인) | 감성 디지털 문구 쇼핑몰 웹사이트 | HTML · CSS · Sass · JavaScript · jQuery | [사이트](https://yeonland.github.io/portfolio/project_01/) · [설명](./project_01/README.md) · [기획서](./file/project_plan_01.pdf) |
 | **한화문물연구원** (개인) | 문화재 연구기관 리뉴얼 반응형 웹사이트 | HTML · CSS · JavaScript · jQuery | [사이트](https://yeonland.github.io/portfolio/project_02/) · [설명](./project_02/README.md) |
 | **전시갈래** (개발 중) | 공공문화정보 API 기반 전시 탐색 서비스 | React · Vite · Vercel Functions | [사이트](https://jeonsi-gallae.vercel.app/) · [GitHub](https://github.com/yeonland/jeonsi-gallae) |
 | **첫직관** (개발 중) | 경기장에 처음 가는 사람을 위한 직관 가이드 웹앱 | Figma · HTML · CSS · JavaScript | [사이트](https://yeonland.github.io/first-gikgwan/) · [GitHub](https://github.com/yeonland/first-gikgwan) |
@@ -18,6 +18,7 @@
 - 기획 흐름 정리부터 디자인·퍼블리싱까지 전담
 - Swiper.js 슬라이드, jQuery로 장바구니·최근 본 상품 인터랙션 구현
 - 강사님의 코드 리뷰 피드백을 반영해 2차 버전에서 UI와 기능 개선 (페이지네이션, Top 버튼, 고정 헤더 앵커 위치 수정 등)
+- 2026년 리뉴얼: Sass 리팩터링, 반응형(PC · 태블릿 · 모바일), 장바구니 → 주문/결제 → 주문완료 흐름 추가
 
 ### 한화문물연구원 — 홈페이지 리뉴얼
 - Figma로 화면 설계 후 PC·모바일 반응형 웹으로 구현
