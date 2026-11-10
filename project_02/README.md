@@ -29,6 +29,36 @@
 |---|---|---|
 | `#475775` `#6987D6` | IBM Plex Sans KR | 모바일 ~600px / 태블릿 601–1024px / PC 1025px~ |
 
+## Figma 시안
+
+모바일 · 태블릿 · PC 세 가지 폭으로 메인 화면을 따로 설계했습니다.
+
+| 모바일 | 태블릿 | PC |
+|---|---|---|
+| <img src="docs/design-main-mobile.jpg" width="150" alt="모바일 메인 시안: 햄버거 메뉴, 조사 절차 카드가 한 줄씩, 바로가기 4칸, 공지사항, 언론보도, 유적 갤러리 2열"> | <img src="docs/design-main-tablet.jpg" width="230" alt="태블릿 메인 시안: 조사 절차 카드 2열, 바로가기 2×2, 공지사항과 언론보도가 위아래로 배치, 유적 갤러리 2열"> | <img src="docs/design-main-pc.jpg" width="330" alt="PC 메인 시안: 상단 메뉴와 검색창, 조사 절차 카드 4열, 바로가기 2×2, 공지사항과 언론보도가 좌우로 배치, 유적 갤러리 4열"> |
+
+**PC 인터랙션 (마우스를 올렸을 때)**: 메뉴에 올리면 전체 하위 메뉴가 펼쳐지고, 조사 절차 · 바로가기 카드는 파란 배경으로 바뀝니다.
+
+<img src="docs/design-main-pc-on.jpg" width="330" alt="PC 메인 시안 인터랙션 상태: 하위 메뉴가 펼쳐지고 조사 절차와 바로가기 카드가 파란 배경으로 바뀐 모습">
+
+<details>
+<summary>그리드 적용 화면 펼쳐 보기</summary>
+
+| 모바일 | 태블릿 | PC | PC (인터랙션) |
+|---|---|---|---|
+| <img src="docs/grid-main-mobile.jpg" width="120" alt="모바일 메인 시안에 칼럼 그리드를 겹친 화면"> | <img src="docs/grid-main-tablet.jpg" width="180" alt="태블릿 메인 시안에 칼럼 그리드를 겹친 화면"> | <img src="docs/grid-main-pc.jpg" width="250" alt="PC 메인 시안에 칼럼 그리드를 겹친 화면"> | <img src="docs/grid-main-pc-on.jpg" width="250" alt="PC 메인 시안 인터랙션 상태에 칼럼 그리드를 겹친 화면"> |
+
+</details>
+
+<details>
+<summary>서브 페이지(인사말) 시안 펼쳐 보기</summary>
+
+| 모바일 | 태블릿 | PC |
+|---|---|---|
+| <img src="docs/design-sub-mobile.jpg" width="150" alt="모바일 인사말 시안: 가로로 나열한 하위 메뉴와 본문"> | <img src="docs/design-sub-tablet.jpg" width="230" alt="태블릿 인사말 시안: 가로로 나열한 하위 메뉴와 본문"> | <img src="docs/design-sub-pc.jpg" width="330" alt="PC 인사말 시안: 왼쪽 세로 메뉴와 오른쪽 본문"> |
+
+</details>
+
 ## 주요 기능
 
 - **반응형 레이아웃**: 모바일 우선으로 작성하고 600px · 1024px 기준 3단계로 확장, 배너는 `picture`로 기기별 이미지 교체
@@ -53,6 +83,7 @@ project_02/
 ├─ sub/            서브 페이지 (인사말)
 ├─ css/            header · main · sub · footer
 ├─ js/
+├─ docs/           README용 Figma 시안 이미지
 └─ img/            배너(모바일 · 태블릿 · PC) · 아이콘(on/off) · 유적 사진
 ```
 
