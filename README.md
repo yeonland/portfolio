@@ -12,7 +12,7 @@
 | **한화문물연구원** (개인) | 문화재 연구기관 리뉴얼 반응형 웹사이트 | HTML · CSS · JavaScript · jQuery | [사이트](https://yeonland.github.io/portfolio/project_02/) · [설명](./project_02/README.md) |
 | **전시갈래** (개발 중) | 공공문화정보 API 기반 전시 탐색 서비스 | React · Vite · Vercel Functions | [사이트](https://jeonsi-gallae.vercel.app/) · [GitHub](https://github.com/yeonland/jeonsi-gallae) |
 | **첫직관** (개발 중) | 경기장에 처음 가는 사람을 위한 직관 가이드 웹앱 | Figma · HTML · CSS · JavaScript | [사이트](https://yeonland.github.io/first-gikgwan/) · [GitHub](https://github.com/yeonland/first-gikgwan) |
-| **핀잇 PinIt** (개발 중) | 디자인 탐색부터 예약 문의까지 이어지는 모바일 앱 | Flutter · Dart · Vercel | [사이트](https://pinit-beta.vercel.app/) · [GitHub](https://github.com/yeonland/portfolio/tree/main/pinit_app) |
+| **핀잇 PinIt** (개발 중) | 디자인 탐색부터 예약 문의까지 이어지는 모바일 앱 | Flutter · Dart · Vercel | [사이트](https://pinit-beta.vercel.app/) · [GitHub](https://github.com/yeonland/pinit-app) |
 
 ### 소하 — 디지털 문구 쇼핑몰
 - 기획 흐름 정리부터 디자인·퍼블리싱까지 전담
@@ -31,7 +31,7 @@
 
 ### 핀잇 PinIt — 디자인 탐색 · 예약 문의 앱
 - 네일·케이크·타투처럼 디자인을 보고 고르는 샵을 위한 Flutter 모바일 앱 (웹 빌드로 브라우저에서 체험 가능)
-- 3열 디자인 피드, 검색·해시태그 필터, 카테고리별 샵 지도 탐색 화면 구현
+- 카테고리 홈, 2열 디자인 카드, 검색·키워드·가격대 필터, 보관함, 샵 지도 탐색 화면 구현
 - 피드에서 고른 디자인이 자동 입력되는 예약 양식과 예약 문의 메시지 자동 생성·복사 기능 구현
 - 직접 느낀 불편에서 아이디어를 내고, Claude와 유사 서비스 비교·차별점 분석을 거쳐 기획을 구체화
 - 화면 구성과 기능 범위는 직접 정하고, 코드는 Claude를 활용해 구현
