@@ -1,6 +1,6 @@
 # 웹 퍼블리셔 정연주 포트폴리오
 
-정보를 정리하고, 화면으로 완성하는 웹 퍼블리셔 정연주의 포트폴리오 사이트입니다.
+흩어진 정보를 한눈에 들어오는 화면으로 만드는 웹 퍼블리셔 정연주의 포트폴리오 사이트입니다.
 
 🔗 **사이트:** https://yeonland.github.io/portfolio/
 
@@ -8,11 +8,13 @@
 
 | 프로젝트 | 설명 | 기술 | 링크 |
 |---|---|---|---|
-| **소하** (개인) | 감성 디지털 문구 쇼핑몰 웹사이트 | HTML · CSS · Sass · JavaScript · jQuery | [사이트](https://yeonland.github.io/portfolio/project_01/) · [설명](./project_01/README.md) · [기획서](./file/project_plan_01.pdf) |
+| **소하** (개인) | 감성 디지털 문구 쇼핑몰 웹사이트 | HTML · CSS · Sass(SCSS) · JavaScript · jQuery | [사이트](https://yeonland.github.io/portfolio/project_01/) · [설명](./project_01/README.md) · [기획서](./file/project_plan_01.pdf) |
 | **한화문물연구원** (개인) | 문화재 연구기관 리뉴얼 반응형 웹사이트 | HTML · CSS · JavaScript · jQuery | [사이트](https://yeonland.github.io/portfolio/project_02/) · [설명](./project_02/README.md) |
-| **전시갈래** (개발 중) | 공공문화정보 API 기반 전시 탐색 서비스 | React · Vite · Vercel Functions | [사이트](https://jeonsi-gallae.vercel.app/) · [GitHub](https://github.com/yeonland/jeonsi-gallae) |
-| **첫직관** (개발 중) | 경기장에 처음 가는 사람을 위한 직관 가이드 웹앱 | Figma · HTML · CSS · JavaScript | [사이트](https://yeonland.github.io/first-gikgwan/) · [GitHub](https://github.com/yeonland/first-gikgwan) |
-| **핀잇 PinIt** (개발 중) | 디자인 탐색부터 예약 문의까지 이어지는 모바일 앱 | Flutter · Dart · Vercel | [사이트](https://pinit-beta.vercel.app/) · [GitHub](https://github.com/yeonland/pinit-app) |
+| **전시갈래** (개발 중) | 공공문화정보 기반 전시 탐색 서비스 | React · Vite · Vercel Functions · AI 코딩 도구 | [사이트](https://jeonsi-gallae.vercel.app/) · [GitHub](https://github.com/yeonland/jeonsi-gallae) |
+| **근무 인수인계 웹앱** (개발 중) | 편의점 교대 보고를 자동으로 만드는 모바일 웹 | HTML · CSS · JavaScript · Claude Code | [사이트](https://yeonland.github.io/handover/) · [GitHub](https://github.com/yeonland/handover) |
+| **땅파기전** (개발 중) | 공사 전 문화유산 사전 확인 지도 서비스 | React · Leaflet · Vercel Functions · AI 코딩 도구 | [사이트](https://before-digging.vercel.app/) · [GitHub](https://github.com/yeonland/before-digging) |
+| **첫직관** (개발 중) | 경기장에 처음 가는 사람을 위한 직관 가이드 웹앱 | Figma · HTML · CSS · JavaScript · AI 코딩 도구 | [사이트](https://yeonland.github.io/first-gikgwan/) · [GitHub](https://github.com/yeonland/first-gikgwan) |
+| **핀잇 PinIt** (개발 중) | 디자인 탐색부터 예약 문의까지 이어지는 모바일 앱 | Flutter · Dart · Vercel · AI 코딩 도구 | [사이트](https://pinit-beta.vercel.app/) · [GitHub](https://github.com/yeonland/pinit-app) · [설명](./pinit_app/README.md) |
 
 ### 소하 — 디지털 문구 쇼핑몰
 - 기획 흐름 정리부터 디자인·퍼블리싱까지 전담
@@ -27,7 +29,19 @@
 
 ### 전시갈래 — 전시 탐색 서비스
 - 공공문화정보 API로 전시 데이터를 조회하고 실시간 검색, 관람 상태 구분, 카드형 전시 목록 구현
-- 기획과 기능 정의는 직접 하고, 코드는 ChatGPT를 활용해 구현
+- 기능과 화면을 정의해 ChatGPT·Claude Code로 구현
+
+### 근무 인수인계 웹앱 — 편의점 교대 보고
+- 실제 근무 흐름을 바탕으로 필요한 기능을 정의하고 Claude Code로 구현
+- 지금도 근무하며 직접 쓰고 고치는 중
+
+### 땅파기전 — 문화유산 사전 확인 지도
+- 문화재 조사 현장에서 겪은 불편을 바탕으로 기획
+- 지도에서 필지를 누르면 필요한 절차를 쉬운 말로 안내
+
+### 첫직관 — 직관 가이드 웹앱
+- 종이 티켓 스크랩북 콘셉트로 디자인 기준을 정함
+- 응원팀을 고르면 구단 색이 화면 전체에 적용되도록 구현
 
 ### 핀잇 PinIt — 디자인 탐색 · 예약 문의 앱
 - 네일·케이크·타투처럼 디자인을 보고 고르는 샵을 위한 Flutter 모바일 앱 (웹 빌드로 브라우저에서 체험 가능)

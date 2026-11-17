@@ -13,6 +13,8 @@ a {text-decoration: none; color: black;}
 .footer_outer .footer .footer_logo .info {background-color: $pink;}
 .footer_outer .footer .footer_logo .info a {color: $text;}
 
+// 서브 페이지에는 style.scss의 .mr(거터 15px)이 없어서 푸터 칸이 15px씩 당겨졌음
+.footer_outer .footer .mr {margin-right: 15px;}
 .footer_outer .footer .footer_logo {width: 300px; height: 220px; float: left; padding-top: 10px; box-sizing: border-box;}
 .footer_outer .footer .footer_logo .logo {float: left; margin: 50px 20px 0 20px;}
 .footer_outer .footer .footer_logo .brand {float: left; margin: 50px 20px 0 20px;}

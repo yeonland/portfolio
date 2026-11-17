@@ -80,6 +80,7 @@ a {
 .header_outer .header .gnb_icon {
   width: 195px;
   height: 60px;
+  float: left;
   margin-left: 120px;
   position: relative;
   display: flex;
@@ -256,15 +257,22 @@ a {
   cursor: default;
 }
 
-/************************** 상품 카드 장바구니 담기 버튼 (메인 · 상품 목록 공통이라 header에 둠) **************************/
-.product_box:has(> .btn_add_cart) {
+/************************** 상품 카드 찜하기 · 장바구니 담기 버튼 (메인 · 상품 목록 공통이라 header에 둠) **************************/
+.card_btns {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 8px;
+  height: 0;
+  padding: 0 10px;
+  clear: both;
   position: relative;
+  z-index: 1;
 }
 
-.product_box > .btn_add_cart {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+.card_btns button {
+  flex: none;
+  margin-bottom: 10px;
   width: 40px;
   height: 40px;
   border: 1px solid #9c7055;
@@ -277,25 +285,33 @@ a {
   transition: opacity 0.2s, background-color 0.2s, color 0.2s;
 }
 
-.product_box:hover > .btn_add_cart,
-.product_box > .btn_add_cart:focus-visible {
+.product_box:hover .card_btns button,
+.card_btns button:focus-visible,
+.card_btns .btn_wish.on {
   opacity: 1;
 }
 
-.product_box > .btn_add_cart:hover {
+.card_btns button:hover {
   background: #9c7055;
   color: #feffed;
 }
 
+.card_btns .btn_wish.on {
+  color: #e8788a;
+}
+
 @media (hover: none) {
-  .product_box > .btn_add_cart {
+  .card_btns button {
     opacity: 1;
   }
 }
 @media (max-width: 768px) {
-  .product_box > .btn_add_cart {
-    top: 6px;
-    right: 6px;
+  .card_btns {
+    gap: 6px;
+    padding: 0 6px;
+  }
+  .card_btns button {
+    margin-bottom: 6px;
     width: 30px;
     height: 30px;
     font-size: 12px;
@@ -311,8 +327,6 @@ a {
   justify-content: flex-end;
   width: 1245px;
   margin: 0 auto;
-  padding-right: 120px;
-  box-sizing: border-box;
   list-style: none;
 }
 
@@ -562,7 +576,6 @@ body.m_menu_on {
 @media (max-width: 1280px) {
   .spot_menu ul {
     width: calc(100% - 48px);
-    padding-right: 0;
   }
   .header_outer .header {
     width: calc(100% - 48px);
@@ -574,9 +587,11 @@ body.m_menu_on {
   .header_outer .header .gnb {
     float: none;
   }
+  .header_outer .header .gnb {
+    width: auto;
+  }
   .header_outer .header .gnb,
   .header_outer .header .gnb_icon {
-    width: auto;
     margin-left: 0;
   }
   .header_outer .header .gnb_icon {

@@ -9,7 +9,7 @@
 }
 
 .search_result_box {
-  width: 300px;
+  width: 405px;
   height: 40px;
   background-color: #feffed;
   box-sizing: border-box;
@@ -19,7 +19,7 @@
 }
 
 .search_result_box .search {
-  width: 230px;
+  width: 335px;
   background-color: #feffed;
   border: none;
   margin: 5px 10px;

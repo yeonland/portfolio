@@ -146,6 +146,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // ※ 장바구니 · 최근 본 상품 저장 (브라우저 localStorage, 최대 3개)
     const CART_KEY = 'soha_cart';
     const RECENT_KEY = 'soha_recent';
+    const WISH_KEY = 'soha_wish';            // 찜한 상품 이름 목록
     const ORDER_KEY = 'soha_order';          // 방금 한 주문 (주문완료 화면)
     const ORDERS_KEY = 'soha_orders';        // 주문 내역 (마이페이지, 최근 10건)
     const USER_KEY = 'soha_user';            // 데모 로그인 (이메일만 저장)
@@ -550,12 +551,89 @@ document.addEventListener('DOMContentLoaded', function () {
         addButton.addEventListener('click', function () {
             addToCart(getCardItem(card));
         });
-        card.appendChild(addButton);
+
+        // 찜하기: 상품 이름만 저장 (찜 목록 화면은 아직 없음)
+        const itemName = name.textContent.trim();
+        const wishButton = document.createElement('button');
+        wishButton.type = 'button';
+        wishButton.className = 'btn_wish';
+        wishButton.setAttribute('aria-label', itemName + ' 찜하기');
+
+        function renderWish() {
+            const on = loadItems(WISH_KEY).includes(itemName);
+            wishButton.classList.toggle('on', on);
+            wishButton.setAttribute('aria-pressed', on);
+            wishButton.innerHTML =
+                '<i class="fa-' + (on ? 'solid' : 'regular') + ' fa-heart"></i>';
+        }
+
+        wishButton.addEventListener('click', function () {
+            const wish = loadItems(WISH_KEY);
+            saveItems(WISH_KEY, wish.includes(itemName)
+                ? wish.filter(function (wishName) {
+                    return wishName !== itemName;
+                })
+                : wish.concat(itemName));
+            renderWish();
+        });
+        renderWish();
+
+        // 사진과 글 사이에 높이 0 상자로 끼워서, 사진 높이가 달라도 버튼이 사진 아래쪽에 붙음
+        const buttons = document.createElement('div');
+        buttons.className = 'card_btns';
+        buttons.append(wishButton, addButton);
+        card.insertBefore(buttons, card.querySelector(':scope > .product_txt'));
 
         card.querySelector('a').addEventListener('click', function () {
             addToRecent(getCardItem(card));
         });
     });
+
+    // 상품 목록 페이지네이션: 12개(4칸 × 3줄)씩, 기존 .page_nation을 실제 페이지 수로 다시 그림
+    const pageNation = document.querySelector('.page .page_nation');
+    const listCards = document.querySelectorAll('section.product > .product_box');
+
+    if (pageNation && listCards.length) {
+        const PER_PAGE = 12;
+        const lastPage = Math.ceil(listCards.length / PER_PAGE);
+
+        function pageItem(className, html, page, label) {
+            return '<li class="' + className + '"><a href="#!" data-page="' + page + '"' +
+                (label ? ' aria-label="' + label + '"' : '') + '>' + html + '</a></li>';
+        }
+
+        function showPage(page) {
+            listCards.forEach(function (card, index) {
+                card.hidden = Math.floor(index / PER_PAGE) !== page - 1;
+            });
+
+            let html =
+                pageItem('txt', '처음으로', 1) +
+                pageItem('arrow', '<i class="fa-solid fa-angles-left"></i>', Math.max(page - 1, 1), '이전 페이지');
+
+            for (let i = 1; i <= lastPage; i++) {
+                html += pageItem('num' + (i === page ? ' num01' : ''), i, i);
+            }
+
+            pageNation.innerHTML = html +
+                pageItem('arrow', '<i class="fa-solid fa-angles-right"></i>', Math.min(page + 1, lastPage), '다음 페이지') +
+                pageItem('txt', '끝으로', lastPage);
+            pageNation.querySelector('.num01 a').setAttribute('aria-current', 'page');
+        }
+
+        pageNation.addEventListener('click', function (event) {
+            const link = event.target.closest('a[data-page]');
+
+            if (!link) return;
+            event.preventDefault();
+            showPage(Number(link.dataset.page));
+            // 고정 헤더(120px)에 가리지 않게 목록 조금 위로 올라감
+            window.scrollTo({top: listCards[0].parentElement.getBoundingClientRect().top + window.scrollY - 180});
+        });
+
+        if (lastPage > 1) showPage(1);
+        else pageNation.parentElement.hidden = true;
+    }
 
     // 상세페이지: 장바구니 담기 / 바로 결제
     const detailBox = document.querySelector('.detail_box');

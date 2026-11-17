@@ -44,7 +44,9 @@
 .nav .align .align_chk {color: $brown;}
 
 /*************************** product ***************************/
-.product {height: 1680px; overflow: hidden;}
+.product {overflow: hidden;}
+// 페이지네이션이 다른 페이지 카드를 hidden으로 숨김 (모바일의 display: flex에 덮이지 않게)
+.product .product_box[hidden] {display: none;}
 .product .product_box {
     width: 300px; height: 390px;
     margin-right: 15px; margin-bottom: 30px;
@@ -92,7 +94,7 @@
 /*************************** pagenation ***************************/
 .page {
     width: 615px;
-    margin: 50px auto;
+    margin: 50px auto; text-align: center;
 }
 .page .page_nation {margin: 0 auto;}
 .page .page_nation li {display: inline-block; color: $brown; font-family: "Gowun Dodum", sans-serif; font-size: 24px; height: 40px; line-height: 40px;}
