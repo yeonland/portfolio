@@ -50,6 +50,8 @@ a {text-decoration: none; color: black;}
 .header_outer .header .gnb_icon {
     width: 195px;
     height: 60px;
+    // float이 없으면 margin-left가 앞의 float에 먹혀서 11~12번 칸이 아니라 한 칸 왼쪽에 놓임
+    float: left;
     margin-left: 120px;
     position: relative;
 
@@ -187,35 +189,43 @@ a {text-decoration: none; color: black;}
 .header_outer .header .gnb_icon .box button {cursor: pointer;}
 .header_outer .header .gnb_icon .box button:disabled {background: $gray; cursor: default;}
 
-/************************** 상품 카드 장바구니 담기 버튼 (메인 · 상품 목록 공통이라 header에 둠) **************************/
-.product_box:has(> .btn_add_cart) {position: relative;}
-.product_box > .btn_add_cart {
-    position: absolute; top: 10px; right: 10px;
+/************************** 상품 카드 찜하기 · 장바구니 담기 버튼 (메인 · 상품 목록 공통이라 header에 둠) **************************/
+// 사진과 글 사이에 낀 높이 0 상자: 버튼이 위로 넘쳐서 사진 오른쪽 아래에 놓임
+.card_btns {
+    display: flex; justify-content: flex-end; align-items: flex-end; gap: 8px;
+    height: 0; padding: 0 10px; clear: both;
+    position: relative; z-index: 1;
+}
+.card_btns button {
+    flex: none; margin-bottom: 10px;
     width: 40px; height: 40px;
     border: 1px solid $brown; border-radius: 50%;
     background: $cream; color: $brown;
     font-size: 16px; cursor: pointer;
     opacity: 0; transition: opacity .2s, background-color .2s, color .2s;
 }
-.product_box:hover > .btn_add_cart,
-.product_box > .btn_add_cart:focus-visible {opacity: 1;}
-.product_box > .btn_add_cart:hover {background: $brown; color: $cream;}
+.product_box:hover .card_btns button,
+.card_btns button:focus-visible,
+.card_btns .btn_wish.on {opacity: 1;}
+.card_btns button:hover {background: $brown; color: $cream;}
+.card_btns .btn_wish.on {color: #e8788a;}
 // 마우스가 없는 기기에서는 항상 보이게
 @media (hover: none) {
-    .product_box > .btn_add_cart {opacity: 1;}
+    .card_btns button {opacity: 1;}
 }
 // 작은 카드에서 40px 버튼이 사진을 많이 가려서 줄임
 @media (max-width: $bp-md) {
-    .product_box > .btn_add_cart {top: 6px; right: 6px; width: 30px; height: 30px; font-size: 12px;}
+    .card_btns {gap: 6px; padding: 0 6px;}
+    .card_btns button {margin-bottom: 6px; width: 30px; height: 30px; font-size: 12px;}
 }
 
 /************************** 스팟메뉴 **************************/
 // 헤더 위 작은 글자 줄: 헤더와 같은 크림색, 스크롤하면 위로 사라지고 아래 헤더만 고정
 .spot_menu {background-color: $cream;}
-// PC 헤더는 12칸 그리드라 아이콘 오른쪽에 120px 여백이 있어서, 스팟메뉴 끝을 아이콘 끝에 맞춤
+// 12칸 그리드(칼럼 90 · 거터 15 = 1245px): 로고 1~2칸, 메뉴 4~9칸, 아이콘 11~12칸. 스팟메뉴 끝도 12번 칸 끝에 맞춤
 .spot_menu ul {
     display: flex; justify-content: flex-end;
-    width: 1245px; margin: 0 auto; padding-right: 120px; box-sizing: border-box; list-style: none;
+    width: 1245px; margin: 0 auto; list-style: none;
 }
 .spot_menu li a {
     display: block; position: relative; padding: 0 12px;
@@ -307,15 +317,17 @@ body.m_menu_on {overflow: hidden;}
 
 /* responsive */
 @media (max-width: $bp-xl) {
-    .spot_menu ul {width: calc(100% - 48px); padding-right: 0;}
+    .spot_menu ul {width: calc(100% - 48px);}
     .header_outer .header {
         width: calc(100% - 48px);
         display: flex; align-items: center; justify-content: space-between;
     }
     .header_outer .header .logo,
     .header_outer .header .gnb {float: none;}
+    // 아이콘 폭은 로고와 같은 195px 그대로 둬서 메뉴가 그리드처럼 정가운데에 오게 함
+    .header_outer .header .gnb {width: auto;}
     .header_outer .header .gnb,
-    .header_outer .header .gnb_icon {width: auto; margin-left: 0;}
+    .header_outer .header .gnb_icon {margin-left: 0;}
     .header_outer .header .gnb_icon {gap: 24px;}
     .header_outer .header .gnb span {padding: 0 8px; font-size: 20px;}
 }

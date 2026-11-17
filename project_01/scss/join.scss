@@ -3,7 +3,7 @@
 * {margin: 0; padding: 0;}
 
 .member {
-    width: 630px; height: 500px;
+    width: 615px; height: 500px; box-sizing: border-box;
     margin: 100px auto;
     background-color: $cream;
     border: 1px solid $brown; border-radius: 15px;

@@ -4,8 +4,9 @@
 }
 
 .member {
-  width: 630px;
+  width: 615px;
   height: 500px;
+  box-sizing: border-box;
   margin: 100px auto;
   background-color: #feffed;
   border: 1px solid #9c7055;

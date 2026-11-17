@@ -108,8 +108,11 @@
 
 /*************************** product ***************************/
 .product {
-  height: 1680px;
   overflow: hidden;
+}
+
+.product .product_box[hidden] {
+  display: none;
 }
 
 .product .product_box {
@@ -201,6 +204,7 @@
 .page {
   width: 615px;
   margin: 50px auto;
+  text-align: center;
 }
 
 .page .page_nation {

@@ -53,6 +53,10 @@ a {
   color: #575757;
 }
 
+.footer_outer .footer .mr {
+  margin-right: 15px;
+}
+
 .footer_outer .footer .footer_logo {
   width: 300px;
   height: 220px;

@@ -4,9 +4,10 @@
 }
 
 .login_box {
-  width: 330px;
-  height: 360px;
-  padding: 60px;
+  width: 405px;
+  height: 482px;
+  box-sizing: border-box;
+  padding: 60px 36px;
   margin: 160px auto;
   background-color: #feffed;
   border-radius: 15px;
