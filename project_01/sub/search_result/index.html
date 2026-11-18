@@ -17,21 +17,21 @@
 </head>
 <body>
     <a href="#main" class="skip_link">본문 바로가기</a>
-    <div class="spot_menu">
+    <nav class="spot_menu" aria-label="회원 메뉴">
         <ul>
             <li><a href="../login/index.html">로그인</a></li>
             <li><a href="../join/index.html">회원가입</a></li>
             <li><a href="../mypage/index.html">마이페이지</a></li>
             <li><a href="../4_faq/index.html">고객센터</a></li>
         </ul>
-    </div>    <!-- 스팟메뉴 -->
+    </nav>    <!-- 스팟메뉴 -->
     <header class="header_outer" id="header">
         <div class="header">
             <button type="button" class="menu_toggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="m_menu">
                 <i class="fa-solid fa-bars"></i>
             </button>    <!-- 모바일 메뉴 열기 (1023px 이하) -->
             <div class="logo">
-                <a href="../../index.html"><img src="../../img/00_logo.png" alt="soha_logo"></a>
+                <a href="../../index.html"><img src="../../img/00_logo.png" alt="소하"></a>
             </div>           <!-- logo -->
             <nav class="gnb" aria-label="주 메뉴">
                 <span><a href="../1_brand/index.html">소하는요</a></span>
@@ -80,7 +80,7 @@
                     <p class="tit">최근 본 상품</p>
                     <button>결제하기</button>
                 </div>                <!-- recent box -->
-                <span><a href="../login/index.html"><i class="fa-solid fa-user"></i></a></span>
+                <span><a href="../login/index.html" aria-label="로그인"><i class="fa-solid fa-user" aria-hidden="true"></i></a></span>
             </div>  <!-- gnb_icon -->
         </div>
     </header>           <!-- header -->

@@ -57,6 +57,7 @@
 </head>
 <body>
     <a href="#main" class="skip_link">본문 바로가기</a>
+    <aside aria-label="바로가기와 상담">
 
     <input type="checkbox" id="pop" checked>
     <div class="pop_box">
@@ -78,7 +79,7 @@
     
     <button type="button" class="btn_top" aria-label="맨 위로"><i class="fa-solid fa-angle-up" aria-hidden="true"></i></button>   <!-- TOP 버튼 -->
 
-    <input type="checkbox" id="chat_chk">
+    <input type="checkbox" id="chat_chk" aria-label="실시간 채팅 열기">
     <div class="chat">
         <label for="chat_chk" class="open">
             <span><img src="./img/00_icon_chat.png" alt="실시간 채팅 열기"></span>
@@ -86,7 +87,7 @@
         <label for="chat_chk" class="close"><span><i class="fa-solid fa-xmark"></i></span></label>
         <div class="chat_box">
             <div class="brand">
-                <div class="logo_box"><img src="./img/00_chat_logo.png" alt="logo"></div>
+                <div class="logo_box"><img src="./img/00_chat_logo.png" alt=""></div>
                 <div class="brand_intro">
                     <p class="brand_tit">소하</p>
                     <p>자동 응답 상담 (데모)</p>
@@ -109,21 +110,22 @@
         </div>
     </div>      <!-- 실시간 채팅상담 -->
 
-    <div class="spot_menu">
+    </aside>    <!-- 떠 있는 바로가기 · 상담 -->
+    <nav class="spot_menu" aria-label="회원 메뉴">
         <ul>
             <li><a href="./sub/login/index.html">로그인</a></li>
             <li><a href="./sub/join/index.html">회원가입</a></li>
             <li><a href="./sub/mypage/index.html">마이페이지</a></li>
             <li><a href="./sub/4_faq/index.html">고객센터</a></li>
         </ul>
-    </div>    <!-- 스팟메뉴 -->
+    </nav>    <!-- 스팟메뉴 -->
     <header class="header_outer" id="header">
         <div class="header">
             <button type="button" class="menu_toggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="m_menu">
                 <i class="fa-solid fa-bars"></i>
             </button>    <!-- 모바일 메뉴 열기 (1023px 이하) -->
             <div class="logo">
-                <img src="./img/00_logo.png" alt="soha_logo">
+                <img src="./img/00_logo.png" alt="소하">
             </div>           <!-- logo -->
             <nav class="gnb" aria-label="주 메뉴">
                 <span><a href="./sub/1_brand/index.html">소하는요</a></span>
@@ -176,7 +178,7 @@
                         결제하기
                     </button>
                 </div>                <!-- recent box -->
-                <span><a href="./sub/login/index.html"><i class="fa-solid fa-user"></i></a></span>
+                <span><a href="./sub/login/index.html" aria-label="로그인"><i class="fa-solid fa-user" aria-hidden="true"></i></a></span>
             </div>  <!-- gnb_icon -->
         </div>
     </header>           <!-- header -->
@@ -185,12 +187,12 @@
 
     <div class="swiper mySwiper">
         <div class="swiper-wrapper">
-          <div class="swiper-slide"><a href="./sub/1_brand/index.html"><div><img src="./img/02_main_visual01.jpg" alt="main_visual01"></div></a></div>
-          <div class="swiper-slide"><a href="./sub/5_notice/index.html"><div><img src="./img/02_main_visual02.jpg" alt="main_visual02"></div></a></div>
-          <div class="swiper-slide"><a href="./sub/2_product/all/detail/index.html"><div><img src="./img/02_main_visual03.jpg" alt="main_visual03"></div></a></div>
-          <div class="swiper-slide"><a href="./sub/2_product/all/detail/index.html"><div><img src="./img/02_main_visual04.jpg" alt="main_visual04"></div></a></div>
-          <div class="swiper-slide"><a href="./sub/2_product/all/detail/index.html"><div><img src="./img/02_main_visual05.jpg" alt="main_visual05"></div></a></div>
-          <div class="swiper-slide"><a href="./sub/2_product/all/detail/index.html"><div><img src="./img/02_main_visual06.jpg" alt="main_visual06"></div></a></div>
+          <div class="swiper-slide"><a href="./sub/1_brand/index.html"><div><img src="./img/02_main_visual01.jpg" alt="여러분의 소소한 하루하루가 기록되는 과정을 함께하는 디지털 문구점, 소소한 하루 소하 (브랜드 소개)"></div></a></div>
+          <div class="swiper-slide"><a href="./sub/5_notice/index.html"><div><img src="./img/02_main_visual02.jpg" alt="소하의 약속: 태블릿 맞춤 속지 사이즈, 가이드북 무료 제공, 평생 무료 다운, 주문 즉시 발송 (공지 보기)"></div></a></div>
+          <div class="swiper-slide"><a href="./sub/2_product/all/detail/index.html"><div><img src="./img/02_main_visual03.jpg" alt="BEST 만년 업무 플래너 - 만년형, 일잘러, 프로젝트"></div></a></div>
+          <div class="swiper-slide"><a href="./sub/2_product/all/detail/index.html"><div><img src="./img/02_main_visual04.jpg" alt="BEST 2024 위클리 다이어리 - 날짜형, 2024, 월요일 시작"></div></a></div>
+          <div class="swiper-slide"><a href="./sub/2_product/all/detail/index.html"><div><img src="./img/02_main_visual05.jpg" alt="NEW 국내여행 플래너 - 여행 기록장, 사진첩, 스티커 증정"></div></a></div>
+          <div class="swiper-slide"><a href="./sub/2_product/all/detail/index.html"><div><img src="./img/02_main_visual06.jpg" alt="NEW 만년형 데일리 다이어리 - 만년형, 하이퍼링크, 심플"></div></a></div>
         </div>
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
@@ -211,13 +213,19 @@
             }, navigation: {
                 nextEl: ".swiper-button-next",
                 prevEl: ".swiper-button-prev",
+            }, a11y: {
+                // 화면 읽기 프로그램이 영어 대신 한국어로 읽도록
+                prevSlideMessage: "이전 슬라이드",
+                nextSlideMessage: "다음 슬라이드",
+                paginationBulletMessage: "{{index}}번 슬라이드로 이동",
+                slideLabelMessage: "{{slidesLength}}장 중 {{index}}번째",
             }
         })
     </script>        <!-- visual main -->
 
     <div class="small_banner">
         <a href="./sub/5_notice/index.html">
-            <img src="./img/03_banner.png" alt="banner">
+            <img src="./img/03_banner.png" alt="주문 시 작성하신 메일로 즉시 발송해드립니다. 발송이 늦어질 경우 따로 공지합니다. 자세히 보기">
         </a>
     </div>  <!-- 발송 관련 배너 -->
 
