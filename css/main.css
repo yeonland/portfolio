@@ -1183,13 +1183,13 @@ section {
 .design-body .design-desc {
     font-size: 14px;
     line-height: 1.6;
-    color: #aaa;
+    color: #666;
     word-break: keep-all;
 }
 
 .design-body .design-tool {
     font-size: 14px;
-    color: #9c7055;
+    color: #8c644c;
     margin-bottom: 5px;
 }
 

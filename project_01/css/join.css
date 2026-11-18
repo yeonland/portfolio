@@ -9,7 +9,7 @@
   box-sizing: border-box;
   margin: 100px auto;
   background-color: #feffed;
-  border: 1px solid #9c7055;
+  border: 1px solid #8c644c;
   border-radius: 15px;
 }
 
@@ -18,7 +18,7 @@
   font-family: "Gowun Dodum", sans-serif;
   font-size: 24px;
   line-height: 50px;
-  color: #9c7055;
+  color: #8c644c;
 }
 
 .member > input {
@@ -38,13 +38,13 @@
 .member table tr td select {
   background-color: #feffed;
   font-family: "Gowun Dodum", sans-serif;
-  border: 1px solid #9c7055;
-  color: #9c7055;
+  border: 1px solid #8c644c;
+  color: #8c644c;
 }
 
 .member table tr td input {
   font-family: "Gowun Dodum", sans-serif;
-  border: 1px solid #9c7055;
+  border: 1px solid #8c644c;
 }
 
 .member > select {
@@ -57,15 +57,15 @@
 }
 
 .pw span {
-  color: red;
+  color: #d40000;
 }
 
 .btn {
   padding: 0 8px;
   margin-left: 10px;
   background-color: #feffed;
-  color: #9c7055;
-  border: 1px solid #9c7055;
+  color: #8c644c;
+  border: 1px solid #8c644c;
   border-radius: 15px;
   font-family: "Gowun Dodum", sans-serif;
   cursor: pointer;

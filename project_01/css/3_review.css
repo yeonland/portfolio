@@ -7,7 +7,7 @@
 .sub_title {
   font-family: "Gowun Dodum", sans-serif;
   font-size: 36px;
-  color: #9c7055;
+  color: #8c644c;
   height: 40px;
   margin: 40px 0;
   text-align: center;
@@ -15,7 +15,7 @@
 }
 
 .header_outer .header .gnb > span:nth-child(3) a {
-  border-bottom: 1px solid #9c7055;
+  border-bottom: 1px solid #8c644c;
   box-sizing: border-box;
 }
 

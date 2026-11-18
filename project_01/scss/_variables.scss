@@ -1,10 +1,13 @@
 // 빌드: project_01 폴더에서 npx sass@1.83.0 --no-source-map scss:css  (css/ 결과물도 함께 커밋 — GitHub Pages는 빌드 없이 css/를 그대로 씀)
 
 // 소하 공통 색상
-$brown: #9c7055;
+$brown: #8c644c;        // 흰 · 크림 바탕 글자 대비 5:1 (예전 #9c7055는 4.3:1로 기준 미달)
+$brown-dark: #6d4e3b;   // 분홍 · 연베이지 바탕 위 갈색 글자용
+$pink-text: #d4677b;    // 흰 바탕 위 분홍 큰 글자용 (배경 분홍 $pink는 그대로)
 $cream: #feffed;
 $text: #575757;
 $gray: #bbb;
+$text-light: #707070;   // 흰 · 크림 · 연분홍 배경 모두에서 글자 대비 4.5:1을 넘는 회색 (보조 글자용)
 $pink: #ffc1cc;
 $ivory: #fffdf0;
 $beige: #d6b8a3;

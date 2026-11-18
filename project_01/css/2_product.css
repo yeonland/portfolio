@@ -9,7 +9,7 @@
 }
 
 .header_outer .header .gnb .bar {
-  border-bottom: 1px solid #9c7055;
+  border-bottom: 1px solid #8c644c;
   box-sizing: border-box;
 }
 
@@ -52,8 +52,8 @@
   margin-right: 15px;
   box-sizing: border-box;
   border-radius: 20px;
-  border: 1px solid #9c7055;
-  color: #9c7055;
+  border: 1px solid #8c644c;
+  color: #8c644c;
   font-family: "Gowun Dodum", sans-serif;
 }
 
@@ -62,7 +62,7 @@
 }
 
 .sub_menu div a {
-  color: #9c7055;
+  color: #8c644c;
 }
 
 /*************************** nav ***************************/
@@ -77,13 +77,13 @@
 
 .nav div span {
   margin: 0 5px;
-  color: #9c7055;
+  color: #8c644c;
   font-family: "Gowun Dodum", sans-serif;
   font-size: 24px;
 }
 
 .nav div span a {
-  color: #9c7055;
+  color: #8c644c;
 }
 
 .nav .align {
@@ -95,7 +95,7 @@
 .nav .align div {
   padding: 6px;
   font-family: "Gowun Dodum", sans-serif;
-  color: #9c7055;
+  color: #8c644c;
 }
 
 .nav .align div a {
@@ -103,7 +103,7 @@
 }
 
 .nav .align .align_chk {
-  color: #9c7055;
+  color: #8c644c;
 }
 
 /*************************** product ***************************/
@@ -160,13 +160,13 @@
   padding: 0 5px;
   margin-right: 5px;
   background-color: #ffc1cc;
-  color: #9c7055;
+  color: #6d4e3b;
 }
 
 .product .product_box .product_txt .icon .new {
   border-radius: 16px;
   padding: 0 6px;
-  background-color: #9c7055;
+  background-color: #8c644c;
   color: #feffed;
 }
 
@@ -174,8 +174,8 @@
   border-radius: 16px;
   padding: 0 5px;
   background-color: #feffed;
-  color: #9c7055;
-  border: 1px solid #9c7055;
+  color: #8c644c;
+  border: 1px solid #8c644c;
 }
 
 .product .product_box .product_txt .product_name {
@@ -185,17 +185,17 @@
 }
 
 .product .product_box .product_txt .product_price {
-  color: #9c7055;
+  color: #8c644c;
   text-align: center;
 }
 
 .product .product_box .product_txt .product_price del {
-  color: #bbb;
+  color: #707070;
   padding-right: 5px;
 }
 
 .product .product_box .product_txt .product_price span {
-  color: #bbb;
+  color: #707070;
   text-decoration: line-through;
   margin-right: 5px;
 }
@@ -213,7 +213,7 @@
 
 .page .page_nation li {
   display: inline-block;
-  color: #9c7055;
+  color: #8c644c;
   font-family: "Gowun Dodum", sans-serif;
   font-size: 24px;
   height: 40px;
@@ -230,12 +230,12 @@
 }
 
 .page .page_nation li a {
-  color: #9c7055;
+  color: #8c644c;
 }
 
 .page .page_nation .num {
   width: 40px;
-  border: 1px solid #9c7055;
+  border: 1px solid #8c644c;
   box-sizing: border-box;
   border-radius: 20px;
   text-align: center;

@@ -68,7 +68,7 @@
 .product .product_box .product_txt .icon .sale {
     border-radius: 16px; padding: 0 5px;
     margin-right: 5px;
-    background-color: $pink; color: $brown;
+    background-color: $pink; color: $brown-dark;
 }
 .product .product_box .product_txt .icon .new {
     border-radius: 16px;
@@ -86,9 +86,9 @@
 .product .product_box .product_txt .product_price {
     color: $brown; text-align: center;
 }
-.product .product_box .product_txt .product_price del {color: $gray; padding-right: 5px;}
+.product .product_box .product_txt .product_price del {color: $text-light; padding-right: 5px;}
 .product .product_box .product_txt .product_price span {
-    color: $gray; text-decoration: line-through; margin-right: 5px;
+    color: $text-light; text-decoration: line-through; margin-right: 5px;
 }
 
 /*************************** pagenation ***************************/

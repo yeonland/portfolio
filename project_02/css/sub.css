@@ -8,10 +8,10 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
 .menu_pc {display: none;}
 .header {position: fixed; top: 0; left: 0;}
 
-.nav {padding-top: 20px; text-align: center; color: #999; margin: 10px;}
-.nav a {color: #475775;}
+.nav {padding-top: 20px; text-align: center; color: #767676; margin: 10px;}
+.nav a {color: #475775; text-decoration: underline;}
 .nav_mobile {
-    color: #999;
+    color: #767676;
     text-align: center;
     margin: 0 auto;
     font-size: 2rem;
@@ -65,10 +65,10 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
     }
     .menu_pc .bottom_menu p {
         height: 30px; line-height: 30px;
-        color: #999; text-align: center; cursor: pointer;
+        color: #767676; text-align: center; cursor: pointer;
     }
     .menu_pc .bottom_menu p:first-child {color: #475775;}
-    .nav {color: #999; text-align: left; padding-top: 0;}
+    .nav {color: #767676; text-align: left; padding-top: 0;}
     .nav_pc {display: block;}
     .nav_mobile {display: none;}
     

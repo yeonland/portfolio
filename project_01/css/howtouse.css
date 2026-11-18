@@ -22,7 +22,7 @@ li {
 /* page title */
 .wrap > h1 {
   margin-bottom: 18px;
-  color: #9c7055;
+  color: #8c644c;
   font-family: "Gowun Batang", serif;
   font-size: 44px;
   line-height: 1.35;
@@ -31,7 +31,7 @@ li {
 
 .wrap > h2 {
   margin-bottom: 18px;
-  color: #9c7055;
+  color: #8c644c;
   font-family: "Gowun Batang", serif;
   font-size: 44px;
   line-height: 1.35;
@@ -66,14 +66,14 @@ li {
   padding: 7px 16px;
   border-radius: 999px;
   background-color: #ffc1cc;
-  color: #9c7055;
+  color: #6d4e3b;
   font-size: 18px;
   font-weight: 700;
 }
 
 .guide-section h2 {
   margin-bottom: 24px;
-  color: #9c7055;
+  color: #8c644c;
   font-family: "Gowun Batang", serif;
   font-size: 34px;
   line-height: 1.35;
@@ -112,7 +112,7 @@ li {
   position: absolute;
   left: 0;
   top: 0;
-  color: #9c7055;
+  color: #8c644c;
   font-weight: 700;
 }
 
@@ -132,7 +132,7 @@ li {
 .guide-img.placeholder {
   box-sizing: border-box;
   height: 360px;
-  border: 1px dashed #9c7055;
+  border: 1px dashed #8c644c;
   background-color: #f4eadf;
   display: flex;
   align-items: center;
@@ -141,7 +141,7 @@ li {
 
 .guide-img.placeholder p {
   margin-bottom: 0;
-  color: #9c7055;
+  color: #6d4e3b;
   font-size: 18px;
 }
 
@@ -175,7 +175,7 @@ li {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: #9c7055;
+  background: #8c644c;
   color: #feffed;
   font-size: 14px;
   line-height: 24px;
@@ -197,7 +197,7 @@ details:last-child {
 
 summary {
   padding: 22px 28px;
-  color: #9c7055;
+  color: #8c644c;
   font-size: 21px;
   font-weight: 700;
   cursor: pointer;
@@ -215,7 +215,7 @@ summary::after {
   right: 28px;
   top: 50%;
   transform: translateY(-50%);
-  color: #9c7055;
+  color: #8c644c;
   font-size: 24px;
 }
 

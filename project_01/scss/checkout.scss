@@ -28,7 +28,7 @@ li {list-style: none;}
     display: flex;
     justify-content: center;
     gap: 10px;
-    color: $gray;
+    color: $text-light;
     font-size: 17px;
 }
 
@@ -101,7 +101,7 @@ li {list-style: none;}
     height: 32px;
     border: none;
     background: none;
-    color: $gray;
+    color: $text-light;
     font-size: 18px;
     cursor: pointer;
 }
@@ -115,7 +115,7 @@ li {list-style: none;}
 
 .order_empty a {
     margin-left: 10px;
-    color: $brown;
+    color: $brown; text-decoration: underline;
 }
 
 .order_notice {
@@ -186,7 +186,7 @@ li {list-style: none;}
 
 .points_owned {
     margin-top: 8px;
-    color: #888;
+    color: $text-light;
     font-size: 14px;
 }
 
@@ -280,7 +280,7 @@ li {list-style: none;}
 
 .demo_notice {
     margin-top: 12px;
-    color: #999;
+    color: $text-light;
     font-size: 13px;
     text-align: center;
 }

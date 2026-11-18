@@ -2,7 +2,8 @@
 .btn_top {
   width: 60px;
   height: 60px;
-  border: 2px solid #9c7055;
+  padding: 0;
+  border: 2px solid #8c644c;
   box-sizing: border-box;
   border-radius: 30px;
   position: fixed;
@@ -11,7 +12,7 @@
   line-height: 58px;
   text-align: center;
   font-size: 36px;
-  color: #9c7055;
+  color: #8c644c;
   background-color: #feffed;
   cursor: pointer;
   font-family: "Gowun Dodum", sans-serif;
@@ -94,7 +95,7 @@
 .how_use_box {
   width: 130px;
   height: 130px;
-  background-color: #9c7055;
+  background-color: #8c644c;
   border-radius: 65px;
 }
 
@@ -112,7 +113,7 @@
 
 .how_use_wrap button {
   float: right;
-  color: #9c7055;
+  color: #8c644c;
   width: 24px;
   height: 24px;
   border-radius: 12px;
@@ -129,7 +130,23 @@
 /************************** Top **************************/
 /************************** 실시간 채팅상담 **************************/
 #chat_chk {
-  display: none;
+  position: fixed;
+  bottom: 120px;
+  right: 50px;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+  opacity: 0;
+}
+
+#chat_chk:focus-visible ~ .chat label span {
+  outline: 3px solid #8c644c;
+  outline-offset: 3px;
 }
 
 #chat_chk ~ .chat .chat_box {
@@ -171,12 +188,12 @@
   width: 90px;
   height: 90px;
   border-radius: 45px;
-  border: 2px solid #9c7055;
+  border: 2px solid #8c644c;
   box-sizing: border-box;
   font-size: 50px;
   text-align: center;
   line-height: 80px;
-  color: #9c7055;
+  color: #8c644c;
   background-color: #feffed;
 }
 
@@ -184,7 +201,7 @@
   width: 405px;
   height: 440px;
   background-color: white;
-  border: 1px solid #9c7055;
+  border: 1px solid #8c644c;
   border-radius: 15px;
   position: fixed;
   bottom: 210px;
@@ -200,14 +217,14 @@
   flex: none;
   border-radius: 15px 15px 0 0;
   background-color: #feffed;
-  border-bottom: 1px solid #9c7055;
+  border-bottom: 1px solid #8c644c;
   box-sizing: border-box;
 }
 
 .chat .chat_box .brand .logo_box {
   width: 60px;
   height: 60px;
-  border: 1px solid #9c7055;
+  border: 1px solid #8c644c;
   box-sizing: border-box;
   border-radius: 15px;
   margin: 20px 0 0 20px;
@@ -266,17 +283,17 @@
 
 .chat .chat_box .msg.user {
   align-self: flex-end;
-  background-color: #9c7055;
+  background-color: #8c644c;
   color: #feffed;
   border-top-right-radius: 4px;
 }
 
 .chat .chat_box .msg.typing {
-  color: #bbb;
+  color: #707070;
 }
 
 .chat .chat_box .msg a {
-  color: #9c7055;
+  color: #8c644c;
   text-decoration: underline;
 }
 
@@ -292,17 +309,17 @@
 .chat .chat_box .chat_quick button {
   flex: none;
   padding: 4px 12px;
-  border: 1px solid #9c7055;
+  border: 1px solid #8c644c;
   border-radius: 15px;
   background-color: white;
-  color: #9c7055;
+  color: #8c644c;
   font-family: "Gowun Dodum", sans-serif;
   font-size: 14px;
   cursor: pointer;
 }
 
 .chat .chat_box .chat_quick button:hover {
-  background-color: #9c7055;
+  background-color: #8c644c;
   color: #feffed;
 }
 
@@ -312,7 +329,7 @@
   align-items: center;
   height: 44px;
   padding: 0 6px 0 14px;
-  border-top: 1px solid #9c7055;
+  border-top: 1px solid #8c644c;
   background-color: #feffed;
 }
 
@@ -320,7 +337,7 @@
   flex: 1;
   min-width: 0;
   font-size: 16px;
-  color: #9c7055;
+  color: #8c644c;
   font-family: "Gowun Dodum", sans-serif;
   border: none;
   outline: none;
@@ -332,7 +349,7 @@
   height: 34px;
   border: none;
   border-radius: 50%;
-  background-color: #9c7055;
+  background-color: #8c644c;
   color: #feffed;
   font-size: 14px;
   cursor: pointer;

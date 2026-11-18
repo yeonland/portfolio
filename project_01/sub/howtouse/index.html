@@ -31,14 +31,14 @@
     <style>
         .guide-label {
             margin-bottom: 14px;
-            color: #9c7055;
+            color: #8c644c;
             font-size: 18px;
             font-weight: 700;
         }
 
         .guide-main h1 {
             margin-bottom: 18px;
-            color: #9c7055;
+            color: #8c644c;
             font-size: 46px;
             line-height: 1.3;
             font-family: "Gowun Batang", serif;
@@ -59,7 +59,7 @@
     </style>
 </head>
 <body>
-    <div class="btn_top"><i class="fa-solid fa-angle-up"></i></div>   <!-- TOP 버튼 -->
+    <button type="button" class="btn_top" aria-label="맨 위로"><i class="fa-solid fa-angle-up" aria-hidden="true"></i></button>   <!-- TOP 버튼 -->
     
     <div class="spot_menu">
         <ul>
@@ -119,7 +119,7 @@
                     <p class="tit">장바구니</p>
                     <button>결제하기</button>
                 </div>          <!-- cart_box -->
-                <span class="btn_recent"><a href="#"><i class="fa-solid fa-clock"></i></a></span>
+                <span class="btn_recent"><a href="#" aria-label="최근 본 상품"><i class="fa-solid fa-clock"></i></a></span>
                 <div class="recent_box box">
                     <p class="tit">최근 본 상품</p>
                     <button>결제하기</button>

@@ -584,7 +584,14 @@ document.addEventListener('DOMContentLoaded', function () {
         buttons.append(wishButton, addButton);
         card.insertBefore(buttons, card.querySelector(':scope > .product_txt'));
 
-        card.querySelector('a').addEventListener('click', function () {
+        const cardLink = card.querySelector('a');
+
+        // 메인 카드는 사진이 배경 이미지라 링크에 읽을 글자가 없어서 상품 이름을 붙임
+        if (!cardLink.textContent.trim() && !cardLink.querySelector('img[alt]')) {
+            cardLink.setAttribute('aria-label', itemName);
+        }
+
+        cardLink.addEventListener('click', function () {
             addToRecent(getCardItem(card));
         });
     });
