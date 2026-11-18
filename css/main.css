@@ -55,7 +55,7 @@ header.header-visible {transform: translate(0, -50%); opacity: 1;}
     height: 44px;
 }
 
-.logo-img {display: block; width: 32px; height: auto;}
+.logo-img {display: block; width: 44px; height: auto;}
 
 .gnb ul {
     display: flex;
@@ -658,7 +658,7 @@ section {
     header.header-hidden {transform: translateY(100%); opacity: 0;}
     header.header-visible {transform: translateY(0); opacity: 1;}
 
-    .logo-img {width: 28px;}
+    .logo-img {width: 40px;}
 
     .gnb {flex: 1;}
 

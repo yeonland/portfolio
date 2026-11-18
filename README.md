@@ -8,19 +8,13 @@
 
 | 프로젝트 | 설명 | 기술 | 링크 |
 |---|---|---|---|
-| **소하** (개인) | 감성 디지털 문구 쇼핑몰 웹사이트 | HTML · CSS · Sass(SCSS) · JavaScript · jQuery | [사이트](https://yeonland.github.io/portfolio/project_01/) · [설명](./project_01/README.md) · [기획서](./file/project_plan_01.pdf) |
-| **한화문물연구원** (개인) | 문화재 연구기관 리뉴얼 반응형 웹사이트 | HTML · CSS · JavaScript · jQuery | [사이트](https://yeonland.github.io/portfolio/project_02/) · [설명](./project_02/README.md) |
-| **전시갈래** (개발 중) | 공공문화정보 기반 전시 탐색 서비스 | React · Vite · Vercel Functions · AI 코딩 도구 | [사이트](https://jeonsi-gallae.vercel.app/) · [GitHub](https://github.com/yeonland/jeonsi-gallae) |
-| **근무 인수인계 웹앱** (개발 중) | 편의점 교대 보고를 자동으로 만드는 모바일 웹 | HTML · CSS · JavaScript · Claude Code | [사이트](https://yeonland.github.io/handover/) · [GitHub](https://github.com/yeonland/handover) |
-| **땅파기전** (개발 중) | 공사 전 문화유산 사전 확인 지도 서비스 | React · Leaflet · Vercel Functions · AI 코딩 도구 | [사이트](https://before-digging.vercel.app/) · [GitHub](https://github.com/yeonland/before-digging) |
-| **첫직관** (개발 중) | 경기장에 처음 가는 사람을 위한 직관 가이드 웹앱 | Figma · HTML · CSS · JavaScript · AI 코딩 도구 | [사이트](https://yeonland.github.io/first-gikgwan/) · [GitHub](https://github.com/yeonland/first-gikgwan) |
-| **핀잇 PinIt** (개발 중) | 디자인 탐색부터 예약 문의까지 이어지는 모바일 앱 | Flutter · Dart · Vercel · AI 코딩 도구 | [사이트](https://pinit-beta.vercel.app/) · [GitHub](https://github.com/yeonland/pinit-app) · [설명](./pinit_app/README.md) |
-
-### 소하 — 디지털 문구 쇼핑몰
-- 기획 흐름 정리부터 디자인·퍼블리싱까지 전담
-- Swiper.js 슬라이드, jQuery로 장바구니·최근 본 상품 인터랙션 구현
-- 강사님의 코드 리뷰 피드백을 반영해 2차 버전에서 UI와 기능 개선 (페이지네이션, Top 버튼, 고정 헤더 앵커 위치 수정 등)
-- 2026년 리뉴얼: Sass 리팩터링, 반응형(PC · 태블릿 · 모바일), 장바구니 → 주문/결제 → 주문완료 흐름 추가
+| **한화문물연구원** (개인) | 문화재 연구기관 리뉴얼 반응형 웹사이트 | Figma · HTML · CSS · JavaScript · jQuery | [사이트](https://yeonland.github.io/portfolio/project_02/) · [설명](./project_02/README.md) |
+| **전시갈래** (개인) | 공공문화정보 기반 전시 탐색 서비스 | React · Vite · Vercel Functions · AI 코딩 도구 | [사이트](https://jeonsi-gallae.vercel.app/) · [GitHub](https://github.com/yeonland/jeonsi-gallae) |
+| **근무 인수인계 웹앱** (개인) | 편의점 교대 보고를 자동으로 만드는 모바일 웹 | HTML · CSS · JavaScript · Claude Code | [사이트](https://yeonland.github.io/handover/) · [GitHub](https://github.com/yeonland/handover) |
+| **땅파기전** (개인) | 공사 전 문화유산 사전 확인 지도 서비스 | React · Leaflet · Vercel Functions · AI 코딩 도구 | [사이트](https://before-digging.vercel.app/) · [GitHub](https://github.com/yeonland/before-digging) |
+| **첫직관** (개인) | 경기장에 처음 가는 사람을 위한 직관 가이드 웹앱 | Figma · HTML · CSS · JavaScript · AI 코딩 도구 | [사이트](https://yeonland.github.io/first-gikgwan/) · [GitHub](https://github.com/yeonland/first-gikgwan) |
+| **핀잇 PinIt** (개인) | 디자인 탐색부터 예약 문의까지 이어지는 모바일 앱 | Flutter · Dart · Vercel · AI 코딩 도구 | [사이트](https://pinit-beta.vercel.app/) · [GitHub](https://github.com/yeonland/pinit-app) |
+| **소하** (리뉴얼 중) | 감성 디지털 문구 쇼핑몰 웹사이트 | Photoshop · Illustrator · HTML · CSS · Sass(SCSS) · JavaScript(jQuery에서 전환) · Swiper.js | [사이트](https://yeonland.github.io/portfolio/project_01/) · [설명](./project_01/README.md) · [기획서](./file/project_plan_01.pdf) |
 
 ### 한화문물연구원 — 홈페이지 리뉴얼
 - Figma로 화면 설계 후 PC·모바일 반응형 웹으로 구현
@@ -37,7 +31,7 @@
 
 ### 땅파기전 — 문화유산 사전 확인 지도
 - 문화재 조사 현장에서 겪은 불편을 바탕으로 기획
-- 지도에서 필지를 누르면 필요한 절차를 쉬운 말로 안내
+- 지도에서 필지를 누르면 필요한 절차를 쉬운 말로 안내하도록 구현
 
 ### 첫직관 — 직관 가이드 웹앱
 - 종이 티켓 스크랩북 콘셉트로 디자인 기준을 정함
@@ -49,6 +43,12 @@
 - 피드에서 고른 디자인이 자동 입력되는 예약 양식과 예약 문의 메시지 자동 생성·복사 기능 구현
 - 직접 느낀 불편에서 아이디어를 내고, Claude와 유사 서비스 비교·차별점 분석을 거쳐 기획을 구체화
 - 화면 구성과 기능 범위는 직접 정하고, 코드는 Claude를 활용해 구현
+
+### 소하 — 디지털 문구 쇼핑몰 (리뉴얼 중)
+- 기획 흐름 정리부터 디자인·퍼블리싱까지 전담
+- Swiper.js 슬라이드, 장바구니·최근 본 상품 인터랙션 구현 (처음엔 jQuery로 만들고 리뉴얼에서 JavaScript로 전환)
+- 강사님의 코드 리뷰 피드백을 반영해 2차 버전에서 UI와 기능 개선 (페이지네이션, Top 버튼, 고정 헤더 앵커 위치 수정 등)
+- 2026년 리뉴얼: Sass 리팩터링, 반응형(PC · 태블릿 · 모바일), 장바구니 → 주문/결제 → 주문완료 흐름 추가
 
 ## 포트폴리오 사이트
 - HTML · CSS · JavaScript · jQuery
