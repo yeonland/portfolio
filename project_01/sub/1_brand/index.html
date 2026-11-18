@@ -29,6 +29,7 @@
     <script src="../../js/main.js"></script>
 </head>
 <body>
+    <a href="#main" class="skip_link">본문 바로가기</a>
     <div class="how_use_wrap">
         <button type="button" class="how_use_close" aria-label="사용법 버튼 닫기"><i class="fa-solid fa-xmark"></i></button>
         <a href="../howtouse/index.html" target="_blank">
@@ -87,7 +88,7 @@
                     <img src="../../img/00_logo.png" alt="soha_logo">
                 </a>
             </div>           <!-- logo -->
-            <nav class="gnb">
+            <nav class="gnb" aria-label="주 메뉴">
                 <span><a href="#">소하는요</a></span>
                 <span class="product">
                     <a href="../2_product/all/index.html">디지털 문구</a>
@@ -139,7 +140,8 @@
         </div>
     </header>           <!-- header -->
 
-    <main class="brand_wrap">
+    <main id="main" class="brand_wrap">
+        <h1 class="blind">소하는요</h1>
         <h2 class="brand_title">소하는요</h2>
         <p class="brand_subtitle">
             소소한 하루를 기록하는 감성 디지털 문구 브랜드

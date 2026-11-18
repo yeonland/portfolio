@@ -317,7 +317,7 @@ header.header-visible {transform: translate(0, -50%); opacity: 1;}
     border-bottom: 1px solid rgba(239, 239, 239, 0.18);
 }
 
-.history-item h4 {
+.history-item h3 {
     font-size: 18px;
     color: #F4E53B;
     margin-bottom: 8px;
@@ -1574,3 +1574,11 @@ section,
 @media (prefers-reduced-motion: reduce) {
     .site-star {animation: none; opacity: 0.5;}
 }
+
+/* 본문 바로가기: 평소엔 숨기고 Tab을 처음 누르면 왼쪽 위에 나타남 */
+.skip_link {
+    position: absolute; top: -100px; left: 16px; z-index: 10000;
+    padding: 10px 16px; border-radius: 8px;
+    background: #F4E53B; color: #1A1A1A; font-weight: bold; text-decoration: none;
+}
+.skip_link:focus {top: 16px;}

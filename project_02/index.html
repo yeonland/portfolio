@@ -20,6 +20,7 @@
 </head>
 
 <body>
+    <a href="#main" class="skip_link">본문 바로가기</a>
     <header class="header_outer">
         <div class="header">
             <div class="logo">
@@ -85,7 +86,7 @@
                 </div>
             </div>            <!-- gnb_mobile -->
 
-            <nav class="top_gnb_pc">
+            <nav class="top_gnb_pc" aria-label="상단 메뉴">
                 <ul>
                     <li><a href="./index.html">HOME</a></li>
                     <li><a href="#!">LOGIN</a></li>
@@ -93,7 +94,7 @@
                     <li><a href="https://only.webhard.co.kr/" target="_blank">웹하드</a></li>
                 </ul>
             </nav>            <!-- top_gnb_pc -->
-            <nav class="gnb_pc">
+            <nav class="gnb_pc" aria-label="주 메뉴">
                 <ul>
                     <li>연구원 소개</li>
                     <li>조사현황</li>
@@ -142,6 +143,8 @@
             </div>            <!-- search_box -->
         </div>        <!-- header -->
     </header>    <!-- header_outer -->
+    <main id="main">
+        <h1 class="blind">한화문물연구원</h1>
 
     <article class="slides header_bg" id="header">
         <ul class="slide-wrap">
@@ -617,6 +620,7 @@
         </div>        <!-- navi -->
     </div>    <!-- wrap -->
 
+    </main>
     <footer class="footer_outer">
         <div class="footer">
             <div class="logo">
