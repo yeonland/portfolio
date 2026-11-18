@@ -1,6 +1,6 @@
 @use 'variables' as *;
 
-.btn_top {width: 60px; height: 60px;
+.btn_top {width: 60px; height: 60px; padding: 0;
     border: 2px solid $brown; box-sizing: border-box; border-radius: 30px;
     position: fixed; bottom: 50px; right: 60px;
     line-height: 58px; text-align: center; font-size: 36px;
@@ -71,7 +71,13 @@
 
 
 /************************** 실시간 채팅상담 **************************/
-#chat_chk {display: none;}
+// 화면에선 숨기되 키보드(Tab · Space)로는 열고 닫을 수 있게. 채팅 버튼 자리에 두어 포커스 때 화면이 튀지 않게 함
+#chat_chk {
+    position: fixed; bottom: 120px; right: 50px;
+    width: 1px; height: 1px; margin: 0; padding: 0; overflow: hidden;
+    clip-path: inset(50%); white-space: nowrap; border: 0; opacity: 0;
+}
+#chat_chk:focus-visible ~ .chat label span {outline: 3px solid $brown; outline-offset: 3px;}
 #chat_chk ~ .chat .chat_box {display: none;}
 #chat_chk:checked ~ .chat .chat_box {display: flex;}
 
@@ -129,7 +135,7 @@
 }
 .chat .chat_box .msg.bot {align-self: flex-start; background-color: $ivory; color: $text; border: 1px solid $beige; border-top-left-radius: 4px;}
 .chat .chat_box .msg.user {align-self: flex-end; background-color: $brown; color: $cream; border-top-right-radius: 4px;}
-.chat .chat_box .msg.typing {color: $gray;}
+.chat .chat_box .msg.typing {color: $text-light;}
 .chat .chat_box .msg a {color: $brown; text-decoration: underline;}
 
 .chat .chat_box .chat_quick {

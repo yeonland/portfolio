@@ -13,7 +13,7 @@ img {
 }
 
 .header_outer .header .gnb .bar {
-  border-bottom: 1px solid #9c7055;
+  border-bottom: 1px solid #8c644c;
   box-sizing: border-box;
 }
 
@@ -29,12 +29,12 @@ img {
 
 .nav span {
   margin: 0 5px;
-  color: #9c7055;
+  color: #8c644c;
   font-size: 24px;
 }
 
 .nav span a {
-  color: #9c7055;
+  color: #8c644c;
 }
 
 .nav span a:hover {
@@ -69,16 +69,16 @@ img {
 }
 
 .detail_box .detail_txt .detail_star {
-  color: #9c7055;
+  color: #8c644c;
 }
 
 .detail_box .detail_txt .detail_price {
-  color: #9c7055;
+  color: #8c644c;
   font-size: 24px;
 }
 
 .detail_box .detail_txt hr {
-  color: #bbb;
+  color: #707070;
   margin: 30px 0;
 }
 
@@ -98,14 +98,14 @@ img {
 .detail_box .detail_txt .total_price {
   float: right;
   font-size: 24px;
-  color: #9c7055;
+  color: #8c644c;
 }
 
 .detail_box .detail_txt .btn {
   width: 120px;
   height: 40px;
-  border: 1px solid #9c7055;
-  color: #9c7055;
+  border: 1px solid #8c644c;
+  color: #8c644c;
   border-radius: 20px;
   line-height: 40px;
   text-align: center;
@@ -124,7 +124,7 @@ img {
 
 .detail_box .detail_txt .btn:hover {
   color: #feffed;
-  background-color: #9c7055;
+  background-color: #8c644c;
 }
 
 .detail_box .detail_txt .detail_btns {
@@ -143,7 +143,7 @@ img {
 
 .detail_box .detail_txt .detail_btns .btn_buy {
   color: #feffed;
-  background-color: #9c7055;
+  background-color: #8c644c;
 }
 
 .anchor {
@@ -210,7 +210,7 @@ img {
 }
 
 .review .review_star_box .review_star_left_box .review_stars span {
-  color: #9c7055;
+  color: #8c644c;
 }
 
 .review .review_star_box .review_star_left_box p {
@@ -218,7 +218,7 @@ img {
 }
 
 .review .review_star_box .review_star_left_box .write {
-  background-color: #9c7055;
+  background-color: #8c644c;
   padding: 10px 10px;
   margin: 130px;
   border-radius: 30px;
@@ -226,7 +226,7 @@ img {
 
 .review .review_star_box .review_star_left_box .write:hover {
   background-color: white;
-  border: 1px solid #9c7055;
+  border: 1px solid #8c644c;
 }
 
 .review .review_star_box .review_star_left_box .write a {
@@ -234,7 +234,7 @@ img {
 }
 
 .review .review_star_box .review_star_left_box .write a:hover {
-  color: #9c7055;
+  color: #8c644c;
 }
 
 /*************************** review star box right ***************************/
@@ -245,7 +245,7 @@ img {
   margin: 50px 0;
   padding: 45px 0;
   text-align: center;
-  color: #9c7055;
+  color: #8c644c;
 }
 
 .review_star_box .review_star_right_box p {
@@ -270,7 +270,7 @@ img {
   width: 280px;
   height: 18px;
   border-radius: 8px;
-  background-color: #9c7055;
+  background-color: #8c644c;
   float: left;
 }
 
@@ -278,14 +278,14 @@ img {
   width: 20px;
   height: 18px;
   border-radius: 8px;
-  background-color: #9c7055;
+  background-color: #8c644c;
   float: left;
 }
 
 .review .review_star_box .review_star_right_box span .num {
   width: 200px;
   height: 16px;
-  background-color: #9c7055;
+  background-color: #8c644c;
 }
 
 /*************************** sub title ***************************/
@@ -302,17 +302,17 @@ img {
 }
 
 .review .review_box .star {
-  color: #9c7055;
+  color: #8c644c;
 }
 
 /* .review .review_box .review_date {padding-left: 800px;} */
 .review .review_box .thumb {
-  color: #bbb;
+  color: #707070;
   padding-left: 920px;
 }
 
 .review .review_box .thumb a {
-  color: #bbb;
+  color: #707070;
 }
 
 /* .review .review_box .review_txt {} */
@@ -361,7 +361,7 @@ img {
 }
 
 .qna .qna_box .lock {
-  color: #bbb;
+  color: #707070;
 }
 
 /*************************** pagenation ***************************/
@@ -376,7 +376,7 @@ img {
 
 .page .page_nation li {
   display: inline-block;
-  color: #9c7055;
+  color: #8c644c;
   font-family: "Gowun Dodum", sans-serif;
   height: 30px;
   line-height: 30px;
@@ -392,12 +392,12 @@ img {
 }
 
 .page .page_nation li a {
-  color: #9c7055;
+  color: #8c644c;
 }
 
 .page .page_nation .num {
   width: 30px;
-  border: 1px solid #9c7055;
+  border: 1px solid #8c644c;
   box-sizing: border-box;
   border-radius: 15px;
   text-align: center;

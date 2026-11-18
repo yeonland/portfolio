@@ -28,7 +28,7 @@ img {
 .sub_title {
   font-family: "Jua", sans-serif;
   font-size: 36px;
-  color: #9c7055;
+  color: #8c644c;
   width: 1245px;
   height: 40px;
   margin: 0 auto;
@@ -39,7 +39,7 @@ img {
 }
 
 .sub_title a {
-  color: #9c7055;
+  color: #8c644c;
 }
 
 .sub_title .more {
@@ -206,13 +206,13 @@ img {
   padding: 0 5px;
   margin-right: 5px;
   background-color: #ffc1cc;
-  color: #9c7055;
+  color: #6d4e3b;
 }
 
 .product .product_box .product_txt .icon .new {
   border-radius: 16px;
   padding: 0 6px;
-  background-color: #9c7055;
+  background-color: #8c644c;
   color: #feffed;
 }
 
@@ -220,8 +220,8 @@ img {
   border-radius: 16px;
   padding: 0 5px;
   background-color: #feffed;
-  color: #9c7055;
-  border: 1px solid #9c7055;
+  color: #8c644c;
+  border: 1px solid #8c644c;
 }
 
 .product .product_box .product_txt .product_name {
@@ -231,12 +231,12 @@ img {
 }
 
 .product .product_box .product_txt .product_price {
-  color: #9c7055;
+  color: #8c644c;
   text-align: center;
 }
 
 .product .product_box .product_txt .product_price span {
-  color: #bbb;
+  color: #707070;
   text-decoration: line-through;
   margin-right: 5px;
 }
@@ -296,7 +296,7 @@ img {
 }
 
 .free_outer .free .product_box .product_txt .product_price {
-  color: #9c7055;
+  color: #8c644c;
   text-align: center;
 }
 
@@ -310,32 +310,61 @@ img {
 .free_outer .free .free_txt p {
   font-family: "Jua", sans-serif;
   font-size: 36px;
-  color: #9c7055;
+  color: #8c644c;
   margin: 20px 0;
 }
 
 .free_outer .free .free_txt div {
   font-family: "Gowun Dodum", sans-serif;
-  color: #9c7055;
+  color: #8c644c;
   margin-bottom: 40px;
 }
 
 .free_outer .free .free_txt a span {
   padding: 5px 20px;
-  color: #9c7055;
+  color: #8c644c;
   font-family: "Jua", sans-serif;
-  border: 1px solid #9c7055;
+  border: 1px solid #8c644c;
   border-radius: 15px;
 }
 
 .free_outer .free .free_txt a span:hover {
   color: #feffed;
-  background-color: #9c7055;
+  background-color: #8c644c;
 }
 
 /************************** metapo **************************/
 #metapo01, #metapo02, #metapo03, #metapo04 {
-  display: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+  opacity: 0;
+}
+
+#metapo01:focus-visible ~ .metapo_wrap .metapo .metapo_icon01 {
+  outline: 3px solid #8c644c;
+  outline-offset: 3px;
+}
+
+#metapo02:focus-visible ~ .metapo_wrap .metapo .metapo_icon02 {
+  outline: 3px solid #8c644c;
+  outline-offset: 3px;
+}
+
+#metapo03:focus-visible ~ .metapo_wrap .metapo .metapo_icon03 {
+  outline: 3px solid #8c644c;
+  outline-offset: 3px;
+}
+
+#metapo04:focus-visible ~ .metapo_wrap .metapo .metapo_icon04 {
+  outline: 3px solid #8c644c;
+  outline-offset: 3px;
 }
 
 #metapo01:checked ~ .metapo_wrap .metapo_product div:nth-child(1) {
@@ -343,7 +372,7 @@ img {
 }
 
 #metapo01:checked ~ .metapo_wrap .metapo .metapo_icon01 {
-  background-color: #9c7055;
+  background-color: #8c644c;
 }
 
 #metapo02:checked ~ .metapo_wrap .metapo_product div:nth-child(2) {
@@ -351,7 +380,7 @@ img {
 }
 
 #metapo02:checked ~ .metapo_wrap .metapo .metapo_icon02 {
-  background-color: #9c7055;
+  background-color: #8c644c;
 }
 
 #metapo03:checked ~ .metapo_wrap .metapo_product div:nth-child(3) {
@@ -359,7 +388,7 @@ img {
 }
 
 #metapo03:checked ~ .metapo_wrap .metapo .metapo_icon03 {
-  background-color: #9c7055;
+  background-color: #8c644c;
 }
 
 #metapo04:checked ~ .metapo_wrap .metapo_product div:nth-child(4) {
@@ -367,7 +396,7 @@ img {
 }
 
 #metapo04:checked ~ .metapo_wrap .metapo .metapo_icon04 {
-  background-color: #9c7055;
+  background-color: #8c644c;
 }
 
 .metapo_wrap {
@@ -386,7 +415,7 @@ img {
   display: block;
   width: 90px;
   height: 90px;
-  border: 1px solid #9c7055;
+  border: 1px solid #8c644c;
   box-sizing: border-box;
   border-radius: 15px;
   float: left;
@@ -404,7 +433,7 @@ img {
   font-size: 24px;
   font-family: "Gowun Dodum", sans-serif;
   text-align: center;
-  color: #9c7055;
+  color: #8c644c;
   float: left;
 }
 
@@ -485,13 +514,13 @@ img {
   padding: 0 5px;
   margin-right: 5px;
   background-color: #ffc1cc;
-  color: #9c7055;
+  color: #6d4e3b;
 }
 
 .metapo_wrap .metapo_product .product_box .product_txt .icon .new {
   border-radius: 16px;
   padding: 0 6px;
-  background-color: #9c7055;
+  background-color: #8c644c;
   color: #feffed;
 }
 
@@ -499,8 +528,8 @@ img {
   border-radius: 16px;
   padding: 0 5px;
   background-color: #feffed;
-  color: #9c7055;
-  border: 1px solid #9c7055;
+  color: #8c644c;
+  border: 1px solid #8c644c;
 }
 
 .metapo_wrap .metapo_product .product_box .product_txt .mt {
@@ -514,12 +543,12 @@ img {
 }
 
 .metapo_wrap .metapo_product .product_box .product_txt .product_price {
-  color: #9c7055;
+  color: #8c644c;
   text-align: center;
 }
 
 .metapo_wrap .metapo_product .product_box .product_txt .product_price del {
-  color: #bbb;
+  color: #707070;
   padding-right: 5px;
 }
 
@@ -534,9 +563,9 @@ img {
 }
 
 #keyword01:checked ~ .suggest_box .suggest_word .keyword_01 {
-  background-color: #9c7055;
+  background-color: #8c644c;
   color: #feffed;
-  box-shadow: 2px 1px 6px #9c7055;
+  box-shadow: 2px 1px 6px #8c644c;
 }
 
 #keyword02:checked ~ .suggest_box .suggest_img_wrap div:nth-child(2) {
@@ -544,9 +573,9 @@ img {
 }
 
 #keyword02:checked ~ .suggest_box .suggest_word .keyword_02 {
-  background-color: #9c7055;
+  background-color: #8c644c;
   color: #feffed;
-  box-shadow: 2px 1px 6px #9c7055;
+  box-shadow: 2px 1px 6px #8c644c;
 }
 
 #keyword03:checked ~ .suggest_box .suggest_img_wrap div:nth-child(3) {
@@ -554,9 +583,9 @@ img {
 }
 
 #keyword03:checked ~ .suggest_box .suggest_word .keyword_03 {
-  background-color: #9c7055;
+  background-color: #8c644c;
   color: #feffed;
-  box-shadow: 2px 1px 6px #9c7055;
+  box-shadow: 2px 1px 6px #8c644c;
 }
 
 #keyword04:checked ~ .suggest_box .suggest_img_wrap div:nth-child(4) {
@@ -564,9 +593,9 @@ img {
 }
 
 #keyword04:checked ~ .suggest_box .suggest_word .keyword_04 {
-  background-color: #9c7055;
+  background-color: #8c644c;
   color: #feffed;
-  box-shadow: 2px 1px 6px #9c7055;
+  box-shadow: 2px 1px 6px #8c644c;
 }
 
 #keyword05:checked ~ .suggest_box .suggest_img_wrap div:nth-child(5) {
@@ -574,9 +603,9 @@ img {
 }
 
 #keyword05:checked ~ .suggest_box .suggest_word .keyword_05 {
-  background-color: #9c7055;
+  background-color: #8c644c;
   color: #feffed;
-  box-shadow: 2px 1px 6px #9c7055;
+  box-shadow: 2px 1px 6px #8c644c;
 }
 
 #keyword06:checked ~ .suggest_box .suggest_img_wrap div:nth-child(6) {
@@ -584,9 +613,9 @@ img {
 }
 
 #keyword06:checked ~ .suggest_box .suggest_word .keyword_06 {
-  background-color: #9c7055;
+  background-color: #8c644c;
   color: #feffed;
-  box-shadow: 2px 1px 6px #9c7055;
+  box-shadow: 2px 1px 6px #8c644c;
 }
 
 #keyword07:checked ~ .suggest_box .suggest_img_wrap div:nth-child(7) {
@@ -594,9 +623,9 @@ img {
 }
 
 #keyword07:checked ~ .suggest_box .suggest_word .keyword_07 {
-  background-color: #9c7055;
+  background-color: #8c644c;
   color: #feffed;
-  box-shadow: 2px 1px 6px #9c7055;
+  box-shadow: 2px 1px 6px #8c644c;
 }
 
 #keyword08:checked ~ .suggest_box .suggest_img_wrap div:nth-child(8) {
@@ -604,9 +633,9 @@ img {
 }
 
 #keyword08:checked ~ .suggest_box .suggest_word .keyword_08 {
-  background-color: #9c7055;
+  background-color: #8c644c;
   color: #feffed;
-  box-shadow: 2px 1px 6px #9c7055;
+  box-shadow: 2px 1px 6px #8c644c;
 }
 
 .suggest_box {
@@ -796,19 +825,19 @@ img {
 .big_banner_outer .big_banner p {
   font-size: 36px;
   font-family: "Jua", sans-serif;
-  color: #9c7055;
+  color: #8c644c;
   padding: 40px 0;
 }
 
 .big_banner_outer .big_banner span {
   font-size: 24px;
   font-family: "Gowun Dodum", sans-serif;
-  color: #9c7055;
+  color: #8c644c;
 }
 
 .big_banner_outer .big_banner div {
   font-family: "Gowun Dodum", sans-serif;
-  color: #9c7055;
+  color: #8c644c;
   padding-top: 20px;
 }
 
@@ -1144,10 +1173,10 @@ img {
   }
   #keyword01:checked ~ .suggest_box .suggest_word .keyword_01 {
     background: none;
-    color: #9c7055;
+    color: #8c644c;
     font-weight: bold;
     box-shadow: none;
-    border-bottom-color: #9c7055;
+    border-bottom-color: #8c644c;
   }
   .suggest_box .suggest_word .keyword_02::before {
     content: "✏️";
@@ -1155,10 +1184,10 @@ img {
   }
   #keyword02:checked ~ .suggest_box .suggest_word .keyword_02 {
     background: none;
-    color: #9c7055;
+    color: #8c644c;
     font-weight: bold;
     box-shadow: none;
-    border-bottom-color: #9c7055;
+    border-bottom-color: #8c644c;
   }
   .suggest_box .suggest_word .keyword_03::before {
     content: "💼";
@@ -1166,10 +1195,10 @@ img {
   }
   #keyword03:checked ~ .suggest_box .suggest_word .keyword_03 {
     background: none;
-    color: #9c7055;
+    color: #8c644c;
     font-weight: bold;
     box-shadow: none;
-    border-bottom-color: #9c7055;
+    border-bottom-color: #8c644c;
   }
   .suggest_box .suggest_word .keyword_04::before {
     content: "🎀";
@@ -1177,10 +1206,10 @@ img {
   }
   #keyword04:checked ~ .suggest_box .suggest_word .keyword_04 {
     background: none;
-    color: #9c7055;
+    color: #8c644c;
     font-weight: bold;
     box-shadow: none;
-    border-bottom-color: #9c7055;
+    border-bottom-color: #8c644c;
   }
   .suggest_box .suggest_word .keyword_05::before {
     content: "📚";
@@ -1188,10 +1217,10 @@ img {
   }
   #keyword05:checked ~ .suggest_box .suggest_word .keyword_05 {
     background: none;
-    color: #9c7055;
+    color: #8c644c;
     font-weight: bold;
     box-shadow: none;
-    border-bottom-color: #9c7055;
+    border-bottom-color: #8c644c;
   }
   .suggest_box .suggest_word .keyword_06::before {
     content: "💪";
@@ -1199,10 +1228,10 @@ img {
   }
   #keyword06:checked ~ .suggest_box .suggest_word .keyword_06 {
     background: none;
-    color: #9c7055;
+    color: #8c644c;
     font-weight: bold;
     box-shadow: none;
-    border-bottom-color: #9c7055;
+    border-bottom-color: #8c644c;
   }
   .suggest_box .suggest_word .keyword_07::before {
     content: "🧶";
@@ -1210,10 +1239,10 @@ img {
   }
   #keyword07:checked ~ .suggest_box .suggest_word .keyword_07 {
     background: none;
-    color: #9c7055;
+    color: #8c644c;
     font-weight: bold;
     box-shadow: none;
-    border-bottom-color: #9c7055;
+    border-bottom-color: #8c644c;
   }
   .suggest_box .suggest_word .keyword_08::before {
     content: "🌱";
@@ -1221,10 +1250,10 @@ img {
   }
   #keyword08:checked ~ .suggest_box .suggest_word .keyword_08 {
     background: none;
-    color: #9c7055;
+    color: #8c644c;
     font-weight: bold;
     box-shadow: none;
-    border-bottom-color: #9c7055;
+    border-bottom-color: #8c644c;
   }
   .suggest_box .suggest_img_wrap {
     max-width: none;
@@ -1278,7 +1307,7 @@ img {
     padding: 2px 0 0;
     font-size: 15px;
     font-weight: bold;
-    color: #9c7055;
+    color: #8c644c;
   }
   .big_banner_outer {
     margin-top: 80px;

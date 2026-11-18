@@ -27,7 +27,7 @@ li {
 
 .checkout_title h1 {
   margin-bottom: 20px;
-  color: #9c7055;
+  color: #8c644c;
   font-size: 48px;
 }
 
@@ -35,7 +35,7 @@ li {
   display: flex;
   justify-content: center;
   gap: 10px;
-  color: #bbb;
+  color: #707070;
   font-size: 17px;
 }
 
@@ -45,7 +45,7 @@ li {
 }
 
 .checkout_step .on {
-  color: #9c7055;
+  color: #8c644c;
 }
 
 /*************************** 레이아웃 ***************************/
@@ -74,8 +74,8 @@ li {
 .checkout_summary h2 {
   padding-bottom: 12px;
   margin-bottom: 20px;
-  border-bottom: 2px solid #9c7055;
-  color: #9c7055;
+  border-bottom: 2px solid #8c644c;
+  color: #8c644c;
   font-size: 24px;
 }
 
@@ -101,7 +101,7 @@ li {
 }
 
 .order_list .order_price {
-  color: #9c7055;
+  color: #8c644c;
   font-size: 18px;
 }
 
@@ -110,13 +110,13 @@ li {
   height: 32px;
   border: none;
   background: none;
-  color: #bbb;
+  color: #707070;
   font-size: 18px;
   cursor: pointer;
 }
 
 .order_list .btn_remove:hover {
-  color: #9c7055;
+  color: #8c644c;
 }
 
 .order_empty {
@@ -126,7 +126,8 @@ li {
 
 .order_empty a {
   margin-left: 10px;
-  color: #9c7055;
+  color: #8c644c;
+  text-decoration: underline;
 }
 
 .order_notice {
@@ -139,7 +140,7 @@ li {
 
 .order_notice i {
   margin-right: 6px;
-  color: #9c7055;
+  color: #8c644c;
 }
 
 /*************************** 입력 ***************************/
@@ -170,7 +171,7 @@ li {
 .field input:focus,
 .field select:focus {
   outline: none;
-  border-color: #9c7055;
+  border-color: #8c644c;
 }
 
 .points_row {
@@ -181,28 +182,28 @@ li {
 .points_row .btn_points_all {
   flex-shrink: 0;
   padding: 0 20px;
-  border: 1px solid #9c7055;
+  border: 1px solid #8c644c;
   border-radius: 10px;
   background-color: white;
-  color: #9c7055;
+  color: #8c644c;
   font-family: inherit;
   font-size: 15px;
   cursor: pointer;
 }
 
 .points_row .btn_points_all:hover {
-  background-color: #9c7055;
+  background-color: #8c644c;
   color: #feffed;
 }
 
 .points_owned {
   margin-top: 8px;
-  color: #888;
+  color: #707070;
   font-size: 14px;
 }
 
 .points_owned strong {
-  color: #9c7055;
+  color: #8c644c;
 }
 
 /*************************** 결제 수단 ***************************/
@@ -224,13 +225,13 @@ li {
 }
 
 .payment_list label:has(input:checked) {
-  border-color: #9c7055;
+  border-color: #8c644c;
   background-color: #feffed;
-  color: #9c7055;
+  color: #8c644c;
 }
 
 .payment_list input {
-  accent-color: #9c7055;
+  accent-color: #8c644c;
 }
 
 /*************************** 결제 금액 ***************************/
@@ -239,7 +240,7 @@ li {
   top: 140px;
   width: 340px;
   padding: 30px;
-  border: 1px solid #9c7055;
+  border: 1px solid #8c644c;
   border-radius: 15px;
   box-sizing: border-box;
   background-color: #fffdf0;
@@ -256,7 +257,7 @@ li {
   padding-top: 15px;
   margin: 20px 0;
   border-top: 1px solid #d6b8a3;
-  color: #9c7055;
+  color: #8c644c;
   font-size: 20px;
 }
 
@@ -272,7 +273,7 @@ li {
 .checkout_summary .agree input {
   flex-shrink: 0;
   margin-top: 4px;
-  accent-color: #9c7055;
+  accent-color: #8c644c;
 }
 
 .btn_pay {
@@ -281,7 +282,7 @@ li {
   margin-top: 15px;
   border: none;
   border-radius: 27px;
-  background-color: #9c7055;
+  background-color: #8c644c;
   color: #feffed;
   font-family: inherit;
   font-size: 20px;
@@ -295,7 +296,7 @@ li {
 
 .demo_notice {
   margin-top: 12px;
-  color: #999;
+  color: #707070;
   font-size: 13px;
   text-align: center;
 }
@@ -314,7 +315,7 @@ li {
 
 .complete_msg {
   margin-bottom: 10px;
-  color: #9c7055;
+  color: #8c644c;
   font-size: 28px;
 }
 
@@ -323,7 +324,7 @@ li {
 }
 
 .complete_sub strong {
-  color: #9c7055;
+  color: #8c644c;
 }
 
 .complete_info {
@@ -341,7 +342,7 @@ li {
 }
 
 .complete_info dd {
-  color: #9c7055;
+  color: #8c644c;
 }
 
 .complete_box .order_list {
@@ -350,17 +351,17 @@ li {
 
 .complete_box .btn_download {
   padding: 8px 18px;
-  border: 1px solid #9c7055;
+  border: 1px solid #8c644c;
   border-radius: 20px;
   background: none;
-  color: #9c7055;
+  color: #8c644c;
   font-family: inherit;
   font-size: 15px;
   cursor: pointer;
 }
 
 .complete_box .btn_download:hover {
-  background-color: #9c7055;
+  background-color: #8c644c;
   color: #feffed;
 }
 
@@ -374,16 +375,16 @@ li {
 .complete_btns a {
   width: 160px;
   height: 50px;
-  border: 1px solid #9c7055;
+  border: 1px solid #8c644c;
   border-radius: 25px;
-  color: #9c7055;
+  color: #8c644c;
   font-size: 18px;
   line-height: 50px;
   text-decoration: none;
 }
 
 .complete_btns .on {
-  background-color: #9c7055;
+  background-color: #8c644c;
   color: #feffed;
 }
 

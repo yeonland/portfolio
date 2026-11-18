@@ -13,7 +13,7 @@
   height: 40px;
   background-color: #feffed;
   box-sizing: border-box;
-  border: 1px solid #9c7055;
+  border: 1px solid #8c644c;
   margin: 50px auto;
   border-radius: 20px;
 }
@@ -25,7 +25,7 @@
   margin: 5px 10px;
   font-size: 20px;
   font-family: "Gowun Dodum", sans-serif;
-  color: #9c7055;
+  color: #8c644c;
 }
 
 .search_result_box span {
@@ -35,7 +35,7 @@
 }
 
 .search_result_box span a {
-  color: #9c7055;
+  color: #8c644c;
 }
 
 #search01, #search02, #search03 {

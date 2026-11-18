@@ -11,13 +11,13 @@
   margin: 160px auto;
   background-color: #feffed;
   border-radius: 15px;
-  border: 1px solid #9c7055;
+  border: 1px solid #8c644c;
 }
 
 .login_box h2 {
   font-family: "Gowun Dodum", sans-serif;
   font-size: 36px;
-  color: #9c7055;
+  color: #8c644c;
   margin-bottom: 40px;
 }
 
@@ -27,10 +27,10 @@
   padding: 0 10px;
   margin-bottom: 16px;
   border-radius: 15px;
-  color: #9c7055;
+  color: #8c644c;
   font-family: "Gowun Dodum", sans-serif;
   font-size: 16px;
-  border: 1px solid #9c7055;
+  border: 1px solid #8c644c;
 }
 
 .login_box label span {
@@ -50,7 +50,7 @@
 .login_box .login {
   color: #feffed;
   font-size: 16px;
-  background-color: #9c7055;
+  background-color: #8c644c;
   padding: 10px 100px;
   border-radius: 20px;
   margin-top: 50px;

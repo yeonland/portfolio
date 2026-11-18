@@ -4,7 +4,7 @@
 }
 
 .header_outer .header .gnb > span:nth-child(5) a {
-  border-bottom: 1px solid #9c7055;
+  border-bottom: 1px solid #8c644c;
   box-sizing: border-box;
 }
 
@@ -22,12 +22,12 @@
 
 .notice-title h1 {
   margin-bottom: 10px;
-  color: #9c7055;
+  color: #8c644c;
   font-size: 48px;
 }
 
 .notice-title p {
-  color: #888;
+  color: #707070;
   font-size: 17px;
 }
 
@@ -45,12 +45,12 @@
 }
 
 .notice-top p {
-  color: #777;
+  color: #707070;
   font-size: 15px;
 }
 
 .notice-top strong {
-  color: #9c7055;
+  color: #8c644c;
 }
 
 .notice-search {
@@ -68,20 +68,20 @@
 }
 
 .notice-search input:focus {
-  border-color: #9c7055;
+  border-color: #8c644c;
 }
 
 .notice-search button {
   width: 70px;
-  border: 1px solid #9c7055;
-  background: #9c7055;
+  border: 1px solid #8c644c;
+  background: #8c644c;
   color: #fff;
   font: inherit;
   cursor: pointer;
 }
 
 .notice-list {
-  border-top: 2px solid #9c7055;
+  border-top: 2px solid #8c644c;
 }
 
 .notice-item {
@@ -102,11 +102,11 @@
 }
 
 .notice-number {
-  color: #9c7055;
+  color: #8c644c;
 }
 
 .notice-category {
-  color: #a77b60;
+  color: #8c644c;
   font-size: 15px;
 }
 
@@ -117,12 +117,12 @@
 }
 
 .notice-name:hover {
-  color: #9c7055;
+  color: #8c644c;
   text-decoration: underline;
 }
 
 .notice-item time {
-  color: #999;
+  color: #707070;
   font-size: 14px;
 }
 
@@ -142,14 +142,14 @@
   place-items: center;
   border: 1px solid #d8c4b8;
   background: #fff;
-  color: #777;
+  color: #707070;
   font: inherit;
   cursor: pointer;
 }
 
 .notice-pagination .active {
-  border-color: #9c7055;
-  background: #9c7055;
+  border-color: #8c644c;
+  background: #8c644c;
   color: #fff;
 }
 

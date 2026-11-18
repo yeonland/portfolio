@@ -30,12 +30,12 @@ a {
   margin-bottom: 10px;
   font-size: 48px;
   font-weight: normal;
-  color: #9c7055;
+  color: #8c644c;
 }
 
 .my_title p {
   font-size: 17px;
-  color: #888;
+  color: #707070;
 }
 
 /************************** 인사 · 요약 **************************/
@@ -57,30 +57,30 @@ a {
 
 .my_name {
   font-weight: normal;
-  color: #9c7055;
+  color: #8c644c;
 }
 
 .my_guide {
   margin-top: 6px;
   font-size: 15px;
-  color: #888;
+  color: #707070;
 }
 
 .my_btn {
   display: inline-block;
   padding: 0 22px;
-  border: 1px solid #9c7055;
+  border: 1px solid #8c644c;
   border-radius: 20px;
   background-color: white;
   font-family: inherit;
   font-size: 15px;
   line-height: 38px;
-  color: #9c7055;
+  color: #8c644c;
   cursor: pointer;
 }
 
 .my_btn:hover {
-  background-color: #9c7055;
+  background-color: #8c644c;
   color: #feffed;
 }
 
@@ -108,13 +108,13 @@ a {
   display: block;
   margin-bottom: 6px;
   font-size: 14px;
-  color: #888;
+  color: #707070;
 }
 
 .my_summary strong {
   font-size: 22px;
   font-weight: normal;
-  color: #9c7055;
+  color: #8c644c;
 }
 
 /************************** 바로가기 탭 **************************/
@@ -134,8 +134,8 @@ a {
 }
 
 .my_tabs a:hover {
-  border-color: #9c7055;
-  color: #9c7055;
+  border-color: #8c644c;
+  color: #8c644c;
 }
 
 /************************** 섹션 공통 **************************/
@@ -147,21 +147,21 @@ a {
 .my_section h2 {
   padding-bottom: 14px;
   margin-bottom: 20px;
-  border-bottom: 2px solid #9c7055;
+  border-bottom: 2px solid #8c644c;
   font-size: 22px;
   font-weight: normal;
-  color: #9c7055;
+  color: #8c644c;
 }
 
 .my_empty {
   padding: 40px 0;
   text-align: center;
   font-size: 15px;
-  color: #999;
+  color: #707070;
 }
 
 .my_empty a {
-  color: #9c7055;
+  color: #8c644c;
   text-decoration: underline;
 }
 
@@ -190,7 +190,7 @@ a {
 
 .my_order_meta {
   font-size: 13px;
-  color: #999;
+  color: #707070;
 }
 
 .my_order_name {
@@ -202,7 +202,7 @@ a {
 .my_order_total {
   font-size: 17px;
   font-weight: bold;
-  color: #9c7055;
+  color: #8c644c;
 }
 
 /************************** 카드 (다운로드함 · 최근 본 상품) **************************/
@@ -239,7 +239,7 @@ a {
   margin-top: 2px;
   font-size: 15px;
   font-weight: bold;
-  color: #9c7055;
+  color: #8c644c;
 }
 
 .my_btn_download {
@@ -247,7 +247,7 @@ a {
   margin-top: 8px;
   border: none;
   border-radius: 18px;
-  background-color: #9c7055;
+  background-color: #8c644c;
   font-family: inherit;
   font-size: 14px;
   line-height: 34px;
@@ -263,7 +263,7 @@ a {
   margin-top: 60px;
   text-align: center;
   font-size: 13px;
-  color: #aaa;
+  color: #707070;
 }
 
 /* responsive */

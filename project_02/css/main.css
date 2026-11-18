@@ -12,7 +12,7 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
     font-size: 2rem; text-align: center;
     padding-top: 50px; color: #475775;
 }
-.more {text-align: right; color: #999; cursor: pointer;}
+.more {text-align: right; color: #767676; cursor: pointer;}
 .pb{ padding-bottom: 30px;}
 .btn_top {display: none;}
 /* 현장공개, 유적 갤러리 */
@@ -30,7 +30,7 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
 
 .open_header .more {
     grid-column: 3; justify-self: end; align-self: end;
-    color: #999; white-space: nowrap; padding-right: 20px;
+    color: #767676; white-space: nowrap; padding-right: 20px;
     
 }
 /******************* main_visual *******************/
@@ -54,7 +54,7 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
 }
 .progress .progress_box {
     width: 25%;
-    background-color: #6987D6;
+    background-color: #4f6fc4;
     width: auto;
     flex: 1;
     min-width: 0;
@@ -216,7 +216,7 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
     border: none;
     border-bottom: 2px solid transparent;
     background: transparent;
-    color: #999;
+    color: #767676;
     font: inherit;
     cursor: pointer;
 }
@@ -244,12 +244,12 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
     width: 17%;
     float: right; margin-top: -20px;
     text-align: right;
-    color: #999;
+    color: #767676;
 }
 
 .notice_news_mobile .notice_news_sheet .tab_sheet ul {margin: 20px 0;}
 .notice_news_mobile .notice_news_sheet .tab_sheet ul li {margin-bottom: 15px;}
-.notice_news_mobile .notice_news_sheet .tab_sheet ul li a {color: #999;}
+.notice_news_mobile .notice_news_sheet .tab_sheet ul li a {color: #767676;}
 
 .notice_news_more {
     width: 15%; height: 30px;
@@ -289,7 +289,7 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
 
 /* navigation */
 .navi span {padding: 5px;}
-.navi span a {color: #999;}
+.navi span a {color: #767676;}
 
 
 /******************* Tablet+PC *******************/
@@ -699,7 +699,7 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
         height: 30px; line-height: 30px;
     }
     .notice_news_pc .notice_news_box .notice_news_list ul li a {
-        color: #999;
+        color: #767676;
     }
     .notice_news_pc .notice_news_box .notice_news_list .notice_news_txt {
         white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
@@ -728,6 +728,6 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
 
    /* navi */
    .navi span {padding: 10px;}
-   .navi span a {color: #999;}
+   .navi span a {color: #767676;}
 
 }

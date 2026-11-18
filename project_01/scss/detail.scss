@@ -31,7 +31,7 @@ img {display: block;}
 .detail_box .detail_txt .detail_name {font-size: 36px;}
 .detail_box .detail_txt .detail_star {color: $brown;}
 .detail_box .detail_txt .detail_price {color: $brown; font-size: 24px;}
-.detail_box .detail_txt hr {color: $gray; margin: 30px 0;}
+.detail_box .detail_txt hr {color: $text-light; margin: 30px 0;}
 .detail_box .detail_txt .detail_sub {line-height: 30px;}
 .detail_box .detail_txt div {width: 400px; height: 50px; }
 .detail_box .detail_txt .total_product {float: left;}
@@ -111,8 +111,8 @@ img {display: block;}
 .review .review_box {height: 150px; padding: 10px; margin: 20px 0;}
 .review .review_box .star {color: $brown;}
 /* .review .review_box .review_date {padding-left: 800px;} */
-.review .review_box .thumb {color: $gray; padding-left: 920px;}
-.review .review_box .thumb a {color: $gray;}
+.review .review_box .thumb {color: $text-light; padding-left: 920px;}
+.review .review_box .thumb a {color: $text-light;}
 /* .review .review_box .review_txt {} */
 .review .review_box .review_img {width: 100px; height: 100px;}
 .review .review_box .review_img img {width: 100%;}
@@ -126,7 +126,7 @@ img {display: block;}
 .qna .qna_box .case, .qna .qna_box .writer, .qna .qna_box .date {width: 105px;}
 .qna .qna_box .title {width: 930px; cursor: pointer;}
 .qna .qna_box .left {text-align: left;}
-.qna .qna_box .lock {color: $gray;}
+.qna .qna_box .lock {color: $text-light;}
 
 /*************************** pagenation ***************************/
 .page {

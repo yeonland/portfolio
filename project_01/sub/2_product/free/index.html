@@ -26,7 +26,7 @@
     <!-- font Gowun+Dodum -->
     <script src="../../../js/main.js"></script>
     <style>
-        .sub_menu div:nth-child(6) {background-color: #9c7055; color: #feffed;}
+        .sub_menu div:nth-child(6) {background-color: #8c644c; color: #feffed;}
         .sub_menu div:nth-child(6) a {color: #feffed;}
     </style>
 </head>
@@ -41,7 +41,7 @@
         </a>
     </div>    <!-- 사용법 알아보기 -->
 
-    <div class="btn_top"><i class="fa-solid fa-angle-up"></i></div>   <!-- TOP 버튼 -->
+    <button type="button" class="btn_top" aria-label="맨 위로"><i class="fa-solid fa-angle-up" aria-hidden="true"></i></button>   <!-- TOP 버튼 -->
 
     <input type="checkbox" id="chat_chk">
     <section class="chat">
@@ -122,7 +122,7 @@
                     <p class="tit">장바구니</p>
                     <button>결제하기</button>
                 </div>          <!-- cart_box -->
-                <span class="btn_recent"><a href="#"><i class="fa-solid fa-clock"></i></a></span>
+                <span class="btn_recent"><a href="#" aria-label="최근 본 상품"><i class="fa-solid fa-clock"></i></a></span>
                 <div class="recent_box box">
                     <p class="tit">최근 본 상품</p>
                     <button>결제하기</button>
@@ -149,7 +149,7 @@
         
         <div class="nav">
             <div>
-                <span><a href="../../../index.html"><i class="fa-solid fa-house"></i></a></span>
+                <span><a href="../../../index.html" aria-label="홈"><i class="fa-solid fa-house" aria-hidden="true"></i></a></span>
                 <span>&gt;</span>
                 <span><a href="../all/index.html">디지털 문구</a></span>
                 <span>&gt;</span>
