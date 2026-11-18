@@ -1,4 +1,4 @@
-.header_outer .header .gnb span:nth-child(1) a {
+.header_outer .header .gnb > span:nth-child(1) a {
   border-bottom: 1px solid #9c7055;
   box-sizing: border-box;
 }

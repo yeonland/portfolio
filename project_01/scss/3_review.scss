@@ -8,7 +8,7 @@
     text-align: center; line-height: 40px;
 }
 
-.header_outer .header .gnb span:nth-child(3) a {
+.header_outer .header .gnb > span:nth-child(3) a {
     border-bottom: 1px solid $brown; box-sizing: border-box;
 }
 

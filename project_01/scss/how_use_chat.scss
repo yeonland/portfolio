@@ -81,7 +81,7 @@
 #chat_chk:checked ~ .chat .close {display: block;}
 .chat label {position: fixed; bottom: 120px; right: 50px;}
 .chat label:hover {cursor: pointer;}
-.chat label div {
+.chat label span {display: block;
     width: 90px; height: 90px; border-radius: 45px;
     border: 2px solid $brown; box-sizing: border-box;
     font-size: 50px; text-align: center; line-height: 80px;
@@ -175,8 +175,8 @@
         line-height: 37px; font-size: 22px; border-width: 1.5px;
     }
     .chat label {bottom: 64px; right: 16px;}
-    .chat label div {width: 40px; height: 40px; border-width: 1.5px; font-size: 20px; line-height: 37px;}
-    .chat label div img {width: 100%;}
+    .chat label span {width: 40px; height: 40px; border-width: 1.5px; font-size: 20px; line-height: 37px;}
+    .chat label span img {width: 100%;}
 
     .how_use_wrap {top: auto; bottom: 112px; right: 16px;}
     .how_use_box {width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;}

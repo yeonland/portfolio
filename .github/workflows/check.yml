@@ -1,0 +1,50 @@
+# PR · main push마다 사이트 실수를 미리 잡는 자동 검사
+name: 검사
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  sass:
+    name: 소하 Sass 빌드 결과 일치
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      # GitHub Pages는 빌드 없이 css/를 그대로 쓰므로, scss를 고치고 css를 다시 안 만들면 사이트에 반영이 안 됨
+      - name: scss → css 다시 빌드
+        working-directory: project_01
+        run: npx --yes sass@1.83.0 --no-source-map scss:css
+      - name: 커밋된 css와 비교
+        run: |
+          git diff --exit-code -- project_01/css || {
+            echo "::error::project_01/scss를 고친 뒤 css를 다시 빌드하지 않았습니다. project_01 폴더에서 'npx sass@1.83.0 --no-source-map scss:css'를 실행해 css/까지 커밋하세요."
+            exit 1
+          }
+
+  links:
+    name: 깨진 링크 · 이미지
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      # 첫 화면부터 따라가며 사이트 안 링크 · 이미지만 확인 (외부 사이트는 일시 장애로 실패할 수 있어 제외)
+      - name: 사이트 안 링크 확인
+        run: npx --yes linkinator@6.1.2 . --recurse --skip "^https?://(?!localhost|127\.0\.0\.1)" --skip "\.claude" --verbosity error
+
+  html:
+    name: HTML 문법
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: HTML 검사
+        run: npx --yes html-validate@9.4.1 $(git ls-files '*.html')

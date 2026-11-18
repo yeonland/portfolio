@@ -179,7 +179,7 @@ font-size: 24px; font-weight: bold;
 .metapo_wrap .metapo {
     width: 405px; height: 120px; margin-left: 420px;
 }
-.metapo_wrap .metapo label div {
+.metapo_wrap .metapo label span {display: block;
     width: 90px; height: 90px;
     border: 1px solid $brown; box-sizing: border-box; border-radius: 15px;
     float: left; cursor: pointer;
@@ -483,8 +483,8 @@ font-size: 24px; font-weight: bold;
         width: auto; max-width: 405px; height: auto; margin: 0 auto 30px;
         display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 15px;
     }
-    .metapo_wrap .metapo label div {width: 100%; height: auto; aspect-ratio: 1;}
-    .metapo_wrap .metapo label div img {width: 100%;}
+    .metapo_wrap .metapo label span {width: 100%; height: auto; aspect-ratio: 1;}
+    .metapo_wrap .metapo label span img {width: 100%;}
     .metapo_wrap .metapo .metapo_menu {
         grid-column: 1 / -1; width: auto; height: auto; margin: 0;
         display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 15px;

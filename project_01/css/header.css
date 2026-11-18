@@ -37,18 +37,18 @@ a {
   margin-left: 120px;
 }
 
-.header_outer .header .gnb span {
+.header_outer .header .gnb > span {
   padding: 0 11px;
   font-family: "Gowun Dodum", sans-serif;
   font-size: 24px;
   line-height: 60px;
 }
 
-.header_outer .header .gnb span a:hover {
+.header_outer .header .gnb > span a:hover {
   border-bottom: 1px solid #9c7055;
 }
 
-.header_outer .header .gnb span a {
+.header_outer .header .gnb > span a {
   color: #9c7055;
 }
 
@@ -60,7 +60,7 @@ a {
   top: 80px;
 }
 
-.header_outer .header .gnb .product_menu div {
+.header_outer .header .gnb .product_menu span {
   float: left;
   font-size: 16px;
   line-height: 30px;
@@ -72,7 +72,7 @@ a {
   display: block;
 }
 
-.header_outer .header .gnb .product_menu div a {
+.header_outer .header .gnb .product_menu span a {
   color: #9c7055;
 }
 
@@ -597,7 +597,7 @@ body.m_menu_on {
   .header_outer .header .gnb_icon {
     gap: 24px;
   }
-  .header_outer .header .gnb span {
+  .header_outer .header .gnb > span {
     padding: 0 8px;
     font-size: 20px;
   }

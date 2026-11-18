@@ -3,7 +3,7 @@
   top: 0;
 }
 
-.header_outer .header .gnb span:nth-child(5) a {
+.header_outer .header .gnb > span:nth-child(5) a {
   border-bottom: 1px solid #9c7055;
   box-sizing: border-box;
 }

@@ -1,6 +1,6 @@
 @use 'variables' as *;
 
-.header_outer .header .gnb span:nth-child(1) a {
+.header_outer .header .gnb > span:nth-child(1) a {
     border-bottom: 1px solid $brown; box-sizing: border-box;
 }
 .sub_title {font-family: "Gowun Dodum", sans-serif; font-size: 36px; color: $brown;
