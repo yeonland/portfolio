@@ -16,6 +16,7 @@
     <script src="../../js/main.js"></script>
 </head>
 <body>
+    <a href="#main" class="skip_link">본문 바로가기</a>
     <div class="spot_menu">
         <ul>
             <li><a href="../login/index.html">로그인</a></li>
@@ -32,7 +33,7 @@
             <div class="logo">
                 <a href="../../index.html"><img src="../../img/00_logo.png" alt="soha_logo"></a>
             </div>           <!-- logo -->
-            <nav class="gnb">
+            <nav class="gnb" aria-label="주 메뉴">
                 <span><a href="../1_brand/index.html">소하는요</a></span>
                 <span class="product">
                     <a href="../2_product/all/index.html">디지털 문구</a>
@@ -83,6 +84,8 @@
             </div>  <!-- gnb_icon -->
         </div>
     </header>           <!-- header -->
+    <main id="main">
+        <h1 class="blind">검색결과</h1>
 
     <div class="search_result_box">
         <input type="search" name="search_result" class="search" aria-label="검색어">
@@ -106,5 +109,6 @@
             </div>
         </section>
     </div>
+    </main>
 </body>
 </html>

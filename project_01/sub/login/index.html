@@ -36,6 +36,7 @@
 
 </head>
 <body>
+    <a href="#main" class="skip_link">본문 바로가기</a>
     <div class="spot_menu">
         <ul>
             <li><a href="../login/index.html">로그인</a></li>
@@ -52,7 +53,7 @@
             <div class="logo">
                 <a href="../../index.html"><img src="../../img/00_logo.png" alt="soha_logo"></a>
             </div>           <!-- logo -->
-            <nav class="gnb">
+            <nav class="gnb" aria-label="주 메뉴">
                 <span><a href="../1_brand/index.html">소하는요</a></span>
                 <span class="product">
                     <a href="../2_product/all/index.html">디지털 문구</a>
@@ -103,6 +104,8 @@
             </div>  <!-- gnb_icon -->
         </div>
     </header>           <!-- header -->
+    <main id="main">
+        <h1 class="blind">로그인</h1>
 
     <form method="post">
         <div class="login_box">
@@ -118,5 +121,6 @@
         </div>
     </form>
 
+    </main>
 </body>
 </html>

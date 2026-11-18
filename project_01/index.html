@@ -56,6 +56,7 @@
     <script src="./js/main.js" defer></script>
 </head>
 <body>
+    <a href="#main" class="skip_link">본문 바로가기</a>
 
     <input type="checkbox" id="pop" checked>
     <div class="pop_box">
@@ -124,7 +125,7 @@
             <div class="logo">
                 <img src="./img/00_logo.png" alt="soha_logo">
             </div>           <!-- logo -->
-            <nav class="gnb">
+            <nav class="gnb" aria-label="주 메뉴">
                 <span><a href="./sub/1_brand/index.html">소하는요</a></span>
                 <span class="product">
                     <a href="./sub/2_product/all/index.html">디지털 문구</a>
@@ -179,6 +180,8 @@
             </div>  <!-- gnb_icon -->
         </div>
     </header>           <!-- header -->
+    <main id="main">
+        <h1 class="blind">소소한 하루, 소하</h1>
 
     <div class="swiper mySwiper">
         <div class="swiper-wrapper">
@@ -1141,6 +1144,7 @@
         </a>
     </section>  <!-- insta -->
 
+    </main>
     <footer class="footer_outer">
         <div class="footer">
             <section class="footer_logo mr">

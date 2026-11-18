@@ -16,6 +16,7 @@
     <script src="../../js/main.js" defer></script>
 </head>
 <body>
+    <a href="#main" class="skip_link">본문 바로가기</a>
     <div class="how_use_wrap">
         <button type="button" class="how_use_close" aria-label="사용법 버튼 닫기"><i class="fa-solid fa-xmark"></i></button>
         <a href="../howtouse/index.html" target="_blank">
@@ -72,7 +73,7 @@
             <div class="logo">
                 <img src="../../img/00_logo.png" alt="soha_logo">
             </div>           <!-- logo -->
-            <nav class="gnb">
+            <nav class="gnb" aria-label="주 메뉴">
                 <span><a href="../1_brand/index.html">소하는요</a></span>
                 <span class="product">
                     <a href="../2_product/all/index.html">디지털 문구</a>
@@ -124,7 +125,7 @@
         </div>
     </header>           <!-- header -->
 
-    <main class="checkout_page">
+    <main id="main" class="checkout_page">
         <section class="checkout_title">
             <h1>주문완료</h1>
             <ol class="checkout_step">

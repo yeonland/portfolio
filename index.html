@@ -22,6 +22,7 @@
     <script src="./js/skills-accordion.js" defer></script>
 </head>
 <body>
+    <a href="#main" class="skip_link">본문 바로가기</a>
 
     <!-- <div class="popbox">해당 사이트는 포트폴리오 용도로 제작되었으며, 어떠한 상업적 이익도 창출하지 않습니다.</div> -->
 
@@ -32,7 +33,7 @@
                     <img src="./img/logo.png" alt="YJ 정연주 홈으로" class="logo-img">
                 </a>
             </h1>            <!-- name logo -->
-            <nav class="gnb">
+            <nav class="gnb" aria-label="주 메뉴">
                 <ul>
                     <li>
                         <a href="#page02">
@@ -77,6 +78,7 @@
                 </ul>
             </nav>
         </header>        <!-- header -->
+        <main id="main">
 
         <section id="page01">
             <h2 class="hidden">intro</h2>
@@ -113,19 +115,19 @@
 
                     <div class="history-list">
                         <div class="history-item">
-                        <h4>교육</h4>
+                        <h3>교육</h3>
                         <p>UX/UI 웹퍼블리셔 & 웹 콘텐츠 개발자 양성과정 수료</p>
                         <span>2024. 10.</span>
                         </div>
 
                         <div class="history-item">
-                        <h4>자격</h4>
+                        <h3>자격</h3>
                         <p>웹디자인개발기능사</p>
                         <span>2026. 06.</span>
                         </div>
 
                         <div class="history-item">
-                        <h4>이전 경험</h4>
+                        <h3>이전 경험</h3>
                         <p>문화재 조사자료 정리 및 보고서 검수</p>
                         <span>시공문화재연구원 · 2022. 08. ~ 2023. 12.</span>
                         </div>
@@ -569,6 +571,7 @@
                 </div>                <!-- contact-inner -->
             </div>            <!-- contact-box -->
         </section>        <!-- contact page -->
+        </main>
     </div>    <!-- wrap -->
 
     <!-- 디자인 작업물 크게 보기 -->
