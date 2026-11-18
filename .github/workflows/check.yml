@@ -39,14 +39,12 @@ jobs:
         run: npx --yes linkinator@6.1.2 . --recurse --skip "^https?://(?!localhost|127\.0\.0\.1)" --skip "\.claude" --verbosity error
 
   html:
-    name: HTML 문법 (참고용)
+    name: HTML 문법
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      # shortcut: 기존 페이지 오류 81건이 남아 있어 실패해도 PR을 막지 않음. 오류를 다 고치면 continue-on-error를 지워 막는 검사로 바꿀 것
       - name: HTML 검사
-        continue-on-error: true
         run: npx --yes html-validate@9.4.1 $(git ls-files '*.html')

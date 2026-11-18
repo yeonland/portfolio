@@ -23,20 +23,20 @@ a {text-decoration: none; color: black;}
     float: left;
     margin-left: 120px;
 }
-.header_outer .header .gnb span {
+.header_outer .header .gnb > span {
     padding: 0 11px;
     font-family: "Gowun Dodum", sans-serif;
     font-size: 24px;
     line-height: 60px;
 }
-.header_outer .header .gnb span a:hover {border-bottom: 1px solid $brown;}
-.header_outer .header .gnb span a {color: $brown;}
+.header_outer .header .gnb > span a:hover {border-bottom: 1px solid $brown;}
+.header_outer .header .gnb > span a {color: $brown;}
 .header_outer .header .gnb .product .product_menu {
     width: 300px; height: 30px;
     display: none;
     position: absolute; top: 80px;
 }
-.header_outer .header .gnb .product_menu div {
+.header_outer .header .gnb .product_menu span {
     float: left; font-size: 16px; line-height: 30px;
     padding: 0 10px;
     font-family: "Gowun Dodum", sans-serif; 
@@ -44,7 +44,7 @@ a {text-decoration: none; color: black;}
 .header_outer .header .gnb .product:hover .product_menu {
     display: block;
 }
-.header_outer .header .gnb .product_menu div a {color: $brown;}
+.header_outer .header .gnb .product_menu span a {color: $brown;}
 
 /************************** gnb icon **************************/
 .header_outer .header .gnb_icon {
@@ -329,7 +329,7 @@ body.m_menu_on {overflow: hidden;}
     .header_outer .header .gnb,
     .header_outer .header .gnb_icon {margin-left: 0;}
     .header_outer .header .gnb_icon {gap: 24px;}
-    .header_outer .header .gnb span {padding: 0 8px; font-size: 20px;}
+    .header_outer .header .gnb > span {padding: 0 8px; font-size: 20px;}
 }
 
 // 메뉴가 한 줄에 안 들어가는 폭: ☰ · 로고(가운데) · 검색 · 장바구니 한 줄 (56px)
