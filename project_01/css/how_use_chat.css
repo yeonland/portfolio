@@ -1,17 +1,17 @@
 @charset "UTF-8";
 .btn_top {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   padding: 0;
   border: 2px solid #8c644c;
   box-sizing: border-box;
-  border-radius: 30px;
+  border-radius: 20px;
   position: fixed;
   bottom: 50px;
   right: 60px;
-  line-height: 58px;
+  line-height: 36px;
   text-align: center;
-  font-size: 36px;
+  font-size: 22px;
   color: #8c644c;
   background-color: #feffed;
   cursor: pointer;
@@ -175,8 +175,8 @@
 
 .chat label {
   position: fixed;
-  bottom: 120px;
-  right: 50px;
+  bottom: 100px;
+  right: 55px;
 }
 
 .chat label:hover {
@@ -185,16 +185,22 @@
 
 .chat label span {
   display: block;
-  width: 90px;
-  height: 90px;
-  border-radius: 45px;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
   border: 2px solid #8c644c;
   box-sizing: border-box;
-  font-size: 50px;
+  overflow: hidden;
+  font-size: 26px;
   text-align: center;
-  line-height: 80px;
+  line-height: 46px;
   color: #8c644c;
   background-color: #feffed;
+}
+
+.chat label span img {
+  display: block;
+  width: 100%;
 }
 
 .chat .chat_box {
@@ -204,8 +210,8 @@
   border: 1px solid #8c644c;
   border-radius: 15px;
   position: fixed;
-  bottom: 210px;
-  right: 100px;
+  bottom: 160px;
+  right: 55px;
   z-index: 99999;
   flex-direction: column;
   overflow: hidden;
