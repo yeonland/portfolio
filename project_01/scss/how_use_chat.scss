@@ -65,9 +65,10 @@
     color: $brown; background-color: $cream;
 }
 .chat .chat_box {
-    width: 405px; height: 440px;
+    // 채팅 버튼 왼쪽 옆에 바닥을 맞추고, 낮은 화면에서는 위로 넘쳐 헤더를 덮지 않게 높이 제한
+    width: 405px; height: 440px; max-height: calc(100vh - 130px);
     background-color: white; border: 1px solid $brown; border-radius: 15px;
-    position: fixed; bottom: 210px; right: 100px;
+    position: fixed; bottom: 100px; right: 120px;
     z-index: 99999;
     flex-direction: column; overflow: hidden;
 }
