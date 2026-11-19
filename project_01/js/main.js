@@ -963,6 +963,49 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // 포트폴리오 안내 줄: 닫으면 이번 방문(탭을 닫기 전)까지는 다시 안 보임
+    const noticeBar = document.querySelector('.notice_bar');
+
+    if (noticeBar) {
+        try {
+            if (sessionStorage.getItem('soha_notice_closed')) noticeBar.hidden = true;
+        } catch (error) {
+            // 저장이 막힌 브라우저에서는 매번 보임
+        }
+
+        noticeBar.querySelector('.notice_bar_close').addEventListener('click', function () {
+            noticeBar.hidden = true;
+            try {
+                sessionStorage.setItem('soha_notice_closed', '1');
+            } catch (error) {}
+            // 닫은 뒤 키보드 위치가 사라지지 않게 바로 아래 회원 메뉴로
+            document.querySelector('.spot_menu a').focus();
+        });
+
+        // 스크롤로 안내 줄을 지나치면 이 페이지에서는 없앰 (위로 올려도 다시 안 나옴)
+        function hideNoticeOnScroll() {
+            if (noticeBar.hidden) {
+                window.removeEventListener('scroll', hideNoticeOnScroll);
+                return;
+            }
+
+            const height = noticeBar.offsetHeight;
+
+            if (window.scrollY < height) return;
+
+            const scrollBefore = window.scrollY;
+
+            noticeBar.hidden = true;
+            // 줄이 빠진 만큼 내용이 당겨지지 않게 보정 (브라우저가 이미 보정했으면 그대로 둠)
+            if (window.scrollY === scrollBefore) {
+                window.scrollTo(0, scrollBefore - height);
+            }
+            window.removeEventListener('scroll', hideNoticeOnScroll);
+        }
+
+        window.addEventListener('scroll', hideNoticeOnScroll, { passive: true });
+    }
+
     // 사용법 닫기
     const howUseClose = document.querySelector('.how_use_close');
     const howUseWrap = document.querySelector('.how_use_wrap');

@@ -8,35 +8,6 @@
     font-family: "Gowun Dodum", sans-serif; font-weight: bold;
 }
 
-/************************** 포트폴리오용 문구 **************************/
-#pop {display: none;}
-#pop ~ .pop_box {display: none;}
-#pop:checked ~ .pop_box {display: block;}
-.pop_box {
-    width: 140px; height: 140px;
-    background-color: #EFEFEF;
-    border-radius: 70px; border: 1px solid #F4E53B; box-sizing: border-box;
-    position: fixed; top: 150px; left: 50px; z-index: 9;
-    animation: up_down 4s infinite; 
-}
-@keyframes up_down {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(10px); }
-}
-
-.pop_box p {
-    font-size: 12px; text-align: center; 
-    color: #1A1A1A;
-    padding-top: 30px;
-}
-.pop_box label {
-    float: right; color: #F4E53B;
-    width: 24px; height: 24px; border-radius: 12px;
-    text-align: center; font-size: 20px;
-}
-.pop_box label:hover {cursor: pointer;}
-
-
 /************************** 사용법 **************************/
 .how_use_wrap {
     animation: up_down 4s infinite;
@@ -167,14 +138,14 @@
 
 /************************** 떠 있는 버튼 쌓임 순서 **************************/
 // z-index가 없으면 뒤에 오는 상품 카드의 장바구니 버튼(position: absolute)이 위로 올라와 버튼을 누를 수 없음
-.btn_top, .chat label, .how_use_wrap, .pop_box {z-index: 60;}
+.btn_top, .chat label, .how_use_wrap {z-index: 60;}
 
 /************************** TOP: 맨 위에서는 숨김 (js에서 .show) **************************/
 .btn_top {opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s;}
 .btn_top.show {opacity: 1; visibility: visible;}
 
 /* responsive */
-// 작은 화면: 떠 있는 버튼을 40~44px로 줄여 오른쪽 아래 한 줄로 쌓고, 안내 문구는 얇은 띠로 바꿔 본문을 덜 가리게
+// 작은 화면: 떠 있는 버튼을 40~44px로 줄여 오른쪽 아래 한 줄로 쌓아 본문을 덜 가리게
 @media (max-width: $bp-md) {
     .btn_top {
         width: 40px; height: 40px; bottom: 16px; right: 16px;
@@ -193,16 +164,6 @@
         position: absolute; top: -6px; right: -6px;
         width: 16px; height: 16px; border-radius: 50%; font-size: 10px; line-height: 16px; padding: 0;
     }
-
-    // 안내 문구: 동그라미 → 왼쪽 아래 얇은 띠 (오른쪽 버튼 줄은 비워 둠)
-    .pop_box {
-        width: auto; height: auto; top: auto; bottom: 16px; left: 16px; right: 72px;
-        padding: 6px 30px 6px 12px; box-sizing: border-box;
-        border-radius: 15px; animation: none;
-    }
-    .pop_box p {font-size: 11px; padding-top: 0; text-align: left; line-height: 1.4;}
-    .pop_box p br {display: none;}
-    .pop_box label {position: absolute; top: 50%; right: 6px; transform: translateY(-50%); width: 20px; height: 20px; font-size: 16px; line-height: 20px;}
 
     // 헤더(약 104px)와 아래 버튼 줄 사이에 들어가게 높이 제한
     .chat .chat_box {width: auto; height: min(440px, calc(100vh - 240px)); left: 16px; right: 16px; bottom: 112px;}
