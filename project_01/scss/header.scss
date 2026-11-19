@@ -220,6 +220,20 @@ a {text-decoration: none; color: black;}
     .card_btns button {margin-bottom: 6px; width: 30px; height: 30px; font-size: 12px;}
 }
 
+/************************** 포트폴리오 안내 줄 **************************/
+// 스팟메뉴 위 한 줄. 스크롤하면 스팟메뉴와 함께 위로 사라짐
+.notice_bar {
+    position: relative; padding: 0 44px;
+    background-color: $brown; color: $cream; text-align: center;
+    font-family: "Gowun Dodum", sans-serif; font-size: 13px; line-height: 32px;
+}
+.notice_bar_close {
+    position: absolute; top: 50%; right: 8px; transform: translateY(-50%);
+    width: 32px; height: 32px; padding: 0;
+    border: none; background: none; color: $cream; font-size: 14px; cursor: pointer;
+}
+.notice_bar_close:focus-visible {outline: 2px solid $cream; outline-offset: -4px;}
+
 /************************** 스팟메뉴 **************************/
 // 헤더 위 작은 글자 줄: 헤더와 같은 크림색, 스크롤하면 위로 사라지고 아래 헤더만 고정
 .spot_menu {background-color: $cream;}
@@ -368,6 +382,8 @@ body.m_menu_on {overflow: hidden;}
 }
 
 @media (max-width: $bp-sm) {
+    // 좁은 화면에선 두 줄까지 허용
+    .notice_bar {padding: 6px 40px; font-size: 12px; line-height: 1.5; word-break: keep-all; text-wrap: balance;}
     .spot_menu ul {width: calc(100% - 32px);}
     .header_outer .header {width: calc(100% - 32px);}
 }
