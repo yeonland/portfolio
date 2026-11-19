@@ -1132,10 +1132,23 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         ];
 
-        const fallback = {
-            text: '죄송해요, 아직 답을 준비하지 못한 질문이에요. 자주 묻는 질문에서 찾아보시거나 아래 버튼을 눌러 주세요.',
-            link: { href: faqHref, label: '자주 묻는 질문 보기' }
-        };
+        // 상담 시간: 평일 09:00~18:00, 점심 12:00~13:00 제외
+        // shortcut: 공휴일은 모름(평일로 처리), 공휴일 안내가 필요해지면 휴일 목록 추가
+        function isOpenNow() {
+            const now = new Date();
+            const day = now.getDay();
+            const hour = now.getHours();
+            return day >= 1 && day <= 5 && hour >= 9 && hour < 18 && hour !== 12;
+        }
+
+        function getFallback() {
+            return {
+                text: isOpenNow()
+                    ? '죄송해요, 아직 답을 준비하지 못한 질문이에요. 자주 묻는 질문에서 찾아보시거나, 잠시만 기다려 주시면 상담원과 연결해 드릴게요.'
+                    : '지금은 상담 시간이 아니에요. 어떤 점이 궁금하신지, 무엇이 문제인지 남겨 주시면 상담원이 출근 후 확인하고 답변드릴게요. (평일 09:00~18:00)',
+                link: { href: faqHref, label: '자주 묻는 질문 보기' }
+            };
+        }
 
         function findAnswer(message) {
             const text = message.replace(/\s/g, '');
@@ -1148,7 +1161,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (matched) return answers[i];
             }
 
-            return fallback;
+            return getFallback();
         }
 
         // 사용자가 입력한 글은 textContent로만 넣어 HTML이 실행되지 않게 함
