@@ -634,8 +634,8 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!link) return;
             event.preventDefault();
             showPage(Number(link.dataset.page));
-            // 고정 헤더(120px)에 가리지 않게 목록 조금 위로 올라감
-            window.scrollTo({top: listCards[0].parentElement.getBoundingClientRect().top + window.scrollY - 180});
+            // 고정된 회원 메뉴·헤더(112px)에 가리지 않게 목록 조금 위로 올라감
+            window.scrollTo({top: listCards[0].parentElement.getBoundingClientRect().top + window.scrollY - 172});
         });
 
         if (lastPage > 1) showPage(1);

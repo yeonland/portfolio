@@ -148,8 +148,8 @@ img {
 
 .anchor {
   display: block;
-  height: 120px;
-  margin-top: -120px;
+  height: 112px;
+  margin-top: -112px;
   visibility: hidden;
 }
 

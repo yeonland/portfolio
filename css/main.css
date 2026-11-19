@@ -46,6 +46,22 @@ header {
 header.header-hidden {transform: translate(calc(100% + 24px), -50%); opacity: 0;}
 header.header-visible {transform: translate(0, -50%); opacity: 1;}
 
+/* 비상업 안내: 퀵메뉴 바로 위에 붙어서 함께 나타나고 사라짐 */
+.site-notice {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 10px);
+    padding: 10px 12px;
+    background: rgba(26, 26, 26, 0.9);
+    border: 1px solid rgba(244, 229, 59, 0.35);
+    border-radius: 12px;
+    color: #EFEFEF;
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: right;
+    white-space: nowrap;
+}
+
 /* 로고 = 맨 위로 */
 .logo a {
     display: flex;
@@ -656,6 +672,9 @@ section {
     .wrap {padding-bottom: calc(52px + env(safe-area-inset-bottom));}
 
     header.header-hidden {transform: translateY(100%); opacity: 0;}
+
+    /* 모바일 아래쪽 바에서는 콘텐츠를 가리므로 숨김 */
+    .site-notice {display: none;}
     header.header-visible {transform: translateY(0); opacity: 1;}
 
     .logo-img {width: 40px;}
