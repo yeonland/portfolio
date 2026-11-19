@@ -586,6 +586,15 @@ body.m_menu_on {
   .m_menu, .m_menu_dim {
     display: none;
   }
+  /* PC: 헤더 로그인 아이콘을 뺐으므로 회원 메뉴(로그인·마이페이지) 줄도 헤더와 함께 위에 고정 */
+  .spot_menu {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header_outer {
+    top: 32px;
+  }
 }
 /* responsive */
 @media (max-width: 1280px) {
