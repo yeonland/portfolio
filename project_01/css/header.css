@@ -10,7 +10,7 @@ a {
 }
 
 .header_outer {
-  height: 80px;
+  height: 60px;
   z-index: 99;
   background-color: #feffed;
   position: sticky;
@@ -21,7 +21,7 @@ a {
   width: 1245px;
   height: 60px;
   margin: 0 auto;
-  padding: 10px 0;
+  padding: 0;
 }
 
 .header_outer .header .logo {
@@ -55,7 +55,7 @@ a {
 .header_outer .header .gnb .product .product_menu {
   display: none;
   position: absolute;
-  top: 80px;
+  top: 60px;
   width: max-content;
   height: 30px;
   padding: 0 4px 10px;
