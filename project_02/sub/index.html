@@ -18,7 +18,7 @@
     <script src="../js/main.js"></script>
     
 </head>
-<body>
+<body class="sub_page">
     <a href="#main" class="skip_link">본문 바로가기</a>
     <header class="header_outer">
         <div class="header">
@@ -146,71 +146,91 @@
         </div>        <!-- header -->
     </header>    <!-- header_outer -->
     <main id="main">
-        <h1 class="blind">인사말</h1>
-    
     <div class="wrap">
-        <div class="menu_pc">
-            <div class="top_menu">연구원소개</div>
-            <div class="bottom_menu">
-                <p>인사말</p>
-                <p>연혁</p>
-                <p>CI 소개</p>
-                <p>조직도</p>
-                <p>오시는 길</p>
-            </div>
-        </div>
-        
+        <nav class="menu_pc" aria-label="연구원소개 하위 메뉴">
+            <p class="top_menu">연구원소개</p>
+            <ul class="bottom_menu">
+                <li><a href="#!" aria-current="page">인사말</a></li>
+                <li><a href="#!">연혁</a></li>
+                <li><a href="#!">CI 소개</a></li>
+                <li><a href="#!">조직도</a></li>
+                <li><a href="#!">오시는 길</a></li>
+            </ul>
+        </nav>
+
         <div class="content_wrap">
             <p class="nav">
                 <a href="../index.html">홈</a>
-                &gt; 연구원 소개
+                &gt; 연구원 소개 &gt; 인사말
             </p>
-            <p class="nav_mobile">
-                <span class="check">인사말</span>
-                 · 연혁 · CI소개 · 조직도 · 오시는 길
-            </p>
-    
+            <nav class="nav_mobile" aria-label="연구원소개 하위 메뉴">
+                <ul>
+                    <li><a href="#!" aria-current="page">인사말</a></li>
+                    <li><a href="#!">연혁</a></li>
+                    <li><a href="#!">CI 소개</a></li>
+                    <li><a href="#!">조직도</a></li>
+                    <li><a href="#!">오시는 길</a></li>
+                </ul>
+            </nav>
+
+            <h1 class="page_title">인사말</h1>
+
             <div class="banner">
-                <img src="../img/sub_banner_img.jpg" alt="sub_banner_img">
+                <img src="../img/sub_banner_img.jpg" alt="토기 항아리와 그릇 여러 점을 모아 놓은 사진">
             </div>
-    
+
             <div class="txt">
-                <p class="title">한화문물연구원을 찾아주신 여러분, <br> 감사합니다.</p>
-        
-                <p>
-                    재단법인 한화문물연구원(韓和文物硏究院)은 고대 한민족의 문화흔적 또는 이와 관련된 고대의 유적과 유물을 고고학적인 연구와 조사연구를 위해 설립되었습니다.
-                </p>
-                <p>
-                    특히, 남과 북으로 갈라진 현재의 고고학적인 한계를 극복하고 통일을 대비하여 한민족(韓民族)이 ‘하나’로 나아가기 위한 화합된 대한(大韓)민족 문화의 정통성을 고고학적인 방향으로 제시하는 연구를 착실히 수행해 나가는 노력을 대과제로 하고 있습니다.
-                </p>
-                <p>
-                    이를 위해 원훈(院訓)을
-                    <span class="highlight">
-                        “1. 성실한 조사연구, 2. 하나된 민족문화선양”
-                    </span>
-                    으로 정하고, 다음과 같은 연구방향을 설정하고 있습니다.
-                </p>
-                <div class="research">
+                <h2 class="title">한화문물연구원을 찾아주신 여러분, 감사합니다.</h2>
+
+                <div class="intro">
                     <p>
-                        1. 가야지역의 고대문화를 올바르게 해석해 나가기 위하여 동북아 전체의 시각에서 고고학적 관점을 견지하여 다양한 연구를 진행한다.
+                        재단법인 한화문물연구원(韓和文物硏究院)은 고대 한민족의 문화흔적 또는 이와 관련된 고대의 유적과 유물을 고고학적인 연구와 조사연구를 위해 설립되었습니다.
                     </p>
-                    <br>
                     <p>
-                        2. 기존의 연구된 가야지역 토기와 고분문화를 종합적으로 재해석하고 이를 내재적 역동성으로 분석하는 능동적인 연구과제로 삼고 장기적 계획을 수립하여 추진한다.
+                        특히, 남과 북으로 갈라진 현재의 고고학적인 한계를 극복하고 통일을 대비하여 한민족(韓民族)이 <span class="nobr">‘하나’로</span> 나아가기 위한 화합된 대한(大韓)민족 문화의 정통성을 고고학적인 방향으로 제시하는 연구를 착실히 수행해 나가는 노력을 대과제로 하고 있습니다.
                     </p>
-                    <br>
                     <p>
-                        3. 고구려, 발해의 고대 문화유산을 한반도를 비롯하여 당시 영토였던 중국의 동북지방 역사자료와 함께한 한(漢), 남북조(南北朝), 수(隋), 당(唐) 등 동일시기 중국 고대국가 관련자료를 입수, 분석, 연구하여 동북아시아의 거시적인 시각 아래 주체적인 역사관을 수립하는 부분을 지속적으로 모색한다.
-                    </p>
-                    <br>
-                    <p>
-                        4. 지하에 매장된 유적에서의 유구와 유무에 대한 발굴조사과정에서 최신의 과학적인 방법과 분석을 적극 활용하고 이를 보고서 작성 과정에도 적용하여 다원적 시각의 발굴보고서 발간으로 기록보존 방법을 개선토록 노력한다.
+                        이를 위해 원훈(院訓)을 아래와 같이 정하고, 다음과 같은 연구방향을 설정하고 있습니다.
                     </p>
                 </div>
-                <p>
-                    이상의 목적과 방향을 가지고 연구와 조사에 적극적으로 행할 수 있도록 (재)한화문물연구원의 전직원과 연구진들이  끊임없이 노력하겠습니다.
+
+                <section class="motto" aria-labelledby="motto_title">
+                    <h3 id="motto_title" class="section_title">원훈</h3>
+                    <ol>
+                        <li>성실한 조사연구</li>
+                        <li>하나된 민족문화선양</li>
+                    </ol>
+                </section>
+
+                <section class="research" aria-labelledby="research_title">
+                    <h3 id="research_title" class="section_title">연구방향</h3>
+                    <ol>
+                        <li>
+                            <h4><span class="num" aria-hidden="true">01</span>가야 고대문화 연구</h4>
+                            <p>가야지역의 고대문화를 올바르게 해석해 나가기 위하여 동북아 전체의 시각에서 고고학적 관점을 견지하여 다양한 연구를 진행한다.</p>
+                        </li>
+                        <li>
+                            <h4><span class="num" aria-hidden="true">02</span>토기·고분문화의 종합적 해석</h4>
+                            <p>기존의 연구된 가야지역 토기와 고분문화를 종합적으로 재해석하고 이를 내재적 역동성으로 분석하는 능동적인 연구과제로 삼고 장기적 계획을 수립하여 추진한다.</p>
+                        </li>
+                        <li>
+                            <h4><span class="num" aria-hidden="true">03</span>동북아시아 고대문화 비교 연구</h4>
+                            <p>고구려, 발해의 고대 문화유산을 한반도를 비롯하여 당시 영토였던 중국의 동북지방 역사자료와 함께한 <span class="nobr">한(漢),</span> 남북조(南北朝), 수(隋), 당(唐) 등 동일시기 중국 고대국가 관련자료를 입수, 분석, 연구하여 동북아시아의 거시적인 시각 아래 주체적인 역사관을 수립하는 부분을 지속적으로 모색한다.</p>
+                        </li>
+                        <li>
+                            <h4><span class="num" aria-hidden="true">04</span>과학적 조사와 기록 보존</h4>
+                            <p>지하에 매장된 유적에서의 유구와 유무에 대한 발굴조사과정에서 최신의 과학적인 방법과 분석을 적극 활용하고 이를 보고서 작성 과정에도 적용하여 다원적 시각의 발굴보고서 발간으로 기록보존 방법을 개선토록 노력한다.</p>
+                        </li>
+                    </ol>
+                </section>
+
+                <p class="closing">
+                    이상의 목적과 방향을 가지고 연구와 조사에 적극적으로 행할 수 있도록 (재)한화문물연구원의 전직원과 연구진들이 끊임없이 노력하겠습니다.
                 </p>
-                <p class="leader">재단법인 한화문물연구원 원장 <br> 신용민</p>
+                <p class="leader">
+                    <span class="position">재단법인 한화문물연구원 원장</span>
+                    <span class="name">신용민</span>
+                </p>
             </div>
             <!-- 본문 -->
         </div>

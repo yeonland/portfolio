@@ -2,44 +2,154 @@
 li {list-style: none;}
 a {text-decoration: none; color: black;}
 html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
-/* fontSize : 1rem = 12px, 0.75rem = 16px, 2rem = 24px */
+/* html 1rem = 12px(모바일·태블릿) / 16px(PC)는 공용 header.css가 기준으로 쓰므로 그대로 두고,
+   인사말 본문은 화면 폭마다 px로 따로 지정한다. */
 
 .nav_pc,
 .menu_pc {display: none;}
 .header {position: fixed; top: 0; left: 0;}
 
-.nav {padding-top: 20px; text-align: center; color: #767676; margin: 10px;}
+/******************* 모바일 (기본) *******************/
+.wrap {padding: 56px 20px 0;}
+.content_wrap {min-width: 0;}
+
+/* 현재 위치 */
+.nav {
+    margin: 0 0 12px;
+    font-size: 14px; line-height: 1.5; color: #767676; text-align: center;
+}
 .nav a {color: #475775; text-decoration: underline;}
-.nav_mobile {
-    color: #767676;
-    text-align: center;
-    margin: 0 auto;
-    font-size: 2rem;
-}
-.nav_mobile .check {color: #475775;}
-.title, .highlight {color: #475775; font-size: 1.5rem;}
-.wrap {padding: 20px;}
 
-.banner {width: 100%;
-    /* height: auto; overflow: hidden; */
+/* 모바일 하위 메뉴: 항목마다 링크, 줄바꿈 없이 넘치면 가로 스크롤 */
+.nav_mobile {margin: 0 -20px; border-bottom: 1px solid #ddd;}
+.nav_mobile ul {
+    display: flex; justify-content: center; gap: 4px;
+    padding: 0 12px;
+    overflow-x: auto; scrollbar-width: none;
 }
-.banner img {width: 100%;}
-.txt p {text-indent: 10px;}
-.txt .research {
-    background-color: #ddd; padding: 20px; margin: 10px auto;
-    line-height: 20px;
+.nav_mobile ul::-webkit-scrollbar {display: none;}
+.nav_mobile li {flex: none;}
+.nav_mobile a {
+    display: block; padding: 10px 8px;
+    font-size: 15px; line-height: 1.5; color: #666;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
 }
+.nav_mobile a[aria-current="page"] {
+    color: #475775; font-weight: 700;
+    border-bottom-color: #475775;
+}
+
+/* 페이지 제목 · 배너 */
+.page_title {
+    margin: 28px 0 16px;
+    font-size: 20px; line-height: 1.4; font-weight: 600; color: #222;
+}
+.banner {width: 100%; margin-bottom: 28px;}
+.banner img {display: block; width: 100%; height: auto;}
+
+/* 본문 */
+.txt {
+    font-size: 16px; line-height: 1.75; color: #333;
+    word-break: keep-all; overflow-wrap: anywhere;
+}
+.txt .title {
+    margin-bottom: 28px;
+    font-size: 22px; line-height: 1.45; font-weight: 700; color: #475775;
+}
+.txt .intro p + p {margin-top: 18px;}
+
+.section_title {
+    margin-bottom: 16px;
+    font-size: 18px; line-height: 1.4; font-weight: 700; color: #222;
+}
+
+/* 원훈: 본문과 비슷한 크기에서 굵기로만 강조, 별도 영역 */
+.motto {
+    margin-top: 36px; padding: 20px 20px 20px 18px;
+    border-left: 4px solid #475775; background-color: #f4f6fa;
+}
+.motto .section_title {margin-bottom: 8px; font-size: 15px; color: #475775;}
+.motto ol {counter-reset: motto;}
+.motto li {
+    counter-increment: motto;
+    font-size: 17px; line-height: 1.6; font-weight: 700; color: #222;
+}
+.motto li::before {content: counter(motto) ". "; color: #475775;}
+
+/* 연구방향: 번호 + 소제목 + 원문, 1열 목록 */
+.research {margin-top: 40px;}
+.research ol {border-top: 2px solid #475775;}
+.research li {padding: 20px 0; border-bottom: 1px solid #ddd;}
+.research h4 {
+    display: flex; align-items: baseline; gap: 10px;
+    margin-bottom: 8px;
+    font-size: 17px; line-height: 1.45; font-weight: 700; color: #222;
+}
+.research .num {
+    flex: none;
+    font-size: 15px; font-weight: 700; color: #6987D6;
+}
+
+.closing {margin-top: 36px;}
+
+/* 서명 */
 .txt .leader {
-    text-align: right; font-size: 1.5rem; color: #475775; margin-top: 20px;
+    display: flex; flex-direction: column; align-items: flex-end; gap: 4px;
+    margin: 36px 0 56px;
+    text-align: right; color: #475775;
+}
+.leader .position {font-size: 15px; line-height: 1.5;}
+.leader .name {font-size: 20px; line-height: 1.4; font-weight: 700;}
+
+/* 이 페이지 헤더: 로고와 아이콘 비율 (메인 화면에는 영향 없음) */
+.sub_page .header .logo {width: 140px;}
+.sub_page .header .gnb_mobile .search,
+.sub_page .header .gnb_mobile .gnb_m_btn_open,
+.sub_page .header .gnb_mobile .gnb_m_btn_close {
+    width: 44px; height: 44px; line-height: 44px; font-size: 20px;
+}
+.sub_page .header .gnb_mobile .search {right: 48px;}
+
+/* 이 페이지 푸터: 본문과 같은 좌우 기준선 */
+.sub_page .footer {padding: 0 20px;}
+.sub_page .footer p {line-height: 1.6;}
+.sub_page .footer .logo {width: 120px; margin-bottom: 16px;}
+.sub_page .footer .facebook {top: 0; right: 20px;}
+
+/******************* 태블릿 *******************/
+@media all and (min-width: 601px) and (max-width: 1024px) {
+    .wrap {padding: 72px 40px 0;}
+    .nav_mobile {margin: 0 -40px;}
+    .nav_mobile a {font-size: 16px; padding: 12px 12px;}
+
+    .page_title {margin: 36px 0 20px; font-size: 24px;}
+    .banner {margin-bottom: 32px;}
+    .txt .title {font-size: 26px; margin-bottom: 28px;}
+    .section_title {font-size: 20px;}
+    .motto, .research {margin-top: 44px;}
+    .research li {padding: 24px 0;}
+    .closing {margin-top: 44px;}
+    .txt .leader {margin: 40px 0 64px;}
+
+    .sub_page .header .logo {width: 180px;}
+    .sub_page .header .gnb_mobile .search,
+    .sub_page .header .gnb_mobile .gnb_m_btn_open,
+    .sub_page .header .gnb_mobile .gnb_m_btn_close {font-size: 24px; top: 10px;}
+    .sub_page .header .gnb_mobile .search {right: 60px;}
+    .sub_page .header .gnb_mobile .gnb_m_btn_open,
+    .sub_page .header .gnb_mobile .gnb_m_btn_close {right: 12px;}
+
+    .sub_page .footer {padding: 0 40px;}
+    .sub_page .footer .facebook {right: 40px;}
 }
 
-/* pc */
+/******************* PC *******************/
 @media all and (min-width: 1025px) {
     html {font-size: 16px;}
     .wrap {
-        width: 1070px; margin: 0 auto;
-        display: flex; gap: 10px;
-        padding-top: 80px;
+        width: min(calc(100% - 32px), 1070px); margin: 0 auto; padding: 100px 0 0;
+        display: flex; gap: 40px;
     }
 
     .btn_top {
@@ -51,25 +161,50 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
     }
     .btn_top a {color: white;}
 
-    .menu_pc {display: block; margin-right: 10px;}
-    .content_wrap {width: 890px; }
+    .menu_pc {display: block; flex: none; width: 170px; align-self: flex-start;}
+    .content_wrap {flex: 1;}
     .menu_pc .top_menu {
-        width: 170px; height: 60px; line-height: 60px;
-        font-size: 1.25rem; text-align: center;
+        height: 60px; line-height: 60px;
+        font-size: 20px; text-align: center;
         background-color: #475775; color: white;
     }
-    .menu_pc .bottom_menu {
-        width: 170px; height: 170px;
-        padding: 10px;
-        border: 1px solid #475775; box-sizing: border-box;
+    .menu_pc .bottom_menu {padding: 10px; border: 1px solid #475775;}
+    .menu_pc .bottom_menu a {
+        display: block; height: 34px; line-height: 34px;
+        font-size: 16px; color: #767676; text-align: center;
     }
-    .menu_pc .bottom_menu p {
-        height: 30px; line-height: 30px;
-        color: #767676; text-align: center; cursor: pointer;
+    .menu_pc .bottom_menu a:hover {color: #475775;}
+    .menu_pc .bottom_menu a[aria-current="page"] {
+        color: #475775; font-weight: 700; text-decoration: underline;
+        text-underline-offset: 4px;
     }
-    .menu_pc .bottom_menu p:first-child {color: #475775;}
-    .nav {color: #767676; text-align: left; padding-top: 0;}
-    .nav_pc {display: block;}
+
+    .nav {margin: 0 0 16px; font-size: 14px; text-align: left;}
     .nav_mobile {display: none;}
-    
+
+    .page_title {margin: 0 0 20px; font-size: 28px;}
+    .banner {margin-bottom: 40px;}
+
+    /* 배너는 콘텐츠 폭을 쓰고, 읽는 글은 720px까지만 */
+    .txt {max-width: 720px; font-size: 17px; line-height: 1.8;}
+    .txt .title {font-size: 30px; line-height: 1.4; margin-bottom: 32px;}
+    .txt .intro p + p {margin-top: 20px;}
+    .section_title {font-size: 21px; margin-bottom: 20px;}
+    .motto {margin-top: 48px; padding: 24px 28px 24px 26px;}
+    .motto .section_title {font-size: 16px;}
+    .motto li {font-size: 18px;}
+    .research {margin-top: 56px;}
+    .research li {padding: 24px 0;}
+    .research h4 {font-size: 18px;}
+    .closing {margin-top: 48px;}
+    .txt .leader {margin: 40px 0 80px;}
+    .leader .position {font-size: 16px;}
+    .leader .name {font-size: 20px;}
+
+    .sub_page .header .logo {width: 260px;}
+    .sub_page .footer {
+        width: min(calc(100% - 32px), 1070px); padding: 8px 0;
+    }
+    .sub_page .footer .facebook {right: 0;}
 }
+.nobr {white-space: nowrap;}
