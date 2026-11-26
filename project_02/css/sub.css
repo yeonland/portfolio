@@ -70,10 +70,10 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
 
 /* 원훈: 본문과 비슷한 크기에서 굵기로만 강조, 별도 영역 */
 .motto {
-    margin-top: 36px; padding: 20px 20px 20px 18px;
+    margin-top: 32px; padding: 16px 18px;
     border-left: 4px solid #475775; background-color: #f4f6fa;
 }
-.motto .section_title {margin-bottom: 8px; font-size: 15px; color: #475775;}
+.motto .section_title {margin-bottom: 4px; font-size: 14px; color: #475775;}
 .motto ol {counter-reset: motto;}
 .motto li {
     counter-increment: motto;
@@ -82,9 +82,9 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
 .motto li::before {content: counter(motto) ". "; color: #475775;}
 
 /* 연구방향: 번호 + 소제목 + 원문, 1열 목록 */
-.research {margin-top: 40px;}
+.research {margin-top: 36px;}
 .research ol {border-top: 2px solid #475775;}
-.research li {padding: 20px 0; border-bottom: 1px solid #ddd;}
+.research li {padding: 18px 0; border-bottom: 1px solid #ddd;}
 .research h4 {
     display: flex; align-items: baseline; gap: 10px;
     margin-bottom: 8px;
@@ -95,12 +95,12 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
     font-size: 15px; font-weight: 700; color: #6987D6;
 }
 
-.closing {margin-top: 36px;}
+.closing {margin-top: 32px;}
 
 /* 서명 */
 .txt .leader {
     display: flex; flex-direction: column; align-items: flex-end; gap: 4px;
-    margin: 36px 0 56px;
+    margin: 24px 0 48px;
     text-align: right; color: #475775;
 }
 .leader .position {font-size: 15px; line-height: 1.5;}
@@ -131,10 +131,23 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
     .banner {margin-bottom: 32px;}
     .txt .title {font-size: 26px; margin-bottom: 28px;}
     .section_title {font-size: 20px;}
-    .motto, .research {margin-top: 44px;}
-    .research li {padding: 24px 0;}
-    .closing {margin-top: 44px;}
-    .txt .leader {margin: 40px 0 64px;}
+    .motto, .research {margin-top: 40px;}
+    /* 원훈 두 항목을 한 줄로 */
+    .motto {display: flex; align-items: baseline; gap: 20px;}
+    .motto .section_title {margin: 0;}
+    .motto ol {display: flex; flex-wrap: wrap; gap: 4px 24px;}
+    /* 연구방향 2×2 카드 */
+    .research ol {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+        border-top: 0;
+    }
+    .research li {
+        padding: 20px; border: 0; border-top: 2px solid #475775;
+        background-color: #f7f8fa;
+    }
+    .research li p {font-size: 15px; line-height: 1.7;}
+    .closing {margin-top: 40px;}
+    .txt .leader {margin: 24px 0 56px;}
 
     .sub_page .header .logo {width: 180px;}
     .sub_page .header .gnb_mobile .search,
@@ -187,21 +200,31 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
     .nav_mobile {display: none;}
 
     .page_title {margin: 0 0 20px; font-size: 28px;}
-    .banner {margin-bottom: 40px;}
+    .banner {margin-bottom: 36px;}
 
     /* 배너는 콘텐츠 폭을 쓰고, 읽는 글은 720px까지만 */
-    .txt {max-width: 720px; font-size: 17px; line-height: 1.8;}
+    .txt {font-size: 17px; line-height: 1.8;}
+    .txt .title, .txt .intro, .motto, .closing, .txt .leader {max-width: 720px;}
+    .motto {display: flex; align-items: baseline; gap: 24px;}
+    .motto .section_title {margin: 0;}
+    .motto ol {display: flex; flex-wrap: wrap; gap: 4px 28px;}
+    .research ol {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+        border-top: 0;
+    }
+    .research li {border: 0; border-top: 2px solid #475775; background-color: #f7f8fa;}
     .txt .title {font-size: 30px; line-height: 1.4; margin-bottom: 32px;}
     .txt .intro p + p {margin-top: 20px;}
     .section_title {font-size: 21px; margin-bottom: 20px;}
-    .motto {margin-top: 48px; padding: 24px 28px 24px 26px;}
+    .motto {margin-top: 40px; padding: 18px 24px;}
     .motto .section_title {font-size: 16px;}
     .motto li {font-size: 18px;}
-    .research {margin-top: 56px;}
-    .research li {padding: 24px 0;}
+    .research {margin-top: 48px;}
+    .research li {padding: 24px;}
     .research h4 {font-size: 18px;}
-    .closing {margin-top: 48px;}
-    .txt .leader {margin: 40px 0 80px;}
+    .research li p {font-size: 15px; line-height: 1.75;}
+    .closing {margin-top: 40px;}
+    .txt .leader {margin: 24px 0 72px;}
     .leader .position {font-size: 16px;}
     .leader .name {font-size: 20px;}
 
