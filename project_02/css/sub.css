@@ -47,6 +47,10 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
 }
 .banner {width: 100%; margin-bottom: 28px;}
 .banner img {display: block; width: 100%; height: auto;}
+.banner figcaption {
+    margin-top: 8px;
+    font-size: 13px; line-height: 1.5; color: #767676; text-align: right;
+}
 
 /* 본문 */
 .txt {
