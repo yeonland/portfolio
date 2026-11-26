@@ -84,12 +84,30 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
 /* 연구방향: 번호 + 소제목 + 원문, 1열 목록 */
 .research {margin-top: 36px;}
 .research ol {border-top: 2px solid #475775;}
-.research li {padding: 18px 0; border-bottom: 1px solid #ddd;}
+.research li {border-bottom: 1px solid #ddd;}
 .research h4 {
     display: flex; align-items: baseline; gap: 10px;
     margin-bottom: 8px;
     font-size: 17px; line-height: 1.45; font-weight: 700; color: #222;
 }
+/* 모바일 아코디언 (details/summary) */
+.research summary {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    list-style: none; cursor: pointer;
+}
+.research summary::-webkit-details-marker {display: none;}
+.research summary::after {
+    content: ""; flex: none;
+    width: 9px; height: 9px; margin-right: 4px;
+    border-right: 2px solid #475775; border-bottom: 2px solid #475775;
+    transform: translateY(-3px) rotate(45deg); transition: transform .2s;
+}
+.research details[open] summary::after {transform: translateY(2px) rotate(-135deg);}
+.research summary:focus-visible {outline: 2px solid #6987D6; outline-offset: 4px;}
+.research summary h4 {margin-bottom: 0;}
+.research summary {padding: 16px 0;}
+.research details p {padding-bottom: 18px;}
+
 .research .num {
     flex: none;
     font-size: 15px; font-weight: 700; color: #6987D6;
@@ -146,6 +164,9 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
         background-color: #f7f8fa;
     }
     .research li p {font-size: 15px; line-height: 1.7;}
+    .research summary {cursor: default; padding: 0 0 8px;}
+    .research summary::after {display: none;}
+    .research details p {padding-bottom: 0;}
     .closing {margin-top: 40px;}
     .txt .leader {margin: 24px 0 56px;}
 
@@ -223,6 +244,9 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
     .research li {padding: 24px;}
     .research h4 {font-size: 18px;}
     .research li p {font-size: 15px; line-height: 1.75;}
+    .research summary {cursor: default; padding: 0 0 8px;}
+    .research summary::after {display: none;}
+    .research details p {padding-bottom: 0;}
     .closing {margin-top: 40px;}
     .txt .leader {margin: 24px 0 72px;}
     .leader .position {font-size: 16px;}
@@ -235,3 +259,4 @@ html {font-family: "IBM Plex Sans KR", sans-serif; font-size: 12px;}
     .sub_page .footer .facebook {right: 0;}
 }
 .nobr {white-space: nowrap;}
+@media (prefers-reduced-motion: reduce) {.research summary::after {transition: none;}}

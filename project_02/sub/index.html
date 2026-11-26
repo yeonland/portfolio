@@ -207,20 +207,28 @@
                     <h3 id="research_title" class="section_title">연구방향</h3>
                     <ol>
                         <li>
-                            <h4><span class="num" aria-hidden="true">01</span>가야 고대문화 연구</h4>
-                            <p>가야지역의 고대문화를 올바르게 해석해 나가기 위하여 동북아 전체의 시각에서 고고학적 관점을 견지하여 다양한 연구를 진행한다.</p>
+                            <details class="research_item" open>
+                                <summary><h4><span class="num" aria-hidden="true">01</span>가야 고대문화 연구</h4></summary>
+                                <p>가야지역의 고대문화를 올바르게 해석해 나가기 위하여 동북아 전체의 시각에서 고고학적 관점을 견지하여 다양한 연구를 진행한다.</p>
+                            </details>
                         </li>
                         <li>
-                            <h4><span class="num" aria-hidden="true">02</span>토기·고분문화의 종합적 해석</h4>
-                            <p>기존의 연구된 가야지역 토기와 고분문화를 종합적으로 재해석하고 이를 내재적 역동성으로 분석하는 능동적인 연구과제로 삼고 장기적 계획을 수립하여 추진한다.</p>
+                            <details class="research_item" open>
+                                <summary><h4><span class="num" aria-hidden="true">02</span>토기·고분문화의 종합적 해석</h4></summary>
+                                <p>기존의 연구된 가야지역 토기와 고분문화를 종합적으로 재해석하고 이를 내재적 역동성으로 분석하는 능동적인 연구과제로 삼고 장기적 계획을 수립하여 추진한다.</p>
+                            </details>
                         </li>
                         <li>
-                            <h4><span class="num" aria-hidden="true">03</span>동북아시아 고대문화 비교 연구</h4>
-                            <p>고구려, 발해의 고대 문화유산을 한반도를 비롯하여 당시 영토였던 중국의 동북지방 역사자료와 함께한 <span class="nobr">한(漢),</span> <span class="nobr">남북조(南北朝),</span> <span class="nobr">수(隋),</span> <span class="nobr">당(唐)</span> 등 동일시기 중국 고대국가 관련자료를 입수, 분석, 연구하여 동북아시아의 거시적인 시각 아래 주체적인 역사관을 수립하는 부분을 지속적으로 모색한다.</p>
+                            <details class="research_item" open>
+                                <summary><h4><span class="num" aria-hidden="true">03</span>동북아시아 고대문화 비교 연구</h4></summary>
+                                <p>고구려, 발해의 고대 문화유산을 한반도를 비롯하여 당시 영토였던 중국의 동북지방 역사자료와 함께한 <span class="nobr">한(漢),</span> <span class="nobr">남북조(南北朝),</span> <span class="nobr">수(隋),</span> <span class="nobr">당(唐)</span> 등 동일시기 중국 고대국가 관련자료를 입수, 분석, 연구하여 동북아시아의 거시적인 시각 아래 주체적인 역사관을 수립하는 부분을 지속적으로 모색한다.</p>
+                            </details>
                         </li>
                         <li>
-                            <h4><span class="num" aria-hidden="true">04</span>과학적 조사와 기록 보존</h4>
-                            <p>지하에 매장된 유적에서의 유구와 유무에 대한 발굴조사과정에서 최신의 과학적인 방법과 분석을 적극 활용하고 이를 보고서 작성 과정에도 적용하여 다원적 시각의 발굴보고서 발간으로 기록보존 방법을 개선토록 노력한다.</p>
+                            <details class="research_item" open>
+                                <summary><h4><span class="num" aria-hidden="true">04</span>과학적 조사와 기록 보존</h4></summary>
+                                <p>지하에 매장된 유적에서의 유구와 유무에 대한 발굴조사과정에서 최신의 과학적인 방법과 분석을 적극 활용하고 이를 보고서 작성 과정에도 적용하여 다원적 시각의 발굴보고서 발간으로 기록보존 방법을 개선토록 노력한다.</p>
+                            </details>
                         </li>
                     </ol>
                 </section>
@@ -259,5 +267,22 @@
             </span>
         </div>        <!-- footer -->
     </footer>    <!-- footer outer -->
+    <script>
+        // 연구방향: 모바일(600px 이하)에서는 접어서 소제목만, 태블릿·PC에서는 항상 펼침
+        (function () {
+            var items = document.querySelectorAll('.research_item');
+            var wide = window.matchMedia('(min-width: 601px)');
+            function sync() {
+                items.forEach(function (d) { d.open = wide.matches; });
+            }
+            items.forEach(function (d) {
+                d.querySelector('summary').addEventListener('click', function (e) {
+                    if (wide.matches) e.preventDefault();
+                });
+            });
+            sync();
+            wide.addEventListener('change', sync);
+        })();
+    </script>
 </body>
 </html>
